@@ -1,7 +1,5 @@
-# Code Institute
+[![Build Status](https://travis-ci.org/RikDuijm/trail-running.svg?branch=master)](https://travis-ci.org/RikDuijm/trail-running)
 
-Welcome RikDuijm,
+# Trail running - responsive application
 
-We have preinstalled all of the tools you need to get started.
-
-Happy coding!
+This application is developed for a webshop specialized in products for (trail) runners and served 3 purposes:
