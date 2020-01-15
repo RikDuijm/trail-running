@@ -1,0 +1,79 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trail Running</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/100df6bf4a.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet"  href="{% static 'css/custom.css' %}" type="text/css"/>
+</head>
+<body>
+        <div id="page-container">
+            <div id="content-wrap">
+                <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
+                    <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'get_posts' %}"><img src="/media/img/logo.jpg"></a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active test">
+                            <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Events</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Discounts</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Inspiration</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Community</span></a>
+                        </li>
+
+                        </ul>
+                            <form class="form-inline my-2 my-lg-0" action="">
+                            <input type="text" name="query"/>&nbsp;
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </div>
+                </nav>
+
+                <section >
+                    <article class="row" id="inner-content">
+                        <div class="col-12">
+                        <h1>Your adventure starts here!</h1>            
+                        <p>ipsem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem doloribus optio quis. A earum ducimus facilis quasi modi pariatur. Fugiat explicabo nobis libero deserunt dolores aut. Mollitia facere dolores laborum.</p>
+                        </div>
+                    </article>
+                </section>        
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <!--blogpost entries-->tests
+                            {% block content %}
+                            {% endblock %}
+                            <!--blogpost entries-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <footer id="footer">
+                <hr>
+                </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>   
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script> 
+</body>
+</html>
