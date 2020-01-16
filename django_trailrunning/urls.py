@@ -21,7 +21,8 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', RedirectView.as_view(url='community/')),
+    url(r'^$', RedirectView.as_view(url='home/')),
+    url(r'^home/', include('home.urls')),
     url(r'^community/', include('community.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]

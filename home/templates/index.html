@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+
+    <section >
+        <article class="row ">
+            <div class="col-md-6">
+                <div class="feature"> 
+                    <h2>Events</h2>
+                    <img src="/media/img/events.jpg" class="feature-image">
+                    <p class="feature-text">Have a look at our race calender and enrol yourself for the races of your choice.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="feature"> 
+                    <h2>Discounts</h2>
+                    <img src="/media/img/discounts.jpg" class="feature-image">
+                    <p class="feature-text">Become a member and receive 15% discount on products of our partner All4running.com. You find new offers every week!</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="feature"> 
+                    <h2>Inspiration</h2>
+                    <img src="/media/img/inspiration.jpg" class="feature-image">
+                    <p class="feature-text">Read stories of fellow runners, dream away with their photos and find surprising routes</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <a class="nav-link" href="{% url 'get_posts' %}">
+                <div class="feature"> 
+                    <h2>Community</h2>
+                    <img src="/media/img/community.jpg" class="feature-image">
+                    <p class="feature-text">Get in touch with other trailers, train together, have fun!</p>
+                </div>
+                </a>
+            </div>
+
+{% endblock %}

@@ -13,13 +13,14 @@
         <link rel="stylesheet"  href="{% static 'css/custom.css' %}" type="text/css"/>
 </head>
 <body>
-        <div id="page-container">
-            <div id="content-wrap">
+    <div id="page-container" class="container-fluid">
+        
+            <header>
                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
                     <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'get_posts' %}"><img src="/media/img/logo.jpg"></a>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="/media/img/logo.jpg"></a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                         <li class="nav-item active test">
@@ -32,7 +33,7 @@
                             <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Inspiration</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Community</span></a>
+                            <a class="nav-link" href="{% url 'get_posts' %}"><span class="menu-item">Community</span></a>
                         </li>
 
                         </ul>
@@ -40,38 +41,29 @@
                             <input type="text" name="query"/>&nbsp;
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                                 </form>
-                            </div>
+                    </div>
                 </nav>
-
-                <section >
-                    <article class="row" id="inner-content">
-                        <div class="col-12">
-                        <h1>Your adventure starts here!</h1>            
-                        <p>ipsem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem doloribus optio quis. A earum ducimus facilis quasi modi pariatur. Fugiat explicabo nobis libero deserunt dolores aut. Mollitia facere dolores laborum.</p>
-                        </div>
-                    </article>
-                </section>        
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel">
-                        <div class="panel-body">
-                            <!--blogpost entries-->tests
+                        <img src="/media/img/header-image.jpg" style="width:100%;height:100%;">                    
+            </header>            
+                        <article class="row inner-content">
+                            <div class="col-12">
+                            <h1>Your adventure starts here!</h1>            
+                            <p>Welcome to the website for the trail runner. Whether you're looking for events to participate in, a training partner, practical advice on an injury, runner stories or products: you're at the right place! Learn more about this amazing sport and the people doing it!</p>
+                            </div>
+                        </article>
+                           
+                
+                            <!--specific content of subpages entries-->
                             {% block content %}
                             {% endblock %}
-                            <!--blogpost entries-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <!--specific content of subpages entries-->
+
 
                 <footer id="footer">
-                <hr>
+                
                 </footer>
-
+            </div>    
+    </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>   
         <script type="text/javascript" src="{% static 'js/script.js' %}"></script> 
