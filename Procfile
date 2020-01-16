@@ -1,1 +1,1 @@
-web: gunicorn blog.wsgi:application
+web: gunicorn django_trailrunning.wsgi:application
