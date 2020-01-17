@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
     {% for post in posts %}
         <div class="row">
             <div class="col-md-2 col-sm-3 text-center">
@@ -22,5 +23,6 @@
             </div>
             <hr>
         </div>
-    {% endfor %}
+
+       {% endfor %}
 {% endblock %}

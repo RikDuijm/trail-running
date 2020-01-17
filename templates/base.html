@@ -16,7 +16,7 @@
     <div id="page-container" class="container-fluid">
         
             <header>
-                <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
+                <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
                     <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -32,10 +32,24 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'new_post' %}"><span class="menu-item">Inspiration</span></a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'get_posts' %}"><span class="menu-item">Community</span></a>
+                        <li class="nav-item active dropdown">
+                            <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
+                            <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>
+                            </div>
                         </li>
-
+                              <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
                         </ul>
                             <form class="form-inline my-2 my-lg-0" action="">
                             <input type="text" name="query"/>&nbsp;
