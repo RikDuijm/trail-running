@@ -82,3 +82,10 @@ h3 {
         font-size: 1.8em;
     }
 
+.login-message  {
+  color: #2B7A78;   
+}
+
+.register-message {
+    color: #3AAFA9;
+}

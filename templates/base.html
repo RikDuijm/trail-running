@@ -40,19 +40,22 @@
                             </div>
                         </li>
 
-
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{#}"><span class="menu-item">Register</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{#}"><span class="menu-item">Login</span></a>
-                        </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item active">
                             <a class="nav-link" href="{#}"><span class="menu-item">Profile</span></a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
                         </li>
+                        {% else %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{#}"><span class="menu-item">Register</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'login' %}"><span class="menu-item">Login</span></a>
+                        </li>
+                        {% endif %}
+
                         
 
                         </ul>
@@ -69,14 +72,27 @@
                             <h1>Your adventure starts here!</h1>            
                             <p>Welcome to the website for the trail runner. Whether you're looking for events to participate in, a training partner, practical advice on an injury, runner stories or products: you're at the right place! Learn more about this amazing sport and the people doing it!</p>
                             </div>
+                            <hr>
+                            <div class="col-12 class="login-message>        
+                                <p class="login-message"><strong><em>
+                                {% if user.is_authenticated %}
+                                You've succesfully logged in.
+                                {% else %}
+                                    {% if messages %}
+                                        {% for message in messages %} {{ message }} <br><br>{% endfor %}  
+                                    {% endif %} 
+                                <a href="{% url 'login' %}" class="login-message">Please log in to get the most out of your experience!</a><br>
+                                <spam class="register-message">New user? Please register!</a>
+                                {% endif %}
+                                </em></strong></p>
+                            </div>
+                            <hr>
                         </article>
-                           
                 
                             <!--specific content of subpages entries-->
                             {% block content %}
                             {% endblock %}
                             <!--specific content of subpages entries-->
-
 
                 <footer id="footer">
                 

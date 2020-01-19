@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+
+    <section class="row inner-content">
+        <div class="col-12">
+            <form method="POST">
+                {% csrf_token %} {{ login_form }}<br><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>    
+    </section>
+
+{% endblock %}
