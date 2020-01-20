@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required 
 from accounts.forms import UserLoginForm
 
 def index(request):
     """View that returns the index / homepage"""
     return render(request, "index.html")
 
+@login_required
+# required to only allow access to the logout page if user is authenticated; Django automatically redirects to login page if logged out user tries to enter logout page by url
 def logout(request):
     """Log the user out"""
     auth.logout(request)
@@ -14,6 +17,8 @@ def logout(request):
 
 def login(request):
     """Return a login page"""
+    if request.user.is_authenticated:
+        return redirect(reverse('index'))
     if request.method == "POST":
         login_form = UserLoginForm(request.POST) 
         # if request method is equal to POST then create an instance of the user login form, so a new login form will be created with the data posted from the form on the UI 
@@ -22,7 +27,6 @@ def login(request):
                                     password=request.POST['password'])
             if user:
                 auth.login(user=user, request=request) # Then our authenticate function will return a user object so if we have a user then we'll log him in.
-                
                 return redirect(reverse('index'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect.")
