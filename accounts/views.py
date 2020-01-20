@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
-from accounts.forms import UserLoginForm
+from accounts.forms import UserLoginForm, UserRegistrationForm
 
 def index(request):
     """View that returns the index / homepage"""
@@ -33,3 +33,27 @@ def login(request):
     else:
         login_form = UserLoginForm() # otherwise we're just going to create an empty object 
     return render(request, 'login.html', {'login_form': login_form})
+
+def registration(request):
+    """Render the registration page"""
+    if request.user.is_authenticated:
+        return redirect(reverse('index')) # User is already registered, so no point to be on registration page.
+
+    if request.method == "POST":
+        registration_form = UserRegistrationForm(request.POST) # Check of the method is post. If so instantiate the registration form, using the values of the request post method. 
+
+        if registration_form.is_valid(): # If registration form is valid, safe it
+            registration_form.save()
+
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password1'])
+            if user:
+                auth.login(user=user, request=request)                          # Send message to user that he has registered successfully or not.
+                messages.success(request, "You have successfully registered and are logged in.")
+                return redirect(reverse('index'))
+            else:
+                messages.error(request, "Unable to register your account at this time")
+    else:
+        registration_form = UserRegistrationForm()          # Put an else statement in case it's a get method. Then we'll just instantiate an empty registration form.
+    return render(request, 'registration.html', {
+        "registration_form": registration_form})
