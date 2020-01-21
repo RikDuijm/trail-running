@@ -63,3 +63,7 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})        
+
+def password_reset(request): 
+    """Link to reset password page"""
+    return redirect(reverse('password-reset'))
