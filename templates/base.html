@@ -42,7 +42,7 @@
 
                         {% if user.is_authenticated %}
                         <li class="nav-item active">
-                            <a class="nav-link" href="{#}"><span class="menu-item">Profile</span></a>
+                            <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">Profile</span></a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
