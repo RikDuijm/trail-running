@@ -140,7 +140,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 EMAIL_USE_TLS = True                    # TLS is the form of email encryption that is used by Gmail.
 EMAIL_HOST = 'smtp.gmail.com'           # smtp is the protocol that is used to send emails. It's similar to how we use HTTP for web pages.
