@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-<a href="{% url 'password_reset' %}">Forgot your password?</a>
-    <section class="row inner-content">
+
+        <div class="row col-11 inner-content">
       
-            <form class="offset-lg-2 col-lg-8" method="POST">
+            <form method="POST">
                 {% csrf_token %} 
                 {{ login_form.as_p }}<br><br>
                 <button type="submit">Login</button>
             </form>
             <p class="offset-lg-2 col-lg-8"><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
             
-        </div>    
-    </section>
+
+    </div>
 
 {% endblock %}
