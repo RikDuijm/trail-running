@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/100df6bf4a.js" crossorigin="anonymous"></script>
         <link rel="stylesheet"  href="{% static 'css/custom.css' %}" type="text/css"/>
+        {% block head_js %}     <!--JavaScript in checkout.html. Will only be injected in base.html, when clicking on Checkout--> 
+        {% endblock head_js %}
 </head>
 <body>
     <div id="page-container" class="container-fluid">

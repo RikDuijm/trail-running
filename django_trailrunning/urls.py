@@ -22,6 +22,7 @@ from accounts import urls as accounts_urls
 from discounts import urls as urls_discounts
 from cart import urls as urls_cart
 from search import urls as urls_search
+from checkout import urls as urls_checkout
 from accounts.views import index
 
 
@@ -36,4 +37,5 @@ urlpatterns = [
     url(r'^discounts/', include(urls_discounts)),
     url(r'^cart/', include(urls_cart)),
     url(r'^search/', include(urls_search)),
+    url(r'^checkout/', include(urls_checkout)),
 ]
