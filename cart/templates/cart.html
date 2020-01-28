@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block content %}
+    <section class="col-11 inner-content">
+    <h3>Your cart</h3>
+    <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
+    {% for item in cart_items %}
+    
+    <div class="row col-md-4">
+
+        <!-- item.product.image is used instead of product.image to only show the items that are within the cart_items. -->
+        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
+        
+        <div class="caption">
+            <h3>{{ item.product.name }}</h3>
+            <p class="product-description">{{ item.product.description }}</p>
+            <p>{{ item.product.price }}</p>                    
+            <p>
+                
+                <!--The adjust_cart view is used, to adjust the number of items the user wants to purchase. 
+                item.id is passed in to know of which item the quantity is adjusted of. -->
+                <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Qty</div>
+                            <input name="quantity" type="number" min="0" max="999" class="form-control">
+                            <div class="input-group-addon">{{item.quantity}}</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                </form>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <p>Total</p>
+    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
+    <a href="/" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+</div>
+
+{% endblock %}
