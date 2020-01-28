@@ -55,11 +55,21 @@
                             <a class="nav-link" href="{% url 'login' %}"><span class="menu-item">Login</span></a>
                         </li>
                         {% endif %}
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'view_cart' %}"><span class="menu-item">
+                            <i class="fas fa-shopping-cart"></i> Cart 
+                            {% if product_count > 0 %}
+                            <label class="badge badge-warning">{{ product_count }}</label>
+                            {% endif %}
+                            </span>
+                        </a>
+                        </li>
+                        </ul>
 
                         
-
-                        </ul>
-                            <form class="form-inline my-2 my-lg-0" action="">
+                            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
                             <input type="text" name="query"/>&nbsp;
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
                                 </form>
