@@ -2,11 +2,11 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
-{% block head_js %}
 <!-- js.stripe.com/v2 is a direct link to Stripe's JavaScript to set the Stripe.publishableKey. 
 So the publishableKey that comes from Stripe is then available  to use elsewhere in the page. An
 And the rest of our JavaScript is in the mentioned stripe.js file.
 -->
+{% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
@@ -14,7 +14,7 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %}
+{% endblock head_js %}
 
 {% block content %}
     <section class="col-11 inner-content">
@@ -28,9 +28,9 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
 
                     <div class="caption">
                         <h3>{{ item.product.name }}</h3>
-                        <p class="product-description">{{ item.product.descriptio }}</p>
+                        <p class="product-description">{{ item.product.description }}</p>
                         <p>{{ item.quantity }}</p>
-                        <p>item.product.price</p>
+                        <p>{{item.product.price}}</p>
                     </div>
                 </div>
             </div>

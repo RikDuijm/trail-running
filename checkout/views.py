@@ -5,7 +5,7 @@ from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
-from products.models import Product
+from discounts.models import Product
 import stripe
 
 # Create your views here.
@@ -13,9 +13,9 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 @login_required()                                               # When user goes to the checkout  to pay, he should be logged in.
-""" And then the user is given the order form to fill out. 
-So the order form is what contains their name, address, and so on. 
-And the payment form is what contains the credit card or debit card details. We need to import these forms from our forms.py."""
+# And then the user is given the order form to fill out. 
+# So the order form is what contains their name, address, and so on. 
+# And the payment form is what contains the credit card or debit card details. We need to import these forms from our forms.py.
 def checkout(request):
     if request.method == "POST":                                
         order_form = OrderForm(request.POST)
@@ -46,7 +46,7 @@ def checkout(request):
                     amount=int(total * 100),
                     currency="EUR",
                     description=request.user.email,             # The description is going to be the request user email. And that just means that we can see from the Stripe dashboard from whom the payment came. 
-                    card=payment_form.cleaned_data['stripe_id'] # We also need the Stripe ID from that form - that's the item that was hidden from the user.
+                    card=payment_form.cleaned_data['stripe_id']  # We also need the Stripe ID from that form - that's the item that was hidden from the user.
                 )
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 
 # Create your views here.
-# Create your views here.
+
 def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
@@ -14,8 +14,7 @@ def add_to_cart(request, id):
     That allow  to increase and decrease the number of items the client wants.
     And when he clicks on the Add to Cart button, the integer that is in that form will go to the cart."""
 
-    cart = request.session.get('cart', {})  # request.session means it's not going to a database. 
-                                            # It gets a cart from the session, if one already exists or an empty dictionary if a cart doesn't exist yet.
+    cart = request.session.get('cart', {})  # request.session means it's not going to a database. It gets a cart from the session, if one already exists or an empty dictionary if a cart doesn't exist yet.
     cart[id] = cart.get(id, quantity)       # Add an ID and a quantity.
 
     request.session['cart'] = cart
@@ -30,6 +29,6 @@ def adjust_cart(request, id):
         cart[id] = quantity
     else:
         cart.pop(id)    # pop() is an inbuilt function in Python that removes and returns last value from the list or the given index value. Syntax : list_name.pop(index)
-        
+
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
