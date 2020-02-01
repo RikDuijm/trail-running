@@ -25,6 +25,15 @@ body {
     margin-right: 5%;
 }
 
+.alert {
+    padding-bottom: 0;
+}
+.alert-center {
+    display:block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
 .feature {
     background-color: #DEF2F1;
     padding: 20px;
@@ -84,6 +93,7 @@ h3 {
     h3 {
         font-size: 1.8em;
     }
+}    
 
 a {
   color: #2B7A78;   
@@ -115,6 +125,6 @@ button:hover {
     background-position: center center;
     background-repeat: no-repeat;
     width: 300px;
-    height: 300px;
+    height: 200px;
     margin: 0 auto;
 }

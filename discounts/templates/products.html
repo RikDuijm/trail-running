@@ -4,16 +4,26 @@
 
 {% block content %}
     <section class="col-11 inner-content">
-        <h2>Check out this weeks discounts!</h2>
-        <h3>For members only!</h3>
-        <div class="row col-md-4">
-            {% for product in products %}
+        <h2>Check out this weeks discounts, for members only!</h2>
+        
+    {% if messages %}
+        <div class="alert alert-info">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
             
+            {% for product in products %}
+                <div class="row col-12 col-md-6 col-lg-4"> 
+                <h4 class="text-center">{{ product.product_name }}</h4>  
                 <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
                 
                 <!-- By making a background image, it fits the size of the <div> that it is in so that different 
                 sized images for different products won't end up looking mismatched.-->
-                <h3>{{ product.product_name }}</h3>
+                
                 <p class="product-description">{{ product.description }}</p>
                 <p>{{ product.price }}</p>
                 

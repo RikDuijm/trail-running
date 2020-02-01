@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/100df6bf4a.js" crossorigin="anonymous"></script>
         <link rel="stylesheet"  href="{% static 'css/custom.css' %}" type="text/css"/>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>   
         {% block head_js %}     <!--JavaScript in checkout.html. Will only be injected in base.html, when clicking on Checkout--> 
         {% endblock head_js %}
@@ -19,7 +19,7 @@
 <body>
     <div id="page-container" class="container-fluid">
         
-            <header>
+        <header>
                 <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
                     <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -60,61 +60,50 @@
                         </li>
                         {% endif %}
                         </ul>
-                        <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                                <a class="nav-link" href="{% url 'view_cart' %}"><span class="menu-item">
-                            <i class="fas fa-shopping-cart"></i> Cart 
-                            {% if product_count > 0 %}
-                            <label class="badge badge-warning">{{ product_count }}</label>
-                            {% endif %}
-                            </span>
-                        </a>
-                        </li>
-                        </ul>
-
                         
-                            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
+                        <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
                             <input type="text" name="query"/>&nbsp;
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                                </form>
+                        </form>      
                     </div>
+                
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'view_cart' %}">
+                                <span class="menu-item">
+                                    <i class="fas fa-shopping-cart"></i> Cart 
+                                    {% if product_count > 0 %}
+                                    <label class="badge badge-warning">{{ product_count }}</label>
+                                    {% endif %}
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
                 </nav>
-                        <img src="/media/img/header-image.jpg" style="width:100%;height:100%;">                    
-            </header>            
-                        <article class="row inner-content">
-                            <div class="col-12">
-                            <h1>Your adventure starts here!</h1>       
-                            <p>Welcome to the website for the trail runner. Whether you're looking for events to participate in, a training partner, practical advice on an injury, runner stories or products: you're at the right place! Learn more about this amazing sport and the people doing it!</p>
-                            </div>
-                            <hr>
-                            <div class="col-12 class="login-message>        
+            
+                    <img src="/media/img/header-image.jpg" style="width:100%;height:100%;">                    
+        </header>            
+        <article class="row inner-content">
+            <div class="alert alert-info alert-center">  
                                 <p class="login-message"><strong><em>
                                 {% if user.is_authenticated %}
-                                You've succesfully logged in.
+                                Welcome {{ user }}!
                                 {% else %}
-                                    {% if messages %}
-                                        {% for message in messages %} {{ message }} <br><br>{% endfor %}  
-                                    {% endif %} 
-                                    
-                                <a href="{% url 'login' %}" class="login-message">Please log in for a better experience!</a>                               
-                                <spam class="register-message">New user? Please register!</a>
-                                {% endif %}
-                                </em></strong></p>
-                            </div>
-                            <hr>
-                        </article>
+                                <a href="{% url 'login' %}" class="login-message">Please log in for a better experience!</a></em></strong></p>{% endif %}
+                                
+            </div>
+        </article>
                 
-                            <!--specific content of subpages entries-->
-                            {% block content %}
-                            {% endblock %}
-                            <!--specific content of subpages entries-->
+            <!--specific content of subpages entries-->
+            {% block content %}
+            {% endblock %}
+            <!--specific content of subpages entries-->
 
-                <footer id="footer">
+        <footer id="footer">
                 
-                </footer>
+        </footer>
             
-        </div>
-
-       
+    </div>
+   
 </body>
 </html>

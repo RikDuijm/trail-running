@@ -2,15 +2,19 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-    <div class="row col-11 inner-content">
-      
+    <div class="col-11 inner-content">
+        <div class="row">
+        <p>If you don't have an account yet, you can <a href="{% url 'registration' %}">register here</a>.</p>
+        </div>
+
+        <div class="row">
         <form method="POST">
             {% csrf_token %} 
             {{ login_form.as_p }}<br><br>
             <button type="submit">Login</button>
         </form>
         <p class="offset-lg-2 col-lg-8"><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
-            
+        </div>    
 
     </div>
 
