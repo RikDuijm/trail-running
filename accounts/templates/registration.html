@@ -8,8 +8,10 @@
         </div>
 
         <div class="row">    
-        <form method="POST">
-            {% csrf_token %} {{ registration_form.as_p }}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            {{ registration_form.as_p }}
+            {{ profile_form.as_p }}
             <button type="submit">Register</button>
         </form>
         </div>

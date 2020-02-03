@@ -1,10 +1,29 @@
-{% extends 'base.html' %} 
+{% extends "base.html" %}
+{% load bootstrap_tags %}
 
-{% block page_title %}Profile Page{% endblock %} 
 
-{% block page_heading %}Profile{% endblock %}
+{% block page_title %} {{profile.user}}s Profile Page {% endblock %} 
+
+{% block page_heading %}{{profile.user}}s Profile Page {% endblock %}
 
 {% block content %}
-<p>{{ profile.email }}</p>
+
+    <div class="col-11 inner-content">
+        <h1 class="text-center">{{ user }} Profile Page</h1>
+        <div class="row">
+            <p>First name: {{ user.userprofile.first_name }}</p>
+            <p>Last name: {{ user.userprofile.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Location:{{ user.userprofile.location }}</p>
+            <p>Gender: {{ user.userprofile.gender}}</p>
+            <p>Age: {{ user.userprofile.age}}</p>
+             {% if user.userprofile.image %}
+            <img src="{{ user.userprofile.image.url }}" alt="profile image" width="300px">
+              {% else %}
+              <img src="/media/img/discounts.jpg">
+            {% endif %}
+        </div>
+    </div>        
+
 
 {% endblock %}

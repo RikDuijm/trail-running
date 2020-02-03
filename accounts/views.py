@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 def index(request):
-    """View that returns the index / homepage"""
+    """View that returns the index / homepage"""  
     return render(request, "index.html")
 
 @login_required
@@ -41,23 +41,34 @@ def registration(request):
         return redirect(reverse('index')) # User is already registered, so no point to be on registration page.
 
     if request.method == "POST":
-        registration_form = UserRegistrationForm(request.POST) # Check of the method is post. If so instantiate the registration form, using the values of the request post method. 
+        registration_form = UserRegistrationForm(request.POST) # Check of the method is post. If so instantiate the registration and profile forms, using the values of the request post method. 
+        profile_form = UserProfileForm(request.POST, request.FILES)
 
-        if registration_form.is_valid(): # If registration form is valid, safe it
-            registration_form.save()
+        if registration_form.is_valid() and profile_form.is_valid(): # If registration form is valid, safe it
+            user = registration_form.save()
+
+            profile = profile_form.save(commit=False)   # To add the user to this profile, commit=False to not safe the profile to database right away.
+            profile.user = user                         # Refers to models.user and makes sure that one user only has one profile
+
+            profile.save()
 
             user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password1'])
+            
             if user:
                 auth.login(user=user, request=request)                          # Send message to user that he has registered successfully or not.
                 messages.success(request, "You have successfully registered and are logged in.")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
+            
             else:
                 messages.error(request, "Unable to register your account at this time")
+    
     else:
         registration_form = UserRegistrationForm()          # Put an else statement in case it's a get method. Then we'll just instantiate an empty registration form.
+        profile_form = UserProfileForm()
+    
     return render(request, 'registration.html', {
-        "registration_form": registration_form})
+        "registration_form": registration_form, "profile_form": profile_form})
 
 def user_profile(request):
     """The user's profile page"""

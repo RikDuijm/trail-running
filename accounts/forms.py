@@ -1,11 +1,11 @@
 from django import forms
 from django.contrib.auth.models import User # import the user model provided by Django
-from django.contrib.auth.forms import UserCreationForm # this is a base form that Django provides us and it will give us user names and emails
-from django.core.exceptions import ValidationError # import ValidationError
+from django.contrib.auth.forms import UserCreationForm  # this is a base form that Django provides us and it will give us user names and emails
+from django.core.exceptions import ValidationError  # import ValidationError
+from .models import UserProfile
 
 class UserLoginForm(forms.Form):
     """Form to be used to log users in"""
-
     username = forms.CharField(label = "Please enter your Username")
     password = forms.CharField(label = "Please enter your Password", widget=forms.PasswordInput)
 
@@ -24,7 +24,7 @@ class UserRegistrationForm(UserCreationForm):
         Django usually uses them internally to determine things about the class but we can also use it to specify 
         the model that we want store information in and to specify the fields that we're going to expose. """
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -44,3 +44,11 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError("Passwords must match")
         
         return password2        
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['first_name', 'last_name', 'gender', 'age',
+                    'location', 'image', ]
+       
