@@ -22,3 +22,10 @@ class UserProfile(models.Model):
 
     def __str__ (self):
         return self.user.username
+
+class ProfileIntroduction(models.Model):
+    introduction = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.introduction
+ 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfileIntroductionForm
 
 def index(request):
     """View that returns the index / homepage"""  
@@ -42,7 +42,7 @@ def registration(request):
 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST) # Check of the method is post. If so instantiate the registration and profile forms, using the values of the request post method. 
-        profile_form = UserProfileForm(request.POST, request.FILES)
+        profile_form = UserProfileForm(request.POST, request.FILES)  # request.Files to upload profile pic.
 
         if registration_form.is_valid() and profile_form.is_valid(): # If registration form is valid, safe it
             user = registration_form.save()
@@ -75,3 +75,14 @@ def user_profile(request):
     user = User.objects.get(email=request.user.email)
     return render(request, 'profile.html', {"profile": user})        
 
+def profile_introduction(request):
+    if request.method == 'POST':
+        profile_introduction_form = ProfileIntroductionForm(request.POST)
+        if profile_introduction_form.is_valid():
+            profile_introduction_form.save()
+            return render(request, 'profile.html')
+    else:
+        profile_introduction_form = ProfileIntroductionForm()
+    return render(request, 'profile.html', {
+        "profile_introduction_form": profile_introduction_form
+    })

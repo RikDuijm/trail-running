@@ -128,3 +128,18 @@ button:hover {
     height: 200px;
     margin: 0 auto;
 }
+
+.userprofile-details {
+    margin-left: 15%;
+    margin-top: 15px;
+}
+
+@media (min-width: 992px) {
+    .userprofile-details {
+        margin-left: 20%;
+    }
+}    
+
+.userprofile-details-pic{
+    margin-top: 15px;
+}

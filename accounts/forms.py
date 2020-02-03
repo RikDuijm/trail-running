@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User # import the user model provided by Django
 from django.contrib.auth.forms import UserCreationForm  # this is a base form that Django provides us and it will give us user names and emails
 from django.core.exceptions import ValidationError  # import ValidationError
-from .models import UserProfile
+from .models import UserProfile, ProfileIntroduction
 
 class UserLoginForm(forms.Form):
     """Form to be used to log users in"""
@@ -52,3 +52,7 @@ class UserProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'gender', 'age',
                     'location', 'image', ]
        
+class ProfileIntroductionForm(forms.ModelForm):
+    class Meta: 
+        model = ProfileIntroduction
+        fields = ['introduction']
