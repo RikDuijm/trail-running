@@ -67,3 +67,18 @@ def edit_post(request, pk=None):
         return HttpResponseForbidden()
 
     return render(request, 'blogpostform.html', {'form': form})
+
+def delete_post(request, pk=None):
+    """
+    Create a view that allows user to delete
+    his own post  and a superuser to delete every post.
+    """
+    post = get_object_or_404(Post, pk=pk)
+    author = post.author
+    if request.user == author or request.user.is_superuser: 
+        if request.method == "POST":
+            post.delete()
+            messages.success(request, 'Your post has been successfully deleted.')
+            return redirect('get_posts')
+    return render(request, "postdelete.html", {'post': post})
+

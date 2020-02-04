@@ -8,7 +8,7 @@
                 {% else %}
                 {% endif %}
             </a>
-            <p><span class="boldtext">Author:</span> <a href="{% url 'profile' %}"> {{ user }}</a></p>
+            <p><span class="boldtext">Author:</span> {{post.author}}</p>
         </div>
         <div class="col-sm-10 col-md-9">
             {% if post.image %}
@@ -22,7 +22,12 @@
                     <p><span class="boldtext">Views:</span> {{post.views}}</p>
                     <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                     <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+                    {% if user == post.author or user.is_superuser %}
                     <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
+                    <a href="{% url 'delete_post' post.id %}" class="btn btn-default">Delete Post</a>
+                    {% else %}
+            </div>
+                    {% endif %}
                     <hr>
                 </div>
             </div>

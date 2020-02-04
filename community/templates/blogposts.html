@@ -3,6 +3,15 @@
 
     <section >
         <article class="row col-11 inner-content">
+
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
             <div class="col-md-10">
                     {% for post in posts %}
                 <div class="feature"> 
@@ -15,7 +24,7 @@
                         <p><span class="boldtext">Author:</span> {{post.author}}</p>
                     </div>
                     <div class="col-md-10 col-sm-9">
-                        <h3>{{ post.title }}</h3>
+                        <h2>{{ post.title }}</h2>
                         <div class="row">
                             <div class="col-xs-9">
                                 <p>{{ post.content|truncatewords:30 }}</p>
