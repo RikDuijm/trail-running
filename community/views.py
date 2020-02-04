@@ -48,4 +48,22 @@ def new_post(request, pk=None):
         return redirect('login')        
     return render(request, 'blogpostform.html', {'form': form})
  
- 
+def edit_post(request, pk=None):
+    """
+    Create a view that allows user to edit
+    his own post  and a superuser to edit every post.
+    """
+    post = get_object_or_404(Post, pk=pk)
+    if (request.user == post.author or
+            request.user.is_superuser):
+        if request.method == "POST":
+            form = BlogPostForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                post = form.save()
+                return redirect(post_detail, post.pk)
+        else:
+            form = BlogPostForm(instance=post)
+    else:
+        return HttpResponseForbidden()
+
+    return render(request, 'blogpostform.html', {'form': form})
