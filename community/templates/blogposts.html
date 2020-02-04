@@ -6,12 +6,13 @@
             <div class="col-md-10">
                     {% for post in posts %}
                 <div class="feature"> 
-                   
                     <div class="col-md-2 col-sm-3 text-center">
-                        <a class="story-img" href="#">
-                            <img src="/media/img/profile.jpg" class="img-circle">
-                        </a>
-                        <p><span class="boldtext">Author:</span> Niel</p>
+                        {% if post.author.image %}
+                        <img src="{{ post.author.image.url }}" alt="profile image" width="100px">
+                        {% else %}
+                        
+                    {% endif %} 
+                        <p><span class="boldtext">Author:</span> {{post.author}}</p>
                     </div>
                     <div class="col-md-10 col-sm-9">
                         <h3>{{ post.title }}</h3>

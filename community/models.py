@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     """
     A single Blog post
     """
+    author = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT)
     title = models.CharField(max_length=200)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
