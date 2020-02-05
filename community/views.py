@@ -5,6 +5,7 @@ from .forms import BlogPostForm
 from django.http import HttpResponseForbidden
 from django.contrib import messages
 
+
 def get_posts(request):
     """
     Create a view that will return a list
@@ -29,6 +30,7 @@ def post_detail(request, pk):
     post.save()
     return render(request, "postdetail.html", {'post': post})
 
+
 def new_post(request, pk=None):
     """
     Create a view that allows user to add new post
@@ -48,6 +50,7 @@ def new_post(request, pk=None):
         return redirect('login')        
     return render(request, 'blogpostform.html', {'form': form})
  
+
 def edit_post(request, pk=None):
     """
     Create a view that allows user to edit
@@ -68,6 +71,7 @@ def edit_post(request, pk=None):
 
     return render(request, 'blogpostform.html', {'form': form})
 
+
 def delete_post(request, pk=None):
     """
     Create a view that allows user to delete
@@ -75,10 +79,16 @@ def delete_post(request, pk=None):
     """
     post = get_object_or_404(Post, pk=pk)
     author = post.author
-    if request.user == author or request.user.is_superuser: 
+    if request.user == author or request.user.is_superuser:
         if request.method == "POST":
             post.delete()
             messages.success(request, 'Your post has been successfully deleted.')
             return redirect('get_posts')
     return render(request, "postdelete.html", {'post': post})
 
+
+def author_profile(request, pk=None):
+    """The profile of the author of the blogpost"""
+    post = get_object_or_404(Post, pk=pk)
+    author = post.author
+    return render(request, 'profile.html', {"profile": author})

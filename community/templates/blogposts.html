@@ -21,7 +21,7 @@
                         {% else %}
                         
                     {% endif %} 
-                        <p><span class="boldtext">Author:</span> {{post.author}}</p>
+                        <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' %}">{{post.author}}</a></p>
                     </div>
                     <div class="col-md-10 col-sm-9">
                         <h2>{{ post.title }}</h2>
