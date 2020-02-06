@@ -10,7 +10,8 @@ gender_choices = (
 )
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)       # Make sure that one user only has one profile
+    user = models.OneToOneField(User, on_delete=models.CASCADE)       
+#    author = models.ForeignKey(UserProfile, related_name="posts", null=False, default=None, on_delete=models.SET_DEFAULT)
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     gender = models.CharField(max_length=10,
