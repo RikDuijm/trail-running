@@ -144,3 +144,10 @@ button:hover {
 .userprofile-details-pic{
     margin-top: 15px;
 }
+
+.blog-post {
+    padding: 10px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}

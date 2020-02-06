@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post
+from accounts.models import UserProfile
 from .forms import BlogPostForm
 from django.http import HttpResponseForbidden
 from django.contrib import messages

@@ -14,16 +14,14 @@
 
             <div class="col-md-10">
                     {% for post in posts %}
-                <div class="feature"> 
+                <div class="blog-post"> 
                     <div class="col-md-2 col-sm-3 text-center">
-                        {% if post.author.image %}
-                        <img src="{{ post.author.image.url }}" alt="profile image" width="100px">
-                        {% else %}
-                        
-                    {% endif %} 
-                        <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' %}">{{post.author}}</a></p>
+                      <p>test 2 : {{ post.author.image }}</p>
+                        <img src="/static/media/{{ post.author.image }}" alt="profile image" width="100px">
+
+                        <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' %}">{{post.author.first_name}} {{post.author.last_name}}</a></p>
                     </div>
-                    <div class="col-md-10 col-sm-9">
+                    <div class="col-xs-9">
                         <h2>{{ post.title }}</h2>
                         <div class="row">
                             <div class="col-xs-9">
