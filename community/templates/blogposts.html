@@ -5,40 +5,27 @@
         <article class="row col-11 inner-content">
 
         {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-            
-                    {% for post in posts %}
-            <div class="col-12 blog-post"> 
-                      <p>test 2 : {{  post.author_image }}</p>
-                        <img src="/static/media/{{ post.author_image }}" alt="profile image" width="100px">
-
-                        <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author.first_name}} {{post.author.last_name}}</a></p>
-                        <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>
-                        {{post.author.first_name}} {{post.first_name}}
-                   
-                    <div class="col-xs-9">
-                        <h2>{{ post.title }}</h2>
-                        <div class="row">
-                            <div class="col-xs-9">
-                                <p>{{ post.content|truncatewords:30 }}</p>
-                                <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-default">Read more</a></p>
-                                <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                                <p><span class="boldtext">Views:</span> {{post.views}}</p>
-                                <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>    
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% for post in posts %}
+            <div class="col-12 blog-post">           
+                <img src="/static/media/{{ post.author_image }}" alt="profile image" width="100px">
+                    <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>
+                    <!-- {{post.author.first_name}} {{post.first_name}} -->
+                    <h2>{{ post.title }}</h2>
+                        <p>{{ post.content|truncatewords:30 }}</p>
+                        <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-info">Read more</a></p>
+                            <p>
+                            <span class="boldtext">Published on:</span> {{ post.published_date }} <br>
+                            <span class="boldtext">Views:</span> {{post.views}}
+                            </p>
+            </div>    
         {% endfor %} 
-            </div>
-        </div>
-    </article>
-
-
+        </article>
+    </section>
 {% endblock %}

@@ -150,4 +150,9 @@ button:hover {
     border-style: solid;
     border-color: #DEF2F1;
     border-width: 2px;
+    margin-bottom: 15px;
+}
+
+.post-details-btn {
+    margin-bottom: 10px;
 }

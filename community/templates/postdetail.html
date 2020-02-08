@@ -1,36 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <div class="col-md-2 col-sm-3 text-center">
-            <a class="story-img" href="#">
-                {% if user.userprofile.image %}
-                <img src="{{ user.userprofile.image.url }}" alt="profile image" width="100px" class="userprofile-details-pic img-circle">
-                {% else %}
-                {% endif %}
-            </a>
-            <p><span class="boldtext">Author:</span> {{post.author}}</p>
-        </div>
-        <div class="col-sm-10 col-md-9">
-            {% if post.image %}
-                <img class="img-blogpost" src="/media/{{ post.image }}">
-            {% endif %}
-            <h3>{{ post.title }}</h3>
-            <div class="row">
-                <div class="col-xs-9">
-                    <p>{{ post.content }}</p>
-                    <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
-                    <p><span class="boldtext">Views:</span> {{post.views}}</p>
-                    <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
-                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
-                    {% if user == post.author or user.is_superuser %}
-                    <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
-                    <a href="{% url 'delete_post' post.id %}" class="btn btn-default">Delete Post</a>
-                    {% else %}
-            </div>
+
+    <section >
+        <article class="row col-11 inner-content">
+
+            <div class="col-12 feature-text">           
+                <img src="/static/media/{{ post.author_image }}" alt="profile image" width="100px">
+                <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>
+
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.content }}</p>
+                    {% if post.image %}
+                    <img class="img-blogpost" src="/media/{{ post.image }}" width="250px">
                     {% endif %}
-                    <hr>
-                </div>
+                    <p>
+                    <span class="boldtext">Published on:</span> {{ post.published_date }} <br>
+                    <span class="boldtext">Views:</span> {{post.views}}
+                    </p>                 
+                    {% if user == post.author or user.is_superuser %}
+                    <a href="{% url 'edit_post' post.id %}" class="btn btn-info post-details-btn">Edit Post</a>
+                    <a href="{% url 'delete_post' post.id %}" class="btn btn-info post-details-btn">Delete Post</a>
+                    {% else %}
+                    {% endif %}
+                    <a href="{% url 'get_posts' %}" class="btn btn-info post-details-btn">Back to Blog</a>
             </div>
-        </div>
-    </div>
+        </article>
+    </section>                            
+                
 {% endblock %}
