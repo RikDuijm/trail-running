@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
@@ -86,3 +86,8 @@ def profile_introduction(request):
     return render(request, 'profile.html', {
         "profile_introduction_form": profile_introduction_form
     })
+
+def author_profile(request, pk=None):
+    """The profile of the author of the blogpost"""
+    author = get_object_or_404(User, pk=pk)
+    return render(request, 'profile.html', {"profile": author})

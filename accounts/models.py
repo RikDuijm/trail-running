@@ -11,7 +11,6 @@ gender_choices = (
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)       
-#    author = models.ForeignKey(UserProfile, related_name="posts", null=False, default=None, on_delete=models.SET_DEFAULT)
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     gender = models.CharField(max_length=10,
@@ -19,10 +18,10 @@ class UserProfile(models.Model):
                               default='optional')
     age = models.IntegerField()
     location = models.CharField(max_length=30, blank=True)
-    image = models.ImageField(upload_to='profile_images', blank=True)
+    image = models.ImageField(upload_to='profile_images', blank=True, unique=True)
 
     def __str__ (self):
-        return self.user.username
+        return self.user, self.image
 
 class ProfileIntroduction(models.Model):
     introduction = models.TextField(blank=True, null=True)

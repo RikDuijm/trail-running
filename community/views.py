@@ -88,8 +88,3 @@ def delete_post(request, pk=None):
     return render(request, "postdelete.html", {'post': post})
 
 
-def author_profile(request, pk=None):
-    """The profile of the author of the blogpost"""
-    post = get_object_or_404(Post, pk=pk)
-    author = post.author
-    return render(request, 'profile.html', {"profile": author})

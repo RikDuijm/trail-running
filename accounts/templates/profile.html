@@ -7,22 +7,22 @@
 {% block content %}
 
     <div class="col-11 inner-content">
-        <h1 class="text-center">{{ user }}'s Profile Page</h1>
+        <h1 class="text-center">{{ profile }}'s Profile Page</h1>
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-10 col-md-4 userprofile-details feature-text">
                 
-                    <p>First name: {{ user.userprofile.first_name }}</p>
-                    <p>Last name: {{ user.userprofile.last_name }}</p>
-                    <p>Email: {{ user.email }}</p>
-                    <p>Location:{{ user.userprofile.location }}</p>
-                    <p>Gender: {{ user.userprofile.gender}}</p>
-                    <p>Age: {{ user.userprofile.age}}</p>
+                    <p>First name: {{ profile.userprofile.first_name }}</p>
+                    <p>Last name: {{ profile.userprofile.last_name }}</p>
+                    <p>Email: {{ profile.email }}</p>
+                    <p>Location:{{ profile.userprofile.location }}</p>
+                    <p>Gender: {{ profile.userprofile.gender}}</p>
+                    <p>Age: {{ profile.userprofile.age}}</p>
                 </div>    
                 <div class="col-12 col-md-5">
-                    {% if user.userprofile.image %}
-                    <img src="{{ user.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic">
+                    {% if profile.userprofile.image %}
+                    <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic">
                     {% else %}
                     <img src="/media/img/discounts.jpg">
                     {% endif %}
