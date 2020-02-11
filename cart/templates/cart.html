@@ -3,12 +3,18 @@
 {% load bootstrap_tags %}
 
 {% block content %}
+
+
     <section class="col-11 inner-content">
-    <h3>Your cart</h3>
+    <h1>Your cart</h1>
     <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
+
+        <div class="container-fluid">
+            <div class="row">
+
+
     {% for item in cart_items %}
-    
-    <div class="row col-md-4">
+    <div class="col-11 discounts feature-text">   
 
         <!-- item.product.image is used instead of product.image to only show the items that are within the cart_items. -->
         <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>

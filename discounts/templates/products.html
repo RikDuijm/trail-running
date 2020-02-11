@@ -40,14 +40,19 @@
         <script>
             $(document).ready(function(){
                 $(".read-more").click(function(){
-                    $(".more-info").toggle();
+                    $(this).next(".more-info").toggle('medium');
                 });
             });
         </script>
         <p class=" btn btn-info product-description read-more">Read more</p>
-        <p class="product-description more-info">{{ product.description_first }}</p>
-        <p class="product-description more-info">{{ product.description_second }}</p>
-        <p class="product-description more-info">{{ product.description_third }}</p>  
+        <div class="product-description more-info">
+        <p>{{ product.description_first }}
+        {{ product.description_second }}
+{{ product.description_third }}  
+        </p>
+        </div>
+        
+
         </div>      
               
 
