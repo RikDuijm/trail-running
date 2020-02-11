@@ -121,15 +121,6 @@ button:hover {
     color: #3AAFA9;
 }
 
-.product {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 300px;
-    height: 200px;
-    margin: 0 auto;
-}
-
 .userprofile-details {
     margin-left: 15%;
     margin-top: 15px;
@@ -145,7 +136,7 @@ button:hover {
     margin-top: 15px;
 }
 
-.blog-post {
+.blog-post, .discounts {
     padding: 10px;
     border-style: solid;
     border-color: #DEF2F1;
@@ -153,6 +144,42 @@ button:hover {
     margin-bottom: 15px;
 }
 
+.discounts {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+.product {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.normal-price {
+  text-decoration: line-through;
+  color: red
+}
+.product-price {
+    margin-top: 18px;
+}
+
+.discount-price {
+    color: #2B7A78;
+}
+
+.product-description {
+    margin-bottom: 18px;
+}
+
+.more-info {
+    display: none;
+}
+
 .post-details-btn {
     margin-bottom: 10px;
 }
+
