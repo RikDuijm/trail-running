@@ -1,20 +1,6 @@
-{% extends 'base.html' %}
-{% load static from staticfiles %}
-{% load bootstrap_tags %}
-
-{% block content %}
-    <section class="col-11 inner-content">
-        <h1>Check out this weeks discounts, for members only!</h1>
-
-        {% if messages %}
-            <div class="alert alert-info">
-                <div class="messages">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
+  
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
 <div class="container-fluid">
     <div class="row">
@@ -41,17 +27,21 @@
             <p class=" btn btn-info product-description read-more">Read more</p>
             <span class="product-description more-info">
             <p>{{ product.description_first }} <br><br> {{ product.description_second }} <br><br>  {{ product.description_third }}</p>
-        </div>      
-        {% endfor %}
+           
         
-        <script>
-            $(document).ready(function(){
-                $(".read-more").click(function(){
-                    $(this).next(".more-info").toggle('slow');
-                    // $(this).removeClass(".more-info");
+
+        </div>      
+              
+
+            {% endfor %}
+        
+                    <script>
+                $(document).ready(function(){
+                    $(".read-more").click(function(){
+                        $(this).next(".more-info").toggle('slow');
+                        // $(this).removeClass(".more-info");
+                    });
                 });
-            });
-        </script>
+            </script>
 
     </div>
-    {% endblock %}

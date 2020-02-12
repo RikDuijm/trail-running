@@ -7,17 +7,27 @@ def view_cart(request):
     return render(request, "cart.html")
 
 def add_to_cart(request, id):
+
     """Add a quantity of the specified product to the cart"""
-    quantity = int(request.POST.get('quantity'))
+    if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
+        quantity = int(request.POST.get('quantity'))
+   
 
-    """This takes an integer, and this gets an integer from the the form in Discounts/products.html.
-    That allow  to increase and decrease the number of items the client wants.
-    And when he clicks on the Add to Cart button, the integer that is in that form will go to the cart."""
+        """First step, check to see if quantity is NOT null (or whatever an empty value comes back as"""
+        """ If not an empty field, then run the code below as normal, else (go to line 28)  """
 
-    cart = request.session.get('cart', {})  # request.session means it's not going to a database. It gets a cart from the session, if one already exists or an empty dictionary if a cart doesn't exist yet.
-    cart[id] = cart.get(id, quantity)       # Add an ID and a quantity.
+        """This takes an integer, and this gets an integer from the the form in Discounts/products.html.
+        That allow  to increase and decrease the number of items the client wants.
+        And when he clicks on the Add to Cart button, the integer that is in that form will go to the cart."""
 
-    request.session['cart'] = cart
+        cart = request.session.get('cart', {})  # request.session means it's not going to a database. It gets a cart from the session, if one already exists or an empty dictionary if a cart doesn't exist yet.
+        cart[id] = cart.get(id, quantity)       # Add an ID and a quantity.
+
+        request.session['cart'] = cart
+    else:
+        print("Not an int")
+
+    """Have the else statement here that says "else, alert "please select a quantity" """
     return redirect(reverse('all_products'))
 
 def adjust_cart(request, id):
