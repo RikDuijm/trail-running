@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     image = models.ImageField(upload_to='profile_images', blank=True, unique=True)
 
     def __str__ (self):
-        return self.user, self.image
+        return self.user
 
 class ProfileIntroduction(models.Model):
     introduction = models.TextField(blank=True, null=True)

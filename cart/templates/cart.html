@@ -3,51 +3,103 @@
 {% load bootstrap_tags %}
 
 {% block content %}
+                
+    <section class="col-11 inner-content cart-total feature-text">
+        <div class="row">
+            <div class="container-fluid">
+                <h1>Your cart</h1>
+                <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
+                <div>
+                    <p class="text-left"><strong>Back to the <a href="{% url 'all_products' %}">product page</a></strong>.</p><p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span> 
+                </div>
+                <div>
+                    <a href="{% url 'checkout' %}" class="btn btn-info checkout-btn" role="button">Checkout</a>
+                </div>
+                <div>
 
-
+                </div>    
+                <hr>
+            </div>
+        </div>
+    </section>  
+                
     <section class="col-11 inner-content">
-    <h1>Your cart</h1>
-    <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
+    <h2>Your products</h2>
+
+            {% if messages %}
+            <div class="alert alert-info">
+                <div class="messages">
+                    {% for message in messages %}
+                        <strong>{{ message }}</strong>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
 
         <div class="container-fluid">
-            <div class="row">
-
-
-    {% for item in cart_items %}
-    <div class="col-11 discounts feature-text">   
-
-        <!-- item.product.image is used instead of product.image to only show the items that are within the cart_items. -->
-        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-        
-        <div class="caption">
-            <h3>{{ item.product.name }}</h3>
-            <p class="product-description">{{ item.product.description }}</p>
-            <p>{{ item.product.price }}</p>                    
-            <p>
+            <div class="row">   
                 
+            
+            {% for item in cart_items %}
+            <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">  
+                <h4 class="text-center">{{ item.product.product_name }}</h4> 
+
+
+
                 <!--The adjust_cart view is used, to adjust the number of items the user wants to purchase. 
-                item.id is passed in to know of which item the quantity is adjusted of. -->
+                 item.id is passed in to know of which item the quantity is adjusted of. -->
                 <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Qty</div>
-                            <input name="quantity" type="number" min="0" max="999" class="form-control">
-                            <div class="input-group-addon">{{item.quantity}}</div>
+                        <div class="col-12 text-center">
+                        <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong><hr>
+                        Adjust amount: <input name="quantity" type="number" min="0" max="999" class="form-control"></input></p>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Amend</button>
+                        <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-info product-description read-more">Adjust</button>
+                        </div>
+                        </form>  
+                        
+                <form class="form-inline" method="post" action="{% url 'delete_from_cart' item.id %}">
+                    {% csrf_token %} 
+                        <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-info product-description read-more">Remove from cart</button>
+                        </div>
                 </form>
-            </p>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-<div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    <a href=" {% url 'checkout'  %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
-</div>
 
+                <!-- item.product.product_name is used instead of product.product_name to only show the items that are within the cart_items. -->
+                <hr>
+                
+                <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.product.price }}</strong></span></p>
+                <p><strong>Offer valid until:</strong><br> {{ item.product.valid_until }}</p>
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
+                <p class="product-description"><strong><br>Description:</strong><br>{{ item.product.description_introduction }} </p>
+                <p class=" btn btn-info product-description read-more">Read more</p>
+                    <span class="product-description more-info">
+                    <p>{{ item.product.description_first }} <br><br> {{ item.product.description_second }} <br><br>  {{ item.product.description_third }}</p>
+                    </span>    
+
+
+
+
+            </div>            
+            {% endfor %}
+
+            </div>
+        </div>
+    </section>
+                   
+
+                    <script>
+                    $(document).ready(function(){
+                        $(".read-more").click(function(){
+                            $(this).next(".more-info").toggle('slow');
+                            // $(this).removeClass(".more-info");
+                        });
+                    });
+                </script>    
 {% endblock %}
+
+
+
+                                   
+               

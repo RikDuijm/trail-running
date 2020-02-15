@@ -17,50 +17,63 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
 {% endblock head_js %}
 
 {% block content %}
-    <section class="col-11 inner-content">
-
-    <div class="row">
-        <!-- Essentially, just loop over the items in cart_items. These are the things that have been put into the checkout and the user intends to purchase. -->
-        {% for item in cart_items %}
-            <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-                <div class="panel-body">
-                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-
-                    <div class="caption">
-                        <h3>{{ item.product.name }}</h3>
-                        <p class="product-description">{{ item.product.description }}</p>
-                        <p>{{ item.quantity }}</p>
-                        <p>{{item.product.price}}</p>
-                    </div>
+    <section class="col-11 inner-content cart-total feature-text">
+        <div class="row">
+            <div class="container-fluid">
+                <h1>Your products</h1>
+                <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
+                <div>
+                    <p class="text-left"><strong>Back to your <a href="{% url 'view_cart' %}">cart</a></strong>.</p>
+                    <h3 class="product-price">Total price: € {{ total }}</h3> 
                 </div>
             </div>
-        {% endfor %}
-    </div>
-    <!-- Outside that for loop, we want to show the total cost of what you're purchasing. -->
-    <div class="row">
-        <p>Total</p>
-        <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
-    </div>
+        </div>
 
+        <div class="row">
+            <!-- Loop over cart items -->
+            {% for item in cart_items %}
+                <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">  
+                    <h4 class="text-center">{{ item.product.product_name }}</h4> 
+                        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>                        
+                                <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong>
+                                <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.product.price }}</strong></span></p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        {% if messages %}
+        <div class="alert alert-info">
+            <div class="messages">
+                {% for message in messages %}
+                <strong>{{ message }}</strong>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </section>
+    <section class="col-11 inner-content feature-text">
     <!--These are the payment form, and the form which takes the address information.-->
-    <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-        <legend>Payment Details</legend>
+        <div class="form">
+        <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}" class="text-center">
+            <legend>Payment Details</legend>
+            <div id="credit-card-errors" style="display: none;">
+                <div id="alert-message block-message error" id="stripe-error-message"></div>
+            </div>
+        <div class="row">    
+            <div class="form-group col-md-6">
+                {{ order_form | as_bootstrap }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ payment_form | as_bootstrap }}
+            {% csrf_token %}
+            <div class="form-group col-md-12">
+                <input class=" btn btn-info" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+            </div>
+            </div>
 
-        <div id="credit-card-errors" style="display: none;">
-            <div id="alert-message block-message error" id="stripe-error-message"></div>
+        </form>
         </div>
-
-        <div class="form-group col-md-6">
-            {{ order_form | as_bootstrap }}
-        </div>
-
-        <div class="form-group col-md-6">
-            {{ payment_form | as_bootstrap }}
-        </div>
-
-        {% csrf_token %}
-        <div class="form-group col-md-12">
-            <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-        </div>
-    </form>
+    </section>
 {% endblock %}

@@ -4,54 +4,57 @@
 
 {% block content %}
     <section class="col-11 inner-content">
-        <h1>Check out this weeks discounts, for members only!</h1>
+        <h1>Check out this weeks offers, for members only!</h1>
 
         {% if messages %}
             <div class="alert alert-info">
                 <div class="messages">
                     {% for message in messages %}
-                        {{ message }}
+                        <strong>{{ message }}</strong>
                     {% endfor %}
                 </div>
             </div>
         {% endif %}
         
-<div class="container-fluid">
-    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
 
-        {% for product in products %}
-        <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">    
-            <h4 class="text-center">{{ product.product_name }}</h4> 
-            <!-- By making a background image, it fits the size of the <div> that it is in so that different sized images for different products won't end up looking mismatched.-->        
-            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
-            <p class="product-price"><strong>Price:</strong> <span class="normal-price"> € {{ product.normal_price }}</span><br> 
-                <span class="discount-price"><strong>Only now: € {{ product.price }}</strong></span></p>
-            <p><strong>Offer valid until:</strong><br> {{product.valid_until}}</p>
-            <form method="post" action="{% url 'add_to_cart' product.id %}">
-                {% csrf_token %}
-                <div class="input-group product-description">
-                <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-                <span class="input-group-btn">
-                <button class="btn btn-info" type="submit">Add</button>
-                </span>
-                </div>
-            </form>
-            <p class="product-description">{{ product.description_introduction }}</p>
+                {% for product in products %}
+                <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">    
+                    <h4 class="text-center">{{ product.product_name }}</h4> 
+                    <!-- By making a background image, it fits the size of the <div> that it is in so that different sized images for different products won't end up looking mismatched.-->        
+                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
+                    <p class="product-price"><strong>Price:</strong> <span class="normal-price"> € {{ product.normal_price }}</span><br> 
+                        <span class="discount-price"><strong>Only now: € {{ product.price }}</strong></span></p>
+                    <p><strong>Offer valid until:</strong><br> {{product.valid_until}}</p>
+                    <form method="post" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <div class="input-group product-description">
+                        <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                        <span class="input-group-btn">
+                        <button class="btn btn-info" type="submit">Add</button>
+                        </span>
+                        </div>
+                    </form>
+                    <p class="product-description">{{ product.description_introduction }}</p>
 
-            <p class=" btn btn-info product-description read-more">Read more</p>
-            <span class="product-description more-info">
-            <p>{{ product.description_first }} <br><br> {{ product.description_second }} <br><br>  {{ product.description_third }}</p>
-        </div>      
-        {% endfor %}
-        
-        <script>
-            $(document).ready(function(){
-                $(".read-more").click(function(){
-                    $(this).next(".more-info").toggle('slow');
-                    // $(this).removeClass(".more-info");
-                });
-            });
-        </script>
+                    <p class=" btn btn-info product-description read-more">Read more</p>
+                    <span class="product-description more-info">
+                    <p>{{ product.description_first }} <br><br> {{ product.description_second }} <br><br>  {{ product.description_third }}</p>
+                </div>      
+                {% endfor %}
 
-    </div>
-    {% endblock %}
+
+            </div>
+        </div>
+    </section>
+
+                    <script>
+                    $(document).ready(function(){
+                        $(".read-more").click(function(){
+                            $(this).next(".more-info").toggle('slow');
+                            // $(this).removeClass(".more-info");
+                        });
+                    });
+                </script>    
+{% endblock %}

@@ -26,7 +26,7 @@ body {
 }
 
 .alert {
-    padding-bottom: 0;
+    text-align: center;
 }
 .alert-center {
     display:block;
@@ -179,7 +179,22 @@ button:hover {
     display: none;
 }
 
-.post-details-btn {
+.post-details-btn, .checkout-btn {
     margin-bottom: 10px;
 }
 
+.amend-btn {
+    margin-top: 10px;
+}
+
+.cart-total {
+    text-align: center;
+}
+
+.form {
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+}
