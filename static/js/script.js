@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $(".toggle").click(function(){
-        $(".more-info").toggle();
+    $(".read-more").click(function(){
+        $(this).next(".more-info").toggle('slow');
+        // $(this).removeClass(".more-info");
     });
 });

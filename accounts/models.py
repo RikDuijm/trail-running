@@ -28,4 +28,3 @@ class ProfileIntroduction(models.Model):
 
     def __unicode__(self):
         return self.introduction
- 
