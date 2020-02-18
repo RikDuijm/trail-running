@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User 
+from django.utils import timezone
 
 # Create your models here.
 
@@ -23,8 +24,12 @@ class UserProfile(models.Model):
     def __str__ (self):
         return self.user
 
-class ProfileIntroduction(models.Model):
-    introduction = models.TextField(blank=True, null=True)
+class ProfilePost(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    image = models.ImageField(upload_to="profile_images", blank=True, null=True)
+
 
     def __unicode__(self):
-        return self.introduction
+        return self.title

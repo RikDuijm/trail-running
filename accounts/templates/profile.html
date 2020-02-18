@@ -29,11 +29,13 @@
                 </div>
             </div>
             <div class="row">
+            
             <div class="col-10 userprofile-details feature-text">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %} 
-                    {{ profile_introduction_form.as_p }}            
-                    <button type="submit">Submit</button>
+                    {{ profile_post_form.as_p }} 
+                    <!--<input type="text" name="new">-->           
+                    <button type="submit" name="new_profile_post" value="new_profile_post" class="btn btn-info">Save</button>
         </form>
         </div>    
     </div>        

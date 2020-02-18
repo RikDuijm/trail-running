@@ -50,17 +50,18 @@ def checkout(request):
                 )
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-            
+                print("Your card was declined!") 
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
                 return redirect(reverse('all_products'))
             else:                                              
                 messages.error(request, "Unable to take payment")
+                print("Unable to take payment")
         else:       
             print(payment_form.errors)                          # Else for the previous if loop. It will print any payment form errors and the message.
             messages.error(request, "We were unable to take a payment with that card!")
-
+            print("Your card was declined!")
     else:
         payment_form = MakePaymentForm()                        # The else for the outermost loop. So we'll just return a blank form.
         order_form = OrderForm()

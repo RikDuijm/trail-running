@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfileIntroductionForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm
+from accounts.models import UserProfile, ProfilePost
 
 def index(request):
     """View that returns the index / homepage"""  
@@ -73,19 +74,32 @@ def registration(request):
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})        
+#    return redirect(reverse('profile', {"profile": user}))
+    return render(request, 'profile.html', {"profile": user})     
 
-def profile_introduction(request):
-    if request.method == 'POST':
-        profile_introduction_form = ProfileIntroductionForm(request.POST)
-        if profile_introduction_form.is_valid():
-            profile_introduction_form.save()
-            return render(request, 'profile.html')
+# https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
+
+
+def profile_post(request):
+    """
+    Create a view that allows user to add new info on his profile
+    """
+    profilepost = get_object_or_404(Post, pk=pk) if pk else None
+    user = User.objects.get(email=request.user.email)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            profile_post_form = ProfilePostForm(request.POST)
+            if profile_post_form.is_valid():
+                profilepost = profile_post_form.save(commit=False)
+                profilepost.author = request.user
+                profilepost.save()
+                return redirect(reverse('profile'))
+        else:
+            profile_post_form = ProfilePostForm()
     else:
-        profile_introduction_form = ProfileIntroductionForm()
-    return render(request, 'profile.html', {
-        "profile_introduction_form": profile_introduction_form
-    })
+        return redirect('login') 
+
+    return render(request, 'profile.html', {'profile_post_form': profile_post_form})
 
 def author_profile(request, pk=None):
     """The profile of the author of the blogpost"""
