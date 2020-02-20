@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm
-from accounts.models import UserProfile, ProfilePost
+from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm
+from .models import UserProfile, ProfilePost
 
 def index(request):
     """View that returns the index / homepage"""  
@@ -80,26 +80,25 @@ def user_profile(request):
 # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
 
-def profile_post(request):
+def profile_post(request, pk=None):
     """
     Create a view that allows user to add new info on his profile
     """
-    profilepost = get_object_or_404(Post, pk=pk) if pk else None
     user = User.objects.get(email=request.user.email)
-    if request.user.is_authenticated:
+    if request.user.is_authenticated: # is this necessary?
         if request.method == 'POST':
-            profile_post_form = ProfilePostForm(request.POST)
+            profile_post_form = ProfilePostForm(request.POST, request.FILES)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save(commit=False)
-                profilepost.author = request.user
+                profilepost.user = request.user   # ?
                 profilepost.save()
-                return redirect(reverse('profile'))
+                return redirect(user_profile)  # How to get this to the personal profile page of the user that is logged-in?  , {"profile": user}
         else:
             profile_post_form = ProfilePostForm()
     else:
         return redirect('login') 
+    return render(request, 'profile.html', {'profile_post_form': profile_post_form, 'profile': user})
 
-    return render(request, 'profile.html', {'profile_post_form': profile_post_form})
 
 def author_profile(request, pk=None):
     """The profile of the author of the blogpost"""

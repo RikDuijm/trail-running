@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^yourprofile/$', user_profile, name="profile"),
     url(r'^password-reset/', include(url_reset)),
     url(r'^profile/(?P<pk>\d+)', author_profile, name="author_profile"),    
-    url(r'^new/$', profile_post, name='profile_post'),
+    url(r'^new/$', profile_post, name='profile_post'),  # ?
+    #url(r'^(?P<pk>\d+)/new/$', profile_post, name='profile_post'),
 ]
