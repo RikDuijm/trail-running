@@ -40,8 +40,8 @@
                         <li class="nav-item active dropdown">
                             <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
                             <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
-                            
                             <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>
                             
                             </div>
@@ -49,7 +49,12 @@
 
                         {% if user.is_authenticated %}
                         <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">Profile</span></a>
+                            <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Profiles</span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            
+                            <a class="dropdown-item" href="#">Profile Posts</a>
+                            <a class="dropdown-item" href="{% url 'profile' %}"><span class="menu-item">Your Profile</span></a>
+                            
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>

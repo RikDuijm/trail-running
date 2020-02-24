@@ -54,6 +54,7 @@ class UserProfileForm(forms.ModelForm):
        
 
 class ProfilePostForm(forms.ModelForm):
+   
     class Meta:
         model = ProfilePost
-        fields = ['user', 'title', 'content', 'published_date', 'image']
+        fields = ['title', 'content', 'published_date', 'image']

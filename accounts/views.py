@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.utils import timezone
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
@@ -75,7 +76,9 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
 #    return redirect(reverse('profile', {"profile": user}))
-    return render(request, 'profile.html', {"profile": user})     
+    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-published_date').all()
+    return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts})     
 
 # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
@@ -85,12 +88,12 @@ def profile_post(request, pk=None):
     Create a view that allows user to add new info on his profile
     """
     user = User.objects.get(email=request.user.email)
-    if request.user.is_authenticated: # is this necessary?
+    if request.user.is_authenticated:  # Is this necessary? User is already authenticated to be able to get to this point.
         if request.method == 'POST':
             profile_post_form = ProfilePostForm(request.POST, request.FILES)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save(commit=False)
-                profilepost.user = request.user   # ?
+                profilepost.user = User.objects.get(email=request.user.email)   # This works. In the Admin panel I see that the post is made by the user that is logged in, independently of what I put in the dropdown.
                 profilepost.save()
                 return redirect(user_profile)  # How to get this to the personal profile page of the user that is logged-in?  , {"profile": user}
         else:
@@ -100,7 +103,20 @@ def profile_post(request, pk=None):
     return render(request, 'profile.html', {'profile_post_form': profile_post_form, 'profile': user})
 
 
+# def get_profile_posts(request):
+#    """
+#    Create a view that will return a list
+#    of Posts that were published prior to 'now'
+#    and render them to the 'blogposts.html' template
+#    """
+#    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+#        ).order_by('-published_date').all()
+#    return render(request, "test.html", {'profileposts': profileposts})
+
+
 def author_profile(request, pk=None):
     """The profile of the author of the blogpost"""
     author = get_object_or_404(User, pk=pk)
-    return render(request, 'profile.html', {"profile": author})
+    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-published_date').all()
+    return render(request, 'profile.html', {"profile": author, 'profileposts': profileposts})

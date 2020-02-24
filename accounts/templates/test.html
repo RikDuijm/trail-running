@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <section >
+        <article class="row col-11 inner-content">
+TESTTESTTESTTEST
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% for profilepost in profileposts %}
+            <div class="col-12 blog-post">           
+                
+                    <p><span class="boldtext">Author:</span> <a href="#">{{profilepost.user}}</a></p>
+                    <!-- {{post.author.first_name}} {{post.first_name}} -->
+                    <h2>{{ profilepost.title }}</h2>
+                        <p>{{ profilepost.content }}</p>
+                        {% if profilepost.image %}
+                    <img class="img-blogpost" src="/media/{{ profilepost.image }}" width="250px">
+                    {% endif %}
+                            <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
+                           
+            </div>    
+        {% endfor %} 
+        </article>
+    </section>
+{% endblock %}
