@@ -54,20 +54,10 @@
 
               {% if user.is_authenticated or user.is_superuser %}
               <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
-              <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %} 
-                        {{ profile_post_form.as_p }}
-                        <button type="submit" name="new_profile_post" value="new_profile_post" class="btn btn-info">Save</button>
-                </form> 
                 {% else %}
                 {% endif %} 
 
-                   <!--  <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %} 
-                        {{ profile_post_form.as_p }} -->
-                        <!-- <input type="text" name="new">
-                        -->
-                    </form>
+
                 </div>    
             </div>        
         </div>

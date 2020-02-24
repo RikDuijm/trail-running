@@ -76,8 +76,7 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
 #    return redirect(reverse('profile', {"profile": user}))
-    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
-        ).order_by('-published_date').all()
+    profileposts = ProfilePost.objects.filter(user=request.user)
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts})     
 
 # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
@@ -100,7 +99,7 @@ def profile_post(request, pk=None):
             profile_post_form = ProfilePostForm()
     else:
         return redirect('login') 
-    return render(request, 'profile.html', {'profile_post_form': profile_post_form, 'profile': user})
+    return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
 
 # def get_profile_posts(request):

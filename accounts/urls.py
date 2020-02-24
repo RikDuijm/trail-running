@@ -15,6 +15,6 @@ urlpatterns = [
  #   url(r'^test/$', get_profile_posts, name='get_profile_posts'),
     url(r'^password-reset/', include(url_reset)),
     url(r'^profile/(?P<pk>\d+)', author_profile, name="author_profile"), # url for Community / Forum    
-    url(r'^new/$', profile_post, name='profile_post'),  # ?
+    url(r'^newprofilepost/$', profile_post, name='profile_post'),  # ?
     #url(r'^(?P<pk>\d+)/new/$', profile_post, name='profile_post'),
 ]
