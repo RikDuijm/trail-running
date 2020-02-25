@@ -15,6 +15,7 @@
         {% for post in posts %}
             <div class="col-12 blog-post">           
                 <img src="/static/media/{{ post.author_image }}" alt="profile image" width="100px">
+                <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ post.image }}')"></div>
                     <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>
                     <!-- {{post.author.first_name}} {{post.first_name}} -->
                     <h2>{{ post.title }}</h2>

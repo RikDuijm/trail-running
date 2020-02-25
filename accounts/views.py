@@ -72,6 +72,17 @@ def registration(request):
     return render(request, 'registration.html', {
         "registration_form": registration_form, "profile_form": profile_form})
 
+
+def all_users(request):
+    """
+    Create a view that will return a list
+    of Profiles that were published and render them 
+    to the 'allprofiles.html' template
+    """
+    users = User.objects.all()
+    return render(request, "allusers.html", {'users': users})   
+   
+
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
@@ -116,6 +127,13 @@ def profile_post(request, pk=None):
 def author_profile(request, pk=None):
     """The profile of the author of the blogpost"""
     author = get_object_or_404(User, pk=pk)
-    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
-        ).order_by('-published_date').all()
+    profileposts = ProfilePost.objects.filter(user=author)
+    # profileposts = ProfilePost.objects.filter(user=request.user)    
     return render(request, 'profile.html', {"profile": author, 'profileposts': profileposts})
+    
+
+def user_profile_page(request, pk=None):
+    """Create a view that will link to the profile of a user"""
+    userprofile = get_object_or_404(User, pk=pk)
+    profileposts = ProfilePost.objects.filter(user=userprofile)
+    return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})

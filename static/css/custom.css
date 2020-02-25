@@ -198,3 +198,21 @@ button:hover {
 form {
     display: inline-block;
 }
+
+
+.profile-thumbnail {
+    position: absolute;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.profile-thumbnail-name {
+    padding-left: 20px; 
+    padding-bottom: 20px;
+
+}
