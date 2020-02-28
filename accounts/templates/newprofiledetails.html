@@ -10,7 +10,7 @@
             <div class="col-md-7 offset-md-2 col-lg-4 ofsset-lg-4">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %} 
-                    {{ profile_form | as_bootstrap }}
+                    {{ profile_details_form | as_bootstrap }}
                     <button type="submit" name="edit_profile" value="edit_profile" class="btn btn-info">Save</button>
                 </form> 
             </div>
