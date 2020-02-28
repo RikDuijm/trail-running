@@ -115,6 +115,26 @@ def profile_post(request, pk=None):
         return redirect('login') 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
+def edit_profile(request, pk=None):
+    """
+    Create a view that allows user to edit his profile details
+    """
+    profiledetails = UserProfile.objects.filter(user=request.user).first()
+    if UserProfile.objects.filter(user=request.user or request.user.is_superuser):
+    # if (request.user == profiledetails.user or
+    #         request.user.is_superuser):
+        if request.method == "POST":
+            profile_details_form = UserProfileForm(request.POST, request.FILES, instance=profiledetails)
+            if profile_details_form.is_valid():
+                profiledetails = profile_details_form.save()
+                return redirect(user_profile)
+        else:
+            profile_details_form = UserProfileForm(instance=profiledetails)
+    else:
+        return HttpResponseForbidden()
+    
+    return render(request, 'newprofiledetails.html', {'profile_details_form': profile_details_form})
+
 
 def edit_profile_post(request, pk=None):
     """
