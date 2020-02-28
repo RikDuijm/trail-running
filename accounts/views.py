@@ -79,8 +79,9 @@ def all_users(request):
     of Profiles that were published and render them 
     to the 'allprofiles.html' template
     """
+    user = User.objects.get(email=request.user.email)
     users = User.objects.all()
-    return render(request, "allusers.html", {'users': users})   
+    return render(request, "allusers.html", {'users': users, "user": user})   
    
 
 def user_profile(request):
@@ -90,7 +91,7 @@ def user_profile(request):
     profileposts = ProfilePost.objects.filter(user=request.user)
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts})     
 
-# https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
+# # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
 
 def profile_post(request, pk=None):
@@ -103,14 +104,54 @@ def profile_post(request, pk=None):
             profile_post_form = ProfilePostForm(request.POST, request.FILES)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save(commit=False)
-                profilepost.user = User.objects.get(email=request.user.email)   # This works. In the Admin panel I see that the post is made by the user that is logged in, independently of what I put in the dropdown.
+                # profilepost.user = User.objects.get(email=request.user.email)  # !!!!
+                profilepost.user = request.user  # this fixed the line above
                 profilepost.save()
-                return redirect(user_profile)  # How to get this to the personal profile page of the user that is logged-in?  , {"profile": user}
+                # return redirect(user_profile_page)
+                return redirect(reverse('profile'))
         else:
             profile_post_form = ProfilePostForm()
     else:
         return redirect('login') 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
+
+
+def edit_profile_post(request, pk=None):
+    """
+    Create a view that allows user or admin to edit info on the profile
+    """
+    profilepost = get_object_or_404(ProfilePost, pk=pk)      
+    if (request.user == profilepost.user or
+            request.user.is_superuser):
+        if request.method == "POST":
+            profile_post_form = ProfilePostForm(request.POST, request.FILES, instance=profilepost)
+            if profile_post_form.is_valid():
+                profilepost = profile_post_form.save()
+                #return redirect(user_profile_page)
+                return redirect(reverse('profile'))
+        else:
+            profile_post_form = ProfilePostForm(instance=profilepost)
+    else:
+        return HttpResponseForbidden()
+
+    return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form})
+    
+
+def delete_profile_post(request, pk=None):
+    """
+    Create a view that allows user or admin to delete
+    information on the profile.
+    """
+    user = User.objects.get(email=request.user.email)
+    profileposts = ProfilePost.objects.filter(user=request.user)
+    profilepost = get_object_or_404(ProfilePost, pk=pk)
+    if (request.user == profilepost.user or
+            request.user.is_superuser):
+        if request.method == "POST":
+            profilepost.delete()
+            messages.success(request, 'This informationhas been successfully deleted.')
+            return render(request, 'profile.html', {'profileposts': profileposts, 'profile': user})
+    return render(request, "profilepostdelete.html", {'profilepost': profilepost})
 
 
 # def get_profile_posts(request):
@@ -124,7 +165,7 @@ def profile_post(request, pk=None):
 #    return render(request, "test.html", {'profileposts': profileposts})
 
 
-def author_profile(request, pk=None):
+def author_profile(request, pk):
     """The profile of the author of the blogpost"""
     author = get_object_or_404(User, pk=pk)
     profileposts = ProfilePost.objects.filter(user=author)
@@ -135,5 +176,6 @@ def author_profile(request, pk=None):
 def user_profile_page(request, pk=None):
     """Create a view that will link to the profile of a user"""
     userprofile = get_object_or_404(User, pk=pk)
+    # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})

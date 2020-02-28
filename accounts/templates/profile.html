@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="col-11 inner-content">
-        <h1 class="text-center">{{ profile }}'s Profile Page</h1>
+        <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
 
         <div class="container-fluid">
             <div class="row">
@@ -14,7 +14,7 @@
                     <p>First name: {{ profile.userprofile.first_name }}</p>
                     <p>Last name: {{ profile.userprofile.last_name }}</p>
                     <p>Email: {{ profile.email }}</p>
-                    <p>Location:{{ profile.userprofile.location }}</p>
+                    <p>Location: {{ profile.userprofile.location }}</p>
                     <p>Gender: {{ profile.userprofile.gender}}</p>
                     <p>Age: {{ profile.userprofile.age}}</p>
                 </div>    
@@ -47,7 +47,8 @@
                     <img class="img-blogpost" src="/media/{{ profilepost.image }}" width="250px">
                     {% endif %}
                             <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
-                           
+                <a href="{% url 'edit_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Edit Information</a>  
+                <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete Information</a>         
             </div>    
         {% endfor %} 
 
@@ -62,6 +63,6 @@
             </div>        
         </div>
     </div>
-    s    
+
 
 {% endblock %}
