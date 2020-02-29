@@ -157,6 +157,22 @@ def edit_profile_post(request, pk=None):
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form})
     
 
+def delete_profile_details(request, pk=None):
+    """
+    Create a view that allows user or admin to delete
+    the profile details.
+    """
+    user = User.objects.get(email=request.user.email)
+    profiledetails = UserProfile.objects.filter(user=request.user).first()
+
+    if UserProfile.objects.filter(user=request.user or request.user.is_superuser):
+        if request.method == "POST":
+            profiledetails.delete()
+            messages.success(request, 'This information has been successfully deleted.')
+            return redirect(user_profile)
+    return render(request, "profiledetailsdelete.html", {'profiledetails': profiledetails})
+
+
 def delete_profile_post(request, pk=None):
     """
     Create a view that allows user or admin to delete

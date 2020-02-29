@@ -150,7 +150,7 @@ button:hover {
     margin-bottom: 15px;
 }
 
-.product {
+.product, .event {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
@@ -163,7 +163,7 @@ button:hover {
   text-decoration: line-through;
   color: red
 }
-.product-price {
+.product-price, .event-distance {
     margin-top: 18px;
 }
 
@@ -171,7 +171,7 @@ button:hover {
     color: #2B7A78;
 }
 
-.product-description {
+.product-description, .event-description {
     margin-bottom: 18px;
 }
 
