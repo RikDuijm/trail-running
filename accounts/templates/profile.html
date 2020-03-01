@@ -18,28 +18,34 @@
                     <p>Gender: {{ profile.userprofile.gender}}</p>
                     <p>Age: {{ profile.userprofile.age}}</p>
                 </div>    
-                <div class="col-12 col-md-5">
+                <div class="col-10 col-md-5">
                     {% if profile.userprofile.image %}
                     <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic">
                     {% else %}
                     <img src="/media/img/logo.jpg">
                     {% endif %}
-                 <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit your Information</a>
-                 <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete Information</a>      
                 </div>
-                <div class="row">
-                    <div class="col-10 col-md-4 userprofile-details feature-text">
-                    <p>New post: {{ profilepost.profilepost.title }}</p>
-                    </div>
-                </div>    
-
-            </div>
+            </div>    
             <div class="row">
-
                 <div class="col-10 userprofile-details feature-text">
+                    <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit</a>
+                    <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete</a>    
+
+                {% if user == request.user %}
+                    <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
+                {% else %}
+                {% endif %} 
+
+
+                </div>
+            </div>    
+    </div>        
+<hr>
+            <div class="row">
+                
 
                 {% for profilepost in profileposts %}
-                <div class="col-12 blog-post">           
+                <div class="col-10 userprofile-details feature-text">           
                 
                     <p><span class="boldtext">Author:</span> <a href="#">{{profilepost.user}}</a></p>
                     <!-- {{post.author.first_name}} {{post.first_name}} -->
@@ -49,16 +55,13 @@
                     <img class="img-blogpost" src="/media/{{ profilepost.image }}" width="250px">
                     {% endif %}
                             <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
-                <a href="{% url 'edit_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Edit Information</a>  
-                <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete Information</a>         
+                <a href="{% url 'edit_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Edit</a>  
+                <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete</a>         
             </div>    
         {% endfor %} 
 
 
-              {% if user.is_authenticated or user.is_superuser %}
-              <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
-                {% else %}
-                {% endif %} 
+              
 
 
                 </div>    

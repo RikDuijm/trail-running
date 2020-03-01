@@ -81,7 +81,7 @@ def all_users(request):
     """
     user = User.objects.get(email=request.user.email)
     users = User.objects.all()
-    return render(request, "allusers.html", {'users': users, "user": user})   
+    return render(request, "allusers.html", {'users': users}, {"user": user})   
    
 
 def user_profile(request):
@@ -211,7 +211,7 @@ def author_profile(request, pk):
 
 def user_profile_page(request, pk=None):
     """Create a view that will link to the profile of a user"""
-    userprofile = get_object_or_404(User, pk=pk)
+    userprofile = get_object_or_404(UserProfile, pk=pk)
     # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
