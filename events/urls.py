@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
-from .views import all_events
+from .views import Calendar
 
 urlpatterns = [
-    url(r'^$', all_events, name='all_events'),
+    url(r'^$', Calendar.as_view(), name='all_events'),
 ]
