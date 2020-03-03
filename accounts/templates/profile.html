@@ -8,7 +8,7 @@
         <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
 
         <div class="container-fluid">
-            <div class="row">
+            <div class="row blog-post">
                 <div class="col-10 col-md-4 userprofile-details feature-text">
                 
                     <p>First name: {{ profile.userprofile.first_name }}</p>
@@ -25,25 +25,23 @@
                     <img src="/media/img/logo.jpg">
                     {% endif %}
                 </div>
-            </div>    
-            <div class="row">
                 <div class="col-10 userprofile-details feature-text">
+                    {% if user == profile.userprofile.user or user.is_superuser %}
                     <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit</a>
                     <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete</a>    
-
-                {% if user == request.user %}
                     <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
                 {% else %}
                 {% endif %} 
 
-
+                {% if user !=  profile.userprofile.user %}
+                <a href="{% url 'contact_user' %}" class="btn btn-info post-details-btn">Contact User!</a> 
+                {% else %}
+                {% endif %}        
                 </div>
             </div>    
-    </div>        
+              
 <hr>
-            <div class="row">
-                
-
+            <div class="row blog-post">
                 {% for profilepost in profileposts %}
                 <div class="col-10 userprofile-details feature-text">           
                 
@@ -55,17 +53,13 @@
                     <img class="img-blogpost" src="/media/{{ profilepost.image }}" width="250px">
                     {% endif %}
                             <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
+                {% if user == profilepost.user or user.is_superuser %}            
                 <a href="{% url 'edit_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Edit</a>  
-                <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete</a>         
+                <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete</a>
+                {% else %}
+                {% endif %}                                    
             </div>    
         {% endfor %} 
-
-
-              
-
-
-                </div>    
-            </div>        
         </div>
     </div>
 

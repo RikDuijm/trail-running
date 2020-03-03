@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
-from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm
+from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm, ContactProfileForm
 from .models import UserProfile, ProfilePost
 
 def index(request):
@@ -115,6 +115,27 @@ def profile_post(request, pk=None):
         return redirect('login') 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
+def contact_user(request, pk=None):
+    """
+    Create a view that allows the logged-in user to contact another user
+    """
+    user = User.objects.get(email=request.user.email)
+    if request.user.is_authenticated:  
+        if request.method == 'POST':
+            contact_profile_form = ContactProfileForm(request.POST, request.FILES)
+            if contact_profile_form.is_valid():
+                contactuserpost = contact_profile_form.save(commit=False)
+                contactuserpost.user = request.user 
+                contactuserpost.save()              # this must be saved at profile of the user who is being contacted. 
+                # return redirect(user_profile_page)
+                return redirect(reverse('profile'))
+        else:
+            contact_profile_form = ContactProfileForm()
+    else:
+        return redirect('login') 
+    return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form, 'profile': user})
+
+
 def edit_profile(request, pk=None):
     """
     Create a view that allows user to edit his profile details
@@ -211,7 +232,7 @@ def author_profile(request, pk):
 
 def user_profile_page(request, pk=None):
     """Create a view that will link to the profile of a user"""
-    userprofile = get_object_or_404(UserProfile, pk=pk)
+    userprofile = get_object_or_404(User, pk=pk)
     # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
