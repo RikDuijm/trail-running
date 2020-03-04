@@ -1,9 +1,19 @@
 from django.db import models
 from discounts.models import Product
 
-# Create your models here.
+
+gender_choices = (
+    ('optional', 'Fill out when you participate in a race'),
+    ('male', 'male'),
+    ('female', 'female'),
+)
+
 class Order(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
+    gender = gender = models.CharField(max_length=10,
+                                       choices=gender_choices,
+                                       default='optional')
+    age = models.IntegerField(blank=True, default=0)                          
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
     postcode = models.CharField(max_length=20, blank=True)

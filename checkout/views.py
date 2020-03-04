@@ -52,7 +52,7 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
                 print("Your card was declined!") 
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                messages.error(request, "You have successfully paid. We'll send you a confirmation of your purchase within one working day.")
                 request.session['cart'] = {}
                 return redirect(reverse('all_products'))
             else:                                              
