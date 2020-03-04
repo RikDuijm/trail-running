@@ -8,7 +8,6 @@
         <div class="row">
             <div class="container-fluid">
                 <h1>Your cart</h1>
-                <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
                 <div>
                     <p class="text-left"><strong>Back to the <a href="{% url 'all_products' %}">product page</a></strong>.</p><p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span> 
                 </div>
@@ -39,7 +38,8 @@
         <div class="container-fluid">
             <div class="row">   
                 
-            
+ 
+            <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->           
             {% for item in cart_items %}
             <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">  
                 <h4 class="text-center">{{ item.product.product_name }}</h4> 

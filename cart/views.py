@@ -14,7 +14,7 @@ def add_to_cart(request, id):
             quantity = int(request.POST.get('quantity'))
 
             """First step, check to see if quantity is NOT null (or whatever an empty value comes back as"""
-            """ If not an empty field, then run the code below as normal, else (go to line 28)  """
+            """ If not an empty field, then run the code below as normal, else (go to line 30)  """
 
             """This takes an integer, and this gets an integer from the the form in Discounts/products.html.
             That allow  to increase and decrease the number of items the client wants.

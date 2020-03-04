@@ -9,7 +9,7 @@ from .models import UserProfile, ProfilePost
 def index(request):
     """View that returns the index / homepage"""  
     return render(request, "index.html")
-
+    
 @login_required
 # required to only allow access to the logout page if user is authenticated; Django automatically redirects to login page if logged out user tries to enter logout page by url
 def logout(request):
