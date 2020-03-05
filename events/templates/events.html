@@ -21,12 +21,10 @@
         
         <div class="container-fluid">
             {% for month in months %}
-                <div class="row col-11 months feature-text">
-                    <h2>{{ month.name }}</h2>
-                </div>
-
+                <div>
+                    <h2 class="row col-11 feature-text months"><span class="unfold"><i class="fas fa-angle-down"></i></span> {{ month.name }}</h2>                        
                     {% for event in month.events.all %}
-                    <div class="row col-11 discounts feature-text">
+                    <div class="row col-11 discounts feature-text month-events">
                         <h4 class="read-more">{{ event.day_of_month }} | {{ event.name }}</h4> 
                         <div class="container more-info">                                              
                             <div class="row">
@@ -44,9 +42,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endfor %}      
-            {% endfor %}        
+                    </div> 
+                    {% endfor %}   
+            {% endfor %}    
+                </div>
         </div>
                 
     </section>

@@ -184,7 +184,12 @@ button:hover {
     margin-bottom: 18px;
 }
 
-.more-info {
+/*.month-events*/
+.more-info {              
+    display: none;
+}
+
+.month-events {              
     display: none;
 }
 
@@ -258,4 +263,8 @@ li {
     height: 200px;
     margin-left: 10px;
     margin-bottom: 15px;
+}
+
+.unfold {
+    margin-right: 15px;
 }
