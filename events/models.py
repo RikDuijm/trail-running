@@ -13,8 +13,8 @@ from django.utils import timezone
 class Month(models.Model):
     name = models.CharField(max_length=255)
 
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
 
 class Event(models.Model):

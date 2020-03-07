@@ -50,6 +50,7 @@ body {
 .feature-text {
     padding-top: 10px;
     color: #17252A;
+    margin-bottom: 0;
 }
 
 /*
@@ -184,13 +185,16 @@ button:hover {
     margin-bottom: 18px;
 }
 
-/*.month-events*/
 .more-info {              
     display: none;
 }
 
 .month-events {              
     display: none;
+    margin: 5px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
 }
 
 .post-details-btn, .checkout-btn {
@@ -251,8 +255,11 @@ li {
     border-style: solid;
     background: #DEF2F1;
     border-color: #DEF2F1; 
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .event-pic {

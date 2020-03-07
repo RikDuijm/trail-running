@@ -236,3 +236,4 @@ def user_profile_page(request, pk=None):
     # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
+ 

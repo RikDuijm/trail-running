@@ -11,7 +11,7 @@ gender_choices = (
 )
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)       
+    user = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT)     
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     email = models.EmailField(max_length=100, null=True)
@@ -26,7 +26,8 @@ class UserProfile(models.Model):
         return f"{self.user.username}'s Profile"
 
 class ProfilePost(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, default=1, on_delete=models.SET_DEFAULT) 
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, default=1, on_delete=models.SET_DEFAULT)
+    #user = models.ForeignKey(UserProfile, null=False, default=1, on_delete=models.SET_DEFAULT)
     title = models.CharField(max_length=200)
     content = models.TextField()
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)

@@ -14,7 +14,7 @@
                     <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.userprofile.image }}')"></div>
                 </div>
                 <div class="offset-1 profile-thumbnail-name">
-                    <a href="{% url 'user_profile_page' user.userprofile.id %}">
+                    <a href="{% url 'user_profile_page' user.userprofile.id %}">{{ user.userprofile.user }}</a>
                         <h3>{{ user.userprofile.user }}</h3>
                     </a>
                     {{ user.userprofile.gender }} - {{ user.userprofile.age }}

@@ -18,35 +18,34 @@
                 </div>
             </div>
         {% endif %}
-        
-        <div class="container-fluid">
+
+        <div class="container-fluid">        
             {% for month in months %}
-                <div>
-                    <h2 class="row col-11 feature-text months"><span class="unfold"><i class="fas fa-angle-down"></i></span> {{ month.name }}</h2>                        
-                    {% for event in month.events.all %}
-                    <div class="row col-11 discounts feature-text month-events">
-                        <h4 class="read-more">{{ event.day_of_month }} | {{ event.name }}</h4> 
-                        <div class="container more-info">                                              
-                            <div class="row">
-                                <div class="col-sm">
-                                    <p class="event-distance"><strong>Distance:</strong> {{ event.distance }}<br>
+            <div>
+            <h2 class="row col-11 feature-text months pointer"><span class="unfold"><i class="fas fa-angle-down"></i></span>{{ month.name }} </h2>
+                {% for event in month.events.all|dictsort:"date" %}
+                <div class="row col-11 feature-text month-events">
+                    <h4 class="read-more"><span class="pointer"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} | {{ event.name }}</span></h4>
+                    <div class="container more-info">                                              
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="event-distance"><strong>Distance:</strong> {{ event.distance }}<br>
                                     <strong>Date:</strong> {{ event.date }}<br>
                                     <strong>Normal price:</strong> {{ event.normal_price }}<br>
                                     <strong>Our price:</strong> {{ event.price }}<br>
                                     <strong>Offer valid until:</strong> {{ event.valid_until }}</em><br>
-                                    </p>
-                                    <a href="{% url 'all_products' %}" class="btn btn-info post-details-btn">Register here!</a> 
-                                    <p class="event-description">{{ event.description }}</p><br>
-                                </div>
-                                <div class="col-sm event-pic" style="background-image: url('{{ MEDIA_URL }}{{ event.image }}')">
-                                </div>
+                                </p>
+                                <a href="{% url 'all_products' %}" class="btn btn-info post-details-btn">Register here!</a> 
+                                <p class="event-description">{{ event.description }}</p><br>
+                            </div>
+                            <div class="col-sm event-pic" style="background-image: url('{{ MEDIA_URL }}{{ event.image }}')">
                             </div>
                         </div>
-                    </div> 
-                    {% endfor %}   
-            {% endfor %}    
+                    </div>
                 </div>
-        </div>
-                
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </div>    
     </section>
 {% endblock %}   

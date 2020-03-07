@@ -23,7 +23,7 @@ def add_to_cart(request, id):
             cart = request.session.get('cart', {})  # request.session means it's not going to a database. It gets a cart from the session, if one already exists or an empty dictionary if a cart doesn't exist yet.
             if id in cart:
                 cart[id] = int(cart[id]) + quantity  # If product is already in cart, add the new order to it, instead of overwriting first order.
-            else:     
+            else:
                 cart[id] = cart.get(id, quantity)       # Add an ID and a quantity.
 
             request.session['cart'] = cart
