@@ -137,15 +137,9 @@ button:hover {
 }
 
 .userprofile-details {
-    margin-left: 15%;
     margin-top: 15px;
 }
 
-@media (min-width: 992px) {
-    .userprofile-details {
-        margin-left: 20%;
-    }
-}    
 
 .userprofile-details-pic{
     margin-top: 15px;
@@ -176,7 +170,7 @@ button:hover {
   text-decoration: line-through;
   color: red
 }
-.product-price, .event-distance {
+.product-price, .event-distance, .blog-post, .delete-post {
     margin-top: 18px;
 }
 
