@@ -140,6 +140,19 @@ button:hover {
     margin-top: 15px;
 }
 
+.small-less-margin-left {
+    margin-left: 0%
+    }    
+
+@media (min-width: 500px) {
+.less-margin-left {
+    margin-left: 10%;
+    }
+.more-margin-left {
+    margin-left: 27%
+    }    
+}
+
 @media (min-width: 768px) {
 .less-margin-left {
     margin-left: 5%;
@@ -245,12 +258,11 @@ form {
 .profile-thumbnail {
     position: absolute;
     background-size: contain;
-    background-position: center center;
     background-repeat: no-repeat;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 160px;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 .profile-thumbnail-name {
