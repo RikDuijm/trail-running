@@ -30,9 +30,12 @@ body {
 }
 .alert-center {
     display:block;
-    margin: 0 auto;
+    margin: auto;
     margin-top: 10px;
-    margin-bottom: 15px;
+}
+
+.login-message {
+    margin: 0
 }
 
 .feature {
