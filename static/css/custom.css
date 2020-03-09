@@ -140,9 +140,36 @@ button:hover {
     margin-top: 15px;
 }
 
+@media (min-width: 768px) {
+.less-margin-left {
+    margin-left: 5%;
+    }
+.more-margin-left {
+    margin-left: 27%
+    }    
+}
+
+@media (min-width: 992px) {
+.more-margin-left {
+    margin-left: 30%
+    }    
+}
+
+@media (min-width: 1200px) {
+.more-margin-left {
+    margin-left: 35%
+    }    
+.less-margin-left {
+    margin-left: 1%
+    }    
+}
 
 .userprofile-details-pic{
-    margin-top: 15px;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .blog-post, .discounts {
@@ -220,8 +247,8 @@ form {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
     padding-top: 20px;
 }
