@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm, ContactProfileForm
 from .models import UserProfile, ProfilePost
+from django.db.models import Q
 
 def index(request):
     """View that returns the index / homepage"""  
@@ -73,16 +74,23 @@ def registration(request):
         "registration_form": registration_form, "profile_form": profile_form})
 
 
+# def all_users(request):
+#     """
+#     Create a view that will return a list
+#     of Profiles that were published and render them 
+#     to the 'allprofiles.html' template
+#     """
+#     users = User.objects.all()
+#     return render(request, "allusers.html", {'users': users})   
+   
 def all_users(request):
     """
     Create a view that will return a list
     of Profiles that were published and render them 
     to the 'allprofiles.html' template
     """
-    #user = User.objects.get(email=request.user.email)   , {"user": user}
-    users = User.objects.all()
+    users = UserProfile.objects.all()
     return render(request, "allusers.html", {'users': users})   
-   
 
 def user_profile(request):
     """The user's profile page"""
@@ -239,5 +247,7 @@ def user_profile_page(request, pk=None):
 
  
 def search_user(request):
-    users = User.objects.filter(username__icontains=request.GET['q'])
+    """Create a view that will filter the profiles based on
+    first name, last name and location"""
+    users = UserProfile.objects.filter(last_name__icontains=request.GET['q'])
     return render(request, "allusers.html", {"users": users})

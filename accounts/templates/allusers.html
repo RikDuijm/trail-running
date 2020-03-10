@@ -19,18 +19,19 @@
         {% for user in users %}
             <div class="row">
                 <div class="col-2 offset-1 more-margin-left small-less-margin-left"> 
-                {% if user.userprofile.image %}
-                    <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.userprofile.image }}')"></div>
+                {% if user.image %}
+                    <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.image }}')"></div>
                 {% else %}    
                 <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
                 {% endif %}
                 </div>
                 <div class="col-3 offset-4 profile-thumbnail-name less-margin-left small-more-less-margin-left">
-                {{ user.userprofile.first_name }} test
-                        <h3><a href="{% url 'user_profile_page' user.id %}">{{ user.userprofile.user }} {{ user.userprofile.first_name }}</a></h3>
+                
+                        <h3><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h3>
                     </a>
-                    {{ user.userprofile.gender }} - {{ user.userprofile.age }}
-                    <br>{{ user.userprofile.location }}
+                    {{user.first_name}} {{user.last_name}}
+                    <br>{{ user.gender }}, {{ user.age }}
+                    <br>{{ user.location }}
                 </div>
             </div>
             <hr>
