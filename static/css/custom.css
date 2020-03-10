@@ -254,6 +254,10 @@ form {
     display: inline-block;
 }
 
+#search-btn {
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
 .profile-thumbnail {
     position: absolute;
