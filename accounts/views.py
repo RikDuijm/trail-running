@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.utils import timezone
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
+from django.db.models import Q  # for searches on several fields of model
 from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm, ContactProfileForm
 from .models import UserProfile, ProfilePost
-from django.db.models import Q
+
 
 def index(request):
     """View that returns the index / homepage"""  
@@ -249,5 +250,8 @@ def user_profile_page(request, pk=None):
 def search_user(request):
     """Create a view that will filter the profiles based on
     first name, last name and location"""
-    users = UserProfile.objects.filter(last_name__icontains=request.GET['q'])
+    q = request.GET.get('q')
+    users = UserProfile.objects.filter(
+        Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(location__icontains=q)
+    )    
     return render(request, "allusers.html", {"users": users})
