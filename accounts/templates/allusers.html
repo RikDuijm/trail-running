@@ -3,6 +3,16 @@
 
 
 {% block content %}
+
+<h1>test</h1>
+        <div class="display">
+            <form action="{% url 'search_user' %}" method="get">
+                <input type="text" name="q">
+                <button type="search">Search</button>
+            </form>
+        </div>
+
+
     <div class="col-11 inner-content">
         <h1 class="text-center">Profiles</h1>
             <div class="col-12  discounts feature-text">    
@@ -16,7 +26,8 @@
                 {% endif %}
                 </div>
                 <div class="col-3 offset-4 profile-thumbnail-name less-margin-left small-more-less-margin-left">
-                        <h3><a href="{% url 'user_profile_page' user.id %}">{{ user.userprofile.user }}</a></h3>
+                {{ user.userprofile.first_name }} test
+                        <h3><a href="{% url 'user_profile_page' user.id %}">{{ user.userprofile.user }} {{ user.userprofile.first_name }}</a></h3>
                     </a>
                     {{ user.userprofile.gender }} - {{ user.userprofile.age }}
                     <br>{{ user.userprofile.location }}

@@ -79,9 +79,9 @@ def all_users(request):
     of Profiles that were published and render them 
     to the 'allprofiles.html' template
     """
-    user = User.objects.get(email=request.user.email)
+    #user = User.objects.get(email=request.user.email)   , {"user": user}
     users = User.objects.all()
-    return render(request, "allusers.html", {'users': users}, {"user": user})   
+    return render(request, "allusers.html", {'users': users})   
    
 
 def user_profile(request):
@@ -236,4 +236,8 @@ def user_profile_page(request, pk=None):
     # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
+
  
+def search_user(request):
+    users = User.objects.filter(username__icontains=request.GET['q'])
+    return render(request, "allusers.html", {"users": users})
