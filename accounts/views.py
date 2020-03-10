@@ -90,7 +90,7 @@ def all_users(request):
     of Profiles that were published and render them 
     to the 'allprofiles.html' template
     """
-    users = UserProfile.objects.all()
+    users = UserProfile.objects.all().order_by('last_name')
     return render(request, "allusers.html", {'users': users})   
 
 def user_profile(request):

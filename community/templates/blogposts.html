@@ -16,8 +16,12 @@
         {% for post in posts %}
             <div class="col-12 blog-post">           
                 
-                <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.userprofile.image }}')"></div>
-                
+                <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ post.author.image }}')"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+
                     <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>
                     <!-- {{post.author.first_name}} {{post.first_name}} -->
                     <h2>{{ post.title }}</h2>
