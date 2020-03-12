@@ -12,26 +12,33 @@
             </ul>
         {% endif %}
 
-
         {% for post in posts %}
-            <div class="col-12 blog-post">           
-                
-                <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ post.author.image }}')"></div>
-                <br>
-                <br>
-                <br>
-                <br>
-
-                    <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>
-                    <!-- {{post.author.first_name}} {{post.first_name}} -->
+        <div class="container blog-post">
+            <div class="row">
+                <div class="col-6 col-sm-3 col-lg-2">
+                    {% if post.author.userprofile.image %}
+                    <div class="author-thumbnail" width="40px" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
+                    {% else %}    
+                    <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
+                    {% endif %}
+                </div>
+                <div class="col-6 author">
+                    <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>      
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 blog-article">   
+                <hr>          
                     <h2>{{ post.title }}</h2>
-                        <p>{{ post.content|truncatewords:30 }}</p>
-                        <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-info">Read more</a></p>
-                            <p>
-                            <span class="boldtext">Published on:</span> {{ post.published_date }} <br>
-                            <span class="boldtext">Views:</span> {{post.views}}
-                            </p>
-            </div>    
+                                <p>{{ post.content|linebreaks|truncatewords:30 }}</p>
+                                <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-info">Read more</a></p>
+                                <p>
+                                <span class="boldtext">Published on:</span> {{ post.published_date }} <br>
+                                <span class="boldtext">Views:</span> {{post.views}}
+                                </p>
+                </div>    
+            </div>
+        </div>
         {% endfor %} 
         </article>
     </section>

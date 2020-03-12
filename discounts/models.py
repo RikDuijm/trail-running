@@ -2,7 +2,18 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
-# Create your models here.
+SIZE_CHOICES = ( 
+    ("1", "1"), 
+    ("2", "2"), 
+    ("3", "3"), 
+    ("4", "4"), 
+    ("5", "5"), 
+    ("6", "6"), 
+    ("7", "7"), 
+    ("8", "8"), 
+) 
+
+
 class Product(models.Model):
     product_name = models.CharField(max_length=254, default='')
     description_introduction = models.TextField(null=True)
@@ -17,6 +28,11 @@ class Product(models.Model):
     valid_until = models.DateTimeField(blank=True, null=True, default=timezone.now)                                     
     views = models.IntegerField(default=0)
     image = models.ImageField(upload_to="product_images", blank=True, null=True)
+    size = models.CharField(
+        max_length=20,
+        choices=SIZE_CHOICES,
+        default='1'
+        ) 
 
 
     def __str__(self):

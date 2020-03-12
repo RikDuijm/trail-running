@@ -50,17 +50,19 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['first_name', 'last_name', 'gender', 'age',
-                    'location', 'image']
-       
+                  'location', 'image', 'about_me']
+        labels = {
+            'about_me': ('Please introduce yourself shortly.'),
+        }
+
 
 class ProfilePostForm(forms.ModelForm):
-   
     class Meta:
         model = ProfilePost
         fields = ['title', 'content', 'published_date', 'image']
 
+
 class ContactProfileForm(forms.ModelForm):
-   
     class Meta:
         model = ProfilePost
         fields = ['title', 'content', 'published_date', 'image']        

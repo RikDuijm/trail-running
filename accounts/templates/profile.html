@@ -24,6 +24,8 @@
                     {% else %}
                         <img src="/media/img/runner-male.png" alt="profile image" width="200px" class="userprofile-details-pic">
                     {% endif %}
+                    <h2 class="about-me">About me</h2>
+                    <p>{{ profile.userprofile.about_me|linebreaks}}</p>
                 </div>
                 <div class="col-10 userprofile-details feature-text">
                     {% if user == profile.userprofile.user or user.is_superuser %}

@@ -27,8 +27,7 @@
                 <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
                 {% endif %}
                 </div>
-                <div class="col-3 offset-4 profile-thumbnail-name less-margin-left small-more-less-margin-left">
-                
+                <div class="col-3 offset-4 profile-thumbnail-name less-margin-left">           
                         <h3><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h3>
                     </a>
                     {{user.first_name}} {{user.last_name}}

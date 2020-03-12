@@ -7,7 +7,6 @@ body {
 }
 
 .container-fluid {
-
     padding-right: 0;
     padding-left: 0;
     padding-bottom: 20px;
@@ -177,8 +176,11 @@ button:hover {
     }    
 }
 
+.about-me {
+    margin-top: 25px;
+}
+
 .userprofile-details-pic{
-    
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -190,6 +192,10 @@ button:hover {
     border-color: #DEF2F1;
     border-width: 2px;
     margin-bottom: 15px;
+}
+
+.blog-article {
+    margin-top: 60px;
 }
 
 .discounts {
@@ -259,7 +265,7 @@ form {
     margin-left: 10px;
 }
 
-.profile-thumbnail {
+.profile-thumbnail, .author-thumbnail {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
@@ -267,6 +273,14 @@ form {
     height: 160px;
     margin: 0 auto;
     padding-top: 5px;
+}
+
+.author-thumbnail {
+    margin-top: 15px;
+}
+
+.author {
+    margin-top: 25px;
 }
 
 .profile-thumbnail-name {
