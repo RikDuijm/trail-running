@@ -12,9 +12,9 @@ def add_to_cart(request, id):
         """Add a quantity of the specified product to the cart"""
         if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
             quantity = int(request.POST.get('quantity')) 
-            if request.POST.get('size'):
-                size = int(request.POST.get('size'))
-                print(size)
+            if request.POST.get('shoe_size'):
+                shoe_size = int(request.POST.get('shoe_size'))
+                print(shoe_size)
             """First step, check to see if quantity is NOT null (or whatever an empty value comes back as"""
             """ If not an empty field, then run the code below as normal, else (go to line 30)  """
 

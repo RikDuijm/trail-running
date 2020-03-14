@@ -225,6 +225,11 @@ button:hover {
     color: #2B7A78;
 }
 
+.add-product{
+    margin-top: 20px;
+    margin-right: 85px;  /* this influences the size input field */
+}
+
 .product-description, .event-description {
     margin-bottom: 18px;
 }

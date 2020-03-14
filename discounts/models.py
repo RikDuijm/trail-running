@@ -1,15 +1,20 @@
 from django.db import models
 from django.utils import timezone
 
-SIZE_CHOICES = ( 
-    ("1", "1"), 
-    ("2", "2"),
-    ("3", "3"), 
-    ("4", "4"), 
-    ("5", "5"), 
-    ("6", "6"), 
-    ("7", "7"), 
-    ("8", "8"), 
+SHOE_SIZE_CHOICES = ( 
+    ("35", "35"), 
+    ("36", "36"),
+    ("37", "37"), 
+    ("38", "38"), 
+    ("39", "39"), 
+    ("40", "40"), 
+    ("41", "41"), 
+    ("42", "42"),
+    ("43", "43"),
+    ("44", "44"),
+    ("45", "45"),
+    ("46", "46"),
+    ("47", "47"),                     
 ) 
 
 TYPE_CHOICES = (
@@ -37,10 +42,10 @@ class Product(models.Model):
     valid_until = models.DateTimeField(blank=True, null=True, default=timezone.now)                                     
     views = models.IntegerField(default=0)
     image = models.ImageField(upload_to="product_images", blank=True, null=True)
-    size = models.CharField(
+    shoe_size = models.CharField(
         max_length=2,
-        choices=SIZE_CHOICES,
-        default='1'
+        choices=SHOE_SIZE_CHOICES,
+        default='35'
         ) 
 
 
