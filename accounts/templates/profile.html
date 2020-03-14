@@ -9,8 +9,7 @@
 
         <div class="container-fluid">
             <div class="row blog-post">
-                <div class="col-10 col-md-4 userprofile-details feature-text">
-                
+                <div class="col-10 col-md-2 offset-md-2 userprofile-details feature-text">
                     <p>First name: {{ profile.userprofile.first_name }}</p>
                     <p>Last name: {{ profile.userprofile.last_name }}</p>
                     <p>Email: {{ profile.email }}</p>
@@ -18,15 +17,17 @@
                     <p>Gender: {{ profile.userprofile.gender}}</p>
                     <p>Age: {{ profile.userprofile.age}}</p>
                 </div>    
-                <div class="col-10 col-md-5">
+                <div class="col-10 col-md-8">
                     {% if profile.userprofile.image %}
                     <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic">
                     {% else %}
                         <img src="/media/img/runner-male.png" alt="profile image" width="200px" class="userprofile-details-pic">
                     {% endif %}
+                </div>
+                <div>
                     <h2 class="about-me">About me</h2>
                     <p>{{ profile.userprofile.about_me|linebreaks}}</p>
-                </div>
+                </div> 
                 <div class="col-10 userprofile-details feature-text">
                     {% if user == profile.userprofile.user or user.is_superuser %}
                     <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit</a>

@@ -71,22 +71,22 @@ body {
 
 h1 {
     color: #2B7A78; 
-    font-size: 1.25em;
+    /* font-size: 1.25em; */
     padding-top: 15px;
 }
 
 h2 {
     color: #2B7A78; 
-    font-size: 1em;
+    /*font-size: 1em;*/
 }
 
 h3 {
     color: #2B7A78; 
-    font-size: 1em;
+   /*font-size: 1em;*/
 }
 
 h4 {
-    font-size: 1em;  
+    /*font-size: 1em;*/  
 }    
 
 
@@ -182,9 +182,10 @@ button:hover {
 
 .userprofile-details-pic{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     width: 50%;
+    margin-top: 20px;
 }
 
 .blog-post, .discounts {
@@ -254,11 +255,9 @@ button:hover {
 
 .form {
     text-align: center;
+    display: block;
 }
 
-form {
-    display: inline-block;
-}
 
 #search-btn {
     margin-top: 10px;

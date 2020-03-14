@@ -1,10 +1,9 @@
 from django.db import models
 from django.utils import timezone
-import datetime
 
 SIZE_CHOICES = ( 
     ("1", "1"), 
-    ("2", "2"), 
+    ("2", "2"),
     ("3", "3"), 
     ("4", "4"), 
     ("5", "5"), 
@@ -13,9 +12,19 @@ SIZE_CHOICES = (
     ("8", "8"), 
 ) 
 
+TYPE_CHOICES = (
+    ("watches","watches"),
+    ("clothes","clothes"),
+    ("shoes","shoes"),
+    ("events","events"),
+)
 
 class Product(models.Model):
     product_name = models.CharField(max_length=254, default='')
+    product_type = models.CharField(
+        max_length=10,
+        choices=TYPE_CHOICES,
+        default="shoes") 
     description_introduction = models.TextField(null=True)
     description_first = models.TextField(null=True,)
     description_second = models.TextField(null=True,)
@@ -29,7 +38,7 @@ class Product(models.Model):
     views = models.IntegerField(default=0)
     image = models.ImageField(upload_to="product_images", blank=True, null=True)
     size = models.CharField(
-        max_length=20,
+        max_length=2,
         choices=SIZE_CHOICES,
         default='1'
         ) 

@@ -2,9 +2,12 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-    <section >
-        <article class="row col-11 inner-content feature-text">
-            <div class="col-md-7 offset-md-2 col-lg-4 ofsset-lg-4">
+<div class="container feature-text">
+    <div class="row">
+        <h1 class="inner-content">Add a new Profile Post</h1>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %} 
                     {{ profile_post_form | as_bootstrap }}
