@@ -9,25 +9,27 @@ def view_cart(request):
 
 def add_to_cart(request, id):
     if request.user.is_authenticated:
-        """Add a quantity of the specified product to the cart"""
+
         if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
             quantity = int(request.POST.get('quantity')) 
             if request.POST.get('shoe_size'):
                 shoe_size = int(request.POST.get('shoe_size'))
                 print(shoe_size)
-            """First step, check to see if quantity is NOT null (or whatever an empty value comes back as"""
-            """ If not an empty field, then run the code below as normal, else (go to line 30)  """
-
-            """This takes an integer, and this gets an integer from the the form in Discounts/products.html.
-            That allow  to increase and decrease the number of items the client wants.
-            And when he clicks on the Add to Cart button, the integer that is in that form will go to the cart."""
 
             cart = request.session.get('cart', {})
-              # request.session means it's not going to a database. It gets a cart from the session, if one already exists or an empty dictionary if a cart doesn't exist yet.
+
             if id in cart:
-                cart[id] = int(cart[id]) + quantity  # If product is already in cart, add the new order to it, instead of overwriting first order.
+                if request.POST.get('shoe_size'):
+                    
+                    cart[id] = int(cart[id]) + quantity + shoe_size
+                else: 
+                    cart[id] = int(cart[id]) + quantity
             else:
-                cart[id] = cart.get(id, quantity)       # Add an ID and a quantity.
+                if request.POST.get('shoe_size'):
+                    shoe_size = int(request.POST.get('shoe_size'))
+                    cart[id] = cart.get(id, quantity, shoe_size)
+                else:
+                    cart[id] = cart.get(id, quantity)       
 
             request.session['cart'] = cart
         else:
