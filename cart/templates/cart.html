@@ -69,7 +69,7 @@
                 <!-- item.product.product_name is used instead of product.product_name to only show the items that are within the cart_items. -->
                 <hr>
                 
-                <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.product.price }}  size: {{ item.product.shoe_size }}
+                <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.product.price }}  size: {{ item.item.size }}
                 
                 {% if item.product_type == "shoes" %}
                 Shoe size: {{ item.product.shoe_size }}

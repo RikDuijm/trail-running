@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q  # for searches on several fields of model
 from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, ProfilePostForm, ContactProfileForm
-from .models import UserProfile, ProfilePost
+from .models import UserProfile, ProfilePost, ContactUser
 
 
 def index(request):
@@ -96,9 +96,9 @@ def all_users(request):
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-#    return redirect(reverse('profile', {"profile": user}))
     profileposts = ProfilePost.objects.filter(user=request.user)
-    return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts})     
+    contactuserposts = ContactUser.objects.filter(sender=request.user) # instead of on profile of sender this has to be the placed on profile where it was send from!
+    return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})     
 
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
@@ -128,13 +128,13 @@ def contact_user(request, pk=None):
     """
     Create a view that allows the logged-in user to contact another user
     """
-    user = User.objects.get(email=request.user.email)
+    sender = User.objects.get(email=request.user.email)
     if request.user.is_authenticated:  
         if request.method == 'POST':
             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
             if contact_profile_form.is_valid():
                 contactuserpost = contact_profile_form.save(commit=False)
-                contactuserpost.user = request.user 
+                contactuserpost.user = request.user
                 contactuserpost.save()              # this must be saved at profile of the user who is being contacted. 
                 # return redirect(user_profile_page)
                 return redirect(reverse('profile'))
@@ -142,7 +142,7 @@ def contact_user(request, pk=None):
             contact_profile_form = ContactProfileForm()
     else:
         return redirect('login') 
-    return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form, 'profile': user})
+    return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form, 'profile': sender})
 
 
 def edit_profile(request, pk=None):

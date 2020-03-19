@@ -36,3 +36,14 @@ class ProfilePost(models.Model):
     
     def __str__(self):
         return "{0} (by {1})".format(self.title, self.user)
+
+class ContactUser(models.Model):
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, null=False, default=1, on_delete=models.SET_DEFAULT)
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    image = models.ImageField(upload_to="profile_images", blank=True, null=True)
+    # recepient = models.
+
+    def __str__(self):
+        return "{0} (by {1})".format(self.title, self.sender)

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User # import the user model provided by Django
 from django.contrib.auth.forms import UserCreationForm  # this is a base form that Django provides us and it will give us user names and emails
 from django.core.exceptions import ValidationError  # import ValidationError
-from .models import UserProfile, ProfilePost
+from .models import UserProfile, ProfilePost, ContactUser
 
 class UserLoginForm(forms.Form):
     """Form to be used to log users in"""
@@ -64,5 +64,5 @@ class ProfilePostForm(forms.ModelForm):
 
 class ContactProfileForm(forms.ModelForm):
     class Meta:
-        model = ProfilePost
-        fields = ['title', 'content', 'published_date', 'image']        
+        model = ContactUser
+        fields = ['sender', 'title', 'content', 'published_date', 'image']        

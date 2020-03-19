@@ -7,29 +7,29 @@ def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
 
+
 def add_to_cart(request, id):
     if request.user.is_authenticated:
 
         if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
             quantity = int(request.POST.get('quantity')) 
-            if request.POST.get('shoe_size'):
-                shoe_size = int(request.POST.get('shoe_size'))
-                print(shoe_size)
+            if request.POST.get('size'):
+                size = int(request.POST.get('size'))
+                print(size)
 
             cart = request.session.get('cart', {})
-
+            
             if id in cart:
-                if request.POST.get('shoe_size'):
-                    
-                    cart[id] = int(cart[id]) + quantity + shoe_size
+                if request.POST.get('size'):
+                    cart[id] = [int(cart[id][0]) + quantity, size] #                    cart[id] = int(cart[id]) + quantity + shoe_size
                 else: 
                     cart[id] = int(cart[id]) + quantity
             else:
-                if request.POST.get('shoe_size'):
-                    shoe_size = int(request.POST.get('shoe_size'))
-                    cart[id] = cart.get(id, quantity, shoe_size)
+                if request.POST.get('size'):
+                    size = (request.POST.get('size'))
+                    cart[id] = cart.get(id, quantity) #  , size
                 else:
-                    cart[id] = cart.get(id, quantity)       
+                    cart[id] = cart.get(id, quantity)
 
             request.session['cart'] = cart
         else:

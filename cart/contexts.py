@@ -11,17 +11,11 @@ def cart_contents(request):
     total = 0
     product_count = 0
     
-    for id, quantity in cart.items():     #!!    shoe_size                    
-        product = get_object_or_404(Product, pk=id)  
-        if product.product_type == "shoes":
-            total += quantity * product.price
-            product_count += quantity        
-
-            cart_items.append({'id': id, 'quantity': quantity, 'product': product}) 
-        else:
-            total += quantity * product.price
-            product_count += quantity
-            cart_items.append({'id': id, 'quantity': quantity, 'product': product})
+    for id, quantity in cart.items():     #!!    shoe_size                  
+        product = get_object_or_404(Product, pk=id)
+        total += quantity * product.price
+        product_count += quantity
+        cart_items.append({'id': id, 'quantity': quantity, 'product': product})
 
     return {'cart_items': cart_items, 'total': total, 'product_count': product_count} # return key value pairs for cart_items, total, and product_count.
 

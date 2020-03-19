@@ -16,6 +16,15 @@
                     <p>Location: {{ profile.userprofile.location }}</p>
                     <p>Gender: {{ profile.userprofile.gender}}</p>
                     <p>Age: {{ profile.userprofile.age}}</p>
+                    
+                    <br><br>
+
+                      {% for contactuserpost in contactuserposts %}
+                    Personal messages: {{ contactuserpost.title }}
+                    {% endfor %}
+                    <br><br>
+                  
+
                 </div>    
                 <div class="col-10 col-md-8">
                     {% if profile.userprofile.image %}

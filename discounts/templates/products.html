@@ -33,7 +33,7 @@
                         {% csrf_token %}
                         <div class="input-group product-description">
                         {% if product.product_type == "shoes" %}                      
-                        <input name="shoe_size" type="number" min="36" max="47" class="form-control size" placeholder="size: 36"> 
+                        <input name="size" type="number" min="36" max="47" class="form-control size" placeholder="size: 36"> 
                         {% endif %}    
                         
                         <div>
@@ -45,7 +45,7 @@
 
                     <p class=" btn btn-info product-description read-more">Read more</p>
                     <span class="product-description more-info">
-                    <p>{{ product.description_first }} <br><br> {{ product.description_second }} <br><br>  {{ product.description_third }}</p>
+                    
                     </span>
                 </div>      
                 {% endfor %}
