@@ -12,6 +12,7 @@ def index(request):
     """View that returns the index / homepage"""  
     return render(request, "index.html")
     
+    
 @login_required
 # required to only allow access to the logout page if user is authenticated; Django automatically redirects to login page if logged out user tries to enter logout page by url
 def logout(request):
@@ -19,6 +20,7 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out.")
     return redirect(reverse('index'))
+
 
 def login(request):
     """Return a login page"""
@@ -38,6 +40,7 @@ def login(request):
     else:
         login_form = UserLoginForm() # otherwise we're just going to create an empty object 
     return render(request, 'login.html', {'login_form': login_form})
+
 
 def registration(request):
     """Render the registration page"""

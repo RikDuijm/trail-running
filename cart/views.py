@@ -68,5 +68,3 @@ def delete_from_cart(request, id):
         del cart[id]
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))        
-
-        
