@@ -32,6 +32,7 @@ class GroupedModelChoiceIterator(ModelChoiceIterator):
 
             yield (group, [self.choice(obj) for obj in objs])
 
+
 class GroupedModelChoiceField(ModelChoiceField):
 
     def __init__(self, *args, choices_groupby, **kwargs):

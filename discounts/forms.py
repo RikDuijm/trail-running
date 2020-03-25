@@ -36,7 +36,6 @@ class SizeForm(forms.Form):
             (66, 'XX-Large'),
         )),
     )
-
     size = forms.ChoiceField(choices=CHOICES)
 
 
