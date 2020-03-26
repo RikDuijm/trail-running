@@ -1,7 +1,7 @@
 from django import forms
 
 from .fields import GroupedModelChoiceField
-from .models import Product, Item
+from .models import Product, Size
 
 
 class SizeForm(forms.Form):
@@ -39,9 +39,13 @@ class SizeForm(forms.Form):
     size = forms.ChoiceField(choices=CHOICES)
 
 
-class SizeModelForm(forms.ModelForm):
-    size = GroupedModelChoiceField(queryset=Item.objects.exclude(parent=None), choices_groupby='parent')
 
-    class Meta:
-        model = Product
-        fields = ('size')
+# class SizeModelForm(forms.ModelForm):
+#     category = GroupedModelChoiceField(
+#         queryset=Size.objects.exclude(parent=None), 
+#         choices_groupby='parent'
+#     )
+
+#     class Meta:
+#         model = Product
+#         fields = ('size', 'product_name')

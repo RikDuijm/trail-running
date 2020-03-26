@@ -6,11 +6,10 @@ from django.utils import timezone
 
 class Size(models.Model):
     name = models.CharField(max_length=30)
-    parent = models.ForeignKey('Size', on_delete=models.CASCADE, null=True)
+    # parent = models.ForeignKey('Size', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return "{0}".format(self.size)
-
+        return self.name
 
 
 TYPE_CHOICES = (
