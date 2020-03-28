@@ -7,10 +7,10 @@ from .models import Product, Size
 class SizeForm(forms.Form):
     CHOICES = (
         ('Events', (
-            (11, 'Events'),
+            (100, 'Events, no size'),
         )),
         ('Accessories', (
-            (21, 'One Size'),
+            (101, 'One Size fits all'),
         )),
         ('Shoes', (
             (36, '36'),
@@ -18,22 +18,22 @@ class SizeForm(forms.Form):
             (38, '38'),
             (39, '39'),
             (40, '40'),
-            (41, '41'),                        
+            (41, '41'),
             (42, '42'),
             (43, '43'),
             (44, '44'),
             (45, '45'),
             (46, '46'),
-            (47, '47'),                                
+            (47, '47'),
         )),
         ('Clothes', (
-            (51, 'XX-Small'),
-            (61, 'X-Small'),
-            (62, 'Small'),
-            (63, 'Medium'),
-            (64, 'Large'),
-            (65, 'X-Large'),
-            (66, 'XX-Large'),
+            (1, 'XX-Small'),
+            (2, 'X-Small'),
+            (3, 'Small'),
+            (4, 'Medium'),
+            (5, 'Large'),
+            (6, 'X-Large'),
+            (7, 'XX-Large'),
         )),
     )
     size = forms.ChoiceField(choices=CHOICES)

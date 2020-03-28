@@ -26,7 +26,7 @@ class Product(models.Model):
         max_length=10,
         choices=TYPE_CHOICES,
         default="shoes")
-    size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
+    # size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
     description = models.TextField(null=True)
     normal_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
