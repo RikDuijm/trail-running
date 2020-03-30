@@ -8,10 +8,18 @@
         <h1 class="text-center">Profiles</h1>
             <div class=" col-12 inner-content">
                 <p><strong>You can search the user profiles on first and last name & location:</strong></p>
-                <form action="{% url 'search_user' %}" method="get">
-                    <input type="text" name="q">
-                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>
+                <form action="{% url 'search_user_first_name' %}" method="get">
+                    Filter on first name: <input type="text" name="q1">
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
                 </form>
+                <form action="{% url 'search_user_last_name' %}" method="get">
+                    Filter on last name: <input type="text" name="q2">
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
+                </form>
+                <form action="{% url 'search_user_location' %}" method="get">
+                    Filter on location: <input type="text" name="q3">
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
+                </form>                                     
             </div>
             <div class="col-12  discounts feature-text">    
 

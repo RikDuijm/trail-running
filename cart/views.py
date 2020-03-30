@@ -71,9 +71,6 @@ def add_to_cart(request, id):
 
 
 
-
-
-
 # def add_to_cart(request, id):
 #     size = int(request.POST.get('size'))
 #     cart = request.session.get('cart', {})
@@ -113,8 +110,7 @@ def adjust_cart(request, id):
             messages.warning(request, 'You have to specify how many products you want to purchase.')
 
     else:
-           
-            messages.warning(request, 'You have to register first, before you can purchase our products.')
+        messages.warning(request, 'You have to register first, before you can purchase our products.')
             
     return redirect(reverse('view_cart'))
 

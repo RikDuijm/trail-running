@@ -250,11 +250,37 @@ def user_profile_page(request, pk=None):
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
 
  
-def search_user(request):
+# def search_user(request):
+#     """Create a view that will filter the profiles based on
+#     first name, last name and location"""
+#     q = request.GET.get('q')
+#     users = UserProfile.objects.filter(
+#         Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(location__icontains=q)
+#     )    
+#     return render(request, "allusers.html", {"users": users})
+
+def search_user_first_name(request):
     """Create a view that will filter the profiles based on
     first name, last name and location"""
-    q = request.GET.get('q')
+    q1 = request.GET.get('q1')
     users = UserProfile.objects.filter(
-        Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(location__icontains=q)
-    )    
-    return render(request, "allusers.html", {"users": users})
+        Q(first_name__icontains=q1))
+    return render(request, "allusers.html", {"users": users})    
+
+
+def search_user_last_name(request):
+    """Create a view that will filter the profiles based on
+    first name, last name and location"""
+    q2 = request.GET.get('q2')
+    users = UserProfile.objects.filter(
+        Q(last_name__icontains=q2))
+    return render(request, "allusers.html", {"users": users})    
+
+
+def search_user_location(request):
+    """Create a view that will filter the profiles based on
+    first name, last name and location"""
+    q3 = request.GET.get('q3')
+    users = UserProfile.objects.filter(
+        Q(location__icontains=q3))
+    return render(request, "allusers.html", {"users": users})   
