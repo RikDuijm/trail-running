@@ -1,5 +1,5 @@
 from django.db import models
-from discounts.models import Product
+from discounts.models import Product, Size
 
 
 gender_choices = (
@@ -30,8 +30,9 @@ class Order(models.Model):
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)
     product = models.ForeignKey(Product, null=False)
+    size = models.ForeignKey(Size, null=True)
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(
-            self.quantity, self.product.product_name, self.product.price)
+        return "{0} {1} {2} @ {3}".format(
+            self.quantity, self.product.product_name, self.size, self.product.price)

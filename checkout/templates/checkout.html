@@ -37,7 +37,7 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
                         <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>                        
                                 <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong>
                                 <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.product.price }}</strong></span></p>
-                                <p class="product-price"><strong>Size: <span class="discount-price"> € {{ item.size.name }} {{ item.size }}</strong></span></p>
+                                <p class="product-price"><strong>Size: <span class="discount-price"> {{ item.size.name }} {{ item.size }}</strong></span></p>
                 </div>
             {% endfor %}
         </div>
