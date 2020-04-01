@@ -188,16 +188,18 @@ button:hover {
     margin-top: 20px;
 }
 
-.blog-post, .discounts {
+.blog-post, .discounts, .profiles {
     border-style: solid;
     border-color: #DEF2F1;
     border-width: 2px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .blog-article {
     margin-top: 60px;
 }
+
 
 .discounts {
     margin-left: 5px;
@@ -279,7 +281,7 @@ button:hover {
     padding-top: 5px;
 }
 
-.author-thumbnail {
+.profile-thumbnail, .author-thumbnail {
     margin-top: 15px;
 }
 
@@ -290,7 +292,7 @@ button:hover {
 .profile-thumbnail-name {
     padding-left: 20px; 
     padding-bottom: 20px;
-
+    margin-top: 10px;
 }
 
 ul {

@@ -4,7 +4,7 @@ from accounts.views import (
     edit_profile_post, delete_profile_post, delete_profile_details,
     author_profile, all_users, user_profile_page, user_profile, contact_user,
     search_user_first_name, search_user_last_name, search_user_location
-    # get_profile_posts
+    # get_profile_posts, search_user
 )
 from accounts import url_reset
 
@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^deleteprofile/', delete_profile_details, name='delete_profile_details'),
     url(r'^(?P<pk>\d+)/edit/$', edit_profile_post, name='edit_profile_post'),
     url(r'^(?P<pk>\d+)/delete/$', delete_profile_post, name='delete_profile_post'),
-    # url(r'^(?P<pk>\d+)/new/$', profile_post, name='profile_post'),
+    # url(r'^search_user/$', search_user, name='search_user'),
+    url(r'^(?P<pk>\d+)/new/$', profile_post, name='profile_post'),
     url(r'^user-search-firstname/$', search_user_first_name, name='search_user_first_name'),
     url(r'^user-search-lastname/$', search_user_last_name, name='search_user_last_name'),
     url(r'^user-search-location/$', search_user_location, name='search_user_location')

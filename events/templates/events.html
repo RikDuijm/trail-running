@@ -6,18 +6,86 @@
 
 {% block content %}
 
-    <section class="col-11 inner-content">
-        <h1>Race Calender</h1>
-
-        {% if messages %}
-            <div class="alert alert-info">
-                <div class="messages">
-                    {% for message in messages %}
-                        <strong>{{ message }}</strong>
-                    {% endfor %}
-                </div>
+    <div class="col-11 inner-content">
+        <h1 class="text-center">Race calender</h1>
+            <div class="col-10 text-center">                
+                <form action="{% url 'search_race_name' %}" method="get">
+                    <p><strong>Search by race name: <input type="text" name="q1">
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button></p></strong>
+                </form>  
             </div>
-        {% endif %}
+
+            <div class="row col-10 offset-1 profiles">
+                <div class="col-xl-4 col-lg-12">
+                <form action="{% url 'search_race_month' %}" method="get">
+                   Month: <select id="month" name="q2"> 
+                            <option value="september"> September</option>
+                            <option value="october"> October</option> 
+                          </select> 
+                          <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>
+                </form>
+                </div>
+                <div class="col-xl-4 col-lg-12">
+                <form action="{% url 'search_race_distance' %}" method="get">              
+                   Distance: <select id="distance" name="q3"> 
+                             <option value="10-15">10K - 15K</option>
+                             <option value="16-20">16K - 20K</option> 
+                             <option value="21-29">21K - 29K</option> 
+                             <option value="30+">Over 30K</option> 
+                             <option value="42">marathon</option>                              
+                             </select> 
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
+                </form>
+                </div>
+                <div class="col-xl-4 col-lg-12">
+                <form action="{% url 'search_race_region' %}" method="get">              
+                   Region: <select id="region" name="q4"> 
+                             <option value="zeeland">Zeeland</option>
+                             <option value="schouwen-duiveland">Schouwen-Duiveland</option> 
+                             <option value="walcheren">Walcheren</option> 
+
+                             </select> 
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
+                </form>
+                </div>
+                   
+            </div>    
+                <div class="col-11 inner-content">                   
+                <p class="text-center"><a href="{% url 'all_events' %}" class="btn btn-info post-details-btn">Reset Searches</a></p>
+            </div>
+            
+
+
+            
+                {% for event in events.all|dictsort:"date" %}
+                <div class="row col-11 feature-text">
+                    <h4 class="read-more"><span class="pointer"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} {{ event.month}} | {{ event.name }} | {{ event.distance }} | {{ event.region }}</span></h4>
+                    <div class="container more-info">                                              
+                        <div class="row">
+                            <div class="col-sm">
+                                <p class="event-distance"><strong>Distance:</strong> {{ event.distance }}<br>
+                                    <strong>Date:</strong> {{ event.date }}<br>
+                                    <strong>Normal price:</strong> {{ event.normal_price }}<br>
+                                    <strong>Our price:</strong> {{ event.price }}<br>
+                                    <strong>Offer valid until:</strong> {{ event.valid_until }}</em><br>
+                                </p>
+                                <a href="{% url 'all_products' %}" class="btn btn-info post-details-btn">Register here!</a> 
+                                <p class="event-description">{{ event.description }}</p><br>
+                            </div>
+                            <div class="col-sm event-pic" style="background-image: url('{{ MEDIA_URL }}{{ event.image }}')">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {% endfor %}
+
+
+ 
+{% for event in month.events.all|dictsort:"date" %}
+<h4 class="read-more"><span class="pointer"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} | {{ event.name }}</span></h4>
+{% endfor %}
+
 
         <div class="container-fluid">        
             {% for month in months %}
@@ -47,5 +115,5 @@
             {% endfor %}
             </div>
         </div>    
-    </section>
+    </div>
 {% endblock %}   
