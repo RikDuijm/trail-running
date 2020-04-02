@@ -8,5 +8,8 @@ $(document).ready(function(){
         $(this).nextAll(".month-events").toggle('slow');
     });
 
+    $(".calendar").click(function () {
+        $("#calendar").show();
+    });
 
 });

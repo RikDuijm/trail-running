@@ -240,6 +240,10 @@ button:hover {
     display: none;
 }
 
+#calendar {
+    display: none;
+}
+
 .month-events {              
     display: none;
     margin: 5px;

@@ -1,46 +1,12 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from discounts.models import Product
 
 # Create your views here.
 
 def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
-
-
-# def add_to_cart(request, id):
-#     size = int(request.POST.get('size'))
-#     cart = request.session.get('cart', {})
-
-#     if request.user.is_authenticated:
-#         if request.POST.get('size'):
-#             cart[id] = cart.get(id, size) 
-#             print(size)
-#             request.session['cart'] = cart
-#         else:
-#             messages.warning(request, 'You have to specify the size of the product.')
-#     else:
-#         messages.warning(request, 'You have to log in first, before you can purchase our products.')
-            
-#     return redirect(reverse('all_products'))
-
-# def add_to_cart(request, id):
-#     """Add the specified product to the cart when the user is logged in"""
-#     quantity = 1
-#     cart = request.session.get('cart', {})
-#     size = int(request.POST.get('size'))
-#     if not request.user.is_authenticated:
-#         messages.warning(request, 'You have to log in first, before you can purchase our products.')
-#     else:
-#         if id in cart:
-#             cart[id] = int(cart[id]) + quantity
-#             print(size)
-#         else:
-#             cart[id] = cart.get(id, quantity)
-#             print(size)
-
-#         request.session['cart'] = cart
-#     return redirect(reverse('all_products'))
 
 
 def add_to_cart(request, id):
@@ -53,13 +19,16 @@ def add_to_cart(request, id):
             #     print(size)
 
             cart = request.session.get('cart', {})
-            size = int(request.POST.get('size')) 
+            size = int(request.POST.get('size'))
             
             if id in cart:
                 cart[id] = int(cart[id]) + quantity
-                print(size, size)
+                print("in if")
+                print(size)
             else:
                 cart[id] = cart.get(id, quantity)
+                
+                print("in else")
                 print(size)
             request.session['cart'] = cart
         else:
@@ -68,29 +37,6 @@ def add_to_cart(request, id):
         messages.warning(request, 'You have to log in / register first, before you can purchase our products.')
             
     return redirect(reverse('all_products'))
-
-
-
-# def add_to_cart(request, id):
-#     size = int(request.POST.get('size'))
-#     cart = request.session.get('cart', {})
-    
-#     if request.user.is_authenticated:
-#         quantity = int(request.POST.get('quantity')) 
-#         if int(request.POST.get('quantity')) > 0:
-#             if request.POST.get('size'):
-#                 cart[id] = cart.get(id, quantity) 
-#                 print(size)
-#                 request.session['cart'] = cart
-#             else:
-#                 messages.warning(request, 'You have to specify the size of the product.')
-#         else:
-#             messages.warning(request, 'You have to specify how many products you want to purchase.')         
-#     else:
-#         messages.warning(request, 'You have to log in first, before you can purchase our products.')
-            
-#     return redirect(reverse('all_products'))
-
 
 def adjust_cart(request, id):
     """Adjust the quantity of the specified product to the specified amount"""
