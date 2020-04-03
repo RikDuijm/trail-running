@@ -6,40 +6,45 @@
 
 {% block content %}
 
-    <div class="col-11 inner-content">
-        <h1 class="text-center">Race calender</h1>
-            <div class="col-10 text-center">                
+    <div class="col-12">
+        <div class="col-12 ">
+        <h1>Race calender</h1>
+
                 <form action="{% url 'search_race_name' %}" method="get">
                     <p><strong>Search by race name: <input type="text" name="q1">
-                    <button type="search" class="btn btn-info post-details-btn calendar" id="search-btn">Search</button></p></strong>
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button></p></strong>
                 </form>  
-            </div>
+                <p><strong>Or search by month, distance or region:</p></strong> 
+        </div>
 
-            <div class="row col-10 offset-1 profiles">
+            <div class="row col-11 search-box profiles feature-text">
                 <div class="col-xl-4 col-lg-12">
                 <form action="{% url 'search_race_month' %}" method="get">
-                   Month: <select id="month" name="q2"> 
+                    <select id="month" name="q2">
+                            <option value=" "> Select a month</option> 
                             <option value="september"> September</option>
                             <option value="october"> October</option> 
                           </select> 
-                          <button type="search" class="btn btn-info post-details-btn calendar" id="search-btn">Search</button>
+                          <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>
                 </form>
                 </div>
                 <div class="col-xl-4 col-lg-12">
                 <form action="{% url 'search_race_distance' %}" method="get">              
-                   Distance: <select id="distance" name="q3"> 
-                             <option value="10-15">10K - 15K</option>
-                             <option value="16-20">16K - 20K</option> 
-                             <option value="21-29">21K - 29K</option> 
-                             <option value="30+">Over 30K</option> 
+                    <select id="distance" name="q3">
+                            <option value=" "> Select distance</option>  
+                             <option value="10-15">10 - 15 kilometers</option>
+                             <option value="16-20">16 - 20 kilometers</option> 
+                             <option value="21-29">21 - 29 kilometers</option> 
+                             <option value="30+">Over 30 kilometers</option> 
                              <option value="42">marathon</option>                              
                              </select> 
-                    <button type="search" class="btn btn-info post-details-btn calendar" id="search-btn">Search</button>           <!-- .calender to show hidden content-->       
+                    <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                 
                 </form>
                 </div>
                 <div class="col-xl-4 col-lg-12">
                 <form action="{% url 'search_race_region' %}" method="get">              
-                   Region: <select id="region" name="q4"> 
+                    <select id="region" name="q4">
+                             <option value=" "> Select region</option>   
                              <option value="zeeland">Zeeland</option>
                              <option value="schouwen-duiveland">Schouwen-Duiveland</option> 
                              <option value="walcheren">Walcheren</option> 
@@ -51,11 +56,11 @@
                    
             </div>    
                 <div class="col-11 inner-content">                   
-                <p class="text-center"><a href="{% url 'all_events' %}" class="btn btn-info post-details-btn">Reset Searches</a></p>
+                <p class="text-center"><a href="{% url 'all_events' %}" class="btn btn-info post-details-btn">Reset</a></p>
             </div>
             
                 {% for event in events.all|dictsort:"date" %}
-                <div class="row col-11 feature-text">                       <!-- id="calendar" to hide content-->
+                <div class="row col-11 feature-text">                       
                     <h4 class="read-more"><span class="pointer"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} {{ event.month}} | {{ event.name }} | {{ event.distance }} | {{ event.region }}</span></h4>
                     <div class="container more-info">                                              
                         <div class="row">

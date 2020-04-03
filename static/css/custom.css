@@ -55,6 +55,15 @@ body {
     margin-bottom: 0;
 }
 
+
+.search-box {
+    margin-left: 15px;
+}
+
+#month, #distance, #region {
+  width: 145px;   
+}
+
 /*
 #footer {
     position: absolute;

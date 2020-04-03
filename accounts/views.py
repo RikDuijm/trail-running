@@ -253,11 +253,12 @@ def user_profile_page(request, pk=None):
 # def search_user(request):
 #     """Create a view that will filter the profiles based on
 #     first name, last name and location"""
-#     q = request.GET.get('q')
-#     users = UserProfile.objects.filter(
-#         Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(location__icontains=q)
-#     )    
+    # q = request.GET.get('q')
+    # users = UserProfile.objects.filter(
+    #     Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(location__icontains=q)
+    # )    
 #     return render(request, "allusers.html", {"users": users})
+
 
 def search_user_first_name(request):
     """Create a view that will filter the profiles based on

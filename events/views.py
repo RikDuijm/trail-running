@@ -6,9 +6,9 @@ from django.db.models import Q
 
 # Create your views here.
 def all_events(request):  
+    months = Month.objects.all()
     events = Event.objects.all()
-#    months = Month.objects.all()
-    return render(request, "events.html", {"events": events})  # {"months": months}, 
+    return render(request, "events.html", {"months": months}, {"events": events})  # , 
 
 def search_race_name(request):
     """Create a view that will filter the profiles based on
