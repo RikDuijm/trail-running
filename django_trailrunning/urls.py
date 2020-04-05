@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^home/', include('home.urls')),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^community/', include('community.urls')),
-    url(r'^discounts/', include(urls_discounts)),
+    url(r'^discounts/', include('discounts.urls')),  # , namespace='discounts'
     url(r'^cart/', include(urls_cart)),
     url(r'^search/', include(urls_search)),
     url(r'^checkout/', include(urls_checkout)),

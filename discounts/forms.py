@@ -1,7 +1,7 @@
 from django import forms
 
 from .fields import GroupedModelChoiceField
-from .models import Product, Size
+from .models import Product
 
 
 class SizeForm(forms.Form):
