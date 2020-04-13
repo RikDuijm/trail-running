@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <h1>Your cart</h1>
                 <div>
-                    <p class="text-left"><strong>Back to the <a href="{% url 'all_products' %}">product page</a></strong>.</p><p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span> 
+                    <p class="text-left"><strong>Back to the <a href="{% url 'products_list' %}">product page</a></strong>.</p><p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span> 
                 </div>
                 <div>
                     <a href="{% url 'checkout' %}" class="btn btn-info checkout-btn" role="button">Checkout</a>

@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.views.decorators.http import require_POST
+from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
+
 from discounts.models import Product
+from .cart import Cart
+from .forms import CartForm
 
 # Create your views here.
 
@@ -8,35 +13,62 @@ def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
 
-
-def add_to_cart(request, id):
-    if request.user.is_authenticated:
-
-        if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
-            quantity = int(request.POST.get('quantity')) 
-            # if request.POST.get('size'):
-            #     size = int(request.POST.get('size'))
-            #     print(size)
-
-            cart = request.session.get('cart', {})
-            size = int(request.POST.get('size'))
-            
-            if id in cart:
-                cart[id] = int(cart[id]) + quantity
-                print("in if")
-                print(size)
-            else:
-                cart[id] = cart.get(id, quantity)
-                
-                print("in else")
-                print(size)
-            request.session['cart'] = cart
+@require_POST
+def add_to_cart(request, product_id):
+    cart = Cart(request)
+    # get product object by id
+    product = get_object_or_404(Product, id=product_id)
+    # get selected size from request data
+    size = request.POST['size']
+    form = CartForm(request.POST)
+    
+    if request.user.is_authenticated and form.is_valid():
+        # add product to the cart
+        # or update it's quantity/ size
+        updated_cart = cart.add(product=product, size=size, quantity=form.cleaned_data['quantity'],
+                                update=form.cleaned_data['update'])
+        if updated_cart:
+            # if cart updated return success status
+            subtotal_price = cart.get_subtotal_price()
+            delivery_price = cart.get_delivery_price()
+            total_price = cart.get_total_price()
+            data = {
+                'size': size,
+                'subtotal_price': subtotal_price,
+                'delivery_price': delivery_price,
+                'total_price': total_price
+            }
+            return JsonResponse(data, status=200)   # 
         else:
-            messages.warning(request, 'You have to specify how many products you want to purchase.')
-    else:
-        messages.warning(request, 'You have to log in / register first, before you can purchase our products.')
+            # if cart not updated return error message
+            return HttpResponse(status=400)
+
+
+    #     if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
+    #         quantity = int(request.POST.get('quantity')) 
+    #         # if request.POST.get('size'):
+    #         #     size = int(request.POST.get('size'))
+    #         #     print(size)
+
+    #         cart = request.session.get('cart', {})
+    #         size = int(request.POST.get('size'))
             
-    return redirect(reverse('all_products'))
+    #         if id in cart:
+    #             cart[id] = int(cart[id]) + quantity
+    #             print("in if")
+    #             print(size)
+    #         else:
+    #             cart[id] = cart.get(id, quantity)
+                
+    #             print("in else")
+    #             print(size)
+    #         request.session['cart'] = cart
+    #     else:
+    #         messages.warning(request, 'You have to specify how many products you want to purchase.')
+    # else:
+    #     messages.warning(request, 'You have to log in / register first, before you can purchase our products.')
+            
+    # return redirect(reverse('products_list'))
 
 def adjust_cart(request, id):
     """Adjust the quantity of the specified product to the specified amount"""
@@ -65,4 +97,5 @@ def delete_from_cart(request, id):
     if id in cart:
         del cart[id]
     request.session['cart'] = cart
-    return redirect(reverse('view_cart')) 
+    return redirect(reverse('view_cart'))
+

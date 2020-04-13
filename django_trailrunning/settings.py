@@ -75,7 +75,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'cart.contexts.cart_contents',
+                'cart.context_processors.cart',
+                # 'cart.contexts.cart_contents',
             ],
         },
     },
@@ -140,6 +141,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+CART_SESSION_ID = 'cart'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )

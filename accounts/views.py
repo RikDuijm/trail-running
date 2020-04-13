@@ -100,7 +100,7 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user)
-    contactuserposts = ContactUser.objects.filter(sender=request.user) # instead of on profile of sender this has to be the placed on profile where it was send from!
+    contactuserposts = ContactUser.objects.filter(sender=request.user)  # instead of on profile of sender this has to be the placed on profile where it was send from!
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})     
 
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g

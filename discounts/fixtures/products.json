@@ -1,0 +1,220 @@
+[
+{
+  "model": "discounts.category",
+  "pk": 1,
+  "fields": {
+    "category": "Events"
+  }
+},
+{
+  "model": "discounts.category",
+  "pk": 2,
+  "fields": {
+    "category": "Shoes"
+  }
+},
+{
+  "model": "discounts.category",
+  "pk": 3,
+  "fields": {
+    "category": "Clothes"
+  }
+},
+{
+  "model": "discounts.category",
+  "pk": 6,
+  "fields": {
+    "category": "Accessories"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 1,
+  "fields": {
+    "size": "36"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 2,
+  "fields": {
+    "size": "37"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 3,
+  "fields": {
+    "size": "38"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 4,
+  "fields": {
+    "size": "39"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 5,
+  "fields": {
+    "size": "40"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 6,
+  "fields": {
+    "size": "41"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 7,
+  "fields": {
+    "size": "42"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 8,
+  "fields": {
+    "size": "43"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 9,
+  "fields": {
+    "size": "44"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 10,
+  "fields": {
+    "size": "45"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 11,
+  "fields": {
+    "size": "46"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 12,
+  "fields": {
+    "size": "47"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 13,
+  "fields": {
+    "size": "XS"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 14,
+  "fields": {
+    "size": "S"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 15,
+  "fields": {
+    "size": "M"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 16,
+  "fields": {
+    "size": "L"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 17,
+  "fields": {
+    "size": "XL"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 18,
+  "fields": {
+    "size": "no size necessary"
+  }
+},
+{
+  "model": "discounts.size",
+  "pk": 19,
+  "fields": {
+    "size": "37"
+  }
+},
+{
+  "model": "discounts.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "product_name": "Trailrun shoe",
+    "image": "product_images/shoe_zEPDkHo.png",
+    "description": "This is a nice shoe",
+    "normal_price": "150.00",
+    "price": "135.00",
+    "available": true,
+    "created_date": "2020-04-02T11:31:55.000Z",
+    "valid_until": "2020-05-02T11:30:41Z",
+    "size": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+  }
+},
+{
+  "model": "discounts.product",
+  "pk": 2,
+  "fields": {
+    "category": 2,
+    "product_name": "TomTom Runner 3",
+    "image": "product_images/hiclipart.com_1.png",
+    "description": "This is a nice watch",
+    "normal_price": "140.00",
+    "price": "120.00",
+    "available": true,
+    "created_date": "2020-04-02T11:38:30.060Z",
+    "valid_until": "2020-05-02T11:31:55Z",
+    "size": [ 18 ]
+  }
+},
+{
+  "model": "discounts.product",
+  "pk": 3,
+  "fields": {
+    "category": 3,
+    "product_name": "Kustmarathon Zeeland",
+    "image": "product_images/kustmarathon_pFh2Z46.jpg",
+    "description": "This in an event",
+    "normal_price": "47.00",
+    "price": "42.00",
+    "available": true,
+    "created_date": "2020-04-02T11:39:37.502Z",
+    "valid_until": "2020-09-02T11:38:37Z",
+    "size": [ 18 ]
+  }
+},
+{
+  "model": "discounts.stock",
+  "pk": 1,
+  "fields": {
+    "amount": 200,
+    "product": 3,
+    "size": 2
+  }
+}
+]

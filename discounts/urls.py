@@ -1,9 +1,9 @@
 from django.conf.urls import url, include
-from .views import all_products, product_detail
+from .views import products_list, product_detail
 
 
 urlpatterns = [
-    url(r'^$', all_products, name='all_products'),
-    url('(?P<category_slug>[-\w]+)/$', all_products, name='all_products'),
-    url('(?P<slug>[-\w]+)/(?P<pk>\d+)/$', product_detail, name='product_detail'),
+    url(r'^$', products_list, name='products_list'),
+    url(r'^(?P<product_id>\d+)/$', product_detail, name='product_detail'),
+    url(r'^(?P<category_name>[-\w]+)/$', products_list, name='products_list'),
 ]
