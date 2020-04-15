@@ -25,24 +25,39 @@ def add_to_cart(request, product_id):
     if request.user.is_authenticated and form.is_valid():
         # add product to the cart
         # or update it's quantity/ size
-        updated_cart = cart.add(product=product, size=size, quantity=form.cleaned_data['quantity'],
-                                update=form.cleaned_data['update'])
-        if updated_cart:
-            # if cart updated return success status
-            subtotal_price = cart.get_subtotal_price()
-            delivery_price = cart.get_delivery_price()
-            total_price = cart.get_total_price()
-            data = {
-                'size': size,
-                'subtotal_price': subtotal_price,
-                'delivery_price': delivery_price,
-                'total_price': total_price
-            }
-            return JsonResponse(data, status=200)   # 
-        else:
-            # if cart not updated return error message
-            return HttpResponse(status=400)
+        cd = form.cleaned_data
+        cart.add(product=product, size=size, quantity=cd['quantity'], update_quantity=cd['update'])
+        
+        print(product)
+        print(size)
+        
+    return redirect(reverse('products_list'))
 
+
+        # if updated_cart:
+        #     # if cart updated return success status
+        #     subtotal_price = cart.get_subtotal_price()
+        #     delivery_price = cart.get_delivery_price()
+        #     total_price = cart.get_total_price()
+        #     data = {
+        #         'size': size,
+        #         'subtotal_price': subtotal_price,
+        #         'total_price': total_price
+        #     }
+        #     return JsonResponse(data, status=200)   # 
+        # else:
+        #     # if cart not updated return error message
+        #     return HttpResponse(status=400)
+
+def cart_detail(request):
+    cart = Cart(request)
+    for item in cart:
+        # create form for each item in the cart
+        # to allow updating its quantity and size
+        item['update_quantity_form'] = CartForm(initial={'quantity': item['quantity'],'update': True})
+    args = {'cart': cart}
+    return render(request, 'cart/cart.html', args)
+    
 
     #     if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
     #         quantity = int(request.POST.get('quantity')) 
@@ -92,10 +107,10 @@ def adjust_cart(request, id):
             
     return redirect(reverse('view_cart'))
 
+
 def delete_from_cart(request, id):
     cart = request.session.get('cart', {})
     if id in cart:
         del cart[id]
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
-

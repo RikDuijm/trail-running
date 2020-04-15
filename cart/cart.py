@@ -13,66 +13,32 @@ class Cart(object):
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
             # save an empty cart in the session
-            cart = self.session[settings.CART_SESSION_ID] = []
+            cart = self.session[settings.CART_SESSION_ID] = {}  # []
         self.cart = cart
 
 
-    def add(self, product, size, quantity=1, update=False):
+    def add(self, product, size, quantity=1, update_quantity=False):
         # define dictionary for new product
-        new_product = {'product_id': str(product.id), 'quantity': 1, 'price': str(product.price), 'size': size}
-        size_object = product.size.filter(size=size)
-
+        # new_product = {'product_id': str(product.id), 'quantity': 1, 'price': str(product.price), 'size': size}
+        
+        
         # add product to the cart or update its quantity/size
-        if self.cart:
-            for item in self.cart:
-                if item['product_id'] == str(product.id) and item['size'] == size:
-                    if update:
-                        # if product and size is in the list and it is update request
-                        # update quantity
-                            item['quantity'] = quantity
-                    else:
-                        # if product and size is in the list and same product and size added
-                        # increase quantity by one
-                            item['quantity'] += 1
-                    self.save()
-                    return True        
-
-            for item in self.cart:
-                if item['product_id'] == str(product.id):
-                    if update:
-                        # if product is in the list and it is update request
-                        # change size
-                        item['size'] = size
-                        # update quantity
-                        item['quantity'] = quantity
-                    else:
-                        # if product is in the list and same product added with different size
-                        # add new size
-                        self.cart.append(new_product)
-                    self.save()
-                    return True
-
-            for item in self.cart:
-                # if product is not in the cart add it
-                if item['product_id'] != str(product.id):
-                    self.cart.append(new_product)
-                    self.save()
-                    return True
-
+        size = product.size.filter(size=size)
+        product_id = str(product.id)
+        if product_id not in self.cart:
+            self.cart[product_id] = {'quantity': 0, 'size': int(size), 'price': int(product.price)}
+        if update_quantity:
+            self.cart[product_id]['quantity'] = quantity
         else:
-            # if there are no items in the cart, add product
-            self.cart.append(new_product)
-            self.save()
-            return True
+            self.cart[product_id]['quantity'] += quantity        
+        self.save
 
     def save(self):
-        # update the session cart
-        self.session[settings.CART_SESSION_ID] = self.cart
-        # mark the session as "modified" to make sure it is saved
+        # mark the session as "modified" to make sure it gets saved.
         self.session.modified = True
 
     def remove(self, product_id, size):
-        # remove the product from the cart
+    # remove the product from the cart
         for item in self.cart:
             if item['product_id'] == product_id and str(item['size']) == size:
                 self.cart.remove(item)
@@ -112,4 +78,53 @@ class Cart(object):
     def clear(self):
         # remove cart from session
         del self.session[settings.CART_SESSION_ID]
-        self.session.modified = True
+        self.session.modified = True    
+
+        # if self.cart:
+        #     for item in self.cart:
+        #         if item['product_id'] == str(product.id) and item['size'] == size:
+        #             if update:
+        #                 # if product and size is in the list and it is update request
+        #                 # update quantity
+        #                     item['quantity'] = quantity
+        #             else:
+        #                 # if product and size is in the list and same product and size added
+        #                 # increase quantity by one
+        #                     item['quantity'] += 1
+        #             self.save()
+        #             return True        
+
+        #     for item in self.cart:
+        #         if item['product_id'] == str(product.id):
+        #             if update:
+        #                 # if product is in the list and it is update request
+        #                 # change size
+        #                 item['size'] = size
+        #                 # update quantity
+        #                 item['quantity'] = quantity
+        #             else:
+        #                 # if product is in the list and same product added with different size
+        #                 # add new size
+        #                 self.cart.append(new_product)
+        #             self.save()
+        #             return True
+
+        #     for item in self.cart:
+        #         # if product is not in the cart add it
+        #         if item['product_id'] != str(product.id):
+        #             self.cart.append(new_product)
+        #             self.save()
+        #             return True
+
+        # else:
+        #     # if there are no items in the cart, add product
+        #     self.cart.append(new_product)
+        #     self.save()
+        #     return True
+
+    # def save(self):
+    #     # update the session cart
+    #     self.session[settings.CART_SESSION_ID] = self.cart
+    #     # mark the session as "modified" to make sure it is saved
+    #     self.session.modified = True
+
