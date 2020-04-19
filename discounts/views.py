@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from .models import Category, Product, Size, Stock
-from cart.forms import CartForm
+from cart.forms import CartAddProductForm
 
 def products_list(request, category_name=None):
     selected_categories = None
@@ -24,7 +24,7 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     sizes = product.size.all()
     
-    cart_form = CartForm()                     
+    cart_form = CartAddProductForm()                     
 
     args = {'product': product, 'sizes': sizes, 'cart_form': cart_form}
 

@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.decorators.http import require_POST
-from django.http import HttpResponse, JsonResponse
-from django.contrib import messages
+# from django.http import HttpResponse, JsonResponse
+# from django.contrib import messages
 
 from discounts.models import Product
 from .cart import Cart
-from .forms import CartForm
+from .forms import CartAddProductForm
 
 # Create your views here.
 
-def view_cart(request):
+def cart_detail(request):
     """A View that renders the cart contents page"""
-    return render(request, "cart.html")
+    cart = Cart(request)
+    return render(request, "cart.html", {'cart': cart})
 
 @require_POST
 def add_to_cart(request, product_id):
@@ -19,19 +20,25 @@ def add_to_cart(request, product_id):
     # get product object by id
     product = get_object_or_404(Product, id=product_id)
     # get selected size from request data
-    size = request.POST['size']
-    form = CartForm(request.POST)
+    # size = request.POST['size']
+    form = CartAddProductForm(request.POST)
     
+
     if request.user.is_authenticated and form.is_valid():
         # add product to the cart
         # or update it's quantity/ size
         cd = form.cleaned_data
-        cart.add(product=product, size=size, quantity=cd['quantity'], update_quantity=cd['update'])
+        cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])  # size=size, 
         
-        print(product)
-        print(size)
-        
-    return redirect(reverse('products_list'))
+  
+    return redirect('cart:cart_detail')
+
+
+def delete_from_cart(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('cart:cart_detail')
 
 
         # if updated_cart:
@@ -108,9 +115,3 @@ def adjust_cart(request, id):
     return redirect(reverse('view_cart'))
 
 
-def delete_from_cart(request, id):
-    cart = request.session.get('cart', {})
-    if id in cart:
-        del cart[id]
-    request.session['cart'] = cart
-    return redirect(reverse('view_cart'))

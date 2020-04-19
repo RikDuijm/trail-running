@@ -1,0 +1,56 @@
+[
+{
+  "model": "events.event",
+  "pk": 1,
+  "fields": {
+    "day_of_month": 3,
+    "name": "Kustmarathon Zeeland",
+    "distance": "42 kilometers",
+    "distance_range": "42",
+    "normal_price": "47.00",
+    "price": "42.00",
+    "valid_until": "2020-09-02T16:48:11Z",
+    "date": "2020-10-03T16:48:11Z",
+    "description": "The Zeeland Coast Marathon is recognized as the toughest marathon in the Netherlands. 42195 meters of climbing and descending along the North Sea coast, normally battling autumn storms the track includes 12 kilometers sandy beach and 7 kilometers of steep dunes. An enormous challenge awaits you the first weekend of October!",
+    "image": "events_images/kustmarathon_fTSK3Gb.jpg",
+    "month": "October",
+    "region": "Zeeland - Schouwen-Duiveland - Walcheren"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 2,
+  "fields": {
+    "day_of_month": 2,
+    "name": "Ladies Run Zeeland",
+    "distance": "10 kilometers",
+    "distance_range": "10-15",
+    "normal_price": "15.00",
+    "price": "12.00",
+    "valid_until": "2020-09-02T16:50:00Z",
+    "date": "2020-10-02T16:50:00Z",
+    "description": "The Ladies run Zeeland is a beautiful track of 10 kilometers of climbing and descending along the North Sea coast, normally battling autumn storms. After sandy beaches and steep dunes you're welcomed with festivities in the beach town of Zoutelande.",
+    "image": "events_images/Ladiesrun_JQJuNs6.jpg",
+    "month": "October",
+    "region": "Walcheren"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 3,
+  "fields": {
+    "day_of_month": 20,
+    "name": "Halve van Renesse",
+    "distance": "21 kilometers",
+    "distance_range": "21-29",
+    "normal_price": "25.00",
+    "price": "20.00",
+    "valid_until": "2020-09-02T16:50:54Z",
+    "date": "2020-04-02T16:50:54Z",
+    "description": "beschrijving",
+    "image": "events_images/events_GR5xme8.jpg",
+    "month": "September",
+    "region": "Schouwen-Duiveland"
+  }
+}
+]
