@@ -19,8 +19,12 @@
                     
                     <br><br>
 
-                      {% for contactuserpost in contactuserposts %}
-                    Personal messages: {{ contactuserpost.title }}
+                    {% for contactuserpost in contactuserposts %}
+                    <strong>Personal messages: </strong>
+                    <p><span class="boldtext">Author:</span> <a href="#">{{contactuserpost.sender}}</a></p>
+                    <p><span class="boldtext">Title:</span> {{ contactuserpost.title }}</p>
+                    <p><span class="boldtext">Message:</span> {{ contactuserpost.content }}</p>      
+                    <p><span class="boldtext">Receiver:</span> {{ contactuserpost.receiver }}</p>                   
                     {% endfor %}
                     <br><br>
                   
@@ -48,7 +52,7 @@
                 {% endif %} 
 
                 {% if user !=  profile.userprofile.user %}
-                <a href="{% url 'contact_user' %}" class="btn btn-info post-details-btn">Contact User!</a> 
+                <a href="{% url 'contact_user' profile.userprofile.user.id %}" class="btn btn-info post-details-btn">Contact User!</a> 
                 {% else %}
                 {% endif %}        
                 </div>

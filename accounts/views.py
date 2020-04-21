@@ -96,13 +96,13 @@ def all_users(request):
     users = UserProfile.objects.all().order_by('last_name')
     return render(request, "allusers.html", {'users': users})   
 
-def user_profile(request):
+def user_profile(request, pk=None):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user)
-    contactuserposts = ContactUser.objects.filter(sender=request.user)  # instead of on profile of sender this has to be the placed on profile where it was send from!
-    return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})     
-
+    contactuserposts = ContactUser.objects.filter(sender=request.user)  # User
+    # instead of on profile of sender this has to be the placed on profile where it was send from! Should I make a field Receiver?
+    return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
 
@@ -127,25 +127,62 @@ def profile_post(request, pk=None):
         return redirect('login') 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
+# receiver = get_object_or_404(User, pk=pk)
+#                 print(sender)
+#                 print(receiver)
+
+
 def contact_user(request, pk=None):
     """
     Create a view that allows the logged-in user to contact another user
     """
-    sender = User.objects.get(email=request.user.email)
     if request.user.is_authenticated:  
         if request.method == 'POST':
             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
             if contact_profile_form.is_valid():
+                sender = User.objects.get(email=request.user.email)
+                receiver = get_object_or_404(User, pk=pk)
                 contactuserpost = contact_profile_form.save(commit=False)
-                contactuserpost.user = request.user
-                contactuserpost.save()              # this must be saved at profile of the user who is being contacted. 
-                # return redirect(user_profile_page)
+                contactuserpost.sender = request.user
+                print(sender)
+                print(receiver)
+                contactuserpost.save()              
+                # this must be saved at profile of the user who is being contacted (receiver) but it's safed to senders page...
                 return redirect(reverse('profile'))
         else:
             contact_profile_form = ContactProfileForm()
     else:
         return redirect('login') 
-    return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form, 'profile': sender})
+    return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})
+
+
+# def contact_user(request, pk=None):
+#     """
+#     Create a view that allows the logged-in user to contact another user
+#     """
+#     sender = User.objects.get(email=request.user.email)
+#     if request.user.is_authenticated:  
+#         if request.method == 'POST':
+#             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
+#             sender = User.objects.get(email=request.user.email)
+#             if contact_profile_form.is_valid():
+                
+#                 receiver = get_object_or_404(User, pk=pk)
+#                 contactuserpost = contact_profile_form.save(commit=False)
+#                 contactuserpost.sender = request.user
+#                 print(sender)
+#                 print(receiver)
+#                 contactuserpost.save()              
+#                 # this must be saved at profile of the user who is being contacted (receiver) but it's safed to Admin's page...
+#                 # also, in the database, it states that the post is created by Admin.
+#                 return redirect(reverse('profile'))
+#         else:
+#             contact_profile_form = ContactProfileForm()
+#     else:
+#         return redirect('login') 
+#     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form, 'profile': sender})
+
+
 
 
 def edit_profile(request, pk=None):
