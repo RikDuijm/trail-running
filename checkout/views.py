@@ -5,7 +5,7 @@ from .forms import MakePaymentForm, OrderForm
 from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
-from discounts.models import Product
+from discounts.models import Product, SKU
 import stripe
 
 # Create your views here.
@@ -30,11 +30,11 @@ def checkout(request):
 
             total = 0                                           # Initialize a total of 0 and then do a for loop. Go over ID and quantity in the cart_items. From that, we get the product.
             for id, quantity in cart.items():
-                product = get_object_or_404(Product, pk=id)     # Get the Product ID. To get the total,  add a quantity multiplied by product price.
-                total += quantity * product.price               
+                sku = get_object_or_404(SKU, pk=id)     # Get the Product ID. To get the total,  add a quantity multiplied by product price.
+                total += quantity * sku.product.price               
                 order_line_item = OrderLineItem(            	# OrderLineItem. takes the things just created: order, product, quantity. Save it and we have the details of the order.
                     order=order,
-                    product=product,
+                    sku=sku,
                     quantity=quantity
                 )
                 order_line_item.save()
@@ -54,7 +54,7 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid. We'll send you a confirmation of your purchase within one working day.")
                 request.session['cart'] = {}
-                return redirect(reverse('products_list'))
+                return redirect(reverse('all_products'))
             else:                                              
                 messages.error(request, "Unable to take payment")
                 print("Unable to take payment")

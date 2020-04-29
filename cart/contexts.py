@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
-from discounts.models import Product, Size 
-
+from discounts.models import Product, SKU
 
 def cart_contents(request):
     """
@@ -13,10 +12,11 @@ def cart_contents(request):
     product_count = 0
 
     for id, quantity in cart.items():     #!!    shoe_size                  
-        product = get_object_or_404(Product, pk=id)
-        total += quantity * product.price
+        sku = get_object_or_404(SKU, pk=id)
+        total += quantity * sku.product.price
         product_count += quantity
-        size = get_object_or_404(Size, pk=id)
-        cart_items.append({'id': id, 'quantity': quantity, 'size': size, 'product': product})
+        
+ #       size = get_object_or_404(Size, pk=id)
+        cart_items.append({'id': id, 'quantity': quantity, 'sku': sku}) 
         
     return {'cart_items': cart_items, 'total': total, 'product_count': product_count} 

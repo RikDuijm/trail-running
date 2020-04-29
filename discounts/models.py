@@ -1,50 +1,42 @@
-from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
-from django.urls import reverse
-
-class Category(models.Model):
-    category = models.CharField(max_length=200, null=True)
-
-    class Meta:
-        ordering = ['category']
-
-    def __unicode__(self):
-        return self.category
 
 
-class Size(models.Model):
-    size = models.CharField(max_length=20)
 
-    class Meta:
-        ordering = ['size']
 
-    def __unicode__(self):
-        return self.size
+TYPE_CHOICES = (
+    ("watches", "watches"),
+    ("clothes", "clothes"),
+    ("shoes", "shoes"),
+    ("events", "events"),
+)
 
 
 class Product(models.Model):
-    category = models.ForeignKey('Category', null=True, on_delete=models.CASCADE)
-    product_name = models.CharField(max_length=60, db_index=True) 
-    image = models.ImageField(upload_to="product_images", blank=True, null=True)
-    description = models.TextField(null=True)  
+    product_name = models.CharField(max_length=254, default='')
+    product_type = models.CharField(
+        max_length=10,
+        choices=TYPE_CHOICES,
+        default="shoes")
+    # size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
+    description = models.TextField(null=True)
     normal_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    size = models.ManyToManyField('Size')
-    available = models.BooleanField(default=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateTimeField(blank=True, null=True,
+                                          default=timezone.now)
     valid_until = models.DateTimeField(blank=True, null=True, default=timezone.now)                                    
+    image = models.ImageField(upload_to="product_images", blank=True, null=True)
+    # shoe_size = models.ManyToManyField('ShoeSize', null=True, blank=True, related_name="products")
+    # clothes_size = models.ForeignKey(ClothesSize, null=True, blank=True, related_name="products")
 
-    class Meta:
-        ordering = ['product_name']
-
-    def __unicode__(self):
+    def __str__(self):
         return self.product_name
 
 
-class Stock(models.Model):
-    amount = models.PositiveIntegerField()
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
-    size = models.ForeignKey('Size', on_delete=models.CASCADE)
+class SKU(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name="skus")
+    size = models.CharField(max_length=10, null=True, blank=True)
 
-    unique_together = ('product', 'size')
+    def __str__(self):
+        return "%s (size %s)" % (self.product.product_name, self.size)

@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <h1>Your cart</h1>
                 <div>
-                    <p class="text-left"><strong>Back to the <a href="{% url 'products_list' %}">product page</a></strong>.</p><p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span> 
+                    <p class="text-left"><strong>Back to the <a href="{% url 'all_products' %}">product page</a></strong>.</p><p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span> 
                 </div>
                 <div>
                     <a href="{% url 'checkout' %}" class="btn btn-info checkout-btn" role="button">Checkout</a>
@@ -42,7 +42,11 @@
             <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->           
             {% for item in cart_items %}
             <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">  
-                <h4 class="text-center">{{ item.product.product_name }}</h4> 
+                <h4 class="text-center">{{ item.sku.product.product_name }}</h4> 
+                <h6 class="text-center">Size: {{ item.sku.size }}</h6>
+                <span class="discount-price"><strong>Price: € {{ item.sku.product.price }}</strong></span></p>
+                <p><strong>Valid until:</strong><br> {{ item.sku.product.valid_until }}</p>      
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.sku.product.image }}')"></div>
                 <!--The adjust_cart view is used, to adjust the number of items the user wants to purchase. 
                  item.id is passed in to know of which item the quantity is adjusted of. -->
                 <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
@@ -66,17 +70,11 @@
                 <!-- item.product.product_name is used instead of product.product_name to only show the items that are within the cart_items. -->
                 <hr>
                 
-                <p class="product-price"><strong>Price per item:</strong> <span class="discount-price"> € {{ item.product.price }}  <br><br>
-                size: <br>
-                <!-- item.size.name: {{ item.size.name }}<br>
-                item.size: {{ item.size}}<br> -->
-                </p>
-                <p><strong>Offer valid until:</strong><br> {{ item.product.valid_until }}</p>
-                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-                <p class="product-description"><strong><br>Description:</strong><br>{{ item.product.description_introduction }} </p>
+                
+                <p class="product-description">{{ item.sku.product.description }} </p>
                 <p class=" btn btn-info product-description read-more">Read more</p>
                     <span class="product-description more-info">
-                    <p>{{ item.product.description_first }} <br><br> {{ item.product.description_second }} <br><br>  {{ item.product.description_third }}</p>
+                    <p>{{ item.product.description_first }} <br><br> {{ item.sku.product.description_second }} <br><br>  {{ item.product.description_third }}</p>
                     </span>    
             </div>            
             {% endfor %}

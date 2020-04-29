@@ -33,8 +33,13 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
             <!-- Loop over cart items -->
             {% for item in cart_items %}
                 <div class="col-11 col-md-5 col-lg-3 col-xl-2 discounts feature-text">  
-                    <h4 class="text-center">{{ item.product.product_name }}</h4> 
-                        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>                        
+                    <h4 class="text-center">{{ item.sku.product.product_name }}</h4> 
+                                    <h6 class="text-center">Size: {{ item.sku.size }}</h6>
+                <span class="discount-price"><strong>Price: € {{ item.sku.product.price }}</strong></span></p>
+                <p><strong>Valid until:</strong><br> {{ item.sku.product.valid_until }}</p>      
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.sku.product.image }}')"></div>
+
+                    
                                 <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong>
                                 <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.product.price }}</strong></span></p>
                                 <p class="product-price"><strong>Size: <span class="discount-price"> {{ item.size.name }} {{ item.size }}</strong></span></p>
