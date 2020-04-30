@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['rik-duijm-trail-running.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'inspiration',
     'contact',
     'accounts',
     'community',

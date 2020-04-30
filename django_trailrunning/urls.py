@@ -25,8 +25,8 @@ from events import urls as urls_events
 from search import urls as urls_search
 from checkout import urls as urls_checkout
 from contact import urls as urls_contact
+from inspiration import urls as urls_inspiration
 from accounts.views import index
-
 
 
 urlpatterns = [
@@ -42,4 +42,5 @@ urlpatterns = [
     url(r'^checkout/', include(urls_checkout)),
     url(r'^events/', include(urls_events)),
     url(r'^contact/', include(urls_contact)),
+    url(r'^inspiration/', include(urls_inspiration)),    
 ]

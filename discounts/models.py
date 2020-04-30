@@ -18,7 +18,6 @@ class Product(models.Model):
         max_length=10,
         choices=TYPE_CHOICES,
         default="shoes")
-    # size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
     description = models.TextField(null=True)
     normal_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
@@ -27,8 +26,6 @@ class Product(models.Model):
                                           default=timezone.now)
     valid_until = models.DateTimeField(blank=True, null=True, default=timezone.now)                                    
     image = models.ImageField(upload_to="product_images", blank=True, null=True)
-    # shoe_size = models.ManyToManyField('ShoeSize', null=True, blank=True, related_name="products")
-    # clothes_size = models.ForeignKey(ClothesSize, null=True, blank=True, related_name="products")
 
     def __str__(self):
         return self.product_name
