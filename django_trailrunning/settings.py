@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['rik-duijm-trail-running.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'contact',
     'accounts',
     'community',
     'home',
@@ -162,3 +163,5 @@ EMAIL_HOST = 'smtp.gmail.com'           # smtp is the protocol that is used to s
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL-PASSWORD")
 EMAIL_PORT = 587                        # the port that we're going to send this via is 587 for Gmail 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #  specifies which email backend is used
+

@@ -78,15 +78,6 @@ def registration(request):
         "registration_form": registration_form, "profile_form": profile_form})
 
 
-# def all_users(request):
-#     """
-#     Create a view that will return a list
-#     of Profiles that were published and render them 
-#     to the 'allprofiles.html' template
-#     """
-#     users = User.objects.all()
-#     return render(request, "allusers.html", {'users': users})   
-   
 def all_users(request):
     """
     Create a view that will return a list
@@ -141,7 +132,7 @@ def contact_user(request, pk=None):
             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
             if contact_profile_form.is_valid():
                 sender = User.objects.get(email=request.user.email)
-                receiver = get_object_or_404(User, pk=pk)
+                receiver = get_object_or_404(User, pk=pk)  ## ! This is not correct because the user is selected, so the perso who sends it. 
                 contactuserpost = contact_profile_form.save(commit=False)
                 contactuserpost.sender = request.user
                 print(sender)
@@ -156,43 +147,13 @@ def contact_user(request, pk=None):
     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})
 
 
-# def contact_user(request, pk=None):
-#     """
-#     Create a view that allows the logged-in user to contact another user
-#     """
-#     sender = User.objects.get(email=request.user.email)
-#     if request.user.is_authenticated:  
-#         if request.method == 'POST':
-#             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
-#             sender = User.objects.get(email=request.user.email)
-#             if contact_profile_form.is_valid():
-                
-#                 receiver = get_object_or_404(User, pk=pk)
-#                 contactuserpost = contact_profile_form.save(commit=False)
-#                 contactuserpost.sender = request.user
-#                 print(sender)
-#                 print(receiver)
-#                 contactuserpost.save()              
-#                 # this must be saved at profile of the user who is being contacted (receiver) but it's safed to Admin's page...
-#                 # also, in the database, it states that the post is created by Admin.
-#                 return redirect(reverse('profile'))
-#         else:
-#             contact_profile_form = ContactProfileForm()
-#     else:
-#         return redirect('login') 
-#     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form, 'profile': sender})
-
-
-
-
 def edit_profile(request, pk=None):
     """
     Create a view that allows user to edit his profile details
     """
     profiledetails = UserProfile.objects.filter(user=request.user).first()
     if UserProfile.objects.filter(user=request.user or request.user.is_superuser):
-    # if (request.user == profiledetails.user or
-    #         request.user.is_superuser):
+
         if request.method == "POST":
             profile_details_form = UserProfileForm(request.POST, request.FILES, instance=profiledetails)
             if profile_details_form.is_valid():

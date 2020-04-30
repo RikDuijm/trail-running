@@ -2,21 +2,21 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-        <section >
-            <article class="row col-11 inner-content feature-text">
-                <div class="col-md-7 offset-md-2 col-lg-4 ofsset-lg-4">
-                    <h1>Please log in</h1>
-                    <p class="text-center"><strong>If you don't have an account yet, you can <a href="{% url 'registration' %}">register here</a></strong>.</p>
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ login_form| as_bootstrap }}
-                    <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>       
-                        <button type="submit" class="btn btn-info">Login</button>
-                    </form>
-            
-                </div>
-            </article>
-        </section>
+    <section >
+        <article class="row col-11 inner-content feature-text">
+            <div class="col-md-7 offset-md-2 col-lg-4 ofsset-lg-4">
+                <h1>Please log in</h1>
+                <p class="text-center"><strong>If you don't have an account yet, you can <a href="{% url 'registration' %}">register here</a></strong>.</p>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ login_form| as_bootstrap }}
+                <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>       
+                    <button type="submit" class="btn btn-info">Login</button>
+                </form>
+
+            </div>
+        </article>
+    </section>
 
 
  
