@@ -29,6 +29,7 @@ class Article(models.Model):
     image_three = models.ImageField(upload_to="inspiration_images", blank=True, null=True)
     image_four = models.ImageField(upload_to="inspiration_images", blank=True, null=True)
     image_five = models.ImageField(upload_to="inspiration_images", blank=True, null=True)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return "{0} - category {1} - by {2}".format(self.title, self.category, self.author)

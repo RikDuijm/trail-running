@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Article
 
@@ -11,6 +11,11 @@ def get_articlesView(request):
     articles = Article.objects.filter(published_date__lte=timezone.now()
         ).order_by('-published_date').all()
     return render(request, "inspiration.html", {'articles': articles})
+
+
+def routes_destinationsView(request):
+    articles = Article.objects.filter(category='destinations')
+    return render(request, "routes_destinations.html", {'articles': articles})
 
 
 def article_detailView(request, pk):

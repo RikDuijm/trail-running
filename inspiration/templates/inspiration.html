@@ -10,24 +10,49 @@
             <h1>Inspiration</h1>       
                 <div class="row">
 
-            {% for article in articles %}
             <div class="col-xl-6">
+               <a class="nav-link" href="{% url 'routes_destinationsView' %}"> 
                 <div class="feature"> 
-                    <h2>{{ article.title|safe }}</h2>
-                    <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
-                     
-                    <p class="feature-text">{{ article.introduction|linebreaks }} <br>
-                    {{ article.content_one|safe }}
-                    </p>
-                    
-                    
-                    <span class="boldtext">Views:</span> {{article.views}}
-                    
-                    {#<p> <a href="{% url 'article_detailView' article.id %}"  class="btn btn-info">Read more</a></p> #}
+                    <h2>Exercise & Injuries</h2>
+                    <img src="/media/inspiration_images/exercise_injuries.jpg" class="feature-image">
+                    <p class="feature-text">Runners train their body in a very one-sided way. The repetitive movements have a great impact on the body.<br>
+                        Strength training and stretching is essential to reduce this impact and prevent injuries. So is a balanced lifestyle.</p>
                 </div>
+                </a>
             </div>
-        {% endfor %} 
-            
+
+            <div class="col-xl-6">
+                <a class="nav-link" href="{% url 'routes_destinationsView' %}"> 
+                <div class="feature"> 
+                    <h2>Routes & Destinations</h2>
+                    <img src="/media/inspiration_images/routes_destinations.jpg" class="feature-image">
+                    <p class="feature-text">Near home, but also in other countries or even continents.<br>
+                        Find here the most beautiful and spectacular destinations and routes that we have explored for you!</p>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-xl-6">
+               <a class="nav-link" href="{% url 'routes_destinationsView' %}"> 
+                <div class="feature"> 
+                    <h2>Health & Food</h2>
+                    <img src="/media/inspiration_images/health_food.jpg" class="feature-image">
+                    <p class="feature-text">The harder you train, the more attention you have to pay to your diet.<br>
+                        These dishes and supplements are easy to prepare and provide the balance you need for an optimal performance!</p>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-xl-6">
+              <a class="nav-link" href="{% url 'routes_destinationsView' %}"> 
+                <div class="feature"> 
+                    <h2>Stories</h2>
+                    <img src="/media/inspiration_images/stories.jpg" class="feature-image">
+                    <p class="feature-text">"... long after my footprints fade away, maybe I will have inspired a few to reject the easy path, hit the trails, put one foot in front of the other, and come to the same conclusion I did...."</p>
+                </div>
+                </a>
+            </div>
+           
         </article>
     </section>   
 

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap_tags %}
+
+    <section >
+
+
+        <article class="row col-11 inner-content">
+            <div class="col-12">
+            <h1>{{ article.title }}</h1> 
+            </div>
+
+            <p>
+            Author: {{ article.author }} | Views: {{article.views}} <a href="{% url 'routes_destinationsView' %}" class="btn btn-info">More stories</a><br><br>
+            {{ article.introduction }} <br><br>
+            {{ article.content_one }} <br><br>
+            {{ article.content_two }} 
+            <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
+            <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_one }}')"></div>
+            <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_two }}')"></div>
+            
+            
+            <div class="col-xl-6">
+
+
+        </article>
+    </section>   
+
+
+                                
+
+{% endblock %}
