@@ -4,15 +4,16 @@ from django.utils import timezone
 
 CATEGORY_CHOICES = (
     ("stories", "stories"),
-    ("health", "health"),
-    ("tests", "tests"),
+    ("health_food", "health_food"),
+    ("destinations", "destinations"),
+    ("exercise_injuries", "exercise_injuries"),
 )
 
 class Article(models.Model):
     published_date = models.DateTimeField(blank=True, null=True,
                                           default=timezone.now)
     category = models.CharField(
-        max_length=10,
+        max_length=20,
         choices=CATEGORY_CHOICES)
     title = models.CharField(max_length=254, default='')
     author = models.CharField(max_length=30, default='')

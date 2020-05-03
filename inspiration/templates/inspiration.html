@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap_tags %}
+
+    <section >
+
+
+        <article class="row col-11 inner-content">
+            
+            <h1>Inspiration</h1>       
+                <div class="row">
+
+            {% for article in articles %}
+            <div class="col-xl-6">
+                <div class="feature"> 
+                    <h2>{{ article.title|safe }}</h2>
+                    <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
+                     
+                    <p class="feature-text">{{ article.introduction|linebreaks }} <br>
+                    {{ article.content_one|safe }}
+                    </p>
+                    
+                    
+                    <span class="boldtext">Views:</span> {{article.views}}
+                    
+                    {#<p> <a href="{% url 'article_detailView' article.id %}"  class="btn btn-info">Read more</a></p> #}
+                </div>
+            </div>
+        {% endfor %} 
+            
+        </article>
+    </section>   
+
+
+                                
+
+{% endblock %}
