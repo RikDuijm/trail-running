@@ -2,53 +2,50 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-    <section >
+    <section class="inner-content">
+        <h1>Your adventure starts here!</h1>
 
-
-        <article class="row col-11 inner-content">
-            <h1>Your adventure starts here!</h1>       
-                <p>Welcome to the website for the trail runner. Whether you're looking for events to participate in, a training partner, practical advice on an injury, runner stories or products: you're at the right place! Learn more about this amazing sport and the people doing it!</p>
-
-
-            <div class="col-md-5">
+        <article class="row">
+            
+            <div class="col-xl-10">       
+                <p class="feature-text">Welcome to the website for the trail runner. Whether you're looking for events to participate in, a training partner, practical advice on an injury, runner stories or products: you're at the right place! Learn more about this amazing sport and the people doing it!</p>
+            </div>
+                  
+                        
+            <div class="col-xl-5 feature">
                 <a class="nav-link" href="{% url 'all_events' %}">
-                <div class="feature"> 
                     <h2>Events</h2>
                     <img src="/media/img/events.jpg" class="feature-image">
                     <p class="feature-text">Have a look at our race calender and enrol yourself for the races of your choice. We offer discounts on the registration fees!</p>
-                </div>
                 </a>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-xl-5 feature">
                 <a class="nav-link" href="{% url 'all_products' %}">
-                <div class="feature"> 
                     <h2>Discounts</h2>
-                    <img src="/media/img/discounts.jpg" class="feature-image">
+                    <img src="/media/img/discounts.png" class="feature-image">
                     <p class="feature-text">Become a member and receive 15% discount on products of our partner All4running.com. You find new offers every week!</p>
-                </div>
                 </a>
-            </div>
+            </div>                     
 
-            <div class="col-md-5">
+            <div class="col-xl-5 feature">
                 <a class="nav-link" href="{% url 'get_articles' %}">
-                <div class="feature"> 
                     <h2>Inspiration</h2>
                     <img src="/media/img/inspiration.jpg" class="feature-image">
                     <p class="feature-text">Stories of fellow runners, suprising routes and destination, how to prevent injuries, tips for a healthy and balanced diet. Read it all here!</p>
-                </div>
                 </a>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-xl-5 feature">
                 <a class="nav-link" href="{% url 'get_posts' %}">
-                <div class="feature"> 
                     <h2>Community</h2>
                     <img src="/media/img/community.jpg" class="feature-image">
-                    <p class="feature-text">Get in touch with other trailers, train together, have fun!<br>&nbsp;<br></p>
-                </div>
+                    <p class="feature-text">Get in touch with other trailers, train together, have fun!</p>            
                 </a>
             </div>
+
+            </div>
+                    </div>
         </article>
     </section>    
 {% endblock %}

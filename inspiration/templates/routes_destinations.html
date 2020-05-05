@@ -2,29 +2,25 @@
 {% block content %}
 {% load bootstrap_tags %}
 
-    <section >
+    <section class="inner-content">
+        <h1>Routes & Destinations</h1>
+            <div class="row">           
 
-
-        <article class="row col-11 inner-content">
-            <div class="col-12 ">
-            <h1>Routes & Destinations</h1>  </div>     <p>
-
-<div class="col-12">
             {% for article in articles %}
-            <div class="col-xl-4">
-                <div class="feature"> 
-                    <h2>{{ article.title|safe }}</h2>
+                <div class="col-xl-5 feature feature-text">
+                
+                    <h2>{{ article.title }}</h2>
                     <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
                      
                     <p class="feature-text">{{ article.introduction|linebreaks }}</p>
 
                     <p> <a href="{% url 'article_detailView' article.id %}"  class="btn btn-info">Read more</a></p> 
                 </div>
-            </div>
             
             {% endfor %} 
-            </p>
-        </article>
+            
+            </div>
+        </div>
     </section>   
 
 

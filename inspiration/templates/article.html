@@ -2,27 +2,31 @@
 {% block content %}
 {% load bootstrap_tags %}
 
-    <section >
-
-
-        <article class="row col-11 inner-content">
-            <div class="col-12">
-            <h1>{{ article.title }}</h1> 
-            </div>
-
-            <p>
-            Author: {{ article.author }} | Views: {{article.views}} <a href="{% url 'routes_destinationsView' %}" class="btn btn-info">More stories</a><br><br>
-            {{ article.introduction }} <br><br>
-            {{ article.content_one }} <br><br>
-            {{ article.content_two }} 
-            <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
-            <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_one }}')"></div>
-            <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_two }}')"></div>
+    <section class="inner-content-article"> 
+        <article class="row article-content">
+            <div>
+                <h1>{{ article.title }}</h1>   
+            </div>   
+            <div class="row advertisement col-12">              
+                   <div class="col-xs-6 col-sm-4">Author: {{ article.author }}</div> <div class="col-xs-6 col-sm-4">Views: {{article.views}}</div> <div class="col-xs-6 col-sm-4"><a href="{% url 'routes_destinationsView' %}" class="btn btn-info">More stories</a></div><br><br>
+            </div><br>       
+                {{ article.introduction|linebreaks }}
             
+                <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
+                <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_one }}')"></div>
+                <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_two }}')"></div>
+                {{ article.content_one|linebreaks }} 
+                
+                <div class="row advertisement col-12">
+                    <h5>{{ article.ad_one_introduction|linebreaks }}</h5>
+                    <div class="row">
+                        <div class="col-lg-6 ">{{ article.ad_one_content|linebreaks }} {{ article.ad_one_contact|safe  }}</div> <div class="col-lg-2 advertisement-image" style="background-image: url('{{ MEDIA_URL }}{{ article.ad_one_image }}')"></div><br>   
+                    </div>
+                </div>
+            <div>   
             
-            <div class="col-xl-6">
-
-
+                <h2 class="article-subheading" >{{ article.content_two }}</h2>
+            
         </article>
     </section>   
 
