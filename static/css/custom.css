@@ -16,7 +16,7 @@ body {
 
 #page-container {
     position: relative;
-    /* min-height: 80vh; */
+    min-height: 80vh;
 }
 
 .inner-content {
@@ -316,6 +316,10 @@ button:hover {
     display: none;
 }
 
+.read-more{
+    font-size: 16px;
+}
+
 .month-events {              
     display: none;
     margin: 5px;
@@ -345,6 +349,19 @@ button:hover {
 #search-btn {
     margin-top: 10px;
     margin-left: 10px;
+}
+
+#search-reset {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.events-list{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
 }
 
 .profile-thumbnail, .author-thumbnail {
@@ -402,8 +419,9 @@ li {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 160px;
+    /* margin-top: 10px; */
     margin-left: 10px;
     margin-bottom: 15px;
 }
@@ -411,3 +429,4 @@ li {
 .unfold {
     margin-right: 15px;
 }
+
