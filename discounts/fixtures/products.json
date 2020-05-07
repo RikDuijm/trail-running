@@ -1,220 +1,274 @@
 [
 {
-  "model": "discounts.category",
+  "model": "discounts.product",
   "pk": 1,
   "fields": {
-    "category": "Events"
+    "product_name": "Trailrun shoe",
+    "product_type": "shoes",
+    "description": "This is an iconic shoe that guarantees many adventures on any terrain type. It offers you stable and long-lasting running pleasure. Renowned stable outdoor shoe for all your outdoor activities!",
+    "more_info": "- Weight: 330 grams\r\n- Sole height: 11 mm drop\r\n- Waterproof: yes\r\n- Gender male",
+    "normal_price": "150.00",
+    "price": "135.00",
+    "created_date": "2020-04-02T11:31:55Z",
+    "published_date": "2020-01-04T13:27:30Z",
+    "valid_until": "2020-05-02T11:30:41Z",
+    "image": "product_images/shoe_zEPDkHo.png"
   }
 },
 {
-  "model": "discounts.category",
+  "model": "discounts.product",
   "pk": 2,
   "fields": {
-    "category": "Shoes"
+    "product_name": "TomTom Runner 3",
+    "product_type": "watches",
+    "description": "The TomTom Runner 3 offers activity tracking, route saving, a music player, a heart rate monitor and GPS, making it one of the most complete heart rate monitors!",
+    "more_info": "- Internal heart rate monitor\r\n- Internal music player 3GB - 500 songs (with more expensive version)\r\n- GPS\r\n- Saving and checking routes\r\n- Removable unit\r\n- Color choice\r\n- Activity tracking",
+    "normal_price": "140.00",
+    "price": "120.00",
+    "created_date": "2020-04-02T11:38:30.060Z",
+    "published_date": "2020-01-03T13:27:30Z",
+    "valid_until": "2020-05-02T11:31:55Z",
+    "image": "product_images/hiclipart.com_1.png"
   }
 },
 {
-  "model": "discounts.category",
+  "model": "discounts.product",
   "pk": 3,
   "fields": {
-    "category": "Clothes"
+    "product_name": "Kustmarathon Zeeland",
+    "product_type": "events",
+    "description": "Distance: 42 kilometers\r\nDate: Oct. 3, 2020",
+    "more_info": "The Zeeland Coast Marathon is recognized as the toughest marathon in the Netherlands. \r\n\r\n42195 meters of climbing and descending along the North Sea coast, normally battling autumn storms the track includes 12 kilometers sandy beach and 7 kilometers of steep dunes. \r\n\r\nAn enormous challenge awaits you the first weekend of October!",
+    "normal_price": "47.00",
+    "price": "42.00",
+    "created_date": "2020-04-02T11:39:37.502Z",
+    "published_date": "2020-01-05T13:27:30Z",
+    "valid_until": "2020-09-02T11:38:37Z",
+    "image": "product_images/kustmarathon_pFh2Z46.jpg"
   }
 },
 {
-  "model": "discounts.category",
+  "model": "discounts.product",
+  "pk": 4,
+  "fields": {
+    "product_name": "Ladies Run Zeeland",
+    "product_type": "events",
+    "description": "Distance: 10 kilometers\r\nDate: Oct. 2, 2020",
+    "more_info": "The Ladies run Zeeland is a beautiful track of 10 kilometers of climbing and descending along the North Sea coast, normally battling autumn storms. After sandy beaches and steep dunes you're welcomed with festivities in the beach town of Zoutelande.",
+    "normal_price": "15.00",
+    "price": "12.00",
+    "created_date": "2020-05-07T13:26:31.233Z",
+    "published_date": "2020-01-06T13:23:03Z",
+    "valid_until": "2020-09-07T13:23:03Z",
+    "image": "product_images/Ladiesrun.jpg"
+  }
+},
+{
+  "model": "discounts.product",
+  "pk": 5,
+  "fields": {
+    "product_name": "Halve van Renesse",
+    "product_type": "events",
+    "description": "Distance: 21 kilometers\r\nDate: September 20, 2020",
+    "more_info": "An extremely tough half marathon.\r\n\r\nStarting in the popular beach resort of Renesse, this trail goes continuously steeply up and down through the forest before you enter the beach. After the beach you enter the biggest sand dunes of the Netherlands. Nine out of ten participants have to walk here, instead of running.\r\n\r\nCome test yourself - if your are brave enough!",
+    "normal_price": "25.00",
+    "price": "20.00",
+    "created_date": "2020-05-07T13:37:30.431Z",
+    "published_date": "2020-01-07T13:00:11Z",
+    "valid_until": "2020-08-13T13:27:11Z",
+    "image": "product_images/events.jpg"
+  }
+},
+{
+  "model": "discounts.product",
   "pk": 6,
   "fields": {
-    "category": "Accessories"
+    "product_name": "Women\u2019s Long Sleeve",
+    "product_type": "clothes",
+    "description": "The X-Bionic Effektor Power Shirt unleashes the potential that until now seemed to be unrealistic \u2013 limits of muscle coordination, of body temperature regulation, heart rate, endurance, recovery time, lactate build-up and transmission of stimuli along nerve pathways.",
+    "more_info": "During sport activities body warmth is created: in extreme situations, up to 1,200 watts worth.  Up to 90 % of this is released by the athlete from the skin to maintain a body temperate of 37\u00b0C.  X-Bionic Partial Compression applies targeted pressure on 1mm wide ridges. Left and right of the ridge is a compression-free area where compression could have a negative effect on blood circulation to the skin. In this way the blood flow through veins and capillaries remain unimpeded. Partial Kompression uses the skin as a surface for cooling and, thus, can take advantage of the body\u2019s personal microclimate for optimising performance.",
+    "normal_price": "77.00",
+    "price": "70.00",
+    "created_date": "2020-05-07T14:43:00.394Z",
+    "published_date": "2020-01-02T14:42:28Z",
+    "valid_until": "2020-06-10T14:42:28Z",
+    "image": "product_images/shirt-2.png"
   }
 },
 {
-  "model": "discounts.size",
+  "model": "discounts.sku",
   "pk": 1,
   "fields": {
+    "product": 1,
     "size": "36"
   }
 },
 {
-  "model": "discounts.size",
+  "model": "discounts.sku",
   "pk": 2,
   "fields": {
+    "product": 1,
     "size": "37"
   }
 },
 {
-  "model": "discounts.size",
+  "model": "discounts.sku",
   "pk": 3,
   "fields": {
+    "product": 2,
+    "size": "not applicable"
+  }
+},
+{
+  "model": "discounts.sku",
+  "pk": 4,
+  "fields": {
+    "product": 3,
+    "size": "not applicable"
+  }
+},
+{
+  "model": "discounts.sku",
+  "pk": 5,
+  "fields": {
+    "product": 1,
     "size": "38"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 4,
+  "model": "discounts.sku",
+  "pk": 6,
   "fields": {
+    "product": 1,
     "size": "39"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 5,
+  "model": "discounts.sku",
+  "pk": 7,
   "fields": {
+    "product": 1,
     "size": "40"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 6,
+  "model": "discounts.sku",
+  "pk": 8,
   "fields": {
+    "product": 1,
     "size": "41"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 7,
+  "model": "discounts.sku",
+  "pk": 9,
   "fields": {
+    "product": 1,
     "size": "42"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 8,
+  "model": "discounts.sku",
+  "pk": 10,
   "fields": {
+    "product": 1,
     "size": "43"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 9,
+  "model": "discounts.sku",
+  "pk": 11,
   "fields": {
+    "product": 1,
     "size": "44"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 10,
+  "model": "discounts.sku",
+  "pk": 12,
   "fields": {
+    "product": 1,
     "size": "45"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 11,
+  "model": "discounts.sku",
+  "pk": 13,
   "fields": {
+    "product": 1,
     "size": "46"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 12,
+  "model": "discounts.sku",
+  "pk": 14,
   "fields": {
+    "product": 1,
     "size": "47"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 13,
+  "model": "discounts.sku",
+  "pk": 15,
   "fields": {
+    "product": 1,
+    "size": "48"
+  }
+},
+{
+  "model": "discounts.sku",
+  "pk": 16,
+  "fields": {
+    "product": 4,
+    "size": "not applicable"
+  }
+},
+{
+  "model": "discounts.sku",
+  "pk": 17,
+  "fields": {
+    "product": 5,
+    "size": "not applicable"
+  }
+},
+{
+  "model": "discounts.sku",
+  "pk": 18,
+  "fields": {
+    "product": 6,
     "size": "XS"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 14,
+  "model": "discounts.sku",
+  "pk": 19,
   "fields": {
+    "product": 6,
     "size": "S"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 15,
+  "model": "discounts.sku",
+  "pk": 20,
   "fields": {
+    "product": 6,
     "size": "M"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 16,
+  "model": "discounts.sku",
+  "pk": 21,
   "fields": {
+    "product": 6,
     "size": "L"
   }
 },
 {
-  "model": "discounts.size",
-  "pk": 17,
+  "model": "discounts.sku",
+  "pk": 22,
   "fields": {
+    "product": 6,
     "size": "XL"
-  }
-},
-{
-  "model": "discounts.size",
-  "pk": 18,
-  "fields": {
-    "size": "no size necessary"
-  }
-},
-{
-  "model": "discounts.size",
-  "pk": 19,
-  "fields": {
-    "size": "37"
-  }
-},
-{
-  "model": "discounts.product",
-  "pk": 1,
-  "fields": {
-    "category": 1,
-    "product_name": "Trailrun shoe",
-    "image": "product_images/shoe_zEPDkHo.png",
-    "description": "This is a nice shoe",
-    "normal_price": "150.00",
-    "price": "135.00",
-    "available": true,
-    "created_date": "2020-04-02T11:31:55.000Z",
-    "valid_until": "2020-05-02T11:30:41Z",
-    "size": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
-  }
-},
-{
-  "model": "discounts.product",
-  "pk": 2,
-  "fields": {
-    "category": 2,
-    "product_name": "TomTom Runner 3",
-    "image": "product_images/hiclipart.com_1.png",
-    "description": "This is a nice watch",
-    "normal_price": "140.00",
-    "price": "120.00",
-    "available": true,
-    "created_date": "2020-04-02T11:38:30.060Z",
-    "valid_until": "2020-05-02T11:31:55Z",
-    "size": [ 18 ]
-  }
-},
-{
-  "model": "discounts.product",
-  "pk": 3,
-  "fields": {
-    "category": 3,
-    "product_name": "Kustmarathon Zeeland",
-    "image": "product_images/kustmarathon_pFh2Z46.jpg",
-    "description": "This in an event",
-    "normal_price": "47.00",
-    "price": "42.00",
-    "available": true,
-    "created_date": "2020-04-02T11:39:37.502Z",
-    "valid_until": "2020-09-02T11:38:37Z",
-    "size": [ 18 ]
-  }
-},
-{
-  "model": "discounts.stock",
-  "pk": 1,
-  "fields": {
-    "amount": 200,
-    "product": 3,
-    "size": 2
   }
 }
 ]
