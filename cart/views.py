@@ -1,27 +1,12 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from discounts.forms import ProductForm
 from discounts.models import Product
 
 
 def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
-
-    """"How do i get the correct product?"""
-# @login_required
-# def add_size_quantity(request):
-#     size_form = ProductForm(request.POST)
-#     if size_form.is_valid():
-#         producttest = size_form.save(commit=False)
-#         producttest.user = request.user
-#         producttest.save()
-#         size = size_form.cleaned_data['size']
-#         quantity = size_form.cleaned_data['quantity']
-
-#         args = {'size_form': size_form, 'size': size, 'quantity': quantity}
-#         return render(request, "test2.html", args)
 
 
 def add_to_cart(request, id):
