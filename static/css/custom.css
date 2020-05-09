@@ -31,6 +31,29 @@ body {
     } 
 }
 
+.inner-content-products{
+    margin-left: 12%;
+    margin-right: 5%;     
+}
+
+@media (min-width: 768px) {
+.inner-content-products {
+    margin-left: 14%;       
+    } 
+}
+
+@media (min-width: 1200px) {
+.inner-content-products {
+    margin-left: 17%;       
+    } 
+}
+
+.inner-content-checkout {
+    margin-left: 5%;
+    margin-right: 5%;    
+}
+
+
 .inner-content-article {
     margin-left: 10%;
     margin-right: 10%; 
@@ -329,6 +352,7 @@ button:hover {
 }
 
 .post-details-btn, .checkout-btn {
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
