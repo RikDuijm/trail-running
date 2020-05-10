@@ -1,42 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <div class="container blog-post feature-text">
-            <div class="row">
-            
-                <div class="col-6 col-sm-3 col-lg-2">
-                    {% if post.author.userprofile.image %}
-                    <div class="author-thumbnail" width="40px" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
-                    {% else %}    
-                    <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
-                    {% endif %}
-                </div>
-                <div class="col-6 author">
-                    <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>      
-                </div>
-            </div>
+    <section class="inner-content-article"> 
 
-            <div class="row">
-                <div class="col-12 blog-article">   
-                <hr>          
-                <h1>{{ post.title }}</h1>
-                <p>{{ post.content|linebreaks }}</p>
-                    {% if post.image %}
-                    <img class="img-blogpost" src="/media/{{ post.image }}" width="250px">
-                    {% endif %}
-                    <p>
-                    <span class="boldtext">Published on:</span> {{ post.published_date }} <br>
-                    <span class="boldtext">Views:</span> {{post.views}}
-                    </p>                 
-                    {% if user == post.author or user.is_superuser %}
-                    <a href="{% url 'edit_post' post.id %}" class="btn btn-info post-details-btn">Edit Post</a>
-                    <a href="{% url 'delete_post' post.id %}" class="btn btn-info post-details-btn">Delete Post</a>
-                    {% else %}
-                    {% endif %}
-                    <a href="{% url 'get_posts' %}" class="btn btn-info post-details-btn">Back to Blog</a>
+        <h1>Forum</h1>
+
+            <div class="container blog-post forum">
+                <div class="row">
+                    <div class="col-6 col-sm-3 col-lg-2 ">
+                        {% if post.author.userprofile.image %}
+                        <div class="author-thumbnail" width="40px" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
+                        {% else %}    
+                        <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
+                        {% endif %}
+                    </div>
+                    <div class="col-6 author">
+                        <span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a><br>
+                        <span class="boldtext">Views:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.views}}</a><br>    
+                    </div>
+                </div><br><br><br>
+            </div>
+          
+            <div class="container blog-post">  
+                <div class="blog-article">
+                    <p>Published on:</span> {{ post.published_date }}</p>
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content|linebreaks }}</p>
+                        {% if post.image %}
+                        <img class="feature-image" src="/media/{{ post.image }}">
+                        <br>
+                        {% endif %} 
+                        {% if user == post.author or user.is_superuser %}
+                        <a href="{% url 'edit_post' post.id %}" class="btn btn-info post-details-btn">Edit Post</a>
+                        <a href="{% url 'delete_post' post.id %}" class="btn btn-info post-details-btn">Delete Post</a>
+                        {% else %}
+                        {% endif %}
+                        <a href="{% url 'get_posts' %}" class="btn btn-info post-details-btn">Back to Blog</a>
                 </div>
             </div>
-        </div>
+    </section>
                     
                 
 {% endblock %}

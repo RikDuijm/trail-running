@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <section >
-        <article class="row col-11 inner-content feature-text">
+    <section class="inner-content-article"> 
 
-        {% if messages %}
+        <h1>Forum</h1>
+
+        <!-- {% if messages %}
             <ul class="messages">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
             </ul>
-        {% endif %}
+        {% endif %} -->
 
         {% for post in posts %}
-        <div class="container blog-post feature-text">
+        <div class="container blog-post forum">
             <div class="row">
-                <div class="col-6 col-sm-3 col-lg-2">
+                <div class="col-6 col-sm-3 col-lg-2 ">
                     {% if post.author.userprofile.image %}
                     <div class="author-thumbnail" width="40px" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
                     {% else %}    
@@ -23,23 +24,21 @@
                     {% endif %}
                 </div>
                 <div class="col-6 author">
-                    <p><span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a></p>      
+                    <span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a><br>
+                    <span class="boldtext">Views:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.views}}</a><br>    
                 </div>
-            </div>
-            <div class="row">
+            </div><br><br><br>
+        </div>    
+        <div class="container blog-post">    
                 <div class="col-12 blog-article">   
-                <hr>          
+                    <p>Published on: {{ post.published_date }}</p>
                     <h2>{{ post.title }}</h2>
-                                <p>{{ post.content|linebreaks|truncatewords:30 }}</p>
-                                <p><a href="{% url 'post_detail' post.id %}"  class="btn btn-info">Read more</a></p>
-                                <p>
-                                <span class="boldtext">Published on:</span> {{ post.published_date }} <br>
-                                <span class="boldtext">Views:</span> {{post.views}}
-                                </p>
+                    <p>{{ post.content|linebreaks|truncatewords:60 }}
+                    <a href="{% url 'post_detail' post.id %}"  class="btn btn-info">Read more</a>
+                    </p>
                 </div>    
-            </div>
-        </div>
+        </div> 
+        <br><br>
         {% endfor %} 
-        </article>
     </section>
 {% endblock %}

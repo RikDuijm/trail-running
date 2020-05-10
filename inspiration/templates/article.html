@@ -7,8 +7,10 @@
            
                 <h1>{{ article.title }}</h1>   
             <div class="row advertisement col-12">              
-                   <div class="col-xs-6 col-sm-4">Author: {{ article.author }}</div> <div class="col-xs-6 col-sm-4">Views: {{article.views}}</div> <div class="col-xs-6 col-sm-4"><a href="{% url 'routes_destinationsView' %}" class="btn btn-info">More stories</a></div><br><br>
-            </div><br>       
+                   <div class="col-xs-6 col-sm-4">Author: {{ article.author }}</div> 
+                   <div class="col-xs-6 col-sm-4">Views: {{article.views}}</div> 
+                   <div class="col-xs-6 col-sm-4"><a href="{% url 'routes_destinationsView' %}" class="btn btn-info">More stories</a></div><br><br></div>
+                   <br>       
                 {{ article.introduction|linebreaks }}
             
                 <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
