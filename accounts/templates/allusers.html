@@ -1,57 +1,69 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
-
-
 {% block content %}
-    <div class="col-11 container inner-content">
-        <h1 class="text-center">Profiles</h1>
-            <p><strong>You can search the user profiles on first and last name & location:</strong></p>
-                <div class="row col-12">
-                    <div class="col-xl-4 col-lg-12">
-                    <form action="{% url 'search_user_first_name' %}" method="get">
-                        <input type="text" placeholder=" First Name" name="q1">
-                        <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button> 
-                    </form>
+
+    <section class="inner-content-article feature-text">
+        <article class="row article-content"> 
+            <h1 class="text-center">Profiles</h1>
+
+            <div class="row advertisement col-12"> 
+                <strong>You can search the user profiles on first and last name & location:</strong> 
+
+    
+                <div class="row col-12 search-box">
+                    <div class="col-xl-3 col-lg-6">
+                        <form action="{% url 'search_user_first_name' %}" method="get">
+                            <input type="text" size="15" placeholder=" First Name" name="q1">
+                            <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button> 
+                        </form>
                     </div>
-                    <div class="col-xl-4 col-lg-12">
-                    <form action="{% url 'search_user_last_name' %}" method="get">
-                        <input type="text" placeholder=" Last Name" name="q2">
-                        <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button> 
-                    </form>
+                    <div class="col-xl-3 col-lg-6">
+                        <form action="{% url 'search_user_last_name' %}" method="get">
+                            <input type="text" size="15" placeholder=" Last Name" name="q2">
+                            <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button> 
+                        </form>
                     </div>
-                    <div class="col-xl-4 col-lg-12">
-                    <form action="{% url 'search_user_location' %}" method="get">
-                        <input type="text" placeholder=" Location" name="q3">
-                        <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
-                    </form>
-                    </div>           
+                    <div class="col-xl-3 col-lg-6">
+                        <form action="{% url 'search_user_location' %}" method="get">
+                            <input type="text" size="15" placeholder=" Location" name="q3">
+                            <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
+                        </form>
+                    </div>
+                    <div class="col-xl-3 offset-xl-0 col-lg-1 offset-lg-4">
+                        <p class="text-center"><a href="{% url 'all_users' %}" class="btn btn-info" id="search-reset">Reset</a></p>
+                    </div>
+
                 </div>                          
             </div>
+        </article>
 
-        <div class="col-10 offset-1 profiles">
-         
+        <br>
+        
         {% for user in users %}
+        <div class="container blog-post forum">
             <div class="row">
-                <div class="col-2 offset-1 more-margin-left small-less-margin-left"> 
+                <div class="col-6 col-sm-3 col-lg-2 ">
                 {% if user.image %}
-                    <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.image }}')"></div>
+                    <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.image }}')" max-height: 100%;></div>
                 {% else %}    
-                <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
+                <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic">
+                </div>
                 {% endif %}
                 </div>
-                <div class="col-3 offset-4 profile-thumbnail-name less-margin-left">           
-                        <h3><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h3>
+                <div class="col-6 profile-thumbnail-name">        
+                        <h5><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h5>
                     </a>
                     {{user.first_name}} {{user.last_name}}
                     <br>{{ user.gender }}, {{ user.age }}
                     <br>{{ user.location }}
                 </div>
             </div>
-            <hr>
+        </div>    
+        <br>
         {% endfor %}
-        </div>
-        </div>
-    </div>
+        
+    </section>    
+     
         
 
 {% endblock %}                

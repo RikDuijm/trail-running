@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load bootstrap_tags %}
 {% block content %}
 
-    <section class="inner-content-article"> 
+    <section class="inner-content-article feature-text"> 
 
         <h1>Forum</h1>
 
@@ -33,7 +34,7 @@
                 <div class="col-12 blog-article">   
                     <p>Published on: {{ post.published_date }}</p>
                     <h2>{{ post.title }}</h2>
-                    <p>{{ post.content|linebreaks|truncatewords:60 }}
+                    <p>{{ post.content|linebreaks|truncatewords:60 }}<br><br>
                     <a href="{% url 'post_detail' post.id %}"  class="btn btn-info">Read more</a>
                     </p>
                 </div>    

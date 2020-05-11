@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <section class="inner-content-article"> 
+    <section class="inner-content-article feature-text"> 
         <article class="row article-content">
         
             <h1>Race calender</h1>
@@ -17,50 +17,50 @@
                 </form>
             </div><br>   
 
-                <div class="row advertisement col-12"> 
-                    <strong>Or search by month, distance or region:</strong> 
+            <div class="row advertisement col-12"> 
+                <strong>Or search by month, distance or region:</strong> 
 
-                    <div class="row col-12 search-box feature-text">
-                        <div class="col-xl-3 col-lg-6">
-                        <form action="{% url 'search_race_month' %}" method="get">
-                            <select id="month" name="q2">
-                                    <option value=" "> Select a month</option> 
-                                    <option value="september"> September</option>
-                                    <option value="october"> October</option> 
+                <div class="row col-12 search-box">
+                    <div class="col-xl-3 col-lg-6">
+                    <form action="{% url 'search_race_month' %}" method="get">
+                        <select id="month" name="q2">
+                                <option value=" "> Select a month</option> 
+                                <option value="september"> September</option>
+                                <option value="october"> October</option> 
+                            </select> 
+                            <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>
+                    </form>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                    <form action="{% url 'search_race_distance' %}" method="get">              
+                        <select id="distance" name="q3">
+                                <option value=" "> Select distance</option>  
+                                <option value="10-15">10 - 15 kilometers</option>
+                                <option value="16-20">16 - 20 kilometers</option> 
+                                <option value="21-29">21 - 29 kilometers</option> 
+                                <option value="30+">Over 30 kilometers</option> 
+                                <option value="42">marathon</option>                              
                                 </select> 
-                                <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>
-                        </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-6">
-                        <form action="{% url 'search_race_distance' %}" method="get">              
-                            <select id="distance" name="q3">
-                                    <option value=" "> Select distance</option>  
-                                    <option value="10-15">10 - 15 kilometers</option>
-                                    <option value="16-20">16 - 20 kilometers</option> 
-                                    <option value="21-29">21 - 29 kilometers</option> 
-                                    <option value="30+">Over 30 kilometers</option> 
-                                    <option value="42">marathon</option>                              
-                                    </select> 
-                            <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                 
-                        </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-6">
-                        <form action="{% url 'search_race_region' %}" method="get">              
-                            <select id="region" name="q4">
-                                    <option value=" "> Select region</option>   
-                                    <option value="zeeland">Zeeland</option>
-                                    <option value="schouwen-duiveland">Schouwen-Duiveland</option> 
-                                    <option value="walcheren">Walcheren</option> 
+                        <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                 
+                    </form>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                    <form action="{% url 'search_race_region' %}" method="get">              
+                        <select id="region" name="q4">
+                                <option value=" "> Select region</option>   
+                                <option value="zeeland">Zeeland</option>
+                                <option value="schouwen-duiveland">Schouwen-Duiveland</option> 
+                                <option value="walcheren">Walcheren</option> 
 
-                                    </select> 
-                            <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
-                        </form>
-                        </div>
-                        <div class="col-xl-3 offset-xl-0 col-lg-1 offset-lg-4">
-                        <p class="text-center"><a href="{% url 'all_events' %}" class="btn btn-info" id="search-reset">Reset</a></p>
-                        </div>
-                    </div>    
-                </div>
+                                </select> 
+                        <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                  
+                    </form>
+                    </div>
+                    <div class="col-xl-3 offset-xl-0 col-lg-1 offset-lg-4">
+                    <p class="text-center"><a href="{% url 'all_events' %}" class="btn btn-info" id="search-reset">Reset</a></p>
+                    </div>
+                </div>    
+            </div>
             
                 {% for event in events.all|dictsort:"date" %}
                 <div class="row col-11 feature-text events-list">                       
