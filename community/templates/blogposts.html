@@ -25,8 +25,12 @@
                     {% endif %}
                 </div>
                 <div class="col-6 author">
+                    {% if user.is_authenticated %}
                     <span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a><br>
-                    <span class="boldtext">Views:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.views}}</a><br>    
+                    {% else %}
+                    <span class="boldtext">Author:</span> {{post.author}}<br>
+                    {% endif %} 
+                    <span class="boldtext">Views:</span> {{post.views}}<br>    
                 </div>
             </div><br><br><br>
         </div>    

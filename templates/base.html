@@ -37,25 +37,28 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'get_articles' %}"><span class="menu-item">Inspiration</span></a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item active dropdown">
                             <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+                            <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
                             <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
-                            <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>
-                            
+                            <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>                           
                             </div>
                         </li>
-
+                        {% else %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'get_posts' %}"><span class="menu-item">Forum</span></a>
+                        </li>    
+                        {% endif %} 
                         {% if user.is_authenticated %}
                         <li class="nav-item active dropdown">
-                            <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Profiles</span></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
-                            <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
-                            <a class="dropdown-item" href="{% url 'profile' %}">Your Profile</a>
-                            
-                        </li>
+                            <!-- <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Profiles</span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">Your Profile</span></a>
+                        </li>    
+
                         <li class="nav-item active">
                             <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
                         </li>
@@ -71,8 +74,6 @@
                             <a class="nav-link" href="{% url 'contact' %}"><span class="menu-item">Contact</span></a>
                         </li>
                         </ul>
-                        
-
                     </div>
                 
                         <ul class="navbar-nav ml-auto">
@@ -92,21 +93,8 @@
                     <img src="/media/img/header-image.jpg" style="width:100%;height:100%;">                    
         </header>
     
-{% if messages %}
-
-<!--
-<div class="row inner-content">
-<div class="col-sm-6, offset-sm-5">
-
-    {% for message in messages %}
-    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-    {% endfor %}
-</div>
-</div>-->
-{% endif %}
-            
         <article>
-            <div class="alert alert-info alert-center">  
+            <div class="alert alert-info alert-center col-10">  
                                 <p class="login-message"><strong><em>
                                 {% if user.is_authenticated %}
                                 Welcome {{ user }}!
