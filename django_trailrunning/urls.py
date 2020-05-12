@@ -22,7 +22,6 @@ from accounts import urls as accounts_urls
 from cart import urls as urls_cart
 from discounts import urls as discounts_urls
 from events import urls as urls_events
-from search import urls as urls_search
 from checkout import urls as urls_checkout
 from contact import urls as urls_contact
 from inspiration import urls as urls_inspiration
@@ -38,7 +37,6 @@ urlpatterns = [
     url(r'^community/', include('community.urls')),
     url(r'^cart/', include(urls_cart)),
     url(r'^discounts/', include(discounts_urls)),
-    url(r'^search/', include(urls_search)),
     url(r'^checkout/', include(urls_checkout)),
     url(r'^events/', include(urls_events)),
     url(r'^contact/', include(urls_contact)),
