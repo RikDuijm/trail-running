@@ -231,6 +231,14 @@ button:hover {
     width: 50%;
 }
 
+.userprofile-details-pic-big{
+    display: block;
+    margin-top: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 100%;
+}
+
 .discounts, .profiles {
     border-style: solid;
     border-color: #DEF2F1;
@@ -464,3 +472,6 @@ li {
     margin-right: 15px;
 }
 
+.form-position{
+    margin-top:20px;
+}

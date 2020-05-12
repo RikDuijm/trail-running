@@ -65,4 +65,4 @@ class ProfilePostForm(forms.ModelForm):
 class ContactProfileForm(forms.ModelForm):
     class Meta:
         model = ContactUser
-        fields = ['receiver', 'title', 'content', 'published_date', 'image']        
+        fields = ['recipient', 'subject', 'message', 'date', 'image']

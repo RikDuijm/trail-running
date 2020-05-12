@@ -91,7 +91,7 @@ def user_profile(request, pk=None):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user)
-    contactuserposts = ContactUser.objects.filter(sender=request.user)  # User
+    contactuserposts = ContactUser.objects.all()  # User
     # instead of on profile of sender this has to be the placed on profile where it was send from! Should I make a field Receiver?
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
@@ -118,10 +118,6 @@ def profile_post(request, pk=None):
         return redirect('login') 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
-# receiver = get_object_or_404(User, pk=pk)
-#                 print(sender)
-#                 print(receiver)
-
 
 def contact_user(request, pk=None):
     """
@@ -132,13 +128,10 @@ def contact_user(request, pk=None):
             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
             if contact_profile_form.is_valid():
                 sender = User.objects.get(email=request.user.email)
-                receiver = get_object_or_404(User, pk=pk)  ## ! This is not correct because the user is selected, so the perso who sends it. 
                 contactuserpost = contact_profile_form.save(commit=False)
                 contactuserpost.sender = request.user
                 print(sender)
-                print(receiver)
                 contactuserpost.save()              
-                # this must be saved at profile of the user who is being contacted (receiver) but it's safed to senders page...
                 return redirect(reverse('profile'))
         else:
             contact_profile_form = ContactProfileForm()
@@ -246,16 +239,6 @@ def user_profile_page(request, pk=None):
     # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
-
- 
-# def search_user(request):
-#     """Create a view that will filter the profiles based on
-#     first name, last name and location"""
-    # q = request.GET.get('q')
-    # users = UserProfile.objects.filter(
-    #     Q(first_name__icontains=q) | Q(last_name__icontains=q) | Q(location__icontains=q)
-    # )    
-#     return render(request, "allusers.html", {"users": users})
 
 
 def search_user_first_name(request):

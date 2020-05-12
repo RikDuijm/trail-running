@@ -4,37 +4,40 @@
 
 {% block content %}
 
-    <div class="col-11 inner-content">
+    <section class="inner-content-article"> 
+        <article class="row">
         <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
 
         <div class="container-fluid">
             <div class="row col-10 offset-1 blog-post">
-                <div class="col-10 col-md-3 offset-md-1 userprofile-details feature-text">
-                    <p>First name: {{ profile.userprofile.first_name }}</p>
-                    <p>Last name: {{ profile.userprofile.last_name }}</p>
-                    <p>Email: {{ profile.email }}</p>
-                    <p>Location: {{ profile.userprofile.location }}</p>
-                    <p>Gender: {{ profile.userprofile.gender}}</p>
-                    <p>Age: {{ profile.userprofile.age}}</p>
+                <div class="col-12 col-md-4 offset-1  userprofile-details feature-text">
+                    <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
+                    <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
+                    <p><strong>Email:</strong> {{ profile.email }}</p>
+                    <p><strong>Location:</strong> {{ profile.userprofile.location }}</p>
+                    <p><strong>Gender:</strong> {{ profile.userprofile.gender}}</p>
+                    <p><strong>Age:</strong> {{ profile.userprofile.age}}</p>
                     
-                    <br><br>
+                   
 
                     {% for contactuserpost in contactuserposts %}
-                    <strong>Personal messages: </strong>
-                    <p><span class="boldtext">Author:</span> <a href="#">{{contactuserpost.sender}}</a></p>
-                    <p><span class="boldtext">Title:</span> {{ contactuserpost.title }}</p>
-                    <p><span class="boldtext">Message:</span> {{ contactuserpost.content }}</p>      
-                    <p><span class="boldtext">Receiver:</span> {{ contactuserpost.receiver }}</p>                   
+                        {% if contactuserpost.recipient == request.user  %}
+                            <h4>Personal messages: </h4>
+                            <p><strong>From:</strong> <a href="#">{{contactuserpost.sender}}</a></p>
+                            <p><strong>Date:</strong> {{contactuserpost.published_date}}</p>
+                            <p><strong>Subject:</strong> {{ contactuserpost.title }}</p>
+                            <p><strong>Message:</strong><br> {{ contactuserpost.content }}</p>
+                            <hr>      
+                        {% else %}
+                        {% endif %}                   
                     {% endfor %}
-                    <br><br>
-                  
-
+                
                 </div>    
-                <div class="col-10 col-md-8">
+                <div class="col-12 col-md-7 col-lg-5 col-xl-4">
                     {% if profile.userprofile.image %}
-                    <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic">
+                    <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic-big">
                     {% else %}
-                        <img src="/media/img/runner-male.png" alt="profile image" width="100px" class="userprofile-details-pic">
+                        <img src="/media/img/runner-male.png" alt="profile image" width="100px" class="userprofile-details-pic-big">
                     {% endif %}
                 </div>
                 

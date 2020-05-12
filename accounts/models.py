@@ -39,12 +39,12 @@ class ProfilePost(models.Model):
 
 class ContactUser(models.Model):
     sender = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT)
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     image = models.ImageField(upload_to="profile_images", blank=True, null=True)
-    receiver = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT, related_name="receiver")
-    # recepient = models.
+    recipient = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT, related_name="recipient")
+    
 
     def __str__(self):
         return "{0} (by {1})".format(self.title, self.sender)

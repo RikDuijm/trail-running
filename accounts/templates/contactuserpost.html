@@ -2,9 +2,12 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-    <section >
-        <article class="row col-11 inner-content feature-text">
-            <div class="col-md-7 offset-md-2 col-lg-4 ofsset-lg-4">
+    <section class="inner-content-article">
+        <div class="row">
+            <h1>Send a message to:</h1>
+        </div>
+        <div class="row">
+            <div class="col-10 offset-1  col-md-8 offset-md-2 form-position">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %} 
                     {{ contact_profile_form | as_bootstrap }}
