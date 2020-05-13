@@ -13,25 +13,9 @@
                 <div class="col-12 col-md-4 offset-1  userprofile-details feature-text">
                     <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
                     <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
-                    <p><strong>Email:</strong> {{ profile.email }}</p>
                     <p><strong>Location:</strong> {{ profile.userprofile.location }}</p>
                     <p><strong>Gender:</strong> {{ profile.userprofile.gender}}</p>
-                    <p><strong>Age:</strong> {{ profile.userprofile.age}}</p>
-                    
-                   
-
-                    {% for contactuserpost in contactuserposts %}
-                        {% if contactuserpost.recipient == request.user  %}
-                            <h4>Personal messages: </h4>
-                            <p><strong>From:</strong> <a href="#">{{contactuserpost.sender}}</a></p>
-                            <p><strong>Date:</strong> {{contactuserpost.published_date}}</p>
-                            <p><strong>Subject:</strong> {{ contactuserpost.title }}</p>
-                            <p><strong>Message:</strong><br> {{ contactuserpost.content }}</p>
-                            <hr>      
-                        {% else %}
-                        {% endif %}                   
-                    {% endfor %}
-                
+                    <p><strong>Age:</strong> {{ profile.userprofile.age}}</p>              
                 </div>    
                 <div class="col-12 col-md-7 col-lg-5 col-xl-4">
                     {% if profile.userprofile.image %}
@@ -61,11 +45,29 @@
                 </div>
             </div>    
               
-            
+            <div class="col-10 offset-1 blog-post userprofile-details feature-text">           
+                <div class="col-10 offset-1">
+                    
+                    <h4>Personal messages: </h4>
+                    
+                    {% for contactuserpost in contactuserposts %}
+                        {% if contactuserpost.recipient == request.user  %}
+                            <p>
+                                <strong>From:</strong>&emsp; <a href="#">{{contactuserpost.sender}}</a><br>
+                                <strong>Date:</strong> &emsp;  {{contactuserpost.date}}<br>
+                                <strong>Subject:</strong> {{ contactuserpost.title }}<br>
+                                <strong>Message:</strong><br> {{ contactuserpost.message }}
+                            </p>
+                            <hr>      
+                        {% else %}
+                        {% endif %}                   
+                    {% endfor %}
+                </div>
+            </div>    
+
                 {% for profilepost in profileposts %}
                 <div class="col-10 offset-1 blog-post userprofile-details feature-text">           
                     <div class="col-10 offset-1">
-                        <p><span class="boldtext">Author:</span> <a href="#">{{profilepost.user}}</a></p>
                         <!-- {{post.author.first_name}} {{post.first_name}} -->
                         <h2>{{ profilepost.title }}</h2>
                             <p>{{ profilepost.content }}</p>
@@ -83,6 +85,5 @@
         {% endfor %} 
         </div>
     </div>
-
 
 {% endblock %}

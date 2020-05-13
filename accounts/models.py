@@ -39,9 +39,9 @@ class ProfilePost(models.Model):
 
 class ContactUser(models.Model):
     sender = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT)
-    subject = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     message = models.TextField()
-    date = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    date = models.DateField(blank=True, null=True, default=timezone.now)
     image = models.ImageField(upload_to="profile_images", blank=True, null=True)
     recipient = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT, related_name="recipient")
     

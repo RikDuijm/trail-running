@@ -4,10 +4,12 @@
 
 {% block content %}
 
-<section >
-    <article class="row col-11 inner-content feature-text">
-        <div class="col-md-7 offset-md-2 col-lg-4 ofsset-lg-4">
-            <h1>Contact Us</h1>
+    <section class="inner-content-article">
+        <div class="row">
+            <h1>Contact us!</h1>
+        </div>
+        <div class="row">
+            <div class="col-10 offset-1  col-md-8 offset-md-2 form-position">
                 <form method="post">
                     {% csrf_token %}
                     {{ form | as_bootstrap }}

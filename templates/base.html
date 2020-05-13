@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Favicon File -->
+        <link rel="shortcut icon" type="image/jpg" href="/media/img/logo.png">
     <title>Trail Running</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -19,102 +21,113 @@
 </head>
 <body>
     <div id="page-container" class="container-fluid">
+        <div id="main">
         
-        <header>
-                <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
-                    <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand" href="{% url 'index' %}"><img src="/media/img/logo.jpg"></a>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active test">
-                            <a class="nav-link" href="{% url 'all_events' %}"><span class="menu-item">Events</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'all_products' %}"><span class="menu-item">Discounts</span></a> <!-- use namespace: discounts:-->
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'get_articles' %}"><span class="menu-item">Inspiration</span></a>
-                        </li>
-                        {% if user.is_authenticated %}
-                        <li class="nav-item active dropdown">
-                            <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
-                            <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
-                            <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>                           
-                            </div>
-                        </li>
-                        {% else %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'get_posts' %}"><span class="menu-item">Forum</span></a>
-                        </li>    
-                        {% endif %} 
-                        {% if user.is_authenticated %}
-                        <li class="nav-item active dropdown">
-                            <!-- <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Profiles</span></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">Your Profile</span></a>
-                        </li>    
-
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'registration' %}"><span class="menu-item">Register</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'login' %}"><span class="menu-item">Login</span></a>
-                        </li>
-                        {% endif %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'contact' %}"><span class="menu-item">Contact</span></a>
-                        </li>
-                        </ul>
-                    </div>
-                
-                        <ul class="navbar-nav ml-auto">
+            <header>
+                    <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
+                        <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'index' %}"><img src="/media/img/logo.jpg"></a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="{% url 'view_cart' %}">
-                                <span class="menu-item">
-                                    <i class="fas fa-shopping-cart"></i> Cart 
-                                    {% if product_count > 0 %}
-                                    <label class="badge badge-warning">{{ product_count }}</label>
-                                    {% endif %}
-                                </span>
-                                </a>
+                                <a class="nav-link" href="{% url 'index' %}"><span class="menu-item">Home</span></a>
                             </li>
-                        </ul>
-                </nav>
-            
-                    <img src="/media/img/header-image.jpg" style="width:100%;height:100%;">                    
-        </header>
-    
-        <article>
-            <div class="alert alert-info alert-center col-10">  
-                                <p class="login-message"><strong><em>
-                                {% if user.is_authenticated %}
-                                Welcome {{ user }}!
-                                {% else %}
-                                <a href="{% url 'login' %}" class="login-message">Please log in for a better experience!</a>
-                                {% endif %}
-                                </strong></em></p>
-            </div>
-        </article>
+                        
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'all_events' %}"><span class="menu-item">Events</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'all_products' %}"><span class="menu-item">Discounts</span></a> <!-- use namespace: discounts:-->
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'get_articles' %}"><span class="menu-item">Inspiration</span></a>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item active dropdown">
+                                <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
+                                <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
+                                <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>                           
+                                </div>
+                            </li>
+                            {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'get_posts' %}"><span class="menu-item">Forum</span></a>
+                            </li>    
+                            {% endif %} 
+                            {% if user.is_authenticated %}
+                            <li class="nav-item active dropdown">
+                                <!-- <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Profiles</span></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">Your Profile</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'registration' %}"><span class="menu-item">Register</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'login' %}"><span class="menu-item">Login</span></a>
+                            </li>
+                            {% endif %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'contact' %}"><span class="menu-item">Contact</span></a>
+                            </li>
+                            </ul>
+                        </div>
+                    
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'view_cart' %}">
+                                    <span class="menu-item">
+                                        <i class="fas fa-shopping-cart"></i> Cart 
+                                        {% if product_count > 0 %}
+                                        <label class="badge badge-warning">{{ product_count }}</label>
+                                        {% endif %}
+                                    </span>
+                                    </a>
+                                </li>
+                            </ul>
+                    </nav>
                 
-            <!--specific content of subpages entries-->
-            {% block content %}
-            {% endblock %}
-            <!--specific content of subpages entries-->
-
-        <footer id="footer">
-                footer!
-        </footer>
+                        <img src="/media/img/header-image.jpg" style="width:100%;height:100%;">                    
+            </header>
+        
+            <article>
+                <div class="alert alert-info alert-center col-10">  
+                                    <p class="login-message"><strong><em>
+                                    {% if user.is_authenticated %}
+                                    Welcome {{ user }}!
+                                    {% else %}
+                                    <a href="{% url 'login' %}" class="login-message">Please log in for a better experience!</a>
+                                    {% endif %}
+                                    </strong></em></p>
+                </div>
+            </article>
+                    
+                {% block content %}
+                <!--The other templates are shown here-->
+                {% endblock %}
+        </div>  
+    </div>        
+    <footer id="footer">
+    <hr class="footer-line">
+        <p class="text-center footer-text">
+            <a href="#" target="_blank" class="link-green">Contact and opening hours</a><br>
+            follow us:
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a><br>
+        </p>
+    </footer>
             
-    </div>
+    
 <script src="{% static 'js/script.js' %}" type="text/javascript"></script>   
 </body>
 </html>

@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from accounts.views import (
     logout, login, registration, profile_post, edit_profile,
-    edit_profile_post, delete_profile_post, delete_profile_details,
+    edit_profile_post, delete_profile_post, delete_profile_details, deleted_user,
     author_profile, all_users, user_profile_page, user_profile, contact_user,
     search_user_first_name, search_user_last_name, search_user_location
     # get_profile_posts, search_user
@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^contactuser/(?P<pk>\d+)', contact_user, name='contact_user'),
     url(r'^editprofile/$', edit_profile, name='edit_profile'),
     url(r'^deleteprofile/', delete_profile_details, name='delete_profile_details'),
+    url(r'^deleted-user/', deleted_user, name='deleted_user'),
     url(r'^(?P<pk>\d+)/edit/$', edit_profile_post, name='edit_profile_post'),
     url(r'^(?P<pk>\d+)/delete/$', delete_profile_post, name='delete_profile_post'),
     # url(r'^search_user/$', search_user, name='search_user'),

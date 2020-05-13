@@ -1,10 +1,18 @@
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: #17252A;
     background-color: #f5f5f5;;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .container-fluid {
     padding-right: 0;
@@ -14,10 +22,35 @@ body {
 
 }
 
-#page-container {
-    position: relative;
-    min-height: 80vh;
+
+#footer {
+    margin-top: auto;
+    background-color:#f5f5f5;
+    height: 80px;
+    padding-top: 50px;
 }
+
+#footer-line{
+    background-color: #3AAFA9;
+    height: 3px;
+}
+
+.footer-text{
+    font-size: 18px;
+}
+
+.fab {
+    font-size: 25px;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.link-green:hover, .fab:hover {
+    color: #17252A;
+    transition: 0.5s ease-in-out;
+}
+
+
 
 .inner-content {
     margin-left: 5%;
@@ -99,14 +132,7 @@ body {
   width: 145px;   
 }
 
-/*
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 7rem;     /* Footer height */
-/* } */
- 
+
 .button
 .menu-item {
     font-size: 18px;
@@ -331,7 +357,7 @@ button:hover {
   text-decoration: line-through;
   color: red
 }
-.product-price, .event-distance, .delete-post {
+.product-price, .event-distance, {
     margin-top: 18px;
 }
 

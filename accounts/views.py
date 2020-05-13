@@ -22,6 +22,13 @@ def logout(request):
     return redirect(reverse('index'))
 
 
+def deleted_user(request):
+    """Log the user out"""
+    auth.logout(request)
+    messages.success(request, "Your profile has been deleted. Please contact us if you want to undo this.")
+    return redirect(reverse('index'))
+
+
 def login(request):
     """Return a login page"""
     if request.user.is_authenticated:
@@ -180,7 +187,6 @@ def edit_profile_post(request, pk=None):
 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form})
     
-
 def delete_profile_details(request, pk=None):
     """
     Create a view that allows user or admin to delete
@@ -192,8 +198,8 @@ def delete_profile_details(request, pk=None):
     if UserProfile.objects.filter(user=request.user or request.user.is_superuser):
         if request.method == "POST":
             profiledetails.delete()
-            messages.success(request, 'This information has been successfully deleted.')
-            return redirect(user_profile)
+            user.delete()
+            return redirect(deleted_user)
     return render(request, "profiledetailsdelete.html", {'profiledetails': profiledetails})
 
 

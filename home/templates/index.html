@@ -3,6 +3,17 @@
 {% block content %}
 
     <section class="inner-content">
+
+            {% if messages %}
+                <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
+                    <div class="messages">
+                        {% for message in messages %}
+                            <strong>{{ message }}</strong>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
         <h1>Your adventure starts here!</h1>
 
         <article class="row">
