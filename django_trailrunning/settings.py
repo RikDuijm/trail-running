@@ -144,10 +144,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+CART_SESSION_ID = 'cart'
+
 
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-    'CacheControl': 'max-age=94608000'
+    'CacheControl': 'max-age=94608000',
 }
 
 AWS_STORAGE_BUCKET_NAME = 'riks-trailrunning'
@@ -160,11 +162,9 @@ AWS_S3_CUSTOM_DOMAIN = '%s.riks-trailrunning.s3.amazonaws.com' % AWS_STORAGE_BUC
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-CART_SESSION_ID = 'cart'
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
@@ -181,7 +181,7 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 EMAIL_USE_TLS = True                    # TLS is the form of email encryption that is used by Gmail.
 EMAIL_HOST = 'smtp.gmail.com'           # smtp is the protocol that is used to send emails. It's similar to how we use HTTP for web pages.
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL-PASSWORD")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587                        # the port that we're going to send this via is 587 for Gmail 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #  specifies which email backend is used
 
