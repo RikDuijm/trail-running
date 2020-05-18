@@ -57,6 +57,9 @@
                     <br>{{ user.gender }}, {{ user.age }}
                     <br>{{ user.location }}
                 </div>
+                <div>
+                <a href="{% url 'contact_user' user.id %}" class="btn btn-info post-details-btn">Contact User!</a> 
+                </div>
             </div>
         </div>    
         <br>

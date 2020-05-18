@@ -181,7 +181,7 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 EMAIL_USE_TLS = True                    # TLS is the form of email encryption that is used by Gmail.
 EMAIL_HOST = 'smtp.gmail.com'           # smtp is the protocol that is used to send emails. It's similar to how we use HTTP for web pages.
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL-PASSWORD")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587                        # the port that we're going to send this via is 587 for Gmail 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #  specifies which email backend is used
 
