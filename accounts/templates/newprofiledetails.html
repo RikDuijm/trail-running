@@ -4,20 +4,17 @@
 
 {% block content %}
 
- 
-<div class="container feature-text">
-    <div class="row">
-        <h1 class="inner-content">Edit your details</h1>
-    </div>
-    <div class="row">
-        <div class="col-10 offset-1">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %} 
-                {{ profile_details_form | as_bootstrap }}
-                <button type="submit" name="edit_profile" value="edit_profile" class="btn btn-info">Save</button>
-            </form> 
+    <h1 class="text-center">Edit your details</h1> 
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    {{ profile_details_form | as_bootstrap }}
+                    <button type="submit" name="edit_profile" value="edit_profile" class="btn btn-info">Save</button>
+                </form> 
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}                

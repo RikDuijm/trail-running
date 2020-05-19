@@ -3,14 +3,14 @@
 
 
 {% block content %}
-
+<h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
     <section class="inner-content-article"> 
         <article class="row">
-        <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
+        
 
         <div class="container-fluid">
             <div class="row col-10 offset-1 blog-post">
-                <div class="col-12 col-md-4 offset-1  userprofile-details feature-text">
+                <div class="col-12 col-md-4 offset-1  userprofile-details">
                     <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
                     <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
                     <p><strong>Location:</strong> {{ profile.userprofile.location }}</p>
@@ -30,7 +30,7 @@
                     <h2 class="about-me">About me</h2>
                     <p>{{ profile.userprofile.about_me|linebreaks}}</p>
                 </div> 
-                <div class="col-10 offset-1 userprofile-details feature-text">
+                <div class="col-10 offset-1 userprofile-details">
                     {% if user == profile.userprofile.user or user.is_superuser %}
                     <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit</a>
                     <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete</a>    
@@ -45,7 +45,7 @@
                 </div>
             </div>    
               
-            <div class="col-10 offset-1 blog-post userprofile-details feature-text">           
+            <div class="col-10 offset-1 blog-post userprofile-details">           
                 <div class="col-10 offset-1">
                     
                     <h4>Personal messages: </h4>
@@ -53,7 +53,7 @@
                     {% for contactuserpost in contactuserposts %}
                         {% if contactuserpost.recipient == request.user  %}
                             <p>
-                                <strong>From:</strong>&emsp; <a href="#">{{contactuserpost.sender}}</a><br>
+                                <strong>From:</strong>&emsp; {{contactuserpost.sender}}<br>
                                 <strong>Date:</strong> &emsp;  {{contactuserpost.date}}<br>
                                 <strong>Subject:</strong> {{ contactuserpost.title }}<br>
                                 <strong>Message:</strong><br> {{ contactuserpost.message }}

@@ -2,10 +2,10 @@
 {% block content %}
 {% load bootstrap_tags %}
 
+    <h1 class="text-center">{{ article.title }}</h1>   
     <section class="inner-content-article"> 
         <article class="row">
-           
-                <h1>{{ article.title }}</h1>   
+                
             <div class="row advertisement col-12">              
                    <div class="col-xs-6 col-sm-4">Author: {{ article.author }}</div> 
                    <div class="col-xs-6 col-sm-4">Views: {{article.views}}</div> 

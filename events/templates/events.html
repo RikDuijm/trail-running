@@ -5,11 +5,10 @@
 <!-- https://stackoverflow.com/questions/42660488/double-loop-in-django-template -->
 
 {% block content %}
-
-    <section class="inner-content-article feature-text"> 
+<h1 class="text-center">Race calender</h1>
+    <section class="inner-content-article"> 
         <article class="row article-content">
-        
-            <h1>Race calender</h1>
+            
             <div class="row advertisement col-12">         
                 <form action="{% url 'search_race_name' %}" method="get">
                     <p><strong>Search by race name: <input type="text" name="q1">
@@ -63,7 +62,7 @@
             </div>
             
                 {% for event in events.all|dictsort:"date" %}
-                <div class="row col-11 feature-text events-list">                       
+                <div class="row col-11 events-list">                       
                     <strong class="read-more"><span class="pointer"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} {{ event.month}} | {{ event.name }} | {{ event.distance }} | {{ event.region }}</span></strong>
                     <div class="container more-info">                                              
                         <div class="row">

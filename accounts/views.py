@@ -137,7 +137,9 @@ def contact_user(request, pk=None):
                 sender = User.objects.get(email=request.user.email)
                 contactuserpost = contact_profile_form.save(commit=False)
                 contactuserpost.sender = request.user
+                recipient = get_object_or_404(User, pk=pk)  # ???
                 print(sender)
+                print(recipient)  # printing the correct recipient / storing the post in Admin, but without selecting the correct recipient. 
                 contactuserpost.save()              
                 return redirect(reverse('profile'))
         else:

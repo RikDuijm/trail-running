@@ -5,18 +5,17 @@
 {% block content %}
                 
     <section class="cart-total">
-        <h1 class="feature-text discount-price">Your cart</h1>               
-                <p class="product-price "><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span><br>
+        <h1 class="discount-price">Your cart</h1>               
+                <p class="product-price"><strong> Total price: <span class="discount-price"> € {{ total }}</strong></span><br>
                 <a href="{% url 'checkout' %}" class="btn btn-info checkout-btn" role="button">Checkout</a> <a href="{% url 'all_products' %}" class="btn btn-info checkout-btn" role="button">Back to Store</a>
             <hr>            
     </section>  
-                
-    <section class="inner-content">
-    
-    <h2>Your products</h2>
+
+    <h2 class="text-center">Your products</h2>            
+    <section class="inner-content">   
      
             {% if messages %}
-                <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-info">
+                <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
                     <div class="messages">
                         {% for message in messages %}
                             <strong>{{ message }}</strong>

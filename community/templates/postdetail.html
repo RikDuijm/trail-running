@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h1 class="text-center">Forum</h1>
+
     <section class="inner-content-article"> 
 
-        <h1>Forum</h1>
+        
 
             <div class="container blog-post forum">
                 <div class="row">
@@ -14,9 +16,13 @@
                         <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
                         {% endif %}
                     </div>
-                    <div class="col-6 profile-thumbnail-name">
+                    <div class="col-6 author">
+                        {% if user.is_authenticated %}
                         <span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a><br>
-                        <span class="boldtext">Views:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.views}}</a><br>    
+                        {% else %}
+                        <span class="boldtext">Author:</span> {{post.author}}<br>
+                        {% endif %} 
+                        <span class="boldtext">Views:</span> {{post.views}}<br>    
                     </div>
                 </div><br><br><br>
             </div>

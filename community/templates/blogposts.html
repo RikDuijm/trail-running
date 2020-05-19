@@ -2,17 +2,8 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-    <section class="inner-content-article feature-text"> 
-
-        <h1>Forum</h1>
-
-        <!-- {% if messages %}
-            <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %} -->
+    <h1 class="text-center">Forum</h1>
+    <section class="inner-content-article"> 
 
         {% for post in posts %}
         <div class="container blog-post forum">

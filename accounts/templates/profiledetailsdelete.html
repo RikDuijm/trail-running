@@ -2,13 +2,13 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-    <h1 class="text-center">Delete information <em>{{ profilepost.title }}</em>?</h1>
+    <h1 class="text-center">Delete profile <em>{{ profilepost.title }}</em>?</h1>
     <section class="inner-content-article">
         <div class="row">
-            <div class="col-10 offset-1  col-md-8 offset-md-2 form-position">
+            <div class="col-10 offset-1  col-md-8 offset-md-2 form-position text-center">
                 <form method="POST" action ="">
                     {% csrf_token %}
-                    <p>Are you sure you want to delete this information?</p>
+                    <p>Are you sure you want to delete your profile?</p>
                     <input type="submit" class="btn btn-info post-details-btn" value="Yes"/> <a href="{% url 'profile' %}" class="btn btn-info post-details-btn">Cancel</a>
                 </form>
             </div>    
