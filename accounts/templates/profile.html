@@ -3,12 +3,22 @@
 
 
 {% block content %}
-<h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
+    <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
+        {% if messages %}
+            <div class="col-8 offset-2 alert alert-danger">
+                <div class="messages">
+                    {% for message in messages %}
+                    <strong>{{ message }}</strong>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+                
     <section class="inner-content-article"> 
         <article class="row">
-        
 
         <div class="container-fluid">
+                         
             <div class="row col-10 offset-1 blog-post">
                 <div class="col-12 col-md-4 offset-1  userprofile-details">
                     <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
@@ -43,21 +53,25 @@
             <div class="col-10 offset-1 blog-post userprofile-details">           
                 <div class="col-10 offset-1">
                     
-                    <h4>Personal messages: </h4>
+                    <h4 class="userprofile-details">Personal messages: </h4>
                     
                     {% for contactuserpost in contactuserposts %}
                         {% if contactuserpost.recipient == request.user  %}
+                        <hr>   
                             <p>
-                                {# <a href="{% url 'delete_personal_message' %}" class="btn btn-info post-details-btn">Delete</a> #}
-                                <strong>From:</strong> &emsp; {{contactuserpost.sender}}<br>
-                                <strong>Date:</strong> &emsp;  &nbsp;{{contactuserpost.date}}<br>
+                                <a href="{% url 'delete_personal_message' contactuserpost.id %}" class="btn btn-info post-details-btn">Delete</a> <br>
+                                <strong>From:</strong> &emsp;{{contactuserpost.sender}}<br>
+                                <strong>Date:</strong> &emsp;  {{contactuserpost.date}}<br>
                                 <strong>Subject:</strong> {{ contactuserpost.title }}<br>
                                 <strong>Message:</strong><br> {{ contactuserpost.message }}
                                 <div class="col-10 col-md-8 col-lg-6 col-lg-4 col-xl-3">
+                                {% if contactuserpost.image %}
                                 <img src="{{ contactuserpost.image.url }}" alt="profile image" class="userprofile-details-pic-big">
+                                {% else %}
+                                {% endif %}  
                                 </div>
                             </p>
-                            <hr>      
+                               
                         {% else %}
                         {% endif %}                   
                     {% endfor %}
@@ -67,7 +81,6 @@
                 {% for profilepost in profileposts %}
                 <div class="col-10 offset-1 blog-post userprofile-details feature-text">           
                     <div class="col-10 offset-1">
-                        <!-- {{post.author.first_name}} {{post.first_name}} -->
                         <h2>{{ profilepost.title }}</h2>
                             <p>{{ profilepost.content }}</p>
                             {% if profilepost.image %}

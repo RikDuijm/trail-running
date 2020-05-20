@@ -1,9 +1,10 @@
 from django.conf.urls import url, include
 from accounts.views import (
     logout, login, registration, profile_post, edit_profile,
-    edit_profile_post, delete_profile_post, delete_profile_details, deleted_user,
-    author_profile, all_users, user_profile_page, user_profile, contact_user,
-    search_user_first_name, search_user_last_name, search_user_location
+    edit_profile_post, delete_profile_post, delete_profile_details, 
+    deleted_user, author_profile, all_users, user_profile_page, user_profile, 
+    contact_user, search_user_first_name, search_user_last_name,
+     search_user_location, delete_personal_message
     # get_profile_posts, search_user
 )
 from accounts import url_reset
@@ -25,6 +26,7 @@ urlpatterns = [
     url(r'^deleted-user/', deleted_user, name='deleted_user'),
     url(r'^(?P<pk>\d+)/edit/$', edit_profile_post, name='edit_profile_post'),
     url(r'^(?P<pk>\d+)/delete/$', delete_profile_post, name='delete_profile_post'),
+    url(r'^(?P<pk>\d+)/delete-message/$', delete_personal_message, name='delete_personal_message'),
     # url(r'^search_user/$', search_user, name='search_user'),
     url(r'^(?P<pk>\d+)/new/$', profile_post, name='profile_post'),
     url(r'^user-search-firstname/$', search_user_first_name, name='search_user_first_name'),

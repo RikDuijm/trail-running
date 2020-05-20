@@ -98,8 +98,7 @@ def user_profile(request, pk=None):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user)
-    contactuserposts = ContactUser.objects.all()  # User
-    # instead of on profile of sender this has to be the placed on profile where it was send from! Should I make a field Receiver?
+    contactuserposts = ContactUser.objects.all()  
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
@@ -126,28 +125,6 @@ def profile_post(request, pk=None):
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
 
-# def contact_user(request, pk=None):
-#     """
-#     Create a view that allows the logged-in user to contact another user
-#     """
-#     if request.user.is_authenticated:  
-#         if request.method == 'POST':
-#             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
-#             if contact_profile_form.is_valid():
-#                 sender = User.objects.get(email=request.user.email)
-#                 recipient = get_object_or_404(User, pk=pk)  # ???
-#                 contactuserpost = contact_profile_form.save(commit=False)
-#                 contactuserpost.sender = request.user    
-#                 print(sender)
-#                 print(recipient)  # printing the correct recipient / storing the post in Admin, but without selecting the correct recipient. 
-#                 contactuserpost.save()              
-#                 return redirect(reverse('profile'))
-#         else:
-#             contact_profile_form = ContactProfileForm()
-#     else:
-#         return redirect('login') 
-#     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})
-
 
 def contact_user(request, pk=None):
     """
@@ -167,7 +144,7 @@ def contact_user(request, pk=None):
                 # recipient = get_object_or_404(User, pk=pk)   # ???
                 contactuserpost = contact_profile_form.save(commit=False)
                 contactuserpost.sender = request.user
-                print(sender)
+                messages.success(request, 'Your message has been successfully sent!')
                 # print(recipient)  # printing the correct recipient / storing the message in Admin, but without selecting the correct recipient. 
                 contactuserpost.save()              
                 return redirect(reverse('profile'))
@@ -244,20 +221,23 @@ def delete_profile_post(request, pk=None):
             request.user.is_superuser):
         if request.method == "POST":
             profilepost.delete()
-            messages.success(request, 'This informationhas been successfully deleted.')
+            messages.success(request, 'This information has been successfully deleted.')
             return render(request, 'profile.html', {'profileposts': profileposts, 'profile': user})
     return render(request, "profilepostdelete.html", {'profilepost': profilepost})
 
 
-# def get_profile_posts(request):
-#    """
-#    Create a view that will return a list
-#    of Posts that were published prior to 'now'
-#    and render them to the 'blogposts.html' template
-#    """
-#    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
-#        ).order_by('-published_date').all()
-#    return render(request, "test.html", {'profileposts': profileposts})
+def delete_personal_message(request, pk=None):
+    """
+    Create a view that allows user to delete a personal message to him / her
+    """
+    user = User.objects.get(email=request.user.email)
+    contactuserposts = ContactUser.objects.all()
+    contactuserpost = get_object_or_404(ContactUser, pk=pk)
+    if request.method == "POST":
+        contactuserpost.delete()
+        messages.success(request, 'This message has been successfully deleted.')
+        return redirect(user_profile)
+    return render(request, "personalmessagedelete.html", {'contactuserposts': contactuserposts})
 
 
 def author_profile(request, pk):
