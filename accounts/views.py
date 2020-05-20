@@ -94,6 +94,7 @@ def all_users(request):
     users = UserProfile.objects.all().order_by('last_name')
     return render(request, "allusers.html", {'users': users})   
 
+@login_required
 def user_profile(request, pk=None):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
@@ -103,20 +104,19 @@ def user_profile(request, pk=None):
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
 
+@login_required
 def profile_post(request, pk=None):
     """
     Create a view that allows user to add new info on his profile
     """
     user = User.objects.get(email=request.user.email)
-    if request.user.is_authenticated:  # Is this necessary? User is already authenticated to be able to get to this point.
+    if request.user.is_authenticated:  
         if request.method == 'POST':
             profile_post_form = ProfilePostForm(request.POST, request.FILES)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save(commit=False)
-                # profilepost.user = User.objects.get(email=request.user.email)  # !!!!
-                profilepost.user = request.user  # this fixed the line above
+                profilepost.user = request.user  
                 profilepost.save()
-                # return redirect(user_profile_page)
                 return redirect(reverse('profile'))
         else:
             profile_post_form = ProfilePostForm()
@@ -125,7 +125,7 @@ def profile_post(request, pk=None):
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
 
-
+@login_required
 def contact_user(request, pk=None):
     """
     Create a view that allows the logged-in user to contact another user
@@ -153,6 +153,7 @@ def contact_user(request, pk=None):
     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})
 
 
+@login_required
 def edit_profile(request, pk=None):
     """
     Create a view that allows user to edit his profile details
@@ -173,6 +174,7 @@ def edit_profile(request, pk=None):
     return render(request, 'newprofiledetails.html', {'profile_details_form': profile_details_form})
 
 
+@login_required
 def edit_profile_post(request, pk=None):
     """
     Create a view that allows user or admin to edit info on the profile
@@ -184,7 +186,6 @@ def edit_profile_post(request, pk=None):
             profile_post_form = ProfilePostForm(request.POST, request.FILES, instance=profilepost)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save()
-                #return redirect(user_profile_page)
                 return redirect(reverse('profile'))
         else:
             profile_post_form = ProfilePostForm(instance=profilepost)
@@ -192,7 +193,9 @@ def edit_profile_post(request, pk=None):
         return HttpResponseForbidden()
 
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form})
-    
+
+
+@login_required    
 def delete_profile_details(request, pk=None):
     """
     Create a view that allows user or admin to delete
@@ -209,6 +212,7 @@ def delete_profile_details(request, pk=None):
     return render(request, "profiledetailsdelete.html", {'profiledetails': profiledetails})
 
 
+@login_required
 def delete_profile_post(request, pk=None):
     """
     Create a view that allows user or admin to delete
@@ -226,6 +230,7 @@ def delete_profile_post(request, pk=None):
     return render(request, "profilepostdelete.html", {'profilepost': profilepost})
 
 
+@login_required
 def delete_personal_message(request, pk=None):
     """
     Create a view that allows user to delete a personal message to him / her
@@ -240,6 +245,7 @@ def delete_personal_message(request, pk=None):
     return render(request, "personalmessagedelete.html", {'contactuserposts': contactuserposts})
 
 
+@login_required
 def author_profile(request, pk):
     """The profile of the author of the blogpost"""
     author = get_object_or_404(User, pk=pk)
@@ -248,6 +254,7 @@ def author_profile(request, pk):
     return render(request, 'profile.html', {"profile": author, 'profileposts': profileposts})
     
 
+@login_required
 def user_profile_page(request, pk=None):
     """Create a view that will link to the profile of a user"""
     userprofile = get_object_or_404(User, pk=pk)

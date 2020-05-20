@@ -4,11 +4,13 @@ from django.contrib import messages
 from discounts.models import Product
 
 
+@login_required
 def view_cart(request):
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
 
 
+@login_required
 def add_to_cart(request, id):
 
     if request.user.is_authenticated:
@@ -30,29 +32,26 @@ def add_to_cart(request, id):
     return redirect(reverse('all_products'))
 
 
+@login_required
 def adjust_cart(request, id):
     """Adjust the quantity of the specified product to the specified amount"""
     if request.user.is_authenticated:
-        
         if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:
             quantity = int(request.POST.get('quantity'))
             cart = request.session.get('cart', {})
-
             if quantity > 0:
                 cart[id] = quantity
             else:
                 cart.pop(id)    # pop() is an inbuilt function in Python that removes and returns last value from the list or the given index value. Syntax : list_name.pop(index)
-
             request.session['cart'] = cart
         else:
             messages.warning(request, 'You have to specify how many products you want to purchase.')
-
     else:
-           
-            messages.warning(request, 'You have to register first, before you can purchase our products.')
-            
+        messages.warning(request, 'You have to register first, before you can purchase our products.')      
     return redirect(reverse('view_cart'))
 
+
+@login_required
 def delete_from_cart(request, id):
     cart = request.session.get('cart', {})
     if id in cart:
