@@ -36,12 +36,7 @@
                     <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete</a>    
                     <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
                 {% else %}
-                {% endif %} 
-
-                {% if user !=  profile.userprofile.user %}
-                <a href="{% url 'contact_user' profile.userprofile.user.id %}" class="btn btn-info post-details-btn">Contact User!</a> 
-                {% else %}
-                {% endif %}        
+                {% endif %}   
                 </div>
             </div>    
               
@@ -53,10 +48,14 @@
                     {% for contactuserpost in contactuserposts %}
                         {% if contactuserpost.recipient == request.user  %}
                             <p>
-                                <strong>From:</strong>&emsp; {{contactuserpost.sender}}<br>
-                                <strong>Date:</strong> &emsp;  {{contactuserpost.date}}<br>
+                                {# <a href="{% url 'delete_personal_message' %}" class="btn btn-info post-details-btn">Delete</a> #}
+                                <strong>From:</strong> &emsp; {{contactuserpost.sender}}<br>
+                                <strong>Date:</strong> &emsp;  &nbsp;{{contactuserpost.date}}<br>
                                 <strong>Subject:</strong> {{ contactuserpost.title }}<br>
                                 <strong>Message:</strong><br> {{ contactuserpost.message }}
+                                <div class="col-10 col-md-8 col-lg-6 col-lg-4 col-xl-3">
+                                <img src="{{ contactuserpost.image.url }}" alt="profile image" class="userprofile-details-pic-big">
+                                </div>
                             </p>
                             <hr>      
                         {% else %}

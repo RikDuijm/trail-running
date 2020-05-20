@@ -32,7 +32,7 @@ class ProfilePost(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    image = models.ImageField(upload_to="profile_images", blank=True, null=True)
+    image = models.ImageField(upload_to="personal_messages", blank=True, null=True)
     
     def __str__(self):
         return "{0} (by {1})".format(self.title, self.user)

@@ -126,26 +126,53 @@ def profile_post(request, pk=None):
     return render(request, 'newprofilepost.html', {'profile_post_form': profile_post_form, 'profile': user})
 
 
+# def contact_user(request, pk=None):
+#     """
+#     Create a view that allows the logged-in user to contact another user
+#     """
+#     if request.user.is_authenticated:  
+#         if request.method == 'POST':
+#             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
+#             if contact_profile_form.is_valid():
+#                 sender = User.objects.get(email=request.user.email)
+#                 recipient = get_object_or_404(User, pk=pk)  # ???
+#                 contactuserpost = contact_profile_form.save(commit=False)
+#                 contactuserpost.sender = request.user    
+#                 print(sender)
+#                 print(recipient)  # printing the correct recipient / storing the post in Admin, but without selecting the correct recipient. 
+#                 contactuserpost.save()              
+#                 return redirect(reverse('profile'))
+#         else:
+#             contact_profile_form = ContactProfileForm()
+#     else:
+#         return redirect('login') 
+#     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})
+
+
 def contact_user(request, pk=None):
     """
     Create a view that allows the logged-in user to contact another user
     """
-    if request.user.is_authenticated:  
-        if request.method == 'POST':
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        if request.method == 'GET':
+            sender = User.objects.get(email=request.user.email)
+            data = {'recipient': get_object_or_404(User, pk=pk)}
+            contact_profile_form = ContactProfileForm(initial=data)
+        else:
             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
             if contact_profile_form.is_valid():
                 sender = User.objects.get(email=request.user.email)
+                # recipient = get_object_or_404(User, pk=pk)   # ???
                 contactuserpost = contact_profile_form.save(commit=False)
                 contactuserpost.sender = request.user
-                recipient = get_object_or_404(User, pk=pk)  # ???
                 print(sender)
-                print(recipient)  # printing the correct recipient / storing the post in Admin, but without selecting the correct recipient. 
+                # print(recipient)  # printing the correct recipient / storing the message in Admin, but without selecting the correct recipient. 
                 contactuserpost.save()              
                 return redirect(reverse('profile'))
-        else:
-            contact_profile_form = ContactProfileForm()
-    else:
-        return redirect('login') 
+            else:
+                contact_profile_form = ContactProfileForm()
     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})
 
 
