@@ -31,7 +31,7 @@
                     {% if profile.userprofile.image %}
                     <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic-big">
                     {% else %}
-                        <img src="/media/img/runner-male.png" alt="profile image" width="100px" class="userprofile-details-pic-big">
+                        <img src="/img/runner-male.png" alt="profile image" width="100px" class="userprofile-details-pic-big">
                     {% endif %}
                 </div>
                 
@@ -84,7 +84,7 @@
                         <h2>{{ profilepost.title }}</h2>
                             <p>{{ profilepost.content }}</p>
                             {% if profilepost.image %}
-                        <img class="img-blogpost" src="/media/{{ profilepost.image }}" width="250px">
+                        <img class="img-blogpost" src="{{ profilepost.image.url }}" width="250px">
                         {% endif %}
                                 <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
                     {% if user == profilepost.user or user.is_superuser %}            

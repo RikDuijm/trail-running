@@ -33,7 +33,7 @@
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.content|linebreaks }}</p>
                         {% if post.image %}
-                        <img class="feature-image" src="/media/{{ post.image }}">
+                        <img class="feature-image" src="{{ post.image.url }}">
                         <br>
                         {% endif %} 
                         {% if user == post.author or user.is_superuser %}
