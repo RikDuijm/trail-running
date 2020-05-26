@@ -12,16 +12,16 @@ gender_choices = (
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)   
-    first_name = models.CharField(max_length=30, blank=True, null=True)
-    last_name = models.CharField(max_length=30, blank=True, null=True)
+    first_name = models.CharField(max_length=30, null=True)
+    last_name = models.CharField(max_length=30, null=True)
     email = models.EmailField(max_length=100, null=True)
     gender = models.CharField(max_length=10,
                               choices=gender_choices,
                               default='optional')
     age = models.IntegerField()
-    location = models.CharField(max_length=30, blank=True)
+    location = models.CharField(max_length=30)
     image = models.ImageField(upload_to='profile_images', blank=True)
-    about_me = models.TextField(max_length=1000, null=True, blank=True)
+    about_me = models.TextField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
