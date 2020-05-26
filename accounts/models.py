@@ -14,7 +14,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)   
     first_name = models.CharField(max_length=30, null=True)
     last_name = models.CharField(max_length=30, null=True)
-    email = models.EmailField(max_length=100, null=True)
+    email = models.EmailField(max_length=99, null=True, blank=False)
     gender = models.CharField(max_length=10,
                               choices=gender_choices,
                               default='optional')
