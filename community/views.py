@@ -83,7 +83,7 @@ def delete_post(request, pk=None):
     if request.user == author or request.user.is_superuser:
         if request.method == "POST":
             post.delete()
-            messages.success(request, 'Your post has been successfully deleted.')
+            messages.warning(request, 'Your post has been successfully deleted.')
             return redirect('get_posts')
     return render(request, "postdelete.html", {'post': post})
 

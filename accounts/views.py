@@ -99,6 +99,8 @@ def user_profile(request, pk=None):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user)
+    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-published_date').all()
     contactuserposts = ContactUser.objects.all()  
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
 # # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
@@ -220,13 +222,16 @@ def delete_profile_post(request, pk=None):
     """
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user)
+    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+        ).order_by('-published_date').all()
+    contactuserposts = ContactUser.objects.all()  
     profilepost = get_object_or_404(ProfilePost, pk=pk)
     if (request.user == profilepost.user or
             request.user.is_superuser):
         if request.method == "POST":
             profilepost.delete()
             messages.success(request, 'This information has been successfully deleted.')
-            return render(request, 'profile.html', {'profileposts': profileposts, 'profile': user})
+            return render(request, 'profile.html', {'profileposts': profileposts, 'profile': user, 'contactuserposts': contactuserposts})
     return render(request, "profilepostdelete.html", {'profilepost': profilepost})
 
 
@@ -250,7 +255,8 @@ def author_profile(request, pk):
     """The profile of the author of the blogpost"""
     author = get_object_or_404(User, pk=pk)
     profileposts = ProfilePost.objects.filter(user=author)
-    # profileposts = ProfilePost.objects.filter(user=request.user)    
+    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+         ).order_by('-published_date').all()
     return render(request, 'profile.html', {"profile": author, 'profileposts': profileposts})
     
 
@@ -258,8 +264,9 @@ def author_profile(request, pk):
 def user_profile_page(request, pk=None):
     """Create a view that will link to the profile of a user"""
     userprofile = get_object_or_404(User, pk=pk)
-    # userprofile = get_object_or_404(UserProfile, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile)
+    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+         ).order_by('-published_date').all()
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
 
 

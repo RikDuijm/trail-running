@@ -3,7 +3,20 @@
 {% block content %}
 
     <h1 class="text-center">Forum</h1>
+    <section class="inner-content">   
+        {% if messages %}
+            <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
+                <div class="messages">
+                    {% for message in messages %}
+                        <strong>{{ message }}</strong>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}        
+    </section>
     <section class="inner-content-article"> 
+
+
 
         {% for post in posts %}
         <div class="container blog-post forum">
