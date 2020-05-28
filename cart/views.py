@@ -23,7 +23,7 @@ def add_to_cart(request, id):
             cart[sku_id] = int(cart.get(sku_id, 0)) + quantity
             
             request.session['cart'] = cart
-
+            messages.warning(request, 'The product is added to your cart.')
         else:
             messages.warning(request, 'You have to specify how many products you want to purchase.')
     else:
