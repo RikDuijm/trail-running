@@ -6,8 +6,6 @@ from django.db.models import Q
 
 # Create your views here.
 def all_events(request):  
-    months = Month.objects.all()
-    events = Event.objects.all()
     return render(request, "events.html") 
 
 def search_race_name(request):

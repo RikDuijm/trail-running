@@ -64,6 +64,15 @@
             </div>
         </div>    
         <br>
+            {% empty %}
+            <!--If there are no books to show-->
+            <div class="col-12 text-center">
+                <br><br>
+                <h3>
+                    No profiles found. <br><br>
+                    Please search again!
+                </h3>
+            </div>      
         {% endfor %}
         
     </section>    

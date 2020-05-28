@@ -81,5 +81,14 @@
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                <!--If there are no books to show-->
+                <div class="col-12 text-center">
+                    <br><br>
+                    <h3>
+                        No events found yet. <br><br>
+                        Please search (again)!
+                    </h3>
+                </div>      
                 {% endfor %}
 {% endblock %}   
