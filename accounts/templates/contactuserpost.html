@@ -11,7 +11,7 @@
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %} 
                     {{ contact_profile_form | as_bootstrap }}
-                    <button type="submit" name="new_profile_post" value="new_profile_post" class="btn btn-info">Save</button>
+                    <button type="submit" name="new_profile_post" value="new_profile_post" class="btn btn-info">Send message</button>
                 </form> 
             </div>
         </article>

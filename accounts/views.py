@@ -149,7 +149,7 @@ def contact_user(request, pk=None):
                 messages.success(request, 'Your message has been successfully sent!')
                 # print(recipient)  # printing the correct recipient / storing the message in Admin, but without selecting the correct recipient. 
                 contactuserpost.save()              
-                return redirect(reverse('profile'))
+                return redirect(reverse('all_users'))
             else:
                 contact_profile_form = ContactProfileForm()
     return render(request, 'contactuserpost.html', {'contact_profile_form': contact_profile_form})

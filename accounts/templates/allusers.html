@@ -3,6 +3,17 @@
 {% block content %}
 
     <h1 class="text-center">Profiles</h1>
+
+        {% if messages %}
+            <div class="col-8 offset-2 alert alert-danger">
+                <div class="messages">
+                    {% for message in messages %}
+                    <strong>{{ message }}</strong>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        
     <section class="inner-content-article">
         <article class="row article-content"> 
             
