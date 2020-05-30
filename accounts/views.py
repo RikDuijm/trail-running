@@ -254,8 +254,7 @@ def delete_personal_message(request, pk=None):
 def author_profile(request, pk):
     """The profile of the author of the blogpost"""
     author = get_object_or_404(User, pk=pk)
-    profileposts = ProfilePost.objects.filter(user=author)
-    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+    profileposts = ProfilePost.objects.filter(user=author).filter(published_date__lte=timezone.now()
          ).order_by('-published_date').all()
     return render(request, 'profile.html', {"profile": author, 'profileposts': profileposts})
     
@@ -264,9 +263,8 @@ def author_profile(request, pk):
 def user_profile_page(request, pk=None):
     """Create a view that will link to the profile of a user"""
     userprofile = get_object_or_404(User, pk=pk)
-    profileposts = ProfilePost.objects.filter(user=userprofile)
-    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
-         ).order_by('-published_date').all()
+    profileposts = ProfilePost.objects.filter(user=userprofile).filter(published_date__lte=timezone.now()
+         ).order_by('-published_date').all() 
     return render(request, 'profile.html', {"profile": userprofile, 'profileposts': profileposts})
 
 

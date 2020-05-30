@@ -5,8 +5,8 @@ from .models import Article
 
 def get_articlesView(request):
     """
-    Create a view that will return a list
-    of Articles and render them to the 'inspiration.html' template
+    Create a view that will return a list of Articles and
+    render them to the 'inspiration.html' template
     """
     articles = Article.objects.filter(published_date__lte=timezone.now()
         ).order_by('-published_date').all()
