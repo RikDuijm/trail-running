@@ -72,7 +72,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)                          # Send message to user that he has registered successfully or not.
                 messages.success(request, "You have successfully registered and are logged in.")
-                return redirect(reverse('profile'))
+                return redirect(reverse('user_profile'))
             
             else:
                 messages.error(request, "Unable to register your account at this time")
@@ -98,8 +98,7 @@ def all_users(request):
 def user_profile(request, pk=None):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-    profileposts = ProfilePost.objects.filter(user=request.user)
-    profileposts = ProfilePost.objects.filter(published_date__lte=timezone.now()
+    profileposts = ProfilePost.objects.filter(user=request.user).filter(published_date__lte=timezone.now()
         ).order_by('-published_date').all()
     contactuserposts = ContactUser.objects.all()  
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
@@ -117,7 +116,7 @@ def profile_post(request, pk=None):
             profile_post_form = ProfilePostForm(request.POST, request.FILES)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save(commit=False)
-                profilepost.user = request.user  
+                profilepost.user = request.user
                 profilepost.save()
                 return redirect(reverse('profile'))
         else:
@@ -143,11 +142,9 @@ def contact_user(request, pk=None):
             contact_profile_form = ContactProfileForm(request.POST, request.FILES)
             if contact_profile_form.is_valid():
                 sender = User.objects.get(email=request.user.email)
-                # recipient = get_object_or_404(User, pk=pk)   # ???
                 contactuserpost = contact_profile_form.save(commit=False)
                 contactuserpost.sender = request.user
                 messages.success(request, 'Your message has been successfully sent!')
-                # print(recipient)  # printing the correct recipient / storing the message in Admin, but without selecting the correct recipient. 
                 contactuserpost.save()              
                 return redirect(reverse('all_users'))
             else:
@@ -167,6 +164,7 @@ def edit_profile(request, pk=None):
             profile_details_form = UserProfileForm(request.POST, request.FILES, instance=profiledetails)
             if profile_details_form.is_valid():
                 profiledetails = profile_details_form.save()
+                messages.success(request, 'Your profile has been updated!')
                 return redirect(user_profile)
         else:
             profile_details_form = UserProfileForm(instance=profiledetails)
