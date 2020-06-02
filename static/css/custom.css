@@ -1,142 +1,3 @@
-/* .alert-center {
-    display:block;
-    margin: auto;
-    margin-top: 10px;
-} */
-
-
-/* .search-box {
-    margin-left: 15px;
-} */
-
-/* .register-message {
-    color: #3AAFA9;
-} */
-
-/* 
-.small-less-margin-left {
-    margin-left: 0%
-    }    
-     */
-
-/* @media (min-width: 768px) {
-.less-margin-left {
-    margin-left: 5%;
-    }
-.more-margin-left {
-    margin-left: 27%
-    }    
-}
-
-@media (min-width: 992px) {
-.more-margin-left {
-    margin-left: 30%
-    }    
-}
-
-@media (min-width: 1200px) {
-.more-margin-left {
-    margin-left: 35%
-    }    
-.less-margin-left {
-    margin-left: 1%
-    }    
-}      */
-
-/* .blog-post{
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-} */
-
-/* .discounts {
-    margin-left: 5px;
-    margin-right: 5px;
-} */
-
-/* .forum {
-    background-color: #DEF2F1; 
-} */
-
-/* .more-info {              
-    display: none;
-} */
-
-/* #calendar {
-    display: none;
-}
- */
-
- /* .month-events {              
-    display: none;
-    margin: 5px;
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-} */
-
-
-/* .events-list {
-    margin-top: 15px;
-    margin-left: 15px;
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-}
-
-.post-details-btn, .checkout-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.amend-btn {
-    margin-top: 10px;
-} */
-
-/* .profile-thumbnail-name {
-    padding-left: 20px; 
-    padding-bottom: 20px;
-    margin-top: 10px;
-} */
-
-/* 
-@media (min-width: 768px) {
-   .event-pic {
-        margin-top: 25px;
-        margin-bottom: 25px;
-   }
-}
-
-.months {
-    border-style: solid;
-    background: #DEF2F1;
-    border-color: #DEF2F1; 
-    margin: 5px;
-}
-
-
-.event-pic {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 240px;
-    height: 160px;
-    /* margin-top: 10px; */
-    /* margin-left: 10px;
-    margin-bottom: 15px;
-}
-
-.unfold {
-    margin-right: 15px;
-}
-
-.form-position{
-    margin-top:20px;
-}
-
- */ 
-
-
 /* ------------------------------------------------------------------------------------------- Body - Layout */
 html {
     height: 100%;
@@ -160,11 +21,11 @@ body {
     position: relative;
 }
 
+.button
 .menu-item {
     font-size: 18px;
     color: #f5f5f5;
 }
-
 
 .inner-content {
     margin-left: 5%;
@@ -183,15 +44,18 @@ body {
     margin-right: 10%;
 }
 
-
 .alert {
     text-align: center;
+}
+.alert-center {
+    display:block;
+    margin: auto;
+    margin-top: 10px;
 }
 
 .login-message {
     margin: 0
 }
-
 
 /* ------------------------------------------------------------------------------------------- Footer */
 #footer {
@@ -235,7 +99,6 @@ h3 {
     color: #2B7A78; 
 }
 
-
 @media (min-width: 768px) {
     h1 {
         font-size: 3em;
@@ -251,7 +114,16 @@ h3 {
 
     h4 {
     font-size: 1.4em;  
+    }    
 }    
+
+a {
+  color: #2B7A78;   
+}
+
+.register-message {
+    color: #3AAFA9;
+}
 
 ul {
     padding-inline-start: 0px;
@@ -259,10 +131,6 @@ ul {
 
 li {
     display: inline;
-}
-
-a {
-  color: #2B7A78;   
 }
 
 .button {
@@ -277,6 +145,7 @@ a {
 button:hover {
     color: #3AAFA9;
 }
+
 
 /* ------------------------------------------------------------------------------------------- Index */
 .intro{
@@ -338,6 +207,10 @@ button:hover {
     color: #2B7A78;
 }
 
+.product-description {
+    margin-bottom: 18px;
+}
+
 .add-product{
     margin-top: 20px;
     margin-right: 85px;  /* this influences the size input field */
@@ -352,33 +225,76 @@ button:hover {
     display: block;
 }
 
+
 .inner-content-checkout {
     margin-left: 5%;
     margin-right: 5%;    
 }
 
 /* ------------------------------------------------------------------------------------------- Layout Products & Events */
-.product-price, .event-distance {
+
+.product-price, .event-distance, {
     margin-top: 18px;
 }
 
-.product-description, .event-description {
-    margin-bottom: 18px;
-}
+
 
 /* ------------------------------------------------------------------------------------------- Layout Events */
+
 #month, #distance, #region {
   width: 145px;   
 }
 
+.events-list{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}
+
 .read-more{
     font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.more-info {              
+    display: none;
 }
 
 .pointer {
     cursor: pointer;
 }
 
+.event-description {
+    margin-top: 15px;
+    margin-bottom: 18px;
+}    
+.event-pic {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 240px;
+    height: 160px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+   .event-pic {
+        margin-top: 25px;
+        margin-bottom: 25px;
+   }
+}
+
+.month-events {              
+    display: none;
+    margin: 5px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}
 /* ------------------------------------------------------------------------------------------- Layout Community, Profile */
 .userprofile-details {
     margin-top: 15px;
@@ -423,7 +339,6 @@ button:hover {
 .about-me {
     margin-top: 25px;
 }
-
 
 .blog-article {
     margin-top: 30px;
@@ -474,6 +389,7 @@ button:hover {
 
 .advertisement-image{
     background-size: contain;
+    /* background-position: center center; */
     background-repeat: no-repeat;
     width: 210px;
     height: 130px;
@@ -481,7 +397,8 @@ button:hover {
     position: relative;
 }
 
-/* ------------------------------------------------------------------------------------------- ID more than once used! */
+/* ------------------------------------------------------------------------------------------- Inspiration */
+
 #search-btn {
     margin-top: 10px;
     margin-left: 10px;
@@ -492,4 +409,96 @@ button:hover {
     margin-left: 50px;
 }
 
+/* ------------------------------------------------------------------------------------------- Not used */
+/* 
+.search-box {
+    margin-left: 15px;
+}
 
+
+
+
+.small-less-margin-left {
+    margin-left: 0%
+    }    
+
+@media (min-width: 768px) {
+.less-margin-left {
+    margin-left: 5%;
+    }
+.more-margin-left {
+    margin-left: 27%
+    }    
+}
+
+@media (min-width: 992px) {
+.more-margin-left {
+    margin-left: 30%
+    }    
+}
+
+@media (min-width: 1200px) {
+.more-margin-left {
+    margin-left: 35%
+    }    
+.less-margin-left {
+    margin-left: 1%
+    }    
+}
+
+.blog-post{
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}
+
+.discounts {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.forum{
+    background-color: #DEF2F1; 
+}
+
+
+#calendar {
+    display: none;
+}
+
+
+
+.post-details-btn, .checkout-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.amend-btn {
+    margin-top: 10px;
+}
+
+
+.profile-thumbnail-name {
+    padding-left: 20px; 
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+
+
+.months {
+    border-style: solid;
+    background: #DEF2F1;
+    border-color: #DEF2F1; 
+    margin: 5px;
+}
+
+
+.unfold {
+    margin-right: 15px;
+}
+
+.form-position{
+    margin-top:20px;
+} */
