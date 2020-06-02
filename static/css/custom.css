@@ -1,14 +1,3 @@
-/* .feature {
-    background-color: #DEF2F1;
-    padding: 20px;
-    margin: 10px;
-} */
-/* 
-.inner-content-checkout {
-    margin-left: 5%;
-    margin-right: 5%;    
-} */
-
 /* .alert-center {
     display:block;
     margin: auto;
@@ -65,17 +54,7 @@
     margin-right: 5px;
 } */
 
-
-/* .product {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-} */
-
-/* .forum{
+/* .forum {
     background-color: #DEF2F1; 
 } */
 
@@ -305,6 +284,12 @@ button:hover {
     padding-top: 10px;
 }
 
+.feature {
+    background-color: #DEF2F1;
+    padding: 20px;
+    margin: 10px;
+}
+
 .feature-image {
     position: relative;
     width: 100%;
@@ -335,6 +320,15 @@ button:hover {
     } 
 }
 
+.product {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
 .normal-price {
   text-decoration: line-through;
   color: red
@@ -356,6 +350,11 @@ button:hover {
 .form {
     text-align: center;
     display: block;
+}
+
+.inner-content-checkout {
+    margin-left: 5%;
+    margin-right: 5%;    
 }
 
 /* ------------------------------------------------------------------------------------------- Layout Products & Events */
