@@ -14,7 +14,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)   
     first_name = models.CharField(max_length=30, null=True, blank=False)
     last_name = models.CharField(max_length=30, null=True, blank=False)
-    email = models.EmailField(max_length=99, null=True, blank=False)
+    repeat_email = models.EmailField(max_length=99, null=True, blank=False)
     gender = models.CharField(max_length=10,
                               choices=gender_choices,
                               default='optional')
@@ -28,10 +28,9 @@ class UserProfile(models.Model):
 
 class ProfilePost(models.Model):
     user = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT)
-    #user = models.ForeignKey(UserProfile, null=False, default=1, on_delete=models.SET_DEFAULT)
     title = models.CharField(max_length=200)
     content = models.TextField()
-    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    published_date = models.DateTimeField(null=True, default=timezone.now)
     image = models.ImageField(upload_to="personal_messages", blank=True, null=True)
     
     def __str__(self):
@@ -41,7 +40,7 @@ class ContactUser(models.Model):
     sender = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT)
     title = models.CharField(max_length=200)
     message = models.TextField()
-    date = models.DateField(blank=True, null=True, default=timezone.now)
+    date = models.DateTimeField(null=True, default=timezone.now)
     image = models.ImageField(upload_to="profile_images", blank=True, null=True)
     recipient = models.ForeignKey(User, null=False, default=1, on_delete=models.SET_DEFAULT, related_name="recipient")
     

@@ -49,7 +49,7 @@ class UserRegistrationForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['first_name', 'last_name', 'email', 'gender', 'age',
+        fields = ['first_name', 'last_name', 'repeat_email', 'gender', 'age',
                   'location', 'image', 'about_me']
         labels = {
             'about_me': ('Please introduce yourself shortly.'),

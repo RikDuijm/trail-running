@@ -72,7 +72,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)                          # Send message to user that he has registered successfully or not.
                 messages.success(request, "You have successfully registered and are logged in.")
-                return redirect(reverse('user_profile'))
+                return redirect(reverse('profile'))
             
             else:
                 messages.error(request, "Unable to register your account at this time")
@@ -100,9 +100,9 @@ def user_profile(request, pk=None):
     user = User.objects.get(email=request.user.email)
     profileposts = ProfilePost.objects.filter(user=request.user).filter(published_date__lte=timezone.now()
         ).order_by('-published_date').all()
-    contactuserposts = ContactUser.objects.all()  
+    contactuserposts = ContactUser.objects.all().filter(date__lte=timezone.now()
+        ).order_by('-date').all()  
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
-# # https://stackoverflow.com/questions/25615753/attributeerror-str-object-has-no-attribute-fields-using-django-non-rel-on-g
 
 
 @login_required
@@ -118,6 +118,7 @@ def profile_post(request, pk=None):
                 profilepost = profile_post_form.save(commit=False)
                 profilepost.user = request.user
                 profilepost.save()
+                messages.success(request, 'Your post has been published!')
                 return redirect(reverse('profile'))
         else:
             profile_post_form = ProfilePostForm()
@@ -186,6 +187,7 @@ def edit_profile_post(request, pk=None):
             profile_post_form = ProfilePostForm(request.POST, request.FILES, instance=profilepost)
             if profile_post_form.is_valid():
                 profilepost = profile_post_form.save()
+                messages.success(request, 'Your post has been updated!')                
                 return redirect(reverse('profile'))
         else:
             profile_post_form = ProfilePostForm(instance=profilepost)

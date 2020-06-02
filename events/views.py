@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from .models import Month, Event
+from .models import Event
 from django.utils import timezone
 from django.db.models import Q 
 

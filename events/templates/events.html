@@ -7,6 +7,7 @@
 {% block content %}
 <h1 class="text-center">Race calender</h1>
     <section class="inner-content-article"> 
+    <p>Participate in races at competitive prices! Here you can find and enrol in race events, searching by the name of the race, month, distance or region. </p>
         <article class="row article-content">
             
             <div class="row advertisement col-12">         
@@ -34,10 +35,10 @@
                     <form action="{% url 'search_race_distance' %}" method="get">              
                         <select id="distance" name="q3">
                                 <option value=" "> Select distance</option>  
-                                <option value="10-15">10 - 15 kilometers</option>
-                                <option value="16-20">16 - 20 kilometers</option> 
-                                <option value="21-29">21 - 29 kilometers</option> 
-                                <option value="30+">Over 30 kilometers</option> 
+                                <option value="10-15">10 - 15 km</option>
+                                <option value="16-20">16 - 20 km</option> 
+                                <option value="21-29">21 - 29 km</option> 
+                                <option value="30+">Over 30 km</option> 
                                 <option value="42">marathon</option>                              
                                 </select> 
                         <button type="search" class="btn btn-info post-details-btn" id="search-btn">Search</button>                 
