@@ -170,7 +170,99 @@ button:hover {
     color: #17252A;
 }
 
-/* ------------------------------------------------------------------------------------------- Layout Products, Cart, Checkout */
+
+/* ------------------------------------------------------------------------------------------- Events */
+
+#month, #distance, #region {
+  width: 145px;   
+}
+
+.search-box {
+    margin-left: 15px;
+}
+
+.events-list{
+    margin-top: 15px;
+    margin-left: 15px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}
+
+.read-more{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.more-info {              
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.event-description {
+    margin-top: 15px;
+    margin-bottom: 18px;
+}    
+.event-pic {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 240px;
+    height: 160px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+   .event-pic {
+        margin-top: 25px;
+        margin-bottom: 25px;
+   }
+}
+
+.month-events {              
+    display: none;
+    margin: 5px;
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}
+
+/* ----------------------------------------------------------------------- For SJ Functionality */
+
+#calendar {
+    display: none;
+}
+
+.months {
+    border-style: solid;
+    background: #DEF2F1;
+    border-color: #DEF2F1; 
+    margin: 5px;
+} 
+
+/* ------------------------------------------------------------------------------------------- Events & Discounts */
+
+.product-price, .event-distance, {
+    margin-top: 18px;
+}
+
+/* ------------------------------------------------------------------------------------------- Events & Discounts */
+.search-btn {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.search-reset {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+/* ------------------------------------------------------------------------------------------- Discounts, Cart, Checkout */
 
 .inner-content-products{
     margin-left: 12%;
@@ -225,123 +317,14 @@ button:hover {
     display: block;
 }
 
-
-.inner-content-checkout {
-    margin-left: 5%;
-    margin-right: 5%;    
-}
-
-/* ------------------------------------------------------------------------------------------- Layout Products & Events */
-
-.product-price, .event-distance, {
-    margin-top: 18px;
-}
-
-
-
-/* ------------------------------------------------------------------------------------------- Layout Events */
-
-#month, #distance, #region {
-  width: 145px;   
-}
-
-.events-list{
-    margin-top: 15px;
-    margin-left: 15px;
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-}
-
-.read-more{
-    font-size: 16px;
+.checkout-btn {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.more-info {              
-    display: none;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-.event-description {
-    margin-top: 15px;
-    margin-bottom: 18px;
-}    
-.event-pic {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 240px;
-    height: 160px;
-    margin-left: 10px;
-    margin-bottom: 15px;
-}
-
-@media (min-width: 768px) {
-   .event-pic {
-        margin-top: 25px;
-        margin-bottom: 25px;
-   }
-}
-
-.month-events {              
-    display: none;
-    margin: 5px;
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-}
-/* ------------------------------------------------------------------------------------------- Layout Community, Profile */
-.userprofile-details {
-    margin-top: 15px;
-}
-
-.userprofile-details-pic{
-    display: block;
-    width: 50%;
-}
-
-.userprofile-details-pic-big{
-    display: block;
-    margin-top: 20px;
-    margin-left: auto; 
-    margin-right: auto;
-    width: 100%;
-}
-
-.profiles {
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.profile-thumbnail, .author-thumbnail {
-    position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 120px;
-    height: 100px;
-    margin-top: 20px;
-    margin: 0 auto;
-    padding-top: 5px;
-}
-
-.author {
-    margin-top: 25px;
-}
-
-.about-me {
-    margin-top: 25px;
-}
-
-.blog-article {
-    margin-top: 30px;
+.inner-content-checkout {
+    margin-left: 5%;
+    margin-right: 5%;    
 }
 
 /* ------------------------------------------------------------------------------------------- Inspiration */
@@ -397,28 +380,85 @@ button:hover {
     position: relative;
 }
 
-/* ------------------------------------------------------------------------------------------- Inspiration */
-
-#search-btn {
-    margin-top: 10px;
-    margin-left: 10px;
+/* ------------------------------------------------------------------------------------------- Community, Profile */
+.userprofile-details {
+    margin-top: 15px;
 }
 
-#search-reset {
-    margin-top: 10px;
-    margin-left: 50px;
+.userprofile-details-pic{
+    display: block;
+    width: 50%;
 }
+
+.userprofile-details-pic-big{
+    display: block;
+    margin-top: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 100%;
+}
+
+.profiles {
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.profile-thumbnail, .author-thumbnail {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 100px;
+    margin-top: 20px;
+    /* margin: 0 auto; */
+    padding-top: 5px;
+}
+
+.profile-thumbnail-name {
+    padding-left: 20px; 
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+.post-details-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.author {
+    margin-top: 25px;
+}
+
+.about-me {
+    margin-top: 25px;
+}
+
+.blog-post{
+    border-style: solid;
+    border-color: #DEF2F1;
+    border-width: 2px;
+}
+
+.forum{
+    background-color: #DEF2F1; 
+}
+
+.blog-article {
+    margin-top: 30px;
+}
+
+.form-position {
+    margin-top:20px;
+} */
+
+
 
 /* ------------------------------------------------------------------------------------------- Not used */
-/* 
-.search-box {
-    margin-left: 15px;
-}
 
-
-
-
-.small-less-margin-left {
+/* .small-less-margin-left {
     margin-left: 0%
     }    
 
@@ -444,61 +484,23 @@ button:hover {
 .less-margin-left {
     margin-left: 1%
     }    
-}
+} */
 
-.blog-post{
-    border-style: solid;
-    border-color: #DEF2F1;
-    border-width: 2px;
-}
 
-.discounts {
+
+/* .discounts {
     margin-left: 5px;
     margin-right: 5px;
-}
+} */
 
-.forum{
-    background-color: #DEF2F1; 
-}
-
-
-#calendar {
-    display: none;
-}
-
-
-
-.post-details-btn, .checkout-btn {
+/* .amend-btn {
     margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.amend-btn {
-    margin-top: 10px;
-}
+} */
 
 
-.profile-thumbnail-name {
-    padding-left: 20px; 
-    padding-bottom: 20px;
-    margin-top: 10px;
-}
-
-
-
-
-.months {
-    border-style: solid;
-    background: #DEF2F1;
-    border-color: #DEF2F1; 
-    margin: 5px;
-}
-
+/* 
 
 .unfold {
     margin-right: 15px;
-}
-
-.form-position{
-    margin-top:20px;
 } */
+
