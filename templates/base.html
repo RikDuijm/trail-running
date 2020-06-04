@@ -47,7 +47,7 @@
                             {% if user.is_authenticated %}
                             <li class="nav-item active dropdown">
                                 <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <span class="menu-item"><div class="dropdown-menu" aria-labelledby="navbarDropdown"></span>
                                 <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
                                 <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
                                 <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>                           

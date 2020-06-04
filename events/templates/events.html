@@ -64,7 +64,7 @@
             
                 {% for event in events.all|dictsort:"date" %}
                 <div class="row col-11 events-list">                       
-                    <strong class="read-more"><span class="pointer"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} {{ event.month}} | {{ event.name }} | {{ event.distance }} | {{ event.region }}</span></strong>
+                    <strong class="read-more"><span class="pointer link-black"> <i class="fas fa-angle-down"></i> {{ event.day_of_month }} {{ event.month}} | {{ event.name }} | {{ event.distance }} | {{ event.region }}</span></strong>
                     <div class="container more-info">                                              
                         <div class="row">
                             <div class="col-sm">
