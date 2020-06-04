@@ -41,7 +41,7 @@
                     {% csrf_token %}
                         <div class="col-12 text-center">
                         <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong><hr>
-                        Adjust amount: <input name="quantity" type="number" min="0" max="999" class="form-control"></input></p>
+                        Adjust amount: <input name="quantity" type="number" min="0" max="10" ></input></p>
                         </div>
                         <div class="col-12 text-center">
                         <button type="submit" class="btn btn-info product-description read-more">Adjust</button>
