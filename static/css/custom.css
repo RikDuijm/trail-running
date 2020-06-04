@@ -78,7 +78,7 @@ body {
     margin-left: 8px;
 }
 
-.link-green:hover, .fab:hover {
+.link-green:hover, .fab:hover, .menu-item:hover {
     color: #17252A;
     transition: 0.5s ease-in-out;
 }

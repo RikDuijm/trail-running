@@ -17,7 +17,7 @@ class UserProfile(models.Model):
     repeat_email = models.EmailField(max_length=99, null=True, blank=False)
     gender = models.CharField(max_length=10,
                               choices=gender_choices,
-                              default='optional')
+                              default='who cares?')
     age = models.IntegerField(blank=False)
     location = models.CharField(max_length=30, blank=False)
     image = models.ImageField(upload_to='profile_images', blank=True)
