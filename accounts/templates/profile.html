@@ -23,7 +23,7 @@
                 <div class="col-12 col-md-4 offset-1  userprofile-details">
                     <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
                     <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
-                    {% if user == profile.userprofile.user or user.is_superuser %}
+                    {% if user == profile.userprofile.user %}
                     <p><strong>Email:</strong> {{ profile.userprofile.repeat_email }}</p>
                     {% else %}
                     {% endif %}
@@ -45,7 +45,7 @@
                     <p>{{ profile.userprofile.about_me|linebreaks}}</p>
                 </div> 
                 <div class="col-10 offset-1 userprofile-details">
-                    {% if user == profile.userprofile.user or user.is_superuser %}
+                    {% if user == profile.userprofile.user %}
                     <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit details</a>
                     <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete Profile</a>    
                     <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
