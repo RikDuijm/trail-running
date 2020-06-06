@@ -13,7 +13,7 @@ Winning over the customers and maintaining their interest with the ultimate goal
 - [**View the website here**](https://rik-duijm-trail-running.herokuapp.com/)
 - [**View the Github Repository here**](https://github.com/RikDuijm/trail-running/)
 
-![screenshot website](/media/img/logo.png)
+![screenshot website](/media/img/screenshot-final-page.jpg)
 
 ## Contents Table
 1. [**UX**](#ux)
