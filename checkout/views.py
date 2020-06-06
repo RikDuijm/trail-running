@@ -50,14 +50,12 @@ def checkout(request):
                 )
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-                print("Your card was declined!") 
             if customer.paid:
                 messages.error(request, "Thanks for your preference. You have successfully paid. We'll send you a confirmation of your purchase within one working day.")
                 request.session['cart'] = {}
                 return redirect(reverse('all_products'))
             else:                                              
                 messages.error(request, "Unable to take payment")
-                print("Unable to take payment")
         else:       
             print(payment_form.errors)                          # Else for the previous if loop. It will print any payment form errors and the message.
             messages.error(request, "We were unable to take a payment with that card!")
@@ -66,4 +64,7 @@ def checkout(request):
         payment_form = MakePaymentForm()                        # The else for the outermost loop. So we'll just return a blank form.
         order_form = OrderForm()
     # we return the checkout HTML. And within that, we include an order form, a payment form, and a publishable key for Stripe. 
-    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", {
+                    "order_form": order_form, 
+                    "payment_form": payment_form, 
+                    "publishable": settings.STRIPE_PUBLISHABLE})
