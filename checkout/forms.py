@@ -24,9 +24,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = (
-            'full_name', 'gender', 'age', 'phone_number', 'country', 'postcode',
-            'town_or_city', 'street_address1', 'street_address2',
-            'county')
+            'full_name', 'gender', 'age', 'phone_number', 'street_address', 'postal_code', 'home_town', 'country')
         labels = {
             'gender': ('Gender<br><em>Only fill out if you participate in a race</em>'),
             'age': ('Age<br><em>Only fill out if you participate in a race</em>')
