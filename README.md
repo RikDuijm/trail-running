@@ -184,8 +184,8 @@ Although it's not visible in the design,  I was playing with the idea to integra
 
 ### <a name="existing-features"></a>Existing features
 
-- **Navigation bar **\
-The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not. 
+- **Navigation bar**\
+The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not.\\
 
 If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact. It also shows the logo (clickable and linking to Home) and a shopping cart.
 If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact. 
