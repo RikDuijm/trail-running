@@ -187,7 +187,7 @@ Although it's not visible in the design,  I was playing with the idea to integra
 - **Navigation bar**\
 The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not.\
 If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact. It also shows the logo (clickable and linking to Home) and a shopping cart.
-If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact.\ 
+If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact.\
 Below, I will introduce these pages and their functionalities. 
 
 - **Footer**\
@@ -210,28 +210,23 @@ If the user forgets to select the amount of products he wants to purchase he get
 
 `Note:`
 For now, I didn’t categorise the products (for example in categories like watches, clothes, shoes, events). Reason is that this is an educational project and creating0 a number of products per category would be a lot of work that isn’t important for the learning outcome. Depending on the number of products it could be better to categorise them, especially to separate the race events from the products.\
-
 However the category (or product_type as I named it in the Model) is important for the size selection: with events and watches this is not applicable, shoes get a size of 40, 41 etc, and clothes S, M, L, etc. This selection appears depending on which category the product belongs to.
 
 - **Cart (only if logged-in)**\
 On the top of the page, the total price of the products in the cart is given, with buttons to return to the store (Discounts) or to the Checkout. Below, the products in the Cart are specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of that products are being purchased, and additional information. It’s again possible to adjust the amount of products, or to remove the product from the Cart.
  
 - **Checkout (only if logged-in)**\
-On the top of the page, the total price of the products is given, along with a button that sends the user back to the Cart. 
-
-Below, the products that are being purchased are shown, again including the name, size, price, date until the price is valid, an image, the amount of that product that is ordered, and the price per product.
-
+On the top of the page, the total price of the products is given, along with a button that sends the user back to the Cart.\
+Below, the products that are being purchased are shown, again including the name, size, price, date until the price is valid, an image, the amount of that product that is ordered, and the price per product.\
 Below the products there is the payment form. After submitting the payment, the user gets a message that he successfully (or not) purchased the products, and he is redirected to the products page. 
 
 - **Inspiration**\
-Introduces four different sections: Exercice & Injuries, Routes & Destinations, Health & Food, Stories. For now I only worked-out Routes & Destination. Reason is that this is an educational project and writing a certain number of articles per section would be a lot of work that isn’t important for the learning outcome. 
-
+Introduces four different sections: Exercice & Injuries, Routes & Destinations, Health & Food, Stories. For now I only worked-out Routes & Destination. Reason is that this is an educational project and writing a certain number of articles per section would be a lot of work that isn’t important for the learning outcome.\
 Every section introduces the articles that are written and the user can read the complete article by clicking the ‘read more’ button. Every article shows the writer, the number of times the article is read (nice statistic for the advertisers) and a button to get the user back to the section. I’ve only written a part of 2 articles, for the same reason as mentioned above, including a fictional advertisement. 
 
 - **Forum**\
-Shows the posts of bloggers, ordered by date. Every post shows the name of the author, a thumbnail of his profile picture, the number of views, the date/time the post was created and the first few lines of the post, with a read more button. Only if the user is logged-in the name of the author is clickable, linking to his/her profile page. 
-
-After clicking the ‘read more’ button, the complete post shows, including the same information as mentioned above and, optionally, a picture that is uploaded by the author. There is also a ‘back to forum’ button.
+Shows the posts of bloggers, ordered by date. Every post shows the name of the author, a thumbnail of his profile picture, the number of views, the date/time the post was created and the first few lines of the post, with a read more button. Only if the user is logged-in the name of the author is clickable, linking to his/her profile page.\
+After clicking the ‘read more’ button, the complete post shows, including the same information as mentioned above and, optionally, a picture that is uploaded by the author. There is also a ‘back to forum’ button.\
 The author of a specific post, and the admin will see additional buttons to edit or delete the post.
 
 - **Add Post (only if logged-in)**\
@@ -245,27 +240,21 @@ Shows a small message, asking if the user is certain to delete the post. If conf
 (Your post is deleted)
 
 - **User Profiles (only if logged-in)**\
-Shows a list of all user profiles, with a thumbnail of the profile picture, user-name, first and last name, age and residence.
-
-There’s also a ‘contact user’ button. This will lead to a form that a user can fill out. The message (including an optional picture) will be send to the profile page of the user that is contacted, obviously only readable by that user. 
-
-On top of the page there’s a search functionality, much like that on the Events page. You can find a profile, searching on first name, last name or location. There’s also a reset button.
-
+Shows a list of all user profiles, with a thumbnail of the profile picture, user-name, first and last name, age and residence.\
+There’s also a ‘contact user’ button. This will lead to a form that a user can fill out. The message (including an optional picture) will be send to the profile page of the user that is contacted, obviously only readable by that user.\
+On top of the page there’s a search functionality, much like that on the Events page. You can find a profile, searching on first name, last name or location. There’s also a reset button.\
 If no results are found  a message “No profiles found” appears.
 
 - **My Profile (only if logged-in)**\
-Shows the basic dates the user filled out upon registering (first and last name, location, email, gender, age and an optional profile picture (if a user chooses not to upload a picture an icon of a runner is shown here).
-
-Below the personal introduction that the user submitted is shown. There are buttons to edit all this information or to delete the complete profile. There is also a button to create a new post,so that a user can for example create different entrances on his profile page (date of the entrance is published, creating a small diary if you will, ordered by date). Again, these additional posts can be deleted.
-
+Shows the basic dates the user filled out upon registering (first and last name, location, email, gender, age and an optional profile picture (if a user chooses not to upload a picture an icon of a runner is shown here).\
+Below the personal introduction that the user submitted is shown. There are buttons to edit all this information or to delete the complete profile. There is also a button to create a new post,so that a user can for example create different entrances on his profile page (date of the entrance is published, creating a small diary if you will, ordered by date). Again, these additional posts can be deleted.\
 There is also a section with Personal Messages: messages the user received from other users. The user is able to delete these messages.
 
 - **Register (only if not logged-in)**\
 When a user is not logged in, the navigation bar shows a link to the registration page. On top of the form there is a link to the sign in page, for when the user already has an account. 
-The form contains: Username, Email address, Password, Password Confirmation, First name, Last name, Repeat email, Gender, Age the possibility to upload a picture and a field to write a short introduction. 
-Only the gender, picture upload and the personal introduction are not required.
-
-If the form is filled in, the user is logged in and taken to his profile, showing the message “You have successfully registered and are logged in”.
+The form contains: Username, Email address, Password, Password Confirmation, First name, Last name, Repeat email, Gender, Age the possibility to upload a picture and a field to write a short introduction.\
+Only the gender, picture upload and the personal introduction are not required.\
+If the form is filled in, the user is logged in and taken to his profile, showing the message “You have successfully registered and are logged in”.\
 When a required field is not filled-in, a user name already exists or the password confirmation is incorrect the user receives warnings. 	
 
 - **Login (only if not logged-in)**\
