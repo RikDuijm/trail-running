@@ -90,16 +90,16 @@ The site must emanate that the customer and his needs are understood. Product of
  
 
 ### <a name="application"></a>The application
-**What are we making?** 
+**What are we making?**\
 Given the enormous amount of web shops, we feel that our regular web shop isn’t competitive enough anymore. To be able to distinguish from competitors we want to create an environment that the user likes to visit and return to over and over again. 
 Secondly we also feel that there always more ways to generate revenue, and we should consider advertisements, and offering collaboration with other companies and organisations that share our audience, as long as they are no direct competitors. 
 
 This is achieved by: 
 
-**1. An online store with weekly offers** 
+**1. An online store with weekly offers**\
 A selection of products from the separate, larger online store is offered here. The idea is to promote new products every week at a significant discount. Only registered users can purchase these products. 
 
-**Why does the user want this?** 
+**Why does the user want this?**\
 The user / the citizen wants to be able to see if a problem is already reported and if not, communicate problems with the municipality without hassle / having to waste time in a phone call. Finally he wants to see his report back, so that he’s sure that the municipality has to do something about it.
 
 ### <a name="user-experience"></a>User Experience
