@@ -46,7 +46,7 @@ Winning over the customers and maintaining their interest with the ultimate goal
 
 ### <a name="audience"></a>The Audience
 
-**Who is the target audience?**
+**Who is the target audience?** 
 ***The trail runner***
 Diverse in age and geographical locations and of both genders, there are still important common characteristics in the target audience. 
 
@@ -55,7 +55,7 @@ Obviously the audience share a common hobby and they are all quite passionate ab
 Although it’s not an elite sport, trail runners tend to be higher educated, earning above average. The trail runner is usually intensively engaged in his hobby and very serious about it. For many of the trail runners the equipment is very important. Normally they spend quite some money on shoes, gear, clothes, food and supplements. 
 They like nature, are mostly socially engaged and conscious living. And they are above average adventurous. Generally they like to travel and explore new destinies / activities.
 
-***What's cultural appropriate for the audience?***
+***What's cultural appropriate for the audience?*** 
 The site must emanate that the customer and his needs are understood. Product offers, events, stories and information should all 	seamlessly connect to the customer. The customer must feel that the website is on ‘on the same page’, offering information, inspiration and products even before he / she can wonder if this would be available. 
 
 ### <a name="user-stories"></a>User Stories
@@ -65,36 +65,40 @@ The site must emanate that the customer and his needs are understood. Product of
 - inspiring stories and other content (photos, videos) that fulfil the need of the customers to read about / live their hobby. This ensures that the customers feel connected to the website, making it plausible that they will visit the website many times.
 - an event calendar, firstly to inform and serve the customer, secondly to facilitate a platform / technical assistance for event organizers. With this calendar a discount can be offered to the customer or a commission could be charged to the organizer. At the same time, a valuable relation with the race organizers is created.
 - an online community where users can post blogs and contact each other. This creates a very valuable community feeling, the sense that the user “belongs” to something and connects to the website. Again it makes it very plausible that the user will return many times to the website and let his eye fall on newly promoted products.
-
-
-**As a user I’d like to:**
+ 
+ 
+**As a user I’d like to:** 
 - search for / purchase high quality products at a favourable price.
 - learn about / enrol in cool events.
 - read about my hobby.
 - find destinations, routes, and advice about health and injuries, diet and training.
 - connect with likeminded people, maybe find training mates or exchange stories and tips and tricks.
+ 
 
-**As an guest editor I’d like to have:**<br>   
+**As an guest editor I’d like to have:** 
 - a platform to show off my expertise, to reach and persuade potential clients. 
+ 
 
-**As an event organizer I’d like to have:**<br>
+**As an event organizer I’d like to have:** 
 - a platform to promote my event. 
 - the technological ability to facilitate online enrolments and payments
+ 
 
-**As an advertiser I’d like to have:**<br>
+**As an advertiser I’d like to have:** 
 - the possibility to advertise to a clearly defined audience that is hugely interested in my specific products / services.
+ 
 
 ### <a name="application"></a>The application
-**What are we making?**<br>
+**What are we making?** 
 Given the enormous amount of web shops, we feel that our regular web shop isn’t competitive enough anymore. To be able to distinguish from competitors we want to create an environment that the user likes to visit and return to over and over again. 
 Secondly we also feel that there always more ways to generate revenue, and we should consider advertisements, and offering collaboration with other companies and organisations that share our audience, as long as they are no direct competitors. 
 
 This is achieved by: 
 
-**1. An online store with weekly offers**
+**1. An online store with weekly offers** 
 A selection of products from the separate, larger online store is offered here. The idea is to promote new products every week at a significant discount. Only registered users can purchase these products. 
 
-**Why does the user want this?**<br>
+**Why does the user want this?** 
 The user / the citizen wants to be able to see if a problem is already reported and if not, communicate problems with the municipality without hassle / having to waste time in a phone call. Finally he wants to see his report back, so that he’s sure that the municipality has to do something about it.
 
 ### <a name="user-experience"></a>User Experience
