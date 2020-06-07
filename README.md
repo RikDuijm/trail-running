@@ -20,6 +20,7 @@ Winning over the customers and maintaining their interest with the ultimate goal
     - [The Audience](#audience)
     - [User Stories](#user-stories)
     - [The application](#application)
+    - [Content](#content)
     - [User Experience](#user-experience)
     - [Design Ideas](#design-ideas)
     - [Wireframes](#wireframes)
@@ -92,6 +93,7 @@ The site must emanate that the customer and his needs are understood. Product of
 ### <a name="application"></a>The application
 **What are we making?**\
 Given the enormous amount of web shops, we feel that our regular web shop isn’t competitive enough anymore. To be able to distinguish from competitors we want to create an environment that the user likes to visit and return to over and over again. 
+
 Secondly we also feel that there always more ways to generate revenue, and we should consider advertisements, and offering collaboration with other companies and organisations that share our audience, as long as they are no direct competitors. 
 
 This is achieved by: 
@@ -99,8 +101,43 @@ This is achieved by:
 **1. An online store with weekly offers**\
 A selection of products from the separate, larger online store is offered here. The idea is to promote new products every week at a significant discount. Only registered users can purchase these products. 
 
+The objective is threefold:\
+1. Generate sales
+1. Generate traffic to the larger store. 
+1. Ensure that users regularly check the website. That should increase the amount of visits to the community and the attention for the editorial part and the events calendar - while these other sections in turn should increase the attention to the online store.
+
+
+**2. Online community**\
+The website offers an online community. Trail runners can post their blogs and contact other users. 
+
+***Blog***\
+Analysing social media, it becomes pretty clear that many trail runners like to write about their “epic adventures” and that many others like to read their articles. The obvious question is how many would publish on this website, but you could stimulate this by developing a discount system for runners that publish their stories here (still to be developed). 
+
+***Profile***\
+Trail runners can also create their own profile. This is needed to receive special discounts on products and events and to engage with other users. On their profile they can publish extra texts and pictures and read messages that other users sent them. 
+On the protected part of the website - only accessible after registration / login - the user can find all other profiles. And the user can also send messages to other users. 
+
+**3. An editorial section for reference and inspiration**\
+The content of this section will be written by employees of the store and by specialists in one of the subjects. There are four sections where the user can find professionally written advice, tips or articles: Excercise & Injuries, Routes & Destinations, Health & Food, Stories.\
+For other entrepreneurs (for example physiotherapists, dieticians, psychologists, but also tour operators and national tourist offices) it’s interesting to publish here, because it’s free publicity to their target audience.\
+Also, advertising space can be sold as an additional income.
+
+**4: An event calendar**\
+Many trail runs are small-scale initiatives, created by passionate trail runners. However, they are not always able to properly promote such an event, or arrange an online registration: they often lack this specific knowledge. By facilitating an event calendar, you both form a bond with these types of organizations - with every thinkable advantage - and you provide interesting content for your target group. The user will receive a small discount upon registration through the website. However, you could also consider charging a small commission from the organizer (like booking.com) to generate extra income.
+
+**Important note:**\
+This website co-exists with our normal webshop and offers only a selection of products, at high discounts. On it, we mention that our store is behind this new website, but we don’t emphasize this. Further customer research must show whether it is desirable to integrate our normal webshop into this website or to maintain 2 separate websites. This website relies heavily on the positive feeling the user receives from it. It may be that a fully integrated webshop detracts from this feeling.
+
 **Why does the user want this?**\
-The user / the citizen wants to be able to see if a problem is already reported and if not, communicate problems with the municipality without hassle / having to waste time in a phone call. Finally he wants to see his report back, so that he’s sure that the municipality has to do something about it.
+The user is interested in purchasing products for a favourable price, but given the intensity of which most trail runners “live” their hobby many will be interested in reading about it, finding trustworthy information, being able to connect with other runners and finding nice, small and unknown races in which to participate. Although the sport is getting bigger, most trail runners don’t like big events; they don’t like the mass and  mainstream and most aren’t members of a sport club. They practice their sport individually. That makes it more difficult to get engaged in the sport, finding a running mate, information – basically how to do everything. A website that offers all is very helpful. And even if a customer doesn’t make use of the community for example, he or she might still be interested in other aspects of the website. Apart from that, even if someone doesn’t make use of any of the offered extras, those can still be appreciated, making the user choose to purchase a product on this website anyway.
+
+### <a name="content"></a>Content
+**What content type would be relevant?**\
+Products and people, information and inspiration: these are basically the four pillars the website stands on. They are introduced already above.
+
+Every suggestion must be excellent, whether it’s the product choice, the presented events or the offered information. The user must be surprised every time he / she visits a page. Quantity is not the most important aspect, it’s the quality of the products or information that is offered and the positive feelings a story or picture evokes. 
+
+
 
 ### <a name="user-experience"></a>User Experience
 
