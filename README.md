@@ -185,11 +185,9 @@ Although it's not visible in the design,  I was playing with the idea to integra
 ### <a name="existing-features"></a>Existing features
 
 - **Navigation bar**\
-The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not.<br/><br/>
-
+The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not.\
 If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact. It also shows the logo (clickable and linking to Home) and a shopping cart.
-If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact.<br/><br/> 
-
+If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact.\ 
 Below, I will introduce these pages and their functionalities. 
 
 - **Footer**\
@@ -199,23 +197,19 @@ Contains links to (not yet existing) social media pages: Twitter, Facebook, Inst
 Introduces the four main sections of the website: Events, Discounts, Inspiration and Community.  
 
 - **Events**\
-Exists of a search functionality. The user can find races by searching directly on the name of the race, but also by filtering month, distance, or region. There’s also a reset button. 
-
-After a query the races appear, ordered by date, showing the date, name, distance and place name. When clicked on a race, more information appears, and there’s a button with the possibility to register, bringing the user to the discount section where he can purchase his ticket for the race. 
-
+Exists of a search functionality. The user can find races by searching directly on the name of the race, but also by filtering month, distance, or region. There’s also a reset button.\
+After a query the races appear, ordered by date, showing the date, name, distance and place name. When clicked on a race, more information appears, and there’s a button with the possibility to register, bringing the user to the discount section where he can purchase his ticket for the race.\
 If no results are found / or a query isn’t be made yet, a message “Please search (again)” appears.
 
-Note: for now I’ve only published a few races / months / distances and regions – just to show the idea of the functionality. 
+`Note:` for now I’ve only published a few races / months / distances and regions – just to show the idea of the functionality. 
 
 - **Discounts**\
-Shows products a user can purchase / events a user can enrol into. Per item it shows the name, a picture, the normal price, the discount price, the date until the offer is valid, a box to select the quantity of items to purchase, the possibility to select the size (if applicable), and a button to add the product to the shopping cart. More info is hidden but can be read by clicking the ‘read more’ button.
-
-The user can only add products to the cart if he’s logged in. He will see a message that the product is added to his cart. In the navigation bar he will also see the number of items in the cart appear, in a distinguished orange colour. 
-
+Shows products a user can purchase / events a user can enrol into. Per item it shows the name, a picture, the normal price, the discount price, the date until the offer is valid, a box to select the quantity of items to purchase, the possibility to select the size (if applicable), and a button to add the product to the shopping cart. More info is hidden but can be read by clicking the ‘read more’ button.\
+The user can only add products to the cart if he’s logged in. He will see a message that the product is added to his cart. In the navigation bar he will also see the number of items in the cart appear, in a distinguished orange colour.\
 If the user forgets to select the amount of products he wants to purchase he gets a message to do so. 
 
 `Note:`
-For now, I didn’t categorise the products (for example in categories like watches, clothes, shoes, events). Reason is that this is an educational project and creating0 a number of products per category would be a lot of work that isn’t important for the learning outcome. Depending on the number of products it could be better to categorise them, especially to separate the race events from the products.
+For now, I didn’t categorise the products (for example in categories like watches, clothes, shoes, events). Reason is that this is an educational project and creating0 a number of products per category would be a lot of work that isn’t important for the learning outcome. Depending on the number of products it could be better to categorise them, especially to separate the race events from the products.\
 
 However the category (or product_type as I named it in the Model) is important for the size selection: with events and watches this is not applicable, shoes get a size of 40, 41 etc, and clothes S, M, L, etc. This selection appears depending on which category the product belongs to.
 
