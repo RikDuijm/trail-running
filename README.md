@@ -184,36 +184,129 @@ Although it's not visible in the design,  I was playing with the idea to integra
 
 ### <a name="existing-features"></a>Existing features
 
-- **Search functionality**<br>
-The municipality wants the user to look first if a problem is already reported. On the homepage there is a search functionality with the instruction “1. Look for reported problems – enter street namook for reported problems – enter street name”.
-Search functionality must not be case sensitive. Furthermore, if part of a street name is typed, it must give suggestions. If the search button is clicked without typing anything, all results should show.
+- **Navigation bar **/
+The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not. 
 
-- **Login and Registration functionalities**<br>
-After searching for reported problems in a given street the user has the possibility to login to report a new problem. Therefore he also has the possibility to register himself. In this application he can choose username and password, but in real life he would have to register with his full name and for example his id-number.
-If a user wants to register with an existing username, he gets a message that that username is already taken. When registered, the user can log in, providing his credentials. If he makes a typo, he receives a message to try it again.
+If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact. It also shows the logo (clickable and linking to Home) and a shopping cart.
+If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact. 
 
-- **Report form**<br>
-After successfully logging in the user is sent to the page where he can use a form to report a problem. His username is already selected and not changeable and also the date / time of the report is filled-in already. He can only fill out the street name and the problem he is reporting.
+Below, I will introduce these pages and their functionalities. 
 
-- **Overview of reports**<br>
-After submitting the form, the user is sent to a general overview of all the reported problems. The most recently reported problem will be on top of the list, so the user will see his report immediately. He can click on the report to see if the municipality already posted a reaction.
+- **Footer**/
+Contains links to (not yet existing) social media pages: Twitter, Facebook, Instagram and YouTube.
 
-- **Navigation bar and environment for admin**<br>
-There is also a navigation bar on top of the page. If a user logs in using the navigation bar, he technically can report a problem at once, without having to look if it’s already reported. Obviously I could choose to delete the login in the navigation bar, but a user can also be an administrator, and I’ve chosen to maintain the login so that the administrator can enter the system as quickly as possible. He can do so to provide his credentials and he get an overview of all the reports, most recently reported first. Here, he can comment on reports or delete them, something a regular user cannot do. Obviously the administrator can also search per street name.
+- **Homepage**/
+Introduces the four main sections of the website: Events, Discounts, Inspiration and Community.  
 
-*`Please check this environment with the following credentials: Username: admin, Password: admin.`*
+- **Events**/
+Exists of a search functionality. The user can find races by searching directly on the name of the race, but also by filtering month, distance, or region. There’s also a reset button. 
 
-- **Footer**<br>
-Allows the user to see the contact details and opening hours of the municipality and their social media canals (Facebook, Instagram, Twitter). None are clickable for now.
+After a query the races appear, ordered by date, showing the date, name, distance and place name. When clicked on a race, more information appears, and there’s a button with the possibility to register, bringing the user to the discount section where he can purchase his ticket for the race. 
+
+If no results are found / or a query isn’t be made yet, a message “Please search (again)” appears.
+
+Note: for now I’ve only published a few races / months / distances and regions – just to show the idea of the functionality. 
+
+- **Discounts**/
+Shows products a user can purchase / events a user can enrol into. Per item it shows the name, a picture, the normal price, the discount price, the date until the offer is valid, a box to select the quantity of items to purchase, the possibility to select the size (if applicable), and a button to add the product to the shopping cart. More info is hidden but can be read by clicking the ‘read more’ button.
+
+The user can only add products to the cart if he’s logged in. He will see a message that the product is added to his cart. In the navigation bar he will also see the number of items in the cart appear, in a distinguished orange colour. 
+
+If the user forgets to select the amount of products he wants to purchase he gets a message to do so. 
+
+`Note:`
+For now, I didn’t categorise the products (for example in categories like watches, clothes, shoes, events). Reason is that this is an educational project and creating0 a number of products per category would be a lot of work that isn’t important for the learning outcome. Depending on the number of products it could be better to categorise them, especially to separate the race events from the products.
+
+However the category (or product_type as I named it in the Model) is important for the size selection: with events and watches this is not applicable, shoes get a size of 40, 41 etc, and clothes S, M, L, etc. This selection appears depending on which category the product belongs to.
+
+- **Cart (only if logged-in)**/
+On the top of the page, the total price of the products in the cart is given, with buttons to return to the store (Discounts) or to the Checkout. Below, the products in the Cart are specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of that products are being purchased, and additional information. It’s again possible to adjust the amount of products, or to remove the product from the Cart.
+ 
+- **Checkout (only if logged-in)**/
+On the top of the page, the total price of the products is given, along with a button that sends the user back to the Cart. 
+
+Below, the products that are being purchased are shown, again including the name, size, price, date until the price is valid, an image, the amount of that product that is ordered, and the price per product.
+
+Below the products there is the payment form. After submitting the payment, the user gets a message that he successfully (or not) purchased the products, and he is redirected to the products page. 
+
+- **Inspiration**/
+Introduces four different sections: Exercice & Injuries, Routes & Destinations, Health & Food, Stories. For now I only worked-out Routes & Destination. Reason is that this is an educational project and writing a certain number of articles per section would be a lot of work that isn’t important for the learning outcome. 
+
+Every section introduces the articles that are written and the user can read the complete article by clicking the ‘read more’ button. Every article shows the writer, the number of times the article is read (nice statistic for the advertisers) and a button to get the user back to the section. I’ve only written a part of 2 articles, for the same reason as mentioned above, including a fictional advertisement. 
+
+- **Forum**/
+Shows the posts of bloggers, ordered by date. Every post shows the name of the author, a thumbnail of his profile picture, the number of views, the date/time the post was created and the first few lines of the post, with a read more button. Only if the user is logged-in the name of the author is clickable, linking to his/her profile page. 
+
+After clicking the ‘read more’ button, the complete post shows, including the same information as mentioned above and, optionally, a picture that is uploaded by the author. There is also a ‘back to forum’ button.
+The author of a specific post, and the admin will see additional buttons to edit or delete the post.
+
+- **Add Post (only if logged-in)**/
+Shows a form. If filled-out and submitted a new post is created and the user is redirected to the forum, showing his newly created post on top. 
+
+- **Edit Post (only if logged-in and author of that specific post or admin)**/
+Shows the same form as Add Post, now filled-out with the earlier posted content. User can edit this and submit in the same way as with Add Post. 
+
+- **Delete Post (only if logged-in and author of that specific post or Admin)**/
+Shows a small message, asking if the user is certain to delete the post. If confirmed, post is deleted and user is returned to Forum, if cancelled user is returned to the post.
+(Your post is deleted)
+
+- **User Profiles (only if logged-in)**/
+Shows a list of all user profiles, with a thumbnail of the profile picture, user-name, first and last name, age and residence.
+
+There’s also a ‘contact user’ button. This will lead to a form that a user can fill out. The message (including an optional picture) will be send to the profile page of the user that is contacted, obviously only readable by that user. 
+
+On top of the page there’s a search functionality, much like that on the Events page. You can find a profile, searching on first name, last name or location. There’s also a reset button.
+
+If no results are found  a message “No profiles found” appears.
+
+- **My Profile (only if logged-in)**/
+Shows the basic dates the user filled out upon registering (first and last name, location, email, gender, age and an optional profile picture (if a user chooses not to upload a picture an icon of a runner is shown here).
+
+Below the personal introduction that the user submitted is shown. There are buttons to edit all this information or to delete the complete profile. There is also a button to create a new post,so that a user can for example create different entrances on his profile page (date of the entrance is published, creating a small diary if you will, ordered by date). Again, these additional posts can be deleted.
+
+There is also a section with Personal Messages: messages the user received from other users. The user is able to delete these messages.
+
+- **Register (only if not logged-in)**/
+When a user is not logged in, the navigation bar shows a link to the registration page. On top of the form there is a link to the sign in page, for when the user already has an account. 
+The form contains: Username, Email address, Password, Password Confirmation, First name, Last name, Repeat email, Gender, Age the possibility to upload a picture and a field to write a short introduction. 
+Only the gender, picture upload and the personal introduction are not required.
+
+If the form is filled in, the user is logged in and taken to his profile, showing the message “You have successfully registered and are logged in”.
+When a required field is not filled-in, a user name already exists or the password confirmation is incorrect the user receives warnings. 	
+
+- **Login (only if not logged-in)**/
+Allows the user with an account to login. User can also request a new password, or can go the registration page when he is a new. 
+
+- **Reset Password**/
+If the user has forgotten his password he can request an email and after clicking on the link in the email change his password.
+
+- **Logout (only if logged-in)**/
+Allows the user to log out.
+
 
 ### <a name="features-left-to-implement"></a>Features left to Implement
 
-- **Dashboard**
-To show how many problems there have been reported per street / how long it took to solve what type of problems. This might be desirable for the municipality to show off how fantastic a job they are doing, or maybe to make clear internally that they need more infrastructure / resources to do the job. In that case, the dashboard would not be available for the public.
+- **Events:**
+	-   Maps showing the route of the race. This could be done with the Google Maps API.
+	-   A nice photographic presentation of the races, possibly with thumbnails / slider. This should be the same functionality as the presentation of the products (see below).
 
-- **Photos of problems on website**
-I would like to add the possibility that people can send in a file / photo with the form. Obviously this could help the municipality to get a quick and clear impression on the (urgency of a) problem. It could also help a user to understand whether this is the problem he also wanted to report or not.
-I figured out how to receive an uploaded file in MongoDB, but not how to retrieve this on the website in a nice and consistent manner (same size, for example). So for now, I decided to delete the possibility to upload a file from the Form.
+- **Discounts:**
+	-   Categorising the products (for example in categories like watches, clothes, shoes, events).
+	-   Possibly a search functionality to search for a specific product. This would depend on how big the store will eventually get (the main idea is to present a small amount of products from the larger store that have a nice discount for only one week), so it might not be necessary to have a search functionality because there is only a limited amount of products.
+	-   The ability to select and purchase the products in other colours.
+	-   Clickable thumbnails to show the product from various angels / viewpoints.
+	-   Pagination if there are many products for sale. 
+
+- **Inspiration**
+	-   Now, all articles of a certain category (for example Exercise & Injuries, Routes & Destinations) are introduced on the same page. As the number of articles grow, they should be further categorised and the user should be able to select rapidly the topic of interest. The category Exercise & Injuries could be ordered by body parts for example and Routes & Destinations by region and/or distance of the route, so that the user can find easily the information he wants.
+
+- **Community:**
+	-   As the number of posts grow, they should be organised by topic and the user should be able to search by topic. Logically this would be the same technology as on the Inspiration page. 
+	-   A chat room for members could be implemented later.
+
+- **Public profile / Events**
+	-   It would be nice to see which users will participate in which events and later on publish the results of the users. This can be both done in the calendar, and on the public profile of the user. Obviously the user should agree, because of privacy regulations.
+
 
 ## <a name="ux"></a>Technologies Used
 - **Languages**
