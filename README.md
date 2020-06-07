@@ -46,8 +46,8 @@ Winning over the customers and maintaining their interest with the ultimate goal
 
 ### <a name="audience"></a>The Audience
 
-**Who is the target audience?** 
-***The trail runner***
+**Who is the target audience?**\ 
+***The trail runner***\
 Diverse in age and geographical locations and of both genders, there are still important common characteristics in the target audience. 
 
 Obviously the audience share a common hobby and they are all quite passionate about it.
