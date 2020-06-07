@@ -139,7 +139,7 @@ Every suggestion must be excellent, whether it’s the product choice, the prese
 
 ### <a name="user-experience"></a>User Experience
 
-**What makes a good user experience?**\
+**What makes a good user experience?**
 - The website must be easy to navigate intuitively. The structure must be clear, the user should be able to find everything within a few moments, without having to wonder how to get there. This gives the user the idea that the website owner knows what he’s doing.
 - The user should get inspired and be surprised when using the website because of the quality of content presented and the way it’s presented in. The website, products and information must be original and of high quality, and should be beautifully presented. 
 
@@ -154,7 +154,7 @@ I chose the Font 'Roboto', sans-serif because this is a soothing, modern letter.
 - **Colours**\
 I chose soft colours, green azure and black, representing nature. It combines well with many outdoor pictures. The plain white background also contributes to the clarity.
 
-- **images**\
+- **Images**\
 This website is about the hobby of the customer. Therefore, the selection of photos is hugely important. The customer has to get a positive feeling and should get activated and inspirated on the website. Photos should show nature and landscape on it's best.
 
 - **Presenting the content**\
@@ -184,7 +184,7 @@ Although it's not visible in the design,  I was playing with the idea to integra
 
 ### <a name="existing-features"></a>Existing features
 
-- **Navigation bar **/
+- **Navigation bar **\
 The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not. 
 
 If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact. It also shows the logo (clickable and linking to Home) and a shopping cart.
@@ -192,13 +192,13 @@ If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, For
 
 Below, I will introduce these pages and their functionalities. 
 
-- **Footer**/
+- **Footer**\
 Contains links to (not yet existing) social media pages: Twitter, Facebook, Instagram and YouTube.
 
-- **Homepage**/
+- **Homepage**\
 Introduces the four main sections of the website: Events, Discounts, Inspiration and Community.  
 
-- **Events**/
+- **Events**\
 Exists of a search functionality. The user can find races by searching directly on the name of the race, but also by filtering month, distance, or region. There’s also a reset button. 
 
 After a query the races appear, ordered by date, showing the date, name, distance and place name. When clicked on a race, more information appears, and there’s a button with the possibility to register, bringing the user to the discount section where he can purchase his ticket for the race. 
@@ -207,7 +207,7 @@ If no results are found / or a query isn’t be made yet, a message “Please se
 
 Note: for now I’ve only published a few races / months / distances and regions – just to show the idea of the functionality. 
 
-- **Discounts**/
+- **Discounts**\
 Shows products a user can purchase / events a user can enrol into. Per item it shows the name, a picture, the normal price, the discount price, the date until the offer is valid, a box to select the quantity of items to purchase, the possibility to select the size (if applicable), and a button to add the product to the shopping cart. More info is hidden but can be read by clicking the ‘read more’ button.
 
 The user can only add products to the cart if he’s logged in. He will see a message that the product is added to his cart. In the navigation bar he will also see the number of items in the cart appear, in a distinguished orange colour. 
@@ -219,38 +219,38 @@ For now, I didn’t categorise the products (for example in categories like watc
 
 However the category (or product_type as I named it in the Model) is important for the size selection: with events and watches this is not applicable, shoes get a size of 40, 41 etc, and clothes S, M, L, etc. This selection appears depending on which category the product belongs to.
 
-- **Cart (only if logged-in)**/
+- **Cart (only if logged-in)**\
 On the top of the page, the total price of the products in the cart is given, with buttons to return to the store (Discounts) or to the Checkout. Below, the products in the Cart are specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of that products are being purchased, and additional information. It’s again possible to adjust the amount of products, or to remove the product from the Cart.
  
-- **Checkout (only if logged-in)**/
+- **Checkout (only if logged-in)**\
 On the top of the page, the total price of the products is given, along with a button that sends the user back to the Cart. 
 
 Below, the products that are being purchased are shown, again including the name, size, price, date until the price is valid, an image, the amount of that product that is ordered, and the price per product.
 
 Below the products there is the payment form. After submitting the payment, the user gets a message that he successfully (or not) purchased the products, and he is redirected to the products page. 
 
-- **Inspiration**/
+- **Inspiration**\
 Introduces four different sections: Exercice & Injuries, Routes & Destinations, Health & Food, Stories. For now I only worked-out Routes & Destination. Reason is that this is an educational project and writing a certain number of articles per section would be a lot of work that isn’t important for the learning outcome. 
 
 Every section introduces the articles that are written and the user can read the complete article by clicking the ‘read more’ button. Every article shows the writer, the number of times the article is read (nice statistic for the advertisers) and a button to get the user back to the section. I’ve only written a part of 2 articles, for the same reason as mentioned above, including a fictional advertisement. 
 
-- **Forum**/
+- **Forum**\
 Shows the posts of bloggers, ordered by date. Every post shows the name of the author, a thumbnail of his profile picture, the number of views, the date/time the post was created and the first few lines of the post, with a read more button. Only if the user is logged-in the name of the author is clickable, linking to his/her profile page. 
 
 After clicking the ‘read more’ button, the complete post shows, including the same information as mentioned above and, optionally, a picture that is uploaded by the author. There is also a ‘back to forum’ button.
 The author of a specific post, and the admin will see additional buttons to edit or delete the post.
 
-- **Add Post (only if logged-in)**/
+- **Add Post (only if logged-in)**\
 Shows a form. If filled-out and submitted a new post is created and the user is redirected to the forum, showing his newly created post on top. 
 
-- **Edit Post (only if logged-in and author of that specific post or admin)**/
+- **Edit Post (only if logged-in and author of that specific post or admin)**\
 Shows the same form as Add Post, now filled-out with the earlier posted content. User can edit this and submit in the same way as with Add Post. 
 
-- **Delete Post (only if logged-in and author of that specific post or Admin)**/
+- **Delete Post (only if logged-in and author of that specific post or Admin)**\
 Shows a small message, asking if the user is certain to delete the post. If confirmed, post is deleted and user is returned to Forum, if cancelled user is returned to the post.
 (Your post is deleted)
 
-- **User Profiles (only if logged-in)**/
+- **User Profiles (only if logged-in)**\
 Shows a list of all user profiles, with a thumbnail of the profile picture, user-name, first and last name, age and residence.
 
 There’s also a ‘contact user’ button. This will lead to a form that a user can fill out. The message (including an optional picture) will be send to the profile page of the user that is contacted, obviously only readable by that user. 
@@ -259,14 +259,14 @@ On top of the page there’s a search functionality, much like that on the Event
 
 If no results are found  a message “No profiles found” appears.
 
-- **My Profile (only if logged-in)**/
+- **My Profile (only if logged-in)**\
 Shows the basic dates the user filled out upon registering (first and last name, location, email, gender, age and an optional profile picture (if a user chooses not to upload a picture an icon of a runner is shown here).
 
 Below the personal introduction that the user submitted is shown. There are buttons to edit all this information or to delete the complete profile. There is also a button to create a new post,so that a user can for example create different entrances on his profile page (date of the entrance is published, creating a small diary if you will, ordered by date). Again, these additional posts can be deleted.
 
 There is also a section with Personal Messages: messages the user received from other users. The user is able to delete these messages.
 
-- **Register (only if not logged-in)**/
+- **Register (only if not logged-in)**\
 When a user is not logged in, the navigation bar shows a link to the registration page. On top of the form there is a link to the sign in page, for when the user already has an account. 
 The form contains: Username, Email address, Password, Password Confirmation, First name, Last name, Repeat email, Gender, Age the possibility to upload a picture and a field to write a short introduction. 
 Only the gender, picture upload and the personal introduction are not required.
@@ -274,13 +274,13 @@ Only the gender, picture upload and the personal introduction are not required.
 If the form is filled in, the user is logged in and taken to his profile, showing the message “You have successfully registered and are logged in”.
 When a required field is not filled-in, a user name already exists or the password confirmation is incorrect the user receives warnings. 	
 
-- **Login (only if not logged-in)**/
+- **Login (only if not logged-in)**\
 Allows the user with an account to login. User can also request a new password, or can go the registration page when he is a new. 
 
-- **Reset Password**/
+- **Reset Password**\
 If the user has forgotten his password he can request an email and after clicking on the link in the email change his password.
 
-- **Logout (only if logged-in)**/
+- **Logout (only if logged-in)**\
 Allows the user to log out.
 
 
