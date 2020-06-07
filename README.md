@@ -56,7 +56,7 @@ Obviously the audience share a common hobby and they are all quite passionate ab
 Although it’s not an elite sport, trail runners tend to be higher educated, earning above average. The trail runner is usually intensively engaged in his hobby and very serious about it. For many of the trail runners the equipment is very important. Normally they spend quite some money on shoes, gear, clothes, food and supplements. 
 They like nature, are mostly socially engaged and conscious living. And they are above average adventurous. Generally they like to travel and explore new destinies / activities.
 
-***What's cultural appropriate for the audience?***\ 
+***What's cultural appropriate for the audience?***\
 The site must emanate that the customer and his needs are understood. Product offers, events, stories and information should all 	seamlessly connect to the customer. The customer must feel that the website is on ‘on the same page’, offering information, inspiration and products even before he / she can wonder if this would be available. 
 
 ### <a name="user-stories"></a>User Stories
