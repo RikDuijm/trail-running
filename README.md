@@ -101,7 +101,7 @@ This is achieved by:
 **1. An online store with weekly offers**\
 A selection of products from the separate, larger online store is offered here. The idea is to promote new products every week at a significant discount. Only registered users can purchase these products. 
 
-The objective is threefold:\
+The objective is threefold:
 1. Generate sales
 1. Generate traffic to the larger store. 
 1. Ensure that users regularly check the website. That should increase the amount of visits to the community and the attention for the editorial part and the events calendar - while these other sections in turn should increase the attention to the online store.
@@ -137,52 +137,48 @@ Products and people, information and inspiration: these are basically the four p
 
 Every suggestion must be excellent, whether it’s the product choice, the presented events or the offered information. The user must be surprised every time he / she visits a page. Quantity is not the most important aspect, it’s the quality of the products or information that is offered and the positive feelings a story or picture evokes. 
 
-
-
 ### <a name="user-experience"></a>User Experience
 
-**What makes a good user experience?**<br>
-- Presenting an easy navigable, comprehensive tool to search for problems in a given street and, if a problem is not reported yet, making it as easy as possible for the user to report it.
-- To lower the threshold for a citizen to communicate with the municipality, it must take the least amount of time possible to report a problem.
-- The idea that the municipality acts upon reported problems.
+**What makes a good user experience?**\
+- The website must be easy to navigate intuitively. The structure must be clear, the user should be able to find everything within a few moments, without having to wonder how to get there. This gives the user the idea that the website owner knows what he’s doing.
+- The user should get inspired and be surprised when using the website because of the quality of content presented and the way it’s presented in. The website, products and information must be original and of high quality, and should be beautifully presented. 
 
 ### <a name="design-ideas"></a>Design Ideas
-The website must be accessible. The user must be able to navigate quickly and intuitively and must easily find all relevant information. Given the fact that it’s a website of a city council it also must have a business-like and lean design.
+The website must be accessible. The user must be able to navigate quickly and intuitively and must easily find all relevant information. 
 
 Based on those ideas, I made the following choices:
 
-- **Font**<br>
+- **Font**\
 I chose the Font 'Roboto', sans-serif because this is a soothing, modern letter. This contributes to the clarity of the page.
 
-- **Colours**<br>
-I chose to work with only four colours: a bright red, a dark blue for the navigation bar, a black font and a white background. This contributes to the clarity of the page, but shows also its business-like character and a certain authority.
+- **Colours**\
+I chose soft colours, green azure and black, representing nature. It combines well with many outdoor pictures. The plain white background also contributes to the clarity.
 
-- **Content**<br>
-The website is mobile first. The user must be able to report a problem on the spot, not having to start up his computer to do so. It means that the amount of information presented must be minimized. When entering the website it must be clear that reporting a problem is an easy, quick and painless process.
+- **images**\
+This website is about the hobby of the customer. Therefore, the selection of photos is hugely important. The customer has to get a positive feeling and should get activated and inspirated on the website. Photos should show nature and landscape on it's best.
 
-- **Progress bar**<br>
-To emphasize the ease of reporting an issue we make use of a progress bar, already in 20% when entering the website. That’s how quick it is!
+- **Presenting the content**\
+The website offers a lot of different content. Therefore it should be very easy to navigate. I chose to present the different sections of the website very clearly on the homepage. 
 
-- **Images**<br>
-Although the website must look visually nice, images are of no importance. It’s all about functionality. Therefore, the only image you see is the municipality arms.
+In the section Inspiration the subsections are presented likewise. 
+
+In the section Discounts the categories (clothes, shoes, events, accessories) are not ordered right now (this would mean I would have to create a lot of content, which is not the purpose of the project), but it would be logical to do the same.
+
+The events calendar only shows a search functionality to not overwhelm the senses with a long lists of events and the page that present all the user profiles is very similar. 
 
 ### <a name="wireframes"></a>Wireframes
-This is a mobile first app. I expect the client to use this app mostly on a mobile phone walking on the street and noticing something, or maybe on a tablet afterwards. I don’t expect many users to use a desktop, but it’s certainly also designed for that, especially since most administrator might use a desktop.
+This is a mobile first app, but many customers will also use tablet or desktop. The whole design and the choices I made are based on that assumption. I made four mobile wireframes. As I made these, it became clear that the design of the different pages was always based on the same characteristics. Therefore, to make the most of my time, I decided not to make more wireframes.
 
-The whole design and the choices I made are based on that assumption. I made six mobile wireframes, reflecting the process of reporting a problem described above.
+The difference between mobile, tablet and desktop design is basically a difference in the grid. That's why I didn't find it necessary to design wireframes for tablet and desktop.
 
-1. [initial screen](https://github.com/RikDuijm/municipality/blob/master/user-design-experience/Municipality%20App%201.jpg)
-2. [screen after searching on street name](https://github.com/RikDuijm/municipality/blob/master/user-design-experience/Municipality%20App%202.jpg)
-3. [screen for log in](https://github.com/RikDuijm/municipality/blob/master/user-design-experience/Municipality%20App%203.jpg)
-4. [overview of reports](https://github.com/RikDuijm/municipality/blob/master/user-design-experience/Municipality%20App%204.jpg)
-5. [form to report a problem](https://github.com/RikDuijm/municipality/blob/master/user-design-experience/Municipality%20App%205.jpg)
+1. [homepage](/media/wireframes/home.jpg)
+2. [store](/media/wireframes/discounts.jpg)
+3. [events](/media/wireframes/events.jpg)
+4. [user profile](/media/wireframes/profile.jpg)
 
-I created exactly what I had in mind, with the following exceptions:
-- In wireframe 4 it was possible for a user to comment on a problem. To minimize possible abuse (or complaints about the time it takes for the municipality to act upon something) I decided to make this option not available for the public, but only for the administrator. Also, the position of the button “comment” (and “delete”) has changed, and are not placed vertically instead of horizontally, because of readability issues on a mobile phone.
-- Initially I was thinking about creating a Dashboard with information about the amount of problems the municipality solved. However I decided to not develop this, but move on with my studies.
+I created exactly what I had in mind, but you see that there are a few differences in the design and the final result, most notably that I used more colour and less white. Because of the soft green colour that I used, for me personally that isn't overwhelming. 
 
-**Larger screens**<br>
-There is hardly any difference between the mobile and larger screens. Because of that I didn’t feel the necessity to create wireframes for larger screens.
+Although it's not visible in the design,  I was playing with the idea to integrate maps to show the routes of the race events. I planned on using the Google maps API. Because of time issues, in the end I decided not to do this. 
 
 ## <a name="features"></a>Functionality and Features
 
