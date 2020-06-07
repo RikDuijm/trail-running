@@ -292,30 +292,23 @@ Allows the user to log out.
 
 
 ## <a name="ux"></a>Technologies Used
-- **Languages**
-	-   HTML5
-	-   CSS
-	-   Python
-	-   JS
+- HTML, CSS, JavaScript, JQuery, Python
+- [IDE: Gitpod](https://gitpod.io/).
+- [Bootstrap](https://getbootstrap.com/) for the grid system of the page and for styling the forms.
+- [Google Fonts](https://fonts.google.com/) for the fonts.
+- [Font Awesome](https://fontawesome.com/) for the icons in the footer of the website.
+- [Django 1.11.29](https://www.djangoproject.com/) for rapid development and use of database.
+- [Github](https://github.com/) for version control and for users to view the deployed version of the website.
+- [Heroku](https://dashboard.heroku.com/) to deploy the project.
+- [PostgreSQL](https://www.postgresql.org/) for the database, provided by heroku.
+- [Stripe](https://stripe.com/) as payment platform to validate and accept credit card payments securely.
+- [Travis](https://travis-ci.org/) for continuous integration.
+- [AWS S3](https://aws.amazon.com/s3/) to store the static-files and the images.
+- [Looka Logo Maker](https://looka.com/) for the logo.
+- PIP3 for installation of tools needed in this project.
+- Paint and Krita to edit the images used
+- Google Chrome developer tools.
 
-- **Libraries, plugins and modules**
-	- Bootstrap 4 for the grid system of the page, the form and the progress bar
-	- Flask to construct and render pages
-	- Jinja2 to simplify displaying data from the backend
-	- Re for the search functionaluty
-	- Bcrypt for the login functionality
-	- Tempus Dominus as a date / time picker
-	- JQuery to set the current date and time in the add-report form
-	- Google fonts for the fonts.
-	- Font Awesome for the icons in the footer of the website and icons8.com for the icon in the navigation bar / in the background of the page.
-
-- **Tools**
-	- IDE: Gitpod
-	- Google Chrome developer tools
-	- Git for version control
-	- GitHub to store all project code remotely
-	- MongoDB as the database
-	- Heroku to deploy the project
 
 
 ## <a name="testing"></a>Testing
