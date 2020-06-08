@@ -558,21 +558,18 @@ The project was coded in Gitpod, and then uploaded to Github for version control
 Once pushed to Github, I synchronised the repository with Travis, copying the markdown code Travis provided me in README.md. Then I created a .travis.yml file. This file specifies the programming language used, and refers to the already created requirements.txt file. Afterwards, I committed and pushed again to Github.
 
 - **Deploying to Heroku**\
-Before deploying the project to Heroku, I added all the config vars that are in the env.py under ‘Settings’ on the Heroku Dashboard.\ 
-Under ‘Deploy’ the "GitHub" pane selected. Then the option to auto-deploy the project whenever it’s pushed to on Github was activated.\
-Back in Gitpod I installed Gunicorn, a package required to connect to Heroku. I also created a Procfile, which tells Heroku what kind of app it's getting. This is where Gunicorn us used.\
-After updating requirement.txt, I pushed again.\
-I tried to open the App, but got an error, because Heroku wasn’t allowed as host yet. Therefore I included the app in ALLOWED_HOSTS in the settings.py and pushed again.
+    -   Before deploying the project to Heroku, I added all the config vars that are in the env.py under ‘Settings’ on the Heroku Dashboard.
+    -   Under ‘Deploy’ the "GitHub" pane selected. Then the option to auto-deploy the project whenever it’s pushed to on Github was activated.
+    -   Back in Gitpod I installed Gunicorn, a package required to connect to Heroku. I also created a Procfile, which tells Heroku what kind of app it's getting. This is where Gunicorn us used.
+    -   After updating requirement.txt, I pushed again.
+    -   I tried to open the App, but got an error, because Heroku wasn’t allowed as host yet. Therefore I included the app in ALLOWED_HOSTS in the settings.py and pushed again.
 
 - **Serving Static files from a Cloud Server**<br>
-I used Amazon Simple Storage Service (S3) to serve static files. After going through the settings of this service I downloaded a file with the access keys.\
-
-In Gitpod I installed Django-storages and boto3, packages that allow Django to connect with S3, and added Django-storages to the INSTALLED_APPS, referring the access keys to the env.py file. After saving the access key into the env.py file, collectstatic was run.\
-
-To make sure that the static files wouldn’t be overwritten in S3, I created a custom_storages.py file and updated the settings.py file accordingly.\
-Finally, I updated .gitignore with static/ and media/. However, I waited with this until I checked my CSS for the last time.\
-
-In the Heroku Config Vars I put DISABLE_COLLECTSTATIC : 1. This means that Heroku will not try and upload the static files.
+    -   I used Amazon Simple Storage Service (S3) to serve static files. After going through the settings of this service I downloaded a file with the access keys.
+    -   In Gitpod I installed Django-storages and boto3, packages that allow Django to connect with S3, and added Django-storages to the INSTALLED_APPS, referring the access keys to the env.py file. After saving the access key into the env.py file, collectstatic was run.\
+    -   To make sure that the static files wouldn’t be overwritten in S3, I created a custom_storages.py file and updated the settings.py file accordingly.
+    -   Finally, I updated .gitignore with static/ and media/. However, I waited with this until I checked my CSS for the last time.
+    -   In the Heroku Config Vars I put DISABLE_COLLECTSTATIC : 1. This means that Heroku will not try and upload the static files.
 
 - **To add this repository to your local workspace:**
     -   Go into your local workspace and open up a new terminal (git bash).

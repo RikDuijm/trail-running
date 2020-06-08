@@ -85,6 +85,7 @@ def registration(request):
         "registration_form": registration_form, "profile_form": profile_form})
 
 
+@login_required
 def all_users(request):
     """
     Create a view that will return a list
