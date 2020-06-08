@@ -309,101 +309,233 @@ Allows the user to log out.
 - Paint and Krita to edit the images used
 - Google Chrome developer tools.
 
-
-
 ## <a name="testing"></a>Testing
 ### <a name="manual-testing"></a>Manual testing<br>
 #### Responsive testing
-I tested the responsiveness of the page 3 times locally: one time after writing the initial code, then after making several changes, and one time right before the final deployment.
-After the final deployment on Heroku, I tested it one more time remotely.
-Tested devices: Nokia 8110 4G, Galaxy S5,  Galaxy S9/S9+, Pixel 2, Pixel 2 XL, iPhone6/7/8, iPhone6/7/8 Plus, iPhone X, iPad, iPad Pro, Kindle Fire HDX, 1080p Full HD Television and responsive desktop.
+I tested the responsiveness of the page locally continuously during the developing progress. I again tested everything remotely after the final deployment on Heroku. Tested devices: Galaxy S5, iPhone 5/SE, iPhone6/7/8, iPhone6/7/8 Plus, iPad, iPad Pro, and responsive desktop. 
 I used Chrome developer tools.
+
+Please have a look at this document to see the issues I've encountered. All have been solved. 
 
 #### Testing different browsers
 The page is tested in different browsers: Google Chrome, Microsoft Edge, Internet Explorer 11, Firefox and Ecosia. Only in Internet Explorer I found some problems with the buttons I used. This has been solved. I tested locally and also after deployment on Heroku.
 
+Please have a look at this document to see the issues I've encountered. All have been solved. 
+
 #### Testing the functionality ####
-I tested the functionalities by going through the steps a user should take to report a problem and by going through the additional steps an admin can take. In all cases the results matched what I expected.
+**Manual testing**
+I tested the functionalities by going through the steps a user would take on the different areas of the website and had other persons do the same. This is a reliable way of discovering whether everything works as it should. In all cases the results matched what I expected. 
 
-**1. Search Functionality**
-1. Filling in a street name that is already in the database (because a problem has been reported):
-Expected result: street name and problem is shown.
+In this document you see the test results. Numbers correspond with the numbers of the functionalities below.
 
-1. Testing if the search functionality is case sensitive:
-Expected result: not case sensitive. I tested this by filling in lower key, capital letters and a combination of upper and lower.
+**1. Navigation bar**
+1. If the user is not logged in / has logged out, the navigation bar should show the following links and those links should direct the user to the respective pages: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact.\
+The logo should direct to the homepage and the shopping cart to the Login page. 
 
-1. Testing if all the reports about a given street show up:
-Expected result: all reports show up.
 
-1. Testing what happens if a street is not in the database:
-Expected result: no results shown.
+1. If logged in the navigation bar should show the following links and those links should direct the user to the respective pages: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Contact, Cart.\
+Logout should log the user out and the logo should direct to the homepage.
 
-1. Testing what happens if you hit search without entering anything.
-Expected result: list of all the problems show up.
+**2. Homepage**
+1. When clicking the four main sections of the website (Events, Discounts, Inspiration and Community) user should be directed to those sections.  
 
-**2. Login Functionality**
-1. Does the button login show in all possible scenarios of step 1?
-Expected result: yes.
+**3. Events**
+1. When using the search functionality the user should find races by searching directly on the name of the race, but also by filtering month, distance, or region.\
+If the user hits the reset button, he should be redirected to the empty page.
 
-1. User (citizen) fills in correct credentials:
-Expected result: he is redirected to the “add report” page, and the message “Welcome [username]” is shown. His username is already filled-in and the user cannot change this. Also the date is already filled-in. This is changeable.
+1. After a query the races should appear, ordered by date, showing the date, name, distance and place name. When clicked on a race, more information should appears. When the user hits the register button, he should be directed to the discount section where he can purchase his ticket for the race. 
 
-1. User (citizen) fills in unknown username but correct password:
-Expected result: user receives message “wrong credentials".
+1. If the query doesn’t match any results a message should tell the user so. 
 
-1. User (citizen) fills in correct username but incorrect password:
-Expected result: user receives message “wrong credentials.
+**4. Discounts**
+1. Should shows all the products a user can purchase / the events a user can enrol into. Per item it should show the name, a picture, the normal price, the discount price, the date until the offer is valid, a box to select the quantity of items to purchase, the possibility to select the size (if applicable), and a button to add the product to the shopping cart. More info is hidden but should appear by clicking the ‘read more’ button.
 
-1. Administrator fills in correct credentials:
-Expected result: he is redirected to an overview of all reported problems. This is the administration environment, in which admin may comment on a problem or delete it. Regular user cannot reach this. Message “Logged in as Admin” is shown.
+1. If a user that is not logged in tries to add a product to the shopping cart he should be taken to the login-page. 
 
-*`Please check this environment with the following credentials: Username: admin, Password: admin.`*
+1. If the user is logged in he should see the a message that the product is added to his cart.\
+In the navigation bar he should also see the number of items in the cart appear, in a distinguished orange colour. 
 
-6. Administrator fills in wrong username but correct password:
-Expected result: admin receives message “wrong credentials.
+1. If the user forgets to select the amount of products he wants to purchase he should get a message to do so. 
 
-7. Administrator fills in correct username but incorrect password
-Expected result: admin receives message “wrong credentials.
+**5. Cart (only if logged-in)**
+1. If the user is not logged-in and clicks the cart in the navigation bar he should be directed to the login-page. 
 
-**3. Register Functionality**
-1. User chooses a username that already exists:
-Expected result: user receives a message “username already taken”.
+1. On the top of the page, the total price of the products in the cart should be given.
 
-1. User chooses a username that doesn’t exist yet:
-Expected result: he is logged in immediately and redirected to“add report” page.
+1. If the user hits the buttons ‘Checkout’ and ‘Back to Store’ he should be directed to the respective pages.
 
-1. User tries to have a space in his username (so he wants it to exist of 2 separate words, i.e. first and last name).
-Expected result: this is automatically disabled.
+1. Below, the products in the Cart should be specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of the products that are being purchased, and additional information. 
 
-**4. Create Report Functionality**
-1. User files a report, describing the problem, entering the street name, and possibly adjust the date / time:
-Expected result: after submitting he’s redirected to an overview of all the reported problems, last report (his own) shown first.
+1. If the user hits the ‘Read more’ button he should receive additional information about the product.
 
-1. User doesn’t mention the street name:
-Expected result: upon submitting he gets a message that he has to do so before he’s able to file the report.
+1. If the user adjusts the amount of a certain product, both the total price above as the mentioned amount of products should change. Also the amount of products in the cart in the navigation bar should change.  
 
-1. User doesn’t mention what the problem is:
-Expected result: upon submitting he gets a message that he has to do so before he’s able to file the report.
+1. If the user hits the ‘Adjust’ button without mentioning a number of products, he should see the message that he has to specify the number of products. The total price and amount of products shown, should remain the same. 
 
-**5. Read Functionality (reported problems, regular user)**
-1. Expected result if logged in as regular user:
-Page that shows all the reports, ordered by date/time, latest filed report shown first. Reports show name of the street, reported problem, date and username of the person that filed the report. Toggle function that shows the response of the municipality as soon as there is one.
+1. If the user clicks the ‘Remove from cart’ button the product should be removed from the cart, showing the remaining product (if any), the total price of those remaining products and the amount of items still in the cart in the navigation bar. 
 
-**6. Read Functionality (reported problems, administrator)**
-1. Expected result if logged in as administrator:
-Page that shows all the reports, ordered by date/time, latest filed report shown first. Reports show name of the street, reported problem, date and username of the person that filed the report. Toggle function that shows the response of the municipality as soon as there is a response.
+1. If the user is logged-out his Cart should empty.
 
-*`Please check this environment with the following credentials: Username: admin, Password: admin.`*
+**6. Checkout (only if logged-in)**
+1. If the user is not logged-in but happens to know the URL of the checkout page, he should be redirected to the log in page.
 
-   2. In this environment every item has 2 buttons: Comment and Delete.
-	   1.  Update Functionality (comment button):
-The admin can comment on the report, with full rights to update / change every field. Additionally he can add a reply of the municipality (i.e.: we’re working on it, problem solved, etc.). After submitting the admin is redirected to the list of reported problems, where he can check his update.
-	   1.  Delete Functionality (delete button):
-The admin can delete a report. Report disappears from the list of reported problems.
+1. On the top of the page, the total price of the products that are being paid for should be given.
 
-**7. Logout Functionality**
+1. If the user hits the button ‘Back to Store’ he should be directed to that page.
 
-When clicked upon the user is logged out and redirected to the homepage.
+1. Below this, the products that are being bought should be specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of products that are being purchased, and the price per item. 
+
+1. Below this, the Checkout form should have the following required views: ‘Full name’, ‘Phone number’, ‘Street address’,  ‘Home town’, ‘Country’, 
+
+1. The following field are not required: ‘Gender’, ‘Age’, ‘Postal code’. ‘Gender’ and ‘Age’ have the following label: ‘Only fill out if you participate in a race’.
+
+1. There are also the following required fields: ‘Credit card number’, ‘Security code (CVV)’, ‘Month’, ‘Year’. If not filled out correctly, or if the Credit card is not valid anymore, the user is not able to submit his payment.
+
+1. If the user submits the payment successfully, he’s redirected to the store (Discount page) and sees the following message: ‘Thanks for your preference. You have successfully paid. We'll send you a confirmation of your purchase within one working day’.
+
+1. The order, and all personal details of the customer should be visible in the Admin Panel. 
+
+1. The payment should be visible in Stripe. 
+
+**7. Inspiration**
+1. When clicking the four different sections of the website (Excercise & Injuries, Routes & Destinations, Health & Food, Stories) user should be directed to those sections. Note: for now, all links lead to Routes & Destinations. 
+
+**8. Routes & Destinations**
+1. All articles in this section should appear, ordered by date. Every article has a introduction, a picture, and a ‘Read more’ button. When clicked, the article opens. On top of every article the author, the amount of times the article is viewed and a button ‘More stories’ appears. When clicked, the user returns to the ‘Routes & Destinations’ section. 
+
+**9. Forum**
+1. All posts of bloggers, ordered by date should appear. 
+1. Every post should show the name of the author, a thumbnail of his profile picture, the number of views, the date/time the post was created and the first few lines of the post, with a read more button. 
+
+1. Only if the user is logged-in the name of the author should be clickable, linking to his/her profile page. 
+
+1. After clicking the ‘Read more’ button, the complete post should show, including the same information as mentioned above and, optionally, a picture that is uploaded by the author. There should also be a ‘back to forum’ button, which should lead the user back to the forum.
+
+1. The author of a specific post, and the admin should also see additional buttons to edit or delete the post.
+
+1. If the edit button is clicked by a user or admin, a form that shows the current content should open. The user or admin can edit the content, delete a picture if this was included in the original post, or include a picture now. When the ‘Save’ button is clicked, the user / admin should be directed to the now edited post again.
+
+1. If the delete button is clicked by a user or admin, a message should open if the user / admin is sure to delete the post. If the ‘Cancel’ button is clicked, the user / admin should be directed to the post again. If the ‘Yes’ button is clicked, the post is deleted, directing the user / admin back to the Forum, where they see the message: ‘Your post has been successfully deleted.’.
+
+**10. Add Post (only if logged-in)**
+1. If this link in the navigation bar is clicked, the user should be directed to a form that he can use to send in a post. This form exists of the following fields: ‘Title’, ‘Content’, ‘File/Image upload’, ‘Tag’ and ‘Published date’ (automatically filled out). Only the first 2 fields are required and the user should receive a message to fill those out, if he doesn’t do so. Upon hitting the ‘Safe’ button, the user is redirected to the Forum, the newly made post showing first.
+
+**11. User Profiles (only if logged-in)**
+1. If this link in the navigation bar is clicked, the user should be directed to a page that shows a list of all user profiles, with a thumbnail of the profile picture, user-name, first and last name, age and location. There’s also a ‘Contact user’ button. 
+
+1. The username should be clickable and linking to the profile-page of that user. 
+
+1. The ‘Contact user’-button should lead to a form that a user can fill out. This form exists of the following fields:  ‘Recipient’ (already filled-out), ‘Title’, ‘Message’, ‘Date (already filled-out)’ and ‘Image’. Only the image is optional, all other fields are required.
+
+1. If the ‘Send message’ button is clicked the message is send and the user is redirected again to the User Profiles page, receiving a notice that the message has been sent.
+
+1. When using the search functionality the user should find profiles of other users by searching directly on first name, last name and location. 
+
+1. After a query the filtered profiles should appear, showing the same details as mentioned above.
+
+1. If the query doesn’t match any results a message should tell the user so. 
+
+1. If the user hits the reset button, he should be redirected to the start page.
+
+**12. User Profile (only if logged-in / profiles of other users)**
+1. The profiles of other users are reachable only if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. On the profile the user should read all the personal details of that other user, except for his/her email address. 
+
+1. He should also be able to read the additional profile posts of that user (in order last posted first), but not the personal messages that other user received. 
+
+**13. My Profile (only if logged-in)**
+1. The user’s own profile page should only be reachable if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. On his / her own profile page the user should see all his / her personal details, this time including the email address. 
+
+1. The user should see the following buttons: ‘Edit details’, ‘Delete profile’, ‘New post’.
+
+1. ‘Edit details’: should lead to a form with all the fields that are also in the register form, except for the password: ‘First name’, ‘Last name’, ‘Email’, ‘Gender’, ‘Age’, ‘Location’, ‘Image’ and ‘Introduction’. Only ‘Image’ And ‘Introduction’ are not required. The fields are filled-out with the information that has been entered by the user before, and he can simply edit it. After clicking the ‘Save’ button, the user is redirected to his profile, receiving the message 'Your profile has been updated!'.
+
+1. The page with the form to edit the profile should only be reachable if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. ‘Delete profile’: Should lead to a page where the user is asked if he really wants to delete the profile. 
+
+1. If the user clicks the ‘Cancel’ button, he should be redirected to his profile page.
+
+1. If the user clicks the ‘Yes’ button, his profile is deleted, and he is redirected to the homepage, receiving the message: ‘Your profile has been deleted. Please contact us if you want to undo this.’
+
+1. The page with the form to delete the profile should only be reachable if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. ‘New Post’: Should lead to a page where the user can add a new post. The form on this page should have the following fields: ‘Title’, ‘Content’, ‘Published date’ (already filled out), ‘Image’. Only the image should be optional. 
+
+1. If the user clicks the ‘Save’ button he should be redirected to his profile page, and the new post should appear below the personal messages section, above older posts he placed. User also sees a message: ‘Your post has been published!’
+
+1. The page with the form to add a new profile post should only be reachable if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. New posts will also have a ‘Edit’ and a ‘Delete’ button. The ‘Edit’ button should lead to a form with all the fields that are also in the new post form. The fields are filled-out with the information that has been entered by the user before, and he can simply edit it. After clicking the ‘Save’ button, the user is redirected to his profile, receiving the message 'Your post has been updated!'.
+
+1. The ‘Delete’-button should lead to a page where the user is asked if he really wants to delete the post. 
+
+1. If the user clicks the ‘Cancel’ button, he should be redirected to his profile page.
+
+1. If the user clicks the ‘Yes’ button, the post is deleted, and he is redirected to the profile page, receiving the message: ‘This information has been successfully deleted.’
+
+1. The page with the form to delete the post and the page to update it should both only be reachable if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. Personal messages:
+Below the ‘About me’ section the user should his / her personal messages; messages sent by other users. Only the logged-in user should be able to see those message; others should not be able to see those.
+
+1. The messages should be ordered by date / time: last received, first.
+
+1. Every message should have a delete button. If clicked, it should lead to a page where the user is asked if he really wants to delete the message. 
+
+1. The page with the form to delete the message should only be reachable if a user is logged-in. If he happens to know the URL, he should be redirected to the log in page.
+
+1. If the user clicks the ‘Cancel’ button, the user should be redirected to the profile page.
+
+1. If the user clicks the ‘Yes’ button, his profile is deleted, and the user should be redirected to the homepage, receiving the message: ‘This message has been successfully deleted.’
+
+**14. Register (only if not logged-in)**
+1. The link on the navigation bar should lead to a page with the registration form. 
+
+1. If someone is already logged-in, but happens to get on this page, he / she should be redirected to the homepage.
+
+1. The form contains: Username, Email address, Password, Password Confirmation, First name, Last name, Repeat email, Gender, Age the possibility to upload a picture and a field to write a short introduction.\
+Only the gender, picture upload and the personal introduction are not required.
+
+1. If the new user chooses a username that already exists, there should be a message: ‘A user with that username already exists.’
+
+1. If the passwords don’t match, there should be a message: ‘Passwords must match’.
+
+1. If the email already exists in the database, there should be a message: ‘Email address must be unique’. 
+
+1. If the user entered all the required details correctly, the user should be redirected to his profile page, and receives the message ‘You have successfully registered and are logged in.’
+
+1. If the user didn’t upload a picture, his profile picture should be an avatar of a runner instead. 
+
+**15. Login (only if not logged-in)**
+1. This link should lead to a page where the user can log in. 
+
+1. On this page there are 2 links ‘register here’ and ‘Forgot your password?’, that should lead to the Registration page and the Reset password page.
+
+1. User can fill-out his / her username and password. If user fills either username or password out wrongly a message ‘Your username or password is incorrect’.
+
+1. If user fills out the details correctly, he / she is redirected to the homepage, seeing a message ‘Welcome (username)!’
+
+**16. Logout (only if logged-in)**
+1. The user should be logged-out, be redirected to the home page and receive the message: ‘You have successfully been logged out’.
+
+**17. Reset Password (only if not logged-in)**
+1. If the user has forgotten his password he can request an email with a link to reset his password. He should receive this email within a few moments. He’s redirected to a page, telling him this. 
+
+1. After clicking on the link in the email the user should be redirected to a page where he can choose a new password by entering it twice. 
+
+1. If the two password fields don’t match, user should receive the message ‘The two password fields didn't match’, and he can try again.
+
+1. If the passwords do match, after clicking the ‘Change my password’ button, the user should be taken to a page with the following message: ‘Password set! Your new password has been set. You may go ahead and log in now’. The link on this page should redirect the user to the login page.
+
+1. The user should not be able to log in with his old password anymore. 
+
+1. The user should be able to log in with his new password.
+
+1. The user should not be able to use the password reset link for a second time. He should receive the following message: ‘The password reset link was invalid, possibly because it has already been used. Please request a new password reset’.
 
 ### <a name="automated-testing"></a>Automated Testing
 #### Validation services
@@ -414,59 +546,61 @@ The following validation services were used to check the validity of my code.
 -   JSHint was used to validate JavaScript.
 
 #### <a name="note"></a>Note for Code Institute
-After finishing my first Milestone Project I made a complaint that we hadn't had a single lesson about testing our code, but that you expect us to be able to do this. The reply I received:
-
-*I have passed your valuable feedback over to the learning Success Team. I have spoken to someone from the team and they agreed that more information about testing and deployment is due. This is being looked into and in the process of being improved.*
-
-I again made a complaint upon starting this Milestone Project:
-
-*So far we only got a quick introduction to Jasmine with only 1 specific example. I feel that in the Milestone Projects there's an emphasis on the importance of testing, that isn't reflected in the course and based on this 1 lesson I can't create automated testing for this project.*
-
-Now, with the third milestone, again I don’t feel that we received enough – if any – instructions or practice about how to test our projects. I really feel that if you think this is important you should teach us well how to do this. I don’t think I have received the tools to be able to do this.
-Given the above and since I've tested all functionalities extensively manually and am sure everything works as I planned for, I didn't do further automated testing.
+As mentioned in other projects I feel that we didn’t receive enough instructions or practice to be able to write testing code. As said before I feel that in the Milestone Projects there's an emphasis on the importance of testing, that isn't reflected in the course and based on just very basic lessons I can't create automated testing for this project. Given the above and since I've tested all functionalities extensively manually and am sure everything works as I planned for, I didn't do further automated testing.
 
 ## <a name="deployment"></a>Deployment
+**View deployed version on [Heroku](https://rik-duijm-trail-running.herokuapp.com/)**
 
-The project was coded in Gitpod, which also was used for version control, and then uploaded to Github. Finally I made a connection between Github and Heroku to deploy the project.
+- **Pushing to Github**\
+The project was coded in Gitpod, and then uploaded to Github for version control. Before uploading to Github, I made sure to put all my keys and passwords into an env.py file, creating a .gitignore-file and include env.py into it, to prevent that the passwords would be uploaded to Github. I also included sqlite3 in the .gitignore, so that the local database wouldn’t be uploaded. Finally, I also excluded the Python bytecode files and the pycache directory.
 
-- **Connection with MongoDB Atlas**<br>
-A MongoDB Atlas database was used. To connect Flask to the MongoDB I installed the third party library flaks-pymongo. I also installed dnspython to use the new style connection string for MongoDB Atlas.
+- **Installing Travis**\
+Once pushed to Github, I synchronised the repository with Travis, copying the markdown code Travis provided me in README.md. Then I created a .travis.yml file. This file specifies the programming language used, and refers to the already created requirements.txt file. Afterwards, I committed and pushed again to Github.
 
-- **Connection string and secret key**<br>
-In the app.py the os class getenv method is used to point Heroku to the config variable (MONGO_URI) and the secret key necessary for the login function in order to keep the production database connection string and the key secret.
+- **Deploying to Heroku**\
+Before deploying the project to Heroku, I added all the config vars that are in the env.py under ‘Settings’ on the Heroku Dashboard.\ 
+Under ‘Deploy’ the "GitHub" pane selected. Then the option to auto-deploy the project whenever it’s pushed to on Github was activated.\
+Back in Gitpod I installed Gunicorn, a package required to connect to Heroku. I also created a Procfile, which tells Heroku what kind of app it's getting. This is where Gunicorn us used.\
+After updating requirement.txt, I pushed again.\
+I tried to open the App, but got an error, because Heroku wasn’t allowed as host yet. Therefore I included the app in ALLOWED_HOSTS in the settings.py and pushed again.
 
-- **Requirements and Procfile**<br>
-A requirements.txt file is used to specify the dependencies that are required for the application to work.
-A Procfile is also used to specify to Heroku the commands that are executed by the app on startup.
+- **Serving Static files from a Cloud Server**<br>
+I used Amazon Simple Storage Service (S3) to serve static files. After going through the settings of this service I downloaded a file with the access keys.\
 
-- **Connection between Github and Heroku**<br>
-To connect the Github repository to Heroku I went to the “Deploy” tab on Heroku Dashboard and select the GitHub pane. I choose the option to auto-deploy the project whenever it’s pushed to on Github.
-Finally I specified the IP, PORT, my connection string and secret key in the Heroku settings.
+In Gitpod I installed Django-storages and boto3, packages that allow Django to connect with S3, and added Django-storages to the INSTALLED_APPS, referring the access keys to the env.py file. After saving the access key into the env.py file, collectstatic was run.\
 
-**View deployed version on [Heroku](http://municipality-reports.herokuapp.com/)**
+To make sure that the static files wouldn’t be overwritten in S3, I created a custom_storages.py file and updated the settings.py file accordingly.\
+Finally, I updated .gitignore with static/ and media/. However, I waited with this until I checked my CSS for the last time.\
+
+In the Heroku Config Vars I put DISABLE_COLLECTSTATIC : 1. This means that Heroku will not try and upload the static files.
 
 - **To add this repository to your local workspace:**
-
     -   Go into your local workspace and open up a new terminal (git bash).
     -   You have to be inside of the directory that you want to add the cloning to.
-    -   Type git clone, paste the following URL ([https://github.com/RikDuijm/municipality/](https://github.com/RikDuijm/municipality)) and press enter. The process of cloning will now be completed.
+    -   Type git clone, paste the following URL ([https://github.com/RikDuijm/trail-running/](https://github.com/RikDuijm/trail-running/)) and press enter. The process of cloning will now be completed.
 
 ## <a name="credits"></a>Credits
 
 ### <a name="content"></a>Content
 - **Written content**
-
 All written content on this website was made by me.
 
-- **Icons**
+- **images**
+Images are taken by me or friends, or from [Unplash](https://unsplash.com/) and [Pixabay](https://pixabay.com/), 2 websites that offer royalty free stock pictures.
 
-The municipality icon was taken from icons8.com and is free of use as long as you put a link to the website - which I did in the footer.
+- **Logo**
+I made the Logo with the free [Looka Logo Maker](https://looka.com/)
+
+- **Icons**
 The social media icons are from Font Awesome.
 
 ### <a name="help-with-code"></a>Help with code
-- The code to restrict the space character when registering a new user, I got from this [page](https://jsfiddle.net/taditdash/hDtA3).
-- The code for the search functionaly I found on this [page](https://github.com/5pence/recipeGlut). I adapted it slightly for my own needs.
-- I used a combination of the documentation of Bcrypt, tutorials and examples / solutions I found on Google to develop the Registration and Login functionality. I combined all those sources in a long and frustrating process to get the functionalities to work. However, I didn't use code of others 1 on 1.
+- I wrote all the code myself, with inspiration from the users of StackOverflow.com. Questions and answers on that site pointed me in the right direction several times. The Code Institute tutor-team also helped me greatly.
+
+- The code to build the contact form was based on: https://wsvincent.com/django-contact-form/.
+
+- Yoni Lavi  helped me greatly with the code to select different product sizes.
+
 
 ## <a name="acknowledgements"></a>Acknowledgements
 Thanks to my mentor Spencer Barriball and fellow student Peter Lenting for discussing ideas and providing help on several occasions.
