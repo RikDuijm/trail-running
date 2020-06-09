@@ -23,9 +23,9 @@
             <div class="row">
                 <div class="col-6 col-sm-3 col-lg-2 ">
                     {% if post.author.userprofile.image %}
-                    <div class="author-thumbnail" width="40px" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
+                    <div class="author-thumbnail" width="40" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
                     {% else %}    
-                    <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic"></div>
+                    <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40" class="userprofile-details-pic"></div>
                     {% endif %}
                 </div>
                 <div class="col-6 author">
