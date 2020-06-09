@@ -6,7 +6,7 @@
     <section class="inner-content-article">
         <div class="row">
             <div class="col-10 offset-1  col-md-8 offset-md-2 form-position text-center">
-                <form method="POST" action ="">
+                <form method="POST">
                     {% csrf_token %}
                     <p>Are you sure you want to delete your profile?</p>
                     <input type="submit" class="btn btn-info post-details-btn" value="Yes"/> <a href="{% url 'profile' %}" class="btn btn-info post-details-btn">Cancel</a>

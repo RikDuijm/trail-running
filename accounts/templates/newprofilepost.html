@@ -2,16 +2,17 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-<h1 class="text-center">Add a new Profile Post</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-10 offset-1">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %} 
-                    {{ profile_post_form | as_bootstrap }}
-                    <button type="submit" name="profile_post" value="profile_post" class="btn btn-info">Save</button>
-                </form> 
+    <h1 class="text-center">Add a new Profile Post</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %} 
+                        {{ profile_post_form | as_bootstrap }}
+                        <button type="submit" name="profile_post" value="profile_post" class="btn btn-info">Save</button>
+                    </form>
             </div>
-        </article>
-    </section>
+        </div>
+    </div>
+
 {% endblock %}
