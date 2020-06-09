@@ -13,7 +13,7 @@
             <div class="row advertisement col-12">         
                 <form action="{% url 'search_race_name' %}" method="get">
                     <p><strong>Search by race name: <input type="text" name="q1"></strong></p>
-                        <button type="submit" class="btn btn-info post-details-btn search-btn">Search</button>     
+                    <button type="submit" class="btn btn-info post-details-btn search-btn">Search</button></strong>
                 </form>
             </div><br>   
 
@@ -41,7 +41,7 @@
                                 <option value="30+">Over 30 km</option> 
                                 <option value="42">marathon</option>                              
                                 </select> 
-                        <button type="submit" class="btn btn-info post-details-btn search-btn">Search</button><br><br>      
+                        <button type="search" class="btn btn-info post-details-btn search-btn">Search</button><br><br>      
                     </form>
                     </div>
                     <div class="col-xl-3 col-lg-6">
@@ -72,19 +72,16 @@
                                     <strong>Date:</strong> {{ event.date }}<br>
                                     <strong>Normal price:</strong> {{ event.normal_price }}<br>
                                     <strong>Our price:</strong> {{ event.price }}<br>
-                                    <strong>Offer valid until:</strong> {{ event.valid_until }}<br>
+                                    <strong>Offer valid until:</strong> {{ event.valid_until }}</em><br>
                                 </p>
                                 <a href="{% url 'all_products' %}" class="btn btn-info post-details-btn">Register here!</a> 
                                 <p class="event-description">{{ event.description }}</p><br>
                             </div>
                             <div class="col-sm event-pic" style="background-image: url('{{ MEDIA_URL }}{{ event.image }}')">
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
-
-        </article>
-    </section>
 
                 {% empty %}
                 <!--If there are no books to show-->
@@ -95,5 +92,7 @@
                         Please search (again)!
                     </h3>
                 </div>      
+        </article>
+    </section>
                 {% endfor %}
 {% endblock %}   
