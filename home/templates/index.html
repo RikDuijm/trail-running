@@ -3,7 +3,9 @@
 {% block content %}
 
     <section class="inner-content-article">
+
         {% if messages %}
+        <!-- Showing message to user -->
             <div class="inner-content-products col-9 col-md-8 alert alert-danger">
                 <div class="messages">
                     {% for message in messages %}

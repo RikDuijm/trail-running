@@ -5,24 +5,22 @@ from .forms import ContactForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-
-# The logged in user can send an email to TrailRunning by using send_mail
-# The user.email is filled in by default and the receiving
-# address is frommybookyourbook@gmail.com.
-# If the ContactForm is filled in valid the email is send.
-# After the email is send successfully the user is send to the
-# homepage and sees a message.
 def emailView(request):
+    """
+    View that a logged in can use to send an email to TrailRunning
+    """
     if not request.user.is_authenticated:
         return redirect('login')
     else:
         if request.method == 'GET':
             user = User.objects.get(username=request.user.username)
+            # The user.email is filled in by default and the receiving
             data = {'from_email': user.email}
             form = ContactForm(initial=data)
         else:
             form = ContactForm(request.POST)
             if form.is_valid():
+                # If the ContactForm is filled in valid the email is send.
                 subject = form.cleaned_data['subject']
                 from_email = form.cleaned_data['from_email']
                 message = form.cleaned_data['message']
@@ -33,6 +31,8 @@ def emailView(request):
                               ['online.onderscheiden@gmail.com'])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
+                # # After the email is send successfully the user is send to the
+                # homepage and sees this message.    
                 messages.success(request,
                                  "Thank you for you message! \
                                  We'll get back to you soon.")

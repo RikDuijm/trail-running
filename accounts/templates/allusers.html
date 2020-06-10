@@ -61,13 +61,15 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="col-6 profile-thumbnail-name">        
+                <div class="col-6 profile-thumbnail-name">
+                <!-- user.id is passed in to identify the user-->        
                     <h5><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h5>
                     {{user.first_name}} {{user.last_name}}
                     <br>{{ user.gender }}, {{ user.age }}
                     <br>{{ user.location }}
                 </div>
                 <div>
+                    <!-- user.id is passed in to identify the user-->          
                     <a href="{% url 'contact_user' user.id %}" class="btn btn-info post-details-btn">Contact User!</a> 
                 </div>
             </div>

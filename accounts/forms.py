@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User # import the user model provided by Django
-from django.contrib.auth.forms import UserCreationForm  # this is a base form that Django provides us and it will give us user names and emails
+from django.contrib.auth.forms import UserCreationForm  # this is a base form that Django provides/ gives user names and emails
 from django.core.exceptions import ValidationError  # import ValidationError
 from .models import UserProfile, ProfilePost, ContactUser
 

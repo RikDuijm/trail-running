@@ -12,21 +12,22 @@ def view_cart(request):
 
 @login_required
 def add_to_cart(request, id):
-
+    """View that adds items to the cart"""
     if request.user.is_authenticated:
 
         if request.POST.get('quantity') and int(request.POST.get('quantity')) > 0:  
-            quantity = int(request.POST.get('quantity')) 
+            quantity = int(request.POST.get('quantity'))
+            #SKU combines the product-id with different sizes. Model from Discouts App 
             sku_id =  (request.POST.get('sku'))    
             cart = request.session.get('cart', {})
-            
             cart[sku_id] = int(cart.get(sku_id, 0)) + quantity
-            
             request.session['cart'] = cart
             messages.warning(request, 'The product is added to your cart.')
         else:
+            # Warning if the amount of products is not specified
             messages.warning(request, 'You have to specify how many products you want to purchase.')
     else:
+        # Warning if the user is not logged in
         messages.warning(request, 'You have to log in / register first, before you can purchase our products.')
             
     return redirect(reverse('all_products'))
@@ -42,7 +43,8 @@ def adjust_cart(request, id):
             if quantity > 0:
                 cart[id] = quantity
             else:
-                cart.pop(id)    # pop() is an inbuilt function in Python that removes and returns last value from the list or the given index value. Syntax : list_name.pop(index)
+                # pop() is an inbuilt function in Python that removes and returns last value from the list or the given index value. Syntax : list_name.pop(index)
+                cart.pop(id)    
             request.session['cart'] = cart
         else:
             messages.warning(request, 'You have to specify how many products you want to purchase.')

@@ -110,7 +110,7 @@ def user_profile(request, pk=None):
 @login_required
 def profile_post(request, pk=None):
     """
-    Create a view that allows user to add new info on his profile
+    View that allows user to add new info on his profile
     """
     user = User.objects.get(email=request.user.email)
     if request.user.is_authenticated:  
@@ -270,7 +270,7 @@ def author_profile(request, pk):
 
 @login_required
 def user_profile_page(request, pk=None):
-    """Create a view that will link to the profile of a user"""
+    """View that will link to the profile of a user"""
     userprofile = get_object_or_404(User, pk=pk)
     profileposts = ProfilePost.objects.filter(user=userprofile).filter(published_date__lte=timezone.now()
          ).order_by('-published_date').all() 
@@ -278,8 +278,9 @@ def user_profile_page(request, pk=None):
 
 
 def search_user_first_name(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the profiles based on first name
+    """
     q1 = request.GET.get('q1')
     users = UserProfile.objects.filter(
         Q(first_name__icontains=q1))
@@ -287,8 +288,9 @@ def search_user_first_name(request):
 
 
 def search_user_last_name(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the profiles based on last name
+    """
     q2 = request.GET.get('q2')
     users = UserProfile.objects.filter(
         Q(last_name__icontains=q2))
@@ -296,8 +298,9 @@ def search_user_last_name(request):
 
 
 def search_user_location(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the profiles based on location
+    """
     q3 = request.GET.get('q3')
     users = UserProfile.objects.filter(
         Q(location__icontains=q3))

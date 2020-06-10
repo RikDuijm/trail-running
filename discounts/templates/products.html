@@ -5,7 +5,8 @@
 {% block content %}
     <h1 class="text-center">Check out this weeks offers, members only!</h1>
 
-    <section class="inner-content-products">        
+    <section class="inner-content-products">
+    <!-- Showing message to user -->          
         {% if messages %}
             <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
                 <div class="messages">
@@ -16,7 +17,8 @@
             </div>
         {% endif %}
         
-        <div class="row container-fluid">                         
+        <div class="row container-fluid"> 
+        <!-- Loop through products to show them all -->                        
             {% for product in products %}
             <div class="col-md-5 col-xl-3 feature">
                 <h4 class="text-center">{{ product.product_name }}</h4> 
@@ -37,6 +39,7 @@
                         <strong>Size:</strong>
                     </div>
                     <div class="input-group col-6 col-lg-6 col-xl-5"> 
+                        <!-- SKU model is used to add size to the products -->
                         <select name="sku">
                         {% for sku in product.skus.all %}
                             <option value="{{ sku.id }}">{{ sku.size }}</option>

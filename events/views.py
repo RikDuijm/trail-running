@@ -5,12 +5,16 @@ from django.utils import timezone
 from django.db.models import Q 
 
 # Create your views here.
-def all_events(request):  
+def all_events(request):
+    """
+    View that renders the empty events page.
+    """  
     return render(request, "events.html") 
 
 def search_race_name(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the events based on the race name
+    """
     q1 = request.GET.get('q1')
     events = Event.objects.filter(
         Q(name__icontains=q1))
@@ -18,8 +22,9 @@ def search_race_name(request):
 
 
 def search_race_month(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the events based on the month
+    """
     q2 = request.GET.get('q2')
     events = Event.objects.filter(
         Q(month__icontains=q2))
@@ -27,8 +32,9 @@ def search_race_month(request):
     
 
 def search_race_distance(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the events based on the distance
+    """
     q3 = request.GET.get('q3')
     events = Event.objects.filter(
         Q(distance_range__icontains=q3))
@@ -36,8 +42,9 @@ def search_race_distance(request):
     
 
 def search_race_region(request):
-    """Create a view that will filter the profiles based on
-    first name, last name and location"""
+    """
+    View that will filter the events based on the region
+    """
     q4 = request.GET.get('q4')
     events = Event.objects.filter(
         Q(region__icontains=q4))

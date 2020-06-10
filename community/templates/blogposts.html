@@ -17,10 +17,12 @@
     </section>
 
     <section class="inner-content-article"> 
+        <!--Loop through posts -->
         {% for post in posts %}
         <div class="container blog-post forum">
             <div class="row">
                 <div class="col-6 col-sm-3 col-lg-2 ">
+                <!-- show profile image of author if he has one. Put it in background in div to have it fit, regardless of size -->
                     {% if post.author.userprofile.image %}
                     <div class="author-thumbnail" width="40" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
                     {% else %}    
@@ -28,6 +30,7 @@
                     {% endif %}
                 </div>
                 <div class="col-6 author">
+                <!--Only show link to authors profile when user is logged in-->
                     {% if user.is_authenticated %}
                     <span class="boldtext">Author:</span> <a href="{% url 'author_profile' post.author.id %}">{{post.author}}</a><br>
                     {% else %}

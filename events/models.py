@@ -3,13 +3,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-# class Month(models.Model):
-#     name = models.CharField(max_length=254, default='')
-
-#     def __str__(self):
-#         return self.name
-
-
 class Event(models.Model):
     day_of_month = models.IntegerField(null=False)
     name = models.CharField(max_length=254, default='')

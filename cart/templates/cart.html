@@ -13,7 +13,8 @@
     </section>  
 
     <h2 class="text-center">Your products</h2>            
-    <section class="inner-content">   
+    <section class="inner-content">
+    <!-- Showing message to user -->   
         {% if messages %}
             <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
                 <div class="messages">
@@ -27,7 +28,7 @@
     
     <section class="inner-content-products">           
         <div class="row container-fluid"> 
-            <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->           
+            <!--Loop over item in cart_items to show what's currently in the cart.-->           
             {% for item in cart_items %}
                 <div class="col-md-5 col-xl-3 feature feature-text">
                     <h4 class="text-center">{{ item.sku.product.product_name }}</h4> 
@@ -50,7 +51,7 @@
                             <button type="submit" class="btn btn-info product-description read-more">Adjust</button>
                         </div>
                     </form>  
-                            
+                   <!-- Delete the item from the cast with the delete_from_cart view. item.id is passed in to identify the specific profilepost-->           
                     <form class="form-inline" method="post" action="{% url 'delete_from_cart' item.id %}">
                         {% csrf_token %} 
                         <div class="col-12 text-center">
