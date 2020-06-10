@@ -5,8 +5,7 @@
 {% block content %}
     <h1 class="text-center">Check out this weeks offers, members only!</h1>
 
-    <section class="inner-content-products">
-        
+    <section class="inner-content-products">        
         {% if messages %}
             <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
                 <div class="messages">
@@ -21,10 +20,11 @@
             {% for product in products %}
             <div class="col-md-5 col-xl-3 feature">
                 <h4 class="text-center">{{ product.product_name }}</h4> 
-                <!-- By making a background image, it fits the size of the <div> that it is in so that different sized images for different products won't end up looking mismatched.-->        
+                <!-- Background image fits in the size of the <div>. Different sized images won't end up looking mismatched.-->        
                 <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
                 <p class="product-price"><strong>Price:</strong> <span class="normal-price"> € {{ product.normal_price }}</span><br> 
-                    <span class="discount-price"><strong>Only now: € {{ product.price }}</strong></span></p>
+                    <span class="discount-price"><strong>Only now: € {{ product.price }}</strong></span>
+                </p>
                 <p><strong>Offer valid until:</strong><br> {{product.valid_until}}</p>                 
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
@@ -34,7 +34,7 @@
                     </div>
                     <br>
                     <div class="input-group col-6 col-lg-6 col-xl-5"> 
-                    <strong>Size:</strong>
+                        <strong>Size:</strong>
                     </div>
                     <div class="input-group col-6 col-lg-6 col-xl-5"> 
                         <select name="sku">
@@ -43,29 +43,16 @@
                         {% endfor %}    
                         </select>
                     </div>
-                    <p class="add-product"><button class="btn btn-info" type="submit"><i class="fas fa-shopping-cart"></i>&ensp;Add to cart</button></p>                       
+                        <p class="add-product"><button class="btn btn-info" type="submit"><i class="fas fa-shopping-cart"></i>&ensp;Add to cart</button></p>                       
                 </form>
 
                 <p class="product-description">{{ product.description|linebreaks }}</p>
                 <p class=" btn btn-info product-description read-more">Read more</p>
                 <span class="product-description more-info">
                     {{ product.more_info|linebreaks }} 
-                </span>
-                
-            </div>
-            
+                </span> 
+            </div>    
             {% endfor %}
         </div>
     </section>
-
-<!--
-                    <script>
-                    $(document).ready(function(){
-                        $(".read-more").click(function(){
-                            $(this).next(".more-info").toggle('slow');
-                            // $(this).removeClass(".more-info");
-                        });
-                    });
-                </script>    
-                -->
 {% endblock %}

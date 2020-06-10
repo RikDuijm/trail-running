@@ -1,14 +1,13 @@
 {% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Favicon File -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Favicon File -->
         <link rel="shortcut icon" type="image/jpg" href="/media/img/logo.png">
-    <title>Trail Running</title>
-
+        <title>Trail Running</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700&display=swap" rel="stylesheet">
         <link rel="stylesheet"  href="{% static 'css/custom.css' %}" type="text/css"/>
@@ -18,13 +17,14 @@
         
         {% block head_js %}     <!--JavaScript in checkout.html. Will only be injected in base.html, when clicking on Checkout--> 
         {% endblock head_js %}
-</head>
-<body>
-    <div id="page-container" class="container-fluid">
-        <div id="main">
-        
-            <header>
+    </head>
+
+    <body>
+        <div id="page-container" class="container-fluid">
+            <div id="main">        
+                <header>
                     <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #3AAFA9;">
+                        <!--collapsable menu-->
                         <button class="navbar-toggler border-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
@@ -44,44 +44,40 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'get_articles' %}"><span class="menu-item">Inspiration</span></a>
                             </li>
+                            <!--Menu items showing if the user is logged in-->
                             {% if user.is_authenticated %}
                             <li class="nav-item active dropdown">
                                 <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Community</span></a>
-                                <span class="menu-item"><div class="dropdown-menu" aria-labelledby="navbarDropdown"></span>
-                                <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
-                                <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
-                                <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>                           
+                                <span class="menu-item">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"></span>
+                                    <a class="dropdown-item" href="{% url 'all_users' %}">User Profiles</a>
+                                    <a class="dropdown-item" href="{% url 'get_posts' %}">Forum</a>
+                                    <a class="dropdown-item" href="{% url 'new_post' %}">Add post</a>                           
                                 </div>
-                            </li>
+                            </li>                            
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">My Profile</span></a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
                             {% else %}
+                            <!--Menu items showing if the user is not logged in-->
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'get_posts' %}"><span class="menu-item">Forum</span></a>
                             </li>    
-                            {% endif %} 
-                            {% if user.is_authenticated %}
-                            <li class="nav-item active dropdown">
-                                <!-- <a class="nav-link dropdown-toggle" href="{% url 'get_posts' %}" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="menu-item">Profiles</span></a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{% url 'profile' %}"><span class="menu-item">My Profile</span></a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{% url 'logout' %}"><span class="menu-item">Logout</span></a>
-                            </li>
-                            {% else %}
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'registration' %}"><span class="menu-item">Register</span></a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'login' %}"><span class="menu-item">Login</span></a>
                             </li>
-                            {% endif %}
+                            {% endif %} 
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'contact' %}"><span class="menu-item">Contact</span></a>
                             </li>
                             </ul>
                         </div>
-                    
+                            <!--Cart, shwowing number of items if user has added items to cart-->
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{% url 'view_cart' %}">
@@ -95,41 +91,41 @@
                                 </li>
                             </ul>
                     </nav>
+                    <img src="/media/img/header-image.jpg" alt="snowy trail" style="width:100%;height:100%;">                    
+                </header>
+
+                <!--Welcome message if user is logged in. If not, advice user to log in-->
+                <article>
+                    <div class="alert alert-info alert-center col-10">  
+                        <p class="login-message">
+                            <strong><em>
+                                {% if user.is_authenticated %}
+                                Welcome {{ user }}!
+                                {% else %}
+                                <a href="{% url 'login' %}" class="login-message">Please log in for a better experience!</a>
+                                {% endif %}
+                            </em></strong
+                        ></p>
+                    </div>
+                </article>
+                    {% block content %}
+                    <!--The other templates are shown here-->
+                    {% endblock %}
+            </div>  
+        </div>        
+        <footer id="footer">
+        <hr class="footer-line">
+            <p class="text-center footer-text">
+                <a href="#" target="_blank" class="link-green">Contact and opening hours</a><br>
+                follow us:
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <br>
+            </p>
+        </footer>
                 
-                        <img src="/media/img/header-image.jpg" alt="snowy trail" style="width:100%;height:100%;">                    
-            </header>
-        
-            <article>
-                <div class="alert alert-info alert-center col-10">  
-                                    <p class="login-message"><strong><em>
-                                    {% if user.is_authenticated %}
-                                    Welcome {{ user }}!
-                                    {% else %}
-                                    <a href="{% url 'login' %}" class="login-message">Please log in for a better experience!</a>
-                                    {% endif %}
-                                    </em></strong></p>
-                </div>
-            </article>
-                    
-                {% block content %}
-                <!--The other templates are shown here-->
-                {% endblock %}
-        </div>  
-    </div>        
-    <footer id="footer">
-    <hr class="footer-line">
-        <p class="text-center footer-text">
-            <a href="#" target="_blank" class="link-green">Contact and opening hours</a><br>
-            follow us:
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-            <br>
-        </p>
-    </footer>
-            
-    
-<script src="{% static 'js/script.js' %}" type="text/javascript"></script>   
-</body>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>   
+    </body>
 </html>

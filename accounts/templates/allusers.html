@@ -16,11 +16,9 @@
 
     <section class="inner-content-article">
         <article class="row article-content"> 
-            
-
             <div class="row advertisement col-12"> 
+                
                 <strong>You can search the user profiles on first and last name & location:</strong> 
- 
     
                 <div class="row col-12 search-box">
                     <div class="col-xl-3 col-lg-6">
@@ -44,8 +42,8 @@
                     <div class="col-xl-3 offset-xl-0 col-lg-1 offset-lg-4">
                         <p class="text-center"><a href="{% url 'all_users' %}" class="btn btn-info search-reset">Reset</a></p>
                     </div>
-
                 </div>                          
+            
             </div>
         </article>
 
@@ -55,22 +53,21 @@
         <div class="container blog-post forum">
             <div class="row">
                 <div class="col-6 col-sm-3 col-lg-2 ">
-                {% if user.image %}
+                    {% if user.image %}
                     <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.image }}')" max-height: 100%;></div>
-                {% else %}    
-                <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic">
-                </div>
-                {% endif %}
+                    {% else %}    
+                    <div class="profile-thumbnail"><img src="/media/img/runner-male.png" alt="profile image" width="40px" class="userprofile-details-pic">
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="col-6 profile-thumbnail-name">        
-                        <h5><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h5>
-                    </a>
+                    <h5><a href="{% url 'user_profile_page' user.id %}">{{user.user}} </a></h5>
                     {{user.first_name}} {{user.last_name}}
                     <br>{{ user.gender }}, {{ user.age }}
                     <br>{{ user.location }}
                 </div>
                 <div>
-                <a href="{% url 'contact_user' user.id %}" class="btn btn-info post-details-btn">Contact User!</a> 
+                    <a href="{% url 'contact_user' user.id %}" class="btn btn-info post-details-btn">Contact User!</a> 
                 </div>
             </div>
         </div>    

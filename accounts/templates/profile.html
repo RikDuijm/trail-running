@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
-
-
 {% block content %}
+
     <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
         {% if messages %}
             <div class="col-8 offset-2 alert alert-danger">
@@ -16,90 +15,87 @@
                 
     <section class="inner-content-article"> 
         <article class="row">
-
-        <div class="container-fluid">
-                         
-            <div class="row col-10 offset-1 blog-post">
-                <div class="col-12 col-md-4 offset-1  userprofile-details">
-                    <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
-                    <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
-                    {% if user == profile.userprofile.user %}
-                    <p><strong>Email:</strong> {{ profile.userprofile.repeat_email }}</p>
-                    {% else %}
-                    {% endif %}
-                    <p><strong>Location:</strong> {{ profile.userprofile.location }}</p>
-                    <p><strong>Gender:</strong> {{ profile.userprofile.gender}}</p>
-                    <p><strong>Age:</strong> {{ profile.userprofile.age}}</p>              
-                </div>    
-                <div class="col-12 col-md-7 col-lg-5 col-xl-4">
-                    {% if profile.userprofile.image %}
-                    <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic-big">
-                    {% else %}
-                        <img src="/media/img/runner-male.png" alt="profile image" width="100px" class="userprofile-details-pic-big">
-                    {% endif %}
-                </div>
-                
-                <div class="col-10 offset-1">
-                <hr>
-                    <h2 class="about-me">About me</h2>
-                    <p>{{ profile.userprofile.about_me|linebreaks}}</p>
-                </div> 
-                <div class="col-10 offset-1 userprofile-details">
-                    {% if user == profile.userprofile.user %}
-                    <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit details</a>
-                    <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete Profile</a>    
-                    <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
-                {% else %}
-                {% endif %}   
-                </div>
-            </div>    
-              
-            <div class="col-10 offset-1 blog-post userprofile-details">           
-                <div class="col-10 offset-1">
-                    
-                    <h4 class="userprofile-details">Personal messages: </h4>
-                    
-                    {% for contactuserpost in contactuserposts %}
-                        {% if contactuserpost.recipient == request.user  %}
-                        <hr>   
-                            <p>
-                                <a href="{% url 'delete_personal_message' contactuserpost.id %}" class="btn btn-info post-details-btn">Delete</a> <br>
-                                <strong>From:</strong> &emsp;{{contactuserpost.sender}}<br>
-                                <strong>Date:</strong> &emsp;  {{contactuserpost.date}}<br>
-                                <strong>Subject:</strong> {{ contactuserpost.title }}<br>
-                                <strong>Message:</strong><br> {{ contactuserpost.message|linebreaks }}
-                                <div class="col-10 col-md-8 col-lg-6 col-lg-4 col-xl-3">
-                                {% if contactuserpost.image %}
-                                <img src="{{ contactuserpost.image.url }}" alt="profile image" class="userprofile-details-pic-big">
-                                {% else %}
-                                {% endif %}  
-                                </div>
-                            </p>
-                               
+            <div class="container-fluid">                           
+                <div class="row col-10 offset-1 blog-post">
+                    <div class="col-12 col-md-4 offset-1  userprofile-details">
+                        <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
+                        <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
+                        {% if user == profile.userprofile.user %}
+                        <p><strong>Email:</strong> {{ profile.userprofile.repeat_email }}</p>
                         {% else %}
-                        {% endif %}                   
-                    {% endfor %}
-                </div>
-            </div>    
+                        {% endif %}
+                        <p><strong>Location:</strong> {{ profile.userprofile.location }}</p>
+                        <p><strong>Gender:</strong> {{ profile.userprofile.gender}}</p>
+                        <p><strong>Age:</strong> {{ profile.userprofile.age}}</p>              
+                    </div>    
+                    <div class="col-12 col-md-7 col-lg-5 col-xl-4">
+                        {% if profile.userprofile.image %}
+                        <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic-big">
+                        {% else %}
+                        <img src="/media/img/runner-male.png" alt="profile image" width="100px" class="userprofile-details-pic-big">
+                        {% endif %}
+                    </div>
+                    
+                    <div class="col-10 offset-1">
+                    <hr>
+                        <h2 class="about-me">About me</h2>
+                        <p>{{ profile.userprofile.about_me|linebreaks}}</p>
+                    </div> 
+                    <div class="col-10 offset-1 userprofile-details">
+                        {% if user == profile.userprofile.user %}
+                        <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit details</a>
+                        <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete Profile</a>    
+                        <a href="{% url 'profile_post' %}" class="btn btn-info post-details-btn">New Post</a> 
+                    {% else %}
+                    {% endif %}   
+                    </div>
+                </div>    
+                
+                <div class="col-10 offset-1 blog-post userprofile-details">           
+                    <div class="col-10 offset-1">
+                        <h4 class="userprofile-details">Personal messages: </h4>
+                        {% for contactuserpost in contactuserposts %}
+                            {% if contactuserpost.recipient == request.user  %}
+                            <hr>   
+                                <p>
+                                    <a href="{% url 'delete_personal_message' contactuserpost.id %}" class="btn btn-info post-details-btn">Delete</a> <br>
+                                    <strong>From:</strong> &emsp;{{contactuserpost.sender}}<br>
+                                    <strong>Date:</strong> &emsp;  {{contactuserpost.date}}<br>
+                                    <strong>Subject:</strong> {{ contactuserpost.title }}<br>
+                                    <strong>Message:</strong><br> {{ contactuserpost.message|linebreaks }}
+                                    <div class="col-10 col-md-8 col-lg-6 col-lg-4 col-xl-3">
+                                    {% if contactuserpost.image %}
+                                    <img src="{{ contactuserpost.image.url }}" alt="profile image" class="userprofile-details-pic-big">
+                                    {% else %}
+                                    {% endif %}  
+                                    </div>
+                                </p>
+                                
+                            {% else %}
+                            {% endif %}                   
+                        {% endfor %}
+                    </div>
+                </div>    
 
                 {% for profilepost in profileposts %}
                 <div class="col-10 offset-1 blog-post userprofile-details feature-text">           
                     <div class="col-10 offset-1">
                         <h2>{{ profilepost.title }}</h2>
-                            <p>{{ profilepost.content|linebreaks }}</p>
-                            {% if profilepost.image %}
-                        <img class="img-blogpost" src="{{ profilepost.image.url }}" width="250px">
+                        <p>{{ profilepost.content|linebreaks }}</p>
+                        {% if profilepost.image %}
+                            <img class="img-blogpost" src="{{ profilepost.image.url }}" width="250px">
                         {% endif %}
-                                <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
-                    {% if user == profilepost.user or user.is_superuser %}            
-                    <a href="{% url 'edit_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Edit</a>  
-                    <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete</a>
-                    {% else %}
-                    {% endif %}                                    
+                        <p><span class="boldtext">Published on:</span> {{ profilepost.published_date }}</p> <br>
+                        {% if user == profilepost.user or user.is_superuser %}            
+                        <a href="{% url 'edit_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Edit</a>  
+                        <a href="{% url 'delete_profile_post' profilepost.id %}" class="btn btn-info post-details-btn">Delete</a>
+                        {% else %}
+                        {% endif %}                                    
                     </div>
                 </div>    
-        {% endfor %} 
-        </div>
-    </div>
-
+                {% endfor %} 
+            </div>
+        </article>
+    </section>
+        
 {% endblock %}

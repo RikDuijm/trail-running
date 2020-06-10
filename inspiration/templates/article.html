@@ -4,21 +4,20 @@
 
     <h1 class="text-center">{{ article.title }}</h1>   
     <section class="inner-content-article"> 
-        <article class="row">
-                
+        <article class="row">       
             <div class="row advertisement col-12">              
                    <div class="col-xs-6 col-sm-4">Author: {{ article.author }}</div> 
                    <div class="col-xs-6 col-sm-4">Views: {{article.views}}</div> 
                    <div class="col-xs-6 col-sm-4"><a href="{% url 'routes_destinationsView' %}" class="btn btn-info">More stories</a></div><br><br>
             </div><br>
+
             <div class="row">              
                 {{ article.introduction|linebreaks }}
-            
                 <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.main_image }}')"></div>
                 <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_one }}')"></div>
                 <div class="inspiration" style="background-image: url('{{ MEDIA_URL }}{{ article.image_two }}')"></div>
                 {{ article.content_one|linebreaks }} 
-                
+        
                 <div class="advertisement col-12">
                     <h5>{{ article.ad_one_introduction|linebreaks }}</h5>
                     <div class="row">
@@ -28,11 +27,9 @@
                 </div>
                 
                 <h2 class="article-subheading" >{{ article.content_two }}</h2>
+
             </div>
         </article>
     </section>   
-
-
-                                
 
 {% endblock %}

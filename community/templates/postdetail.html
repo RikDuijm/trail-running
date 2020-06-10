@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="text-center">Forum</h1>
-
+    <h1 class="text-center">Forum</h1>
     <section class="inner-content-article"> 
-
-        
 
             <div class="container blog-post forum">
                 <div class="row">
-                    <div class="col-6 col-sm-3 col-lg-2 ">
+                    <div class="col-6 col-sm-3 col-lg-2">
                         {% if post.author.userprofile.image %}
                         <div class="author-thumbnail" width="40px" style="background-image: url('{{ MEDIA_URL }}{{ post.author.userprofile.image }}')"></div> 
                         {% else %}    
@@ -44,7 +41,6 @@
                         <a href="{% url 'get_posts' %}" class="btn btn-info post-details-btn">Back to Forum</a>
                 </div>
             </div>
-    </section>
-                    
+    </section>        
                 
 {% endblock %}

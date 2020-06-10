@@ -10,15 +10,11 @@
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ login_form| as_bootstrap }}
-                <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>       
+                    <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>       
                     <button type="submit" class="btn btn-info">Login</button>
                 </form>
             </div>    
         </div>
     </section>
-
-
- 
-
 
 {% endblock %}

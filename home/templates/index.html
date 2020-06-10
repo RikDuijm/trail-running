@@ -3,26 +3,24 @@
 {% block content %}
 
     <section class="inner-content-article">
-
-            {% if messages %}
-                <div class="inner-content-products col-9 col-md-8 alert alert-danger">
-                    <div class="messages">
-                        {% for message in messages %}
-                            <strong>{{ message }}</strong>
-                        {% endfor %}
-                    </div>
+        {% if messages %}
+            <div class="inner-content-products col-9 col-md-8 alert alert-danger">
+                <div class="messages">
+                    {% for message in messages %}
+                        <strong>{{ message }}</strong>
+                    {% endfor %}
                 </div>
-            {% endif %}
-
-        <h1 class="text-center">Your adventure starts here!</h1>
+            </div>
+        {% endif %}
     </section>
+    <h1 class="text-center">Your adventure starts here!</h1>
+    
     <section class="inner-content">
         <article class="row">
             
             <div class="col-xl-10">       
                 <p class="intro">Welcome to the website for the trail runner. Whether you're looking for events to participate in, a training partner, practical advice on an injury, runner stories or products: you're at the right place! Learn more about this amazing sport and the people doing it!</p>
-            </div>
-                  
+            </div>               
                         
             <div class="col-xl-5 feature">
                 <a class="nav-link" href="{% url 'all_events' %}">

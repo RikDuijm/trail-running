@@ -3,23 +3,22 @@
 {% load bootstrap_tags %}
 
 <!-- js.stripe.com/v2 is a direct link to Stripe's JavaScript to set the Stripe.publishableKey. 
-So the publishableKey that comes from Stripe is then available  to use elsewhere in the page. An
-And the rest of our JavaScript is in the mentioned stripe.js file.
+The publishableKey that comes from Stripe is then available to use elsewhere in the page. 
+The rest of the JavaScript is in the mentioned stripe.js file.
 -->
 {% block head_js %}
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript">
-    //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
-    //]]>
-</script>
-<script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+            Stripe.publishableKey = '{{ publishable }}';
+        //]]>
+    </script>
+    <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock head_js %}
 
 {% block content %}
     <section class="cart-total">
         <h1 class="feature-text discount-price">Checkout</h1>
-        <!--This time the for loop is looping over item in cart_items because it's only to show what's currently in the cart.-->
         <div>
             <h3 class="product-price">Total price: € {{ total }}</h3>
             <a href="{% url 'view_cart' %}" class="btn btn-info checkout-btn" role="button">Back to Cart</a> 
@@ -29,23 +28,24 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
 
     <h2 class="text-center">Your products</h2>  
     <section class="inner-content-products">            
-            <div class="row container-fluid"> 
-                <!-- Loop over cart items -->
-                {% for item in cart_items %}
-                    <div class="col-md-5 col-xl-3 feature feature-text">
-                        <h4 class="text-center">{{ item.sku.product.product_name }}</h4> 
-                        <h6 class="text-center">Size: {{ item.sku.size }}</h6>
-                        <span class="discount-price"><strong>Price: € {{ item.sku.product.price }}</strong></span></p>
-                        <p><strong>Valid until:</strong><br> {{ item.sku.product.valid_until }}</p>      
-                        <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.sku.product.image }}')"></div>
-                            <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong>
-                            <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.sku.product.price }}</strong></span></p>
-                    </div>
-                {% endfor %}
-            </div>
-             
+        <div class="row container-fluid"> 
+            <!--Loop over item in cart_items to show what's currently in the cart.-->
+            {% for item in cart_items %}
+                <div class="col-md-5 col-xl-3 feature feature-text">
+                    <h4 class="text-center">{{ item.sku.product.product_name }}</h4> 
+                    <h6 class="text-center">Size: {{ item.sku.size }}</h6>
+                    <span class="discount-price"><strong>Price: € {{ item.sku.product.price }}</strong></span></p>
+                    <p><strong>Valid until:</strong><br> {{ item.sku.product.valid_until }}</p>      
+                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.sku.product.image }}')"></div>
+                        <p><strong><em>Your ordering <span class="discount-price"> {{item.quantity}} </span> items</em></strong>
+                        <p class="product-price"><strong>Price per item: <span class="discount-price"> € {{ item.sku.product.price }}</strong></span></p>
+                </div>
+            {% endfor %}
+        </div>           
     </section>    
- <hr>  
+    
+    <hr>  
+    
     <section class="inner-content">
         {% if messages %}
             <div class="alert alert-danger">
@@ -58,27 +58,27 @@ And the rest of our JavaScript is in the mentioned stripe.js file.
         {% endif %}
     </section>
 
-    <section class="inner-content-checkout">           
-        
-        <!--These are the payment form, and the form which takes the address information.-->
+    <section class="inner-content-checkout">            
+        <!--Address Information Form / Payment Form -->
             <div class="form">
-            <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}" class="text-center">
-                <legend>Payment Details</legend>
-                <div id="credit-card-errors" style="display: none;">
-                    <div id="alert-message block-message error" id="stripe-error-message"></div>
-                </div>
-            <div class="row">    
-                <div class="form-group col-md-6">
-                    {{ order_form | as_bootstrap }}
-                </div>
-                <div class="form-group col-md-6">
-                    {{ payment_form | as_bootstrap }}
-                {% csrf_token %}
-                <div class="form-group col-md-12">
-                    <input class=" btn btn-info" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-                </div>
+                <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}" class="text-center">
+                    <legend>Payment Details</legend>
+                    <div id="credit-card-errors" style="display: none;">
+                        <div id="alert-message block-message error" id="stripe-error-message"></div>
+                    </div>
+                    <div class="row">    
+                        <div class="form-group col-md-6">
+                            {{ order_form | as_bootstrap }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ payment_form | as_bootstrap }}
+                        {% csrf_token %}
+                        <div class="form-group col-md-12">
+                            <input class=" btn btn-info" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                        </div>
+                    </div>
+                </form>
             </div>
-            </form>
-        </div>
+
     </section>
 {% endblock %}
