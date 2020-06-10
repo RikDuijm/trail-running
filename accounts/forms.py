@@ -11,7 +11,6 @@ class UserLoginForm(forms.Form):
 
 class UserRegistrationForm(UserCreationForm):
     """Form used to register a new user"""
-
     password1 = forms.CharField(
             label="Password",
             widget=forms.PasswordInput)
@@ -20,9 +19,8 @@ class UserRegistrationForm(UserCreationForm):
         widget=forms.PasswordInput)
     
     class Meta:
-        """An inner class  or meta class will provide some information about this form. 
-        Django usually uses them internally to determine things about the class but we can also use it to specify 
-        the model that we want store information in and to specify the fields that we're going to expose. """
+        """An inner class  or meta class will provide some information about the form. 
+        Specify the model that we want store information in and to specify the fields that we're going to expose. """
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
@@ -36,13 +34,10 @@ class UserRegistrationForm(UserCreationForm):
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
-
         if not password1 or not password2:
             raise ValidationError("Please confirm your password")
-        
         if password1 != password2:
             raise ValidationError("Passwords must match")
-        
         return password2        
 
 

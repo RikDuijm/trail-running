@@ -48,11 +48,12 @@
         </article>
 
         <br>
-        
+        <!-- Loop through the users and show their details, refering to the model and fields-->
         {% for user in users %}
         <div class="container blog-post forum">
             <div class="row">
                 <div class="col-6 col-sm-3 col-lg-2 ">
+                    <!-- If user has uploaded a profile image, show it. If not, show avatar-->
                     {% if user.image %}
                     <div class="profile-thumbnail" style="background-image: url('{{ MEDIA_URL }}{{ user.image }}')" max-height: 100%;></div>
                     {% else %}    
@@ -73,7 +74,7 @@
         </div>    
         <br>
             {% empty %}
-            <!--If there are no books to show-->
+            <!--If there are no profiles found, show this message-->
             <div class="col-12 text-center">
                 <br><br>
                 <h3>
@@ -85,6 +86,4 @@
         
     </section>    
      
-        
-
 {% endblock %}                

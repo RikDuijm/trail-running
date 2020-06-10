@@ -11,23 +11,43 @@ from .models import UserProfile, ProfilePost, ContactUser
 def index(request):
     """View that returns the index / homepage"""  
     return render(request, "index.html")
+
+def registration(request):
+    """Render the registration page"""
+    if request.user.is_authenticated:
+        # User is already registered, so no point to be on registration page.
+        return redirect(reverse('index')) 
+
+    if request.method == "POST":
+        # Check of the method is post. If so instantiate the registration and profile forms, using the values of the request post method.
+        registration_form = UserRegistrationForm(request.POST)  
+        # request.Files to upload profile pic.
+        profile_form = UserProfileForm(request.POST, request.FILES)  
+        # If registration form is valid, safe it
+        if registration_form.is_valid() and profile_form.is_valid(): 
+            user = registration_form.save()
+            # To add the user to this profile, use commit=False to not safe the profile to database right away.
+            profile = profile_form.save(commit=False)   
+            # Refers to models.user and makes sure that one user only has one profile
+            profile.user = user                         
+            profile.save()
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password1'])
+            if user:
+                auth.login(user=user, request=request)                          
+                # Send message to user that he has registered successfully or not.
+                messages.success(request, "You have successfully registered and are logged in.")
+                return redirect(reverse('profile'))
+            else:
+                messages.error(request, "Unable to register your account at this time")
+    else:
+        # Else statement in case it's a get method. An empty registration form is instantiated.
+        registration_form = UserRegistrationForm()          
+        profile_form = UserProfileForm()
     
+    return render(request, 'registration.html', {
+        "registration_form": registration_form, "profile_form": profile_form})    
     
-@login_required
-# required to only allow access to the logout page if user is authenticated; Django automatically redirects to login page if logged out user tries to enter logout page by url
-def logout(request):
-    """Log the user out"""
-    auth.logout(request)
-    messages.success(request, "You have successfully been logged out.")
-    return redirect(reverse('index'))
-
-
-def deleted_user(request):
-    """Log the user out"""
-    auth.logout(request)
-    messages.success(request, "Your profile has been deleted. Please contact us if you want to undo this.")
-    return redirect(reverse('index'))
-
 
 def login(request):
     """Return a login page"""
@@ -36,71 +56,52 @@ def login(request):
     if request.method == "POST":
         login_form = UserLoginForm(request.POST) 
         # if request method is equal to POST then create an instance of the user login form, so a new login form will be created with the data posted from the form on the UI 
-        if login_form.is_valid(): #check if data is valid, this is a method. 
-            user = auth.authenticate(username=request.POST['username'], # this will authenticate the user, whether or not this user has provided the username and password 
+        # check if data is valid.
+        if login_form.is_valid():  
+            # this will authenticate the user, whether or not this user has provided the username and password
+            user = auth.authenticate(username=request.POST['username'],  
                                     password=request.POST['password'])
             if user:
-                auth.login(user=user, request=request) # Then our authenticate function will return a user object so if we have a user then we'll log him in.
+                # Then the authenticate function will return a user object. If there's a user,  we'll log him in.
+                auth.login(user=user, request=request) 
                 return redirect(reverse('index'))
             else:
                 login_form.add_error(None, "Your username or password is incorrect.")
     else:
-        login_form = UserLoginForm() # otherwise we're just going to create an empty object 
+        login_form = UserLoginForm() 
     return render(request, 'login.html', {'login_form': login_form})
 
 
-def registration(request):
-    """Render the registration page"""
-    if request.user.is_authenticated:
-        return redirect(reverse('index')) # User is already registered, so no point to be on registration page.
-
-    if request.method == "POST":
-        registration_form = UserRegistrationForm(request.POST) # Check of the method is post. If so instantiate the registration and profile forms, using the values of the request post method. 
-        profile_form = UserProfileForm(request.POST, request.FILES)  # request.Files to upload profile pic.
-
-        if registration_form.is_valid() and profile_form.is_valid(): # If registration form is valid, safe it
-            user = registration_form.save()
-
-            profile = profile_form.save(commit=False)   # To add the user to this profile, commit=False to not safe the profile to database right away.
-            profile.user = user                         # Refers to models.user and makes sure that one user only has one profile
-
-            profile.save()
-
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password1'])
-            
-            if user:
-                auth.login(user=user, request=request)                          # Send message to user that he has registered successfully or not.
-                messages.success(request, "You have successfully registered and are logged in.")
-                return redirect(reverse('profile'))
-            
-            else:
-                messages.error(request, "Unable to register your account at this time")
-    
-    else:
-        registration_form = UserRegistrationForm()          # Put an else statement in case it's a get method. Then we'll just instantiate an empty registration form.
-        profile_form = UserProfileForm()
-    
-    return render(request, 'registration.html', {
-        "registration_form": registration_form, "profile_form": profile_form})
+@login_required
+# required to only allow access to the logout page if user is authenticated. 
+# Django automatically redirects to login page if logged out user tries to enter logout page by url
+def logout(request):
+    """Log the user out"""
+    auth.logout(request)
+    messages.success(request, "You have successfully been logged out.")
+    return redirect(reverse('index'))
 
 
 @login_required
 def all_users(request):
     """
-    Create a view that will return a list
-    of Profiles that were published and render them 
+    View returns a list of Profiles that were published and render them 
     to the 'allprofiles.html' template
     """
+    # order users by last name
     users = UserProfile.objects.all().order_by('last_name')
     return render(request, "allusers.html", {'users': users})   
+
 
 @login_required
 def user_profile(request, pk=None):
     """The user's profile page"""
+    # user is indentified by his email
     user = User.objects.get(email=request.user.email)
+    # show profileposts, fist identifying the user and then ordering by date, new first
     profileposts = ProfilePost.objects.filter(user=request.user).filter(published_date__lte=timezone.now()
         ).order_by('-published_date').all()
+    # show messages to user, ordering by date, new first. In template an if statement makes sure only the messages of the logged-in user show
     contactuserposts = ContactUser.objects.all().filter(date__lte=timezone.now()
         ).order_by('-date').all()  
     return render(request, 'profile.html', {"profile": user, 'profileposts': profileposts, 'contactuserposts': contactuserposts})   
@@ -133,10 +134,12 @@ def contact_user(request, pk=None):
     """
     Create a view that allows the logged-in user to contact another user
     """
+    # another way of checking if user is logged-in
     if not request.user.is_authenticated:
         return redirect('login')
     else:
         if request.method == 'GET':
+            # identifying the sender and recipient of the message
             sender = User.objects.get(email=request.user.email)
             data = {'recipient': get_object_or_404(User, pk=pk)}
             contact_profile_form = ContactProfileForm(initial=data)
@@ -201,8 +204,7 @@ def edit_profile_post(request, pk=None):
 @login_required    
 def delete_profile_details(request, pk=None):
     """
-    Create a view that allows user or admin to delete
-    the profile details.
+    Create a view that allows user or admin to delete the profile.
     """
     user = User.objects.get(email=request.user.email)
     profiledetails = UserProfile.objects.filter(user=request.user).first()
@@ -215,6 +217,12 @@ def delete_profile_details(request, pk=None):
     return render(request, "profiledetailsdelete.html", {'profiledetails': profiledetails})
 
 
+def deleted_user(request):
+    """Log the user out after profile has been deleted"""
+    auth.logout(request)
+    messages.success(request, "Your profile has been deleted. Please contact us if you want to undo this.")
+    return redirect(reverse('index'))
+    
 @login_required
 def delete_profile_post(request, pk=None):
     """

@@ -3,6 +3,7 @@
 {% block content %}
 
     <h1 class="text-center">{{ profile.username }}'s Profile Page</h1>
+        <!-- Showing message to user -->
         {% if messages %}
             <div class="col-8 offset-2 alert alert-danger">
                 <div class="messages">
@@ -18,8 +19,10 @@
             <div class="container-fluid">                           
                 <div class="row col-10 offset-1 blog-post">
                     <div class="col-12 col-md-4 offset-1  userprofile-details">
+                    <!-- Showing personal details of user -->
                         <p><strong>First name:</strong> {{ profile.userprofile.first_name }}</p>
                         <p><strong>Last name:</strong> {{ profile.userprofile.last_name }}</p>
+                        <!-- Only show email address if it's the logged-in user -->
                         {% if user == profile.userprofile.user %}
                         <p><strong>Email:</strong> {{ profile.userprofile.repeat_email }}</p>
                         {% else %}
@@ -29,6 +32,7 @@
                         <p><strong>Age:</strong> {{ profile.userprofile.age}}</p>              
                     </div>    
                     <div class="col-12 col-md-7 col-lg-5 col-xl-4">
+                        <!-- If user has uploaded a profile image, show it. If not, show avatar-->
                         {% if profile.userprofile.image %}
                         <img src="{{ profile.userprofile.image.url }}" alt="profile image" width="250px" class="userprofile-details-pic-big">
                         {% else %}
@@ -39,9 +43,11 @@
                     <div class="col-10 offset-1">
                     <hr>
                         <h2 class="about-me">About me</h2>
+                        <!-- linebreaks are used for the layout of a form-->
                         <p>{{ profile.userprofile.about_me|linebreaks}}</p>
                     </div> 
                     <div class="col-10 offset-1 userprofile-details">
+                        <!-- Only show buttons if user is logged in and looking at own profile-->
                         {% if user == profile.userprofile.user %}
                         <a href="{% url 'edit_profile' %}" class="btn btn-info post-details-btn">Edit details</a>
                         <a href="{% url 'delete_profile_details' %}" class="btn btn-info post-details-btn">Delete Profile</a>    
@@ -51,9 +57,13 @@
                     </div>
                 </div>    
                 
+                <!-- Showing the personal messages section only on the profile of the user that is logged in-->
+                {% if user == profile.userprofile.user %}
                 <div class="col-10 offset-1 blog-post userprofile-details">           
                     <div class="col-10 offset-1">
                         <h4 class="userprofile-details">Personal messages: </h4>
+                        <!-- Looping through the personal message sent to a user and showing the messages of the specific user that is logged in
+                        only on his / her profile-->
                         {% for contactuserpost in contactuserposts %}
                             {% if contactuserpost.recipient == request.user  %}
                             <hr>   
@@ -64,6 +74,7 @@
                                     <strong>Subject:</strong> {{ contactuserpost.title }}<br>
                                     <strong>Message:</strong><br> {{ contactuserpost.message|linebreaks }}
                                     <div class="col-10 col-md-8 col-lg-6 col-lg-4 col-xl-3">
+                                    <!--If sender uploaded an optional image, show it. -->
                                     {% if contactuserpost.image %}
                                     <img src="{{ contactuserpost.image.url }}" alt="profile image" class="userprofile-details-pic-big">
                                     {% else %}
@@ -76,6 +87,8 @@
                         {% endfor %}
                     </div>
                 </div>    
+                {% else %}
+                {% endif %} 
 
                 {% for profilepost in profileposts %}
                 <div class="col-10 offset-1 blog-post userprofile-details feature-text">           
