@@ -120,10 +120,6 @@ a {
     color: #3AAFA9;
 }
 
-ul {
-    padding-inline-start: 0px;
-}
-
 li {
     display: inline;
 }
@@ -251,7 +247,7 @@ button:hover {
 
 /* ------------------------------------------------------------------------------------------- Events & Discounts */
 
-.product-price, .event-distance, {
+.product-price, .event-distance {
     margin-top: 18px;
 }
 
