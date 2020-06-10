@@ -43,6 +43,8 @@ Winning over the customers and maintaining their interest with the ultimate goal
     - [**Help with code**](#help-with-code)
     - [**Acknowledgements**](#acknowledgements)
 
+7. [**Disclaimer**](#disclaimer)
+
 ## <a name="ux"></a>UX
 
 ### <a name="audience"></a>The Audience
@@ -580,10 +582,11 @@ Once pushed to Github, I synchronised the repository with Travis, copying the ma
 
 ### <a name="content"></a>Content
 - **Written content**
-All written content on this website was made by me.
+All written content on this website was made by me. The description of the products is a brief summary of the manufacturer's product information.
 
 - **images**
-Images are taken by me or friends, or from [Unplash](https://unsplash.com/) and [Pixabay](https://pixabay.com/), 2 websites that offer royalty free stock pictures.
+Images are taken by me or friends, or from [Unplash](https://unsplash.com/) and [Pixabay](https://pixabay.com/), 2 websites that offer royalty free stock pictures.\
+The images of the products I got from the fabricants promotional material. 
 
 - **Logo**
 I made the Logo with the free [Looka Logo Maker](https://looka.com/)
@@ -602,3 +605,5 @@ The social media icons are from Font Awesome.
 ## <a name="acknowledgements"></a>Acknowledgements
 Thanks to my mentor Spencer Barriball and fellow student Peter Lenting for discussing ideas and providing help on several occasions.
 
+## <a name="disclaimer"></a>Disclaimer
+The content of this website is for educational purposes only.
