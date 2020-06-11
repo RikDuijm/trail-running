@@ -6,10 +6,7 @@
     <h1 class="text-center">Check out this weeks offers, members only!</h1>
     
     <section class="inner-content-products">
-        <div class="col-10">
-            <strong>Trailrunner.online</strong> is part of <strong>The Run Store</strong> and offers varying discounts to its members every week.<br> 
-            Please take a look at <strong><a href="#" target="_blank" class="link-black">The Run Store</a></strong> for many more products!
-        </div>    
+        
     <!-- Showing message to user -->          
         {% if messages %}
             <div class="inner-content-products col-9 col-md-8 col-xl-6 alert alert-danger">
@@ -20,7 +17,12 @@
                 </div>
             </div>
         {% endif %}
-        
+            <div class="col-10">
+                <p class="product-price">
+                <strong>Trailrunner.online</strong> is part of <strong>The Run Store</strong> and offers varying discounts to its members every week.<br> 
+                Please take a look at <strong><a href="#" target="_blank" class="link-black">The Run Store</a></strong> for many more products!
+                </p>
+            </div>    
         <div class="row container-fluid"> 
         <!-- Loop through products to show them all -->                        
             {% for product in products %}
