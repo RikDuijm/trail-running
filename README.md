@@ -96,7 +96,7 @@ The site must emanate that the customer and his needs are understood. Product of
 **What are we making?**\
 Given the enormous amount of web shops, we feel that our regular web shop isn’t competitive enough anymore. To be able to distinguish from competitors we want to create an environment that the user likes to visit and return to over and over again. 
 
-Secondly we also feel that there always more ways to generate revenue, and we should consider advertisements, and offering collaboration with other companies and organisations that share our audience, as long as they are no direct competitors. 
+Secondly we also feel that there are always more ways to generate revenue, and we should consider accepting advertisements, and offering collaboration with other companies and organisations that share our audience, as long as they are no direct competitors. 
 
 This is achieved by: 
 
@@ -106,7 +106,7 @@ A selection of products from the separate, larger online store is offered here. 
 The objective is threefold:
 1. Generate sales
 1. Generate traffic to the larger store. 
-1. Ensure that users regularly check the website. That should increase the amount of visits to the community and the attention for the editorial part and the events calendar - while these other sections in turn should increase the attention to the online store.
+1. Ensure that users regularly check the website. That should increase the amount of visits to the community and the attention for the editorial part and the events calendar on the website - while these other sections in turn should increase the attention to the online store.
 
 
 **2. Online community**\
@@ -125,7 +125,7 @@ For other entrepreneurs (for example physiotherapists, dieticians, psychologists
 Also, advertising space can be sold as an additional income.
 
 **4: An event calendar**\
-Many trail runs are small-scale initiatives, created by passionate trail runners. However, they are not always able to properly promote such an event, or arrange an online registration: they often lack this specific knowledge. By facilitating an event calendar, you both form a bond with these types of organizations - with every thinkable advantage - and you provide interesting content for your target group. The user will receive a small discount upon registration through the website. However, you could also consider charging a small commission from the organizer (like booking.com) to generate extra income.
+Many trail runs are small-scale initiatives, created by passionate trail runners. However, they are not always able to properly promote such an event, or arrange an online registration: they often lack this specific knowledge. By facilitating an event calendar, you form a bond with these types of organizations - with every thinkable advantage - and you provide interesting content for your target group. The user will receive a small discount upon registration through the website. However, you could also consider charging a small commission from the organizer (like booking.com) to generate extra income.
 
 **Important note:**\
 This website co-exists with our normal webshop and offers only a selection of products, at high discounts. On it, we mention that our store is behind this new website, but we don’t emphasize this. Further customer research must show whether it is desirable to integrate our normal webshop into this website or to maintain 2 separate websites. This website relies heavily on the positive feeling the user receives from it. It may be that a fully integrated webshop detracts from this feeling.
@@ -160,13 +160,11 @@ I chose soft colours, green azure and black, representing nature. It combines we
 This website is about the hobby of the customer. Therefore, the selection of photos is hugely important. The customer has to get a positive feeling and should get activated and inspirated on the website. Photos should show nature and landscape on it's best.
 
 - **Presenting the content**\
-The website offers a lot of different content. Therefore it should be very easy to navigate. I chose to present the different sections of the website very clearly on the homepage. 
-
-In the section Inspiration the subsections are presented likewise. 
-
-In the section Discounts the categories (clothes, shoes, events, accessories) are not ordered right now (this would mean I would have to create a lot of content, which is not the purpose of the project), but it would be logical to do the same.
-
-The events calendar only shows a search functionality to not overwhelm the senses with a long lists of events and the page that present all the user profiles is very similar. 
+	-   The website offers a lot of different content. Therefore it should be very easy to navigate: 
+	-   I chose to present the different sections of the website very clearly on the homepage. 
+	-   In the section Inspiration the subsections are presented likewise. 
+	-   In the section Discounts the categories (clothes, shoes, events, accessories) are not ordered right now (this would mean I would have to create a lot of content, which is not the purpose of the project), but it would be logical to do the same.
+	-   The events calendar only shows a search functionality to not overwhelm the senses with a long lists of events. The page that present all the user profiles is very similar. 
 
 ### <a name="wireframes"></a>Wireframes
 This is a mobile first app, but many customers will also use tablet or desktop. The whole design and the choices I made are based on that assumption. I made four mobile wireframes. As I made these, it became clear that the design of the different pages was always based on the same characteristics. Therefore, to make the most of my time, I decided not to make more wireframes.
@@ -188,9 +186,10 @@ Although it's not visible in the design,  I was playing with the idea to integra
 
 - **Navigation bar**\
 The navigation bar contains links to all the important pages. What it shows depends on whether the user is logged in or not.\
-If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact. It also shows the logo (clickable and linking to Home) and a shopping cart.
+If not logged in it shows: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact.\
 If logged in the navigation bar shows: Home, Events, Discounts, Inspiration, Forum, Community (dropdown with User Profiles, Forum, and Add Post), My Profile, Logout and Contact.\
-Below, I will introduce these pages and their functionalities. 
+The navigation bar always shows the logo (clickable and linking to Home) and a shopping cart.\
+Below, I will introduce these pages and their functionalities.
 
 - **Footer**\
 Contains links to (not yet existing) social media pages: Twitter, Facebook, Instagram and YouTube.
@@ -211,11 +210,10 @@ The user can only add products to the cart if he’s logged in. He will see a me
 If the user forgets to select the amount of products he wants to purchase he gets a message to do so. 
 
 `Note:`
-For now, I didn’t categorise the products (for example in categories like watches, clothes, shoes, events). Reason is that this is an educational project and creating0 a number of products per category would be a lot of work that isn’t important for the learning outcome. Depending on the number of products it could be better to categorise them, especially to separate the race events from the products.\
-However the category (or product_type as I named it in the Model) is important for the size selection: with events and watches this is not applicable, shoes get a size of 40, 41 etc, and clothes S, M, L, etc. This selection appears depending on which category the product belongs to.
+For now, I didn’t categorise the products (for example in categories like watches, clothes, shoes, events). Reason is that this is an educational project and creating0 a number of products per category would be a lot of work that isn’t important for the learning outcome. Depending on the number of products it could be better to categorise them, especially to separate the race events from the products.
 
 - **Cart (only if logged-in)**\
-On the top of the page, the total price of the products in the cart is given, with buttons to return to the store (Discounts) or to the Checkout. Below, the products in the Cart are specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of that products are being purchased, and additional information. It’s again possible to adjust the amount of products, or to remove the product from the Cart.
+On the top of the page, the total price of the products in the cart is given, with buttons to return to the store (Discounts) or to the Checkout. Below, the products in the Cart are specified with the following info: name, size, price, the date until the price is valid, an image of the product, the amount of this specific product that is being purchased and additional information. It’s again possible to adjust the amount of products, or to remove the product from the Cart.
  
 - **Checkout (only if logged-in)**\
 On the top of the page, the total price of the products is given, along with a button that sends the user back to the Cart.\
