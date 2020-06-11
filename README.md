@@ -315,18 +315,18 @@ Allows the user to log out.
 I tested the responsiveness of the page locally continuously during the developing progress. I again tested everything remotely after the final deployment on Heroku. Tested devices: Galaxy S5, iPhone 5/SE, iPhone6/7/8, iPhone6/7/8 Plus, iPad, iPad Pro, and responsive desktop. 
 I used Chrome developer tools.
 
-Please have a look at this document to see the issues I've encountered. All have been solved. 
+Please have a look at [this document](/media/manual_tests/testing.xlsx) to see the issues I've encountered. All have been solved. 
 
 #### Testing different browsers
 The page is tested in different browsers: Google Chrome, Microsoft Edge, Internet Explorer 11, Firefox and Ecosia. Only in Internet Explorer I found some problems with the buttons I used. This has been solved. I tested locally and also after deployment on Heroku.
 
-Please have a look at this document to see the issues I've encountered. All have been solved. 
+Please have a look at [this document](/media/manual_tests/testing.xlsx) to see the issues I've encountered. All have been solved. 
 
 #### Testing the functionality ####
-**Manual testing**
+**Manual testing**\
 I tested the functionalities by going through the steps a user would take on the different areas of the website and had other persons do the same. This is a reliable way of discovering whether everything works as it should. In all cases the results matched what I expected. 
 
-In this document you see the test results. Numbers correspond with the numbers of the functionalities below.
+In [this document](/media/manual_tests/testing.xlsx) you see the test results. Numbers correspond with the numbers of the functionalities below.
 
 **1. Navigation bar**
 1. If the user is not logged in / has logged out, the navigation bar should show the following links and those links should direct the user to the respective pages: Home, Events, Discounts, Inspiration, Forum, Register, Login, Contact.\
@@ -557,7 +557,7 @@ The project was coded in Gitpod, and then uploaded to Github for version control
 - **Installing Travis**\
 Once pushed to Github, I synchronised the repository with Travis, copying the markdown code Travis provided me in README.md. Then I created a .travis.yml file. This file specifies the programming language used, and refers to the already created requirements.txt file. Afterwards, I committed and pushed again to Github.
 
-- **Deploying to Heroku**\
+- **Deploying to Heroku**
     -   Before deploying the project to Heroku, I added all the config vars that are in the env.py under ‘Settings’ on the Heroku Dashboard.
     -   Under ‘Deploy’ the "GitHub" pane selected. Then the option to auto-deploy the project whenever it’s pushed to on Github was activated.
     -   Back in Gitpod I installed Gunicorn, a package required to connect to Heroku. I also created a Procfile, which tells Heroku what kind of app it's getting. This is where Gunicorn us used.
@@ -566,7 +566,7 @@ Once pushed to Github, I synchronised the repository with Travis, copying the ma
 
 - **Serving Static files from a Cloud Server**<br>
     -   I used Amazon Simple Storage Service (S3) to serve static files. After going through the settings of this service I downloaded a file with the access keys.
-    -   In Gitpod I installed Django-storages and boto3, packages that allow Django to connect with S3, and added Django-storages to the INSTALLED_APPS, referring the access keys to the env.py file. After saving the access key into the env.py file, collectstatic was run.\
+    -   In Gitpod I installed Django-storages and boto3, packages that allow Django to connect with S3, and added Django-storages to the INSTALLED_APPS, referring the access keys to the env.py file. After saving the access key into the env.py file, collectstatic was run.
     -   To make sure that the static files wouldn’t be overwritten in S3, I created a custom_storages.py file and updated the settings.py file accordingly.
     -   Finally, I updated .gitignore with static/ and media/. However, I waited with this until I checked my CSS for the last time.
     -   In the Heroku Config Vars I put DISABLE_COLLECTSTATIC : 1. This means that Heroku will not try and upload the static files.
